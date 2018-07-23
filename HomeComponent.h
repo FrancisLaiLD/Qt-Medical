@@ -5,28 +5,41 @@
 
 class HomeComponent : public QObject
 {
-    Q_OBJECT
-public:
-    explicit HomeComponent(QString oLabel, QString oImageLink);
 
+    Q_OBJECT
+
+public:
+    explicit HomeComponent(bool c_proVisible, bool c_proEnable, QString c_proLabel, QString c_proImgLink);
     ~HomeComponent();
 
-    Q_PROPERTY(QString label READ label WRITE setLabel NOTIFY labelChanged)
-    Q_PROPERTY(QString imageLink READ imageLink WRITE setImageLink NOTIFY imageLinkChanged)
+    Q_PROPERTY(bool proVisible          READ proVisible             WRITE setProVisible             NOTIFY proVisibleChanged)
+    Q_PROPERTY(bool proEnable           READ proEnable              WRITE setProEnable              NOTIFY proEnableChanged)
+    Q_PROPERTY(QString proLabel         READ proLabel               WRITE setProLabel               NOTIFY proLabelChanged)
+    Q_PROPERTY(QString proImgLink       READ proImgLink             WRITE setProImgLink             NOTIFY proImgLinkChanged)
 
-    QString label() const;
-    void setLabel(const QString& _data);
+    bool proVisible() const;
+    void setProVisible(bool proVisible);
 
-    QString imageLink() const;
-    void setImageLink(const QString& _data);
+    bool proEnable() const;
+    void setProEnable(bool proEnable);
+
+    QString proLabel() const;
+    void setProLabel(const QString &proLabel);
+
+    QString proImgLink() const;
+    void setProImgLink(const QString &proImgLink);
 
 private:
-    QString m_label;
-    QString m_imageLink;
+    bool m_proVisible;
+    bool m_proEnable;
+    QString m_proLabel;
+    QString m_proImgLink;
 
 signals:
-    void labelChanged();
-    void imageLinkChanged();
+    void proVisibleChanged();
+    void proEnableChanged();
+    void proLabelChanged();
+    void proImgLinkChanged();
 
 public slots:
 };

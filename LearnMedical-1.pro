@@ -14,9 +14,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-    HomeScreenModel.cpp \
-    AppManager.cpp \
     HomeComponent.cpp \
+    AppManager.cpp \
+    HomeScreenModel.cpp \
+    StringModel.cpp \
     HomeScreenDef.cpp
 
 RESOURCES +=
@@ -34,11 +35,13 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     qml/main.qml \
-    qml/Component/Q_HomeGridviewDelegate.qml \
-    qml/Screen/Screen_Heart_Infomation.qml
+    qml/Screen/Screen_Heart_Infomation.qml \
+    qml/Screen/Screen_Home_Menu.qml \
+    qml/Component/EHome_HomeGridviewDelegate.qml
 
 HEADERS += \
-    HomeScreenModel.h \
-    AppManager.h \
     HomeComponent.h \
-    HomeScreenDef.h
+    AppManager.h \
+    HomeScreenDef.h \
+    StringModel.h \
+    HomeScreenModel.h

@@ -1,41 +1,58 @@
 #include "HomeComponent.h"
 
 
-HomeComponent::HomeComponent(QString oLabel, QString oImageLink) :
-    m_label(oLabel),
-    m_imageLink(oImageLink)
+
+HomeComponent::HomeComponent(bool c_proVisible, bool c_proEnable, QString c_proLabel, QString c_proImgLink) :
+     m_proVisible(c_proVisible)
+    ,m_proEnable(c_proEnable)
+    ,m_proLabel(c_proLabel)
+    ,m_proImgLink(c_proImgLink)
 {
 
 }
+
 HomeComponent::~HomeComponent()
 {
 
 }
 
-QString HomeComponent::label() const
+bool HomeComponent::proVisible() const
 {
-    return m_label;
+    return m_proVisible;
 }
 
-void HomeComponent::setLabel(const QString &_data)
+void HomeComponent::setProVisible(bool proVisible)
 {
-    if (m_label != _data)
-    {
-        m_label = _data;
-        emit labelChanged();
-    }
+    m_proVisible = proVisible;
 }
 
-QString HomeComponent::imageLink() const
+bool HomeComponent::proEnable() const
 {
-    return m_imageLink;
+    return m_proEnable;
 }
 
-void HomeComponent::setImageLink(const QString &_data)
+void HomeComponent::setProEnable(bool proEnable)
 {
-    if (m_imageLink != _data)
-    {
-        m_imageLink = _data;
-        emit imageLinkChanged();
-    }
+    m_proEnable = proEnable;
 }
+
+QString HomeComponent::proLabel() const
+{
+    return m_proLabel;
+}
+
+void HomeComponent::setProLabel(const QString &proLabel)
+{
+    m_proLabel = proLabel;
+}
+
+QString HomeComponent::proImgLink() const
+{
+    return m_proImgLink;
+}
+
+void HomeComponent::setProImgLink(const QString &proImgLink)
+{
+    m_proImgLink = proImgLink;
+}
+
