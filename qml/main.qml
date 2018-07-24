@@ -7,6 +7,11 @@ Window {
     width: 1920
     height: 720
     title: qsTr("Medical Management")
+
+    function transtionScreen(newScreenLink) {
+        loader2.source = newScreenLink
+    }
+
     Rectangle {
         id: idRoot
         anchors.fill: parent
@@ -25,10 +30,12 @@ Window {
     }
     Loader {
         id: loader2
+        width: 1800 ; height: 640
+        x: 60 ; y: 40
         source: ""
     }
 
     Component.onCompleted:  {
-        loader2.source = "Screen/Screen_Home_Menu.qml"
+        transtionScreen("Screen/EHome_Screen_Home_Menu.qml")
     }
 }

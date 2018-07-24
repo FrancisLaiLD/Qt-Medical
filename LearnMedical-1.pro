@@ -17,8 +17,9 @@ SOURCES += \
     HomeComponent.cpp \
     AppManager.cpp \
     HomeScreenModel.cpp \
-    StringModel.cpp \
-    HomeScreenDef.cpp
+    HomeScreenDef.cpp \
+    HomeQMLController.cpp \
+    HomeStringModel.cpp
 
 RESOURCES +=
 
@@ -35,13 +36,19 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     qml/main.qml \
-    qml/Screen/Screen_Heart_Infomation.qml \
-    qml/Screen/Screen_Home_Menu.qml \
-    qml/Component/EHome_HomeGridviewDelegate.qml
+    qml/Component/DelegateComponent/EHome_HomeGridviewDelegate.qml \
+    qml/Screen/EHome_Screen_Heart_Infomation.qml \
+    qml/Screen/EHome_Screen_Home_Menu.qml \
+    qml/Component/DelegateComponent/EHome_HomeGridviewDelegate.qml \
+    qml/Screen/EHome_Screen_Heart_Infomation.qml \
+    qml/Screen/EHome_Screen_Home_Menu.qml \
+    qml/main.qml \
+    qml/Screen_Hearth_Beat.qml
 
 HEADERS += \
     HomeComponent.h \
     AppManager.h \
     HomeScreenDef.h \
-    StringModel.h \
-    HomeScreenModel.h
+    HomeScreenModel.h \
+    HomeQMLController.h \
+    HomeStringModel.h
