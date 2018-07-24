@@ -36,14 +36,14 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     qml/main.qml \
-    qml/Component/DelegateComponent/EHome_HomeGridviewDelegate.qml \
     qml/Screen/EHome_Screen_Heart_Infomation.qml \
     qml/Screen/EHome_Screen_Home_Menu.qml \
-    qml/Component/DelegateComponent/EHome_HomeGridviewDelegate.qml \
     qml/Screen/EHome_Screen_Heart_Infomation.qml \
     qml/Screen/EHome_Screen_Home_Menu.qml \
     qml/main.qml \
-    qml/Screen_Hearth_Beat.qml
+    qml/Component/ScreenComponent/EHome_Main_Frame.qml \
+    qml/Component/DelegateComponent/EHome_GridviewDelegate.qml \
+    qml/Screen/EHome_Screen_Heart_Infomation_2.qml
 
 HEADERS += \
     HomeComponent.h \

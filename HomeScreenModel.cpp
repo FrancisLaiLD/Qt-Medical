@@ -43,8 +43,31 @@ void HomeScreenModel::createListHomeModel()
     qDebug() << "size Model= " << m_listSize;
     for (int i= 0; i< m_listSize; i++)
         m_listHome.append(new HomeComponent(true,
-                                            true,
+                                            checkElementVisible(i),
                                             TABLE_HOME_MODEL.value(i).s_label,
                                             TABLE_HOME_MODEL.value(i).s_imageLink));
 
+}
+
+bool HomeScreenModel::checkElementVisible(const int &_index)
+{
+    bool uResult = false;
+    switch (_index) {
+    case static_cast<int>(ENUM_HOME_MODEL::HOME_MENU_24_HOURS):
+    {
+        uResult = false;
+    }
+        break;
+    case static_cast<int>(ENUM_HOME_MODEL::HOME_MENU_MOLE_CULE):
+    {
+        uResult = false;
+    }
+        break;
+    default:
+    {
+        uResult = true;
+    }
+        break;
+    }
+    return uResult;
 }

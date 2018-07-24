@@ -36,6 +36,7 @@ Window {
     }
 
     Component.onCompleted:  {
+        console.log('[qml] main.qml onComplete')
         transtionScreen("Screen/EHome_Screen_Home_Menu.qml")
     }
 }

@@ -4,10 +4,7 @@ import "../Component/ListViewComponent"
 import "../Component/DelegateComponent"
 import "../Component/OtherComponent"
 
-Item {
-    id:root
-    width: 1920
-    height: 640
+EHome_Main_Frame {
     ListModel {
         id: mod
     }
@@ -27,7 +24,7 @@ Item {
         clip: true
         interactive: false
         cellHeight: 320; cellWidth: 360
-        delegate: EHome_HomeGridviewDelegate {
+        delegate: EHome_GridviewDelegate {
             id: idDelegateGrv
             elementWidth: 200
             elementHeight: 200

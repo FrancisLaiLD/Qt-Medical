@@ -20,6 +20,7 @@ public:
     int homeModelSize() const;
 
     void createListHomeModel();
+    bool checkElementVisible(const int &_index);
 
 private:
     QList<QObject*> m_listHome;

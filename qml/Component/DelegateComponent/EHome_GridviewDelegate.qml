@@ -27,12 +27,13 @@ Item {
     }
     Image {
         id: idIcon
-        source: elementVisible ? (idMouse.pressed ? (iconPrefix + elementImgLink.replace("@", "p")) : (iconPrefix + elementImgLink.replace("@", "n"))) : (iconPrefix + elementImgLink.replace("@", "d"))
+        source: elementEnable ? (idMouse.pressed ? (iconPrefix + elementImgLink.replace("@", "p")) : (iconPrefix + elementImgLink.replace("@", "n"))) : (iconPrefix + elementImgLink.replace("@", "d"))
         anchors.fill: idRectBtn
     }
     MouseArea {
         id: idMouse
         anchors.fill: idRectBtn
+        enabled: elementEnable
         onClicked: {
             root.release()
             console.log('Grv Delegate clicked !' + index)
@@ -45,6 +46,7 @@ Item {
         anchors.horizontalCenter: idRectBtn.horizontalCenter
         anchors.top : idRectBtn.bottom
         font.pixelSize: elementTextFont
+        color: elementEnable ? "green" : "#808080"
     }
 
 }
