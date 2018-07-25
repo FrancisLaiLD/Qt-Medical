@@ -3,13 +3,15 @@
 AppManager::AppManager(QObject *parent, QQmlApplicationEngine *_pAppEngine) : QObject(parent)
 {
     p_qqmlAppEngine = _pAppEngine;
+    p_qqmlAppEngine->load("/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/qml/main.qml");
+
     p_homeScreenModel = new HomeScreenModel();
-    p_homeQMLController = new HomeQMLController(this, _pAppEngine);
+    p_homeQMLController = new HomeQMLController(this, p_qqmlAppEngine);
 
     p_qqmlAppEngine->rootContext()->setContextProperty("AppManager", this);
     p_qqmlAppEngine->rootContext()->setContextProperty("HomeModel", p_homeScreenModel);
 
-    p_qqmlAppEngine->load("/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/qml/main.qml");
+
 }
 
 bool AppManager::handleHomeClick(const int &_index)

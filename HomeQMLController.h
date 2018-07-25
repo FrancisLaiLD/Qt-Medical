@@ -20,7 +20,7 @@ public slots:
 
 private:
     QQmlApplicationEngine* p_AppEngine;
-    QList<QObject*> m_listObject = p_AppEngine->rootObjects();
+    QList<QObject*> m_listObject;
 
 };
 
