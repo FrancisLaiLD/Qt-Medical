@@ -19,8 +19,8 @@ Item {
     visible: elementVisible
     Rectangle {
         id: idRectBtn
-        width: 250
-        height: 250
+        width: 400
+        height: 400
         color: "transparent"
         opacity: 0.5
         visible: true

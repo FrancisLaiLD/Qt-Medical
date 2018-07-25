@@ -26,6 +26,12 @@
 #define IMAGE_E_HOME_ICON_SLEEP                 "sleep_@.png"
 #define IMAGE_E_HOME_ICON_WHEEL_CHAIR           "wheelchair_@.png"
 
+#define SCREEN_E_HOME_01                        "EHome_Screen_01.qml"
+#define SCREEN_E_HOME_02                        "EHome_Screen_02.qml"
+#define SCREEN_E_HOME_03                        "EHome_Screen_03.qml"
+#define SCREEN_E_HOME_04                        "EHome_Screen_04.qml"
+#define SCREEN_E_HOME_05                        "EHome_Screen_05.qml"
+
 enum class ENUM_HOME_MODEL{
     HOME_MENU_CHIEF_DOCTOR = 0,
     HOME_MENU_MY_DOCTOR,

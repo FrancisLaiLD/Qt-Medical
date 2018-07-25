@@ -11,6 +11,13 @@ EHome_Main_Frame {
         id: name
         anchors.centerIn: parent
         font.pixelSize: 60
-        text: qsTr("Screen number 01")
+        text: qsTr("Screen number 04")
+    }
+    MouseArea {
+        id: idMainMouse
+        anchors.fill: parent
+        onClicked: {
+            AppManager.handleHomeScreenClick(05)
+        }
     }
 }

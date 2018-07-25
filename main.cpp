@@ -10,14 +10,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
 
-    AppManager* p_AppManager = new AppManager();
-    HomeScreenModel* p_HomeScreenModel = new HomeScreenModel();
-
-    engine.rootContext()->setContextProperty("HomeModel", p_HomeScreenModel);
-    engine.rootContext()->setContextProperty("AppManager", p_AppManager);
-    engine.load("/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/qml/main.qml");
-    if (engine.rootObjects().isEmpty())
-        return -1;
+    AppManager* p_AppManager = new AppManager(nullptr, &engine);
 
     return app.exec();
 }

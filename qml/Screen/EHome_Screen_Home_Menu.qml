@@ -23,11 +23,11 @@ EHome_Main_Frame {
         model: mod
         clip: true
         interactive: false
-        cellHeight: 320; cellWidth: 360
+        cellHeight: 360; cellWidth: 360
         delegate: EHome_GridviewDelegate {
             id: idDelegateGrv
-            elementWidth: 200
-            elementHeight: 200
+            elementWidth: 300
+            elementHeight: 300
             onRelease: {
                 AppManager.handleHomeClick(index)
             }
@@ -35,7 +35,7 @@ EHome_Main_Frame {
     }
     Component.onCompleted: {
         getModelGrv()
-        console.log('main.qml Complete')
+        console.log('[qml] EHome_Screen_Home_Menu Complete')
     }
 
 }

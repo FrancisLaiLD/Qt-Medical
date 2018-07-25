@@ -6,10 +6,11 @@ Window {
     visible: true
     width: 1920
     height: 720
-    title: qsTr("Medical Management")
+    title: qsTr("MEDICAL")
 
     function transtionScreen(newScreenLink) {
         loader2.source = newScreenLink
+        return true
     }
 
     Rectangle {
@@ -37,6 +38,6 @@ Window {
 
     Component.onCompleted:  {
         console.log('[qml] main.qml onComplete')
-        transtionScreen("Screen/EHome_Screen_Home_Menu.qml")
+        transtionScreen("Screen/EHome_Screen_01.qml")
     }
 }
