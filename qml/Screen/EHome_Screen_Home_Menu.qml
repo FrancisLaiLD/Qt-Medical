@@ -29,7 +29,7 @@ EHome_Main_Frame {
             elementWidth: 300
             elementHeight: 300
             onRelease: {
-                AppManager.handleHomeClick(index)
+                AppManager.handleHomeScreenClick(index)
             }
         }
     }

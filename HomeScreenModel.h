@@ -2,9 +2,11 @@
 #define HOMESCREENMODEL_H
 
 #include <QObject>
+#include <QtDebug>
+
 #include "HomeComponent.h"
 #include "HomeScreenDef.h"
-#include <QtDebug>
+
 class HomeScreenModel : public QObject
 {
     Q_OBJECT

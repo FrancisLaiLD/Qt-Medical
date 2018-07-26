@@ -10,7 +10,7 @@ Item {
     property int elementTextFont: 40
 
     width: elementWidth
-    height: elementHeight
+    height: elementHeight + idLabel.height
 
     // define Signals
     signal
@@ -19,8 +19,8 @@ Item {
     visible: elementVisible
     Rectangle {
         id: idRectBtn
-        width: 400
-        height: 400
+        width: elementWidth
+        height: elementWidth
         color: "transparent"
         opacity: 0.5
         visible: true

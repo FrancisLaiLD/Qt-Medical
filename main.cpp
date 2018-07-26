@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     AppManager* p_AppManager = new AppManager(nullptr, &engine);
+    p_AppManager->initApplication();
 
     return app.exec();
 }

@@ -19,7 +19,8 @@ SOURCES += \
     HomeScreenModel.cpp \
     HomeScreenDef.cpp \
     HomeQMLController.cpp \
-    HomeStringModel.cpp
+    HomeStringModel.cpp \
+    HomeScreen_01_Model.cpp
 
 RESOURCES +=
 
@@ -45,7 +46,9 @@ DISTFILES += \
     qml/Screen/EHome_Screen_02.qml \
     qml/Screen/EHome_Screen_03.qml \
     qml/Screen/EHome_Screen_04.qml \
-    qml/Screen/EHome_Screen_05.qml
+    qml/Screen/EHome_Screen_05.qml \
+    qml/Component/ScreenComponent/EHome_StatusBar_Frame.qml \
+    qml/Statusbar/EHome_Main_Statusbar.qml
 
 HEADERS += \
     HomeComponent.h \
@@ -53,4 +56,5 @@ HEADERS += \
     HomeScreenDef.h \
     HomeScreenModel.h \
     HomeQMLController.h \
-    HomeStringModel.h
+    HomeStringModel.h \
+    HomeScreen_01_Model.h

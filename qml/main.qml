@@ -1,6 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Window 2.2
 import "Screen"
+import "Component/ScreenComponent"
 
 Window {
     visible: true
@@ -9,7 +10,7 @@ Window {
     title: qsTr("MEDICAL")
 
     function transtionScreen(newScreenLink) {
-        loader2.source = newScreenLink
+        idContentLoader.source = newScreenLink
         return true
     }
 
@@ -21,23 +22,25 @@ Window {
         Image {
             id: idBackgroundImg
             anchors.fill: parent
-            visible: false
+            visible: true
             source: "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/background.jpg"
         }
     }
     Loader {
-        id: loader1
+        id: idSttBarLoader
+        x: 0; y: 0
         source: ""
     }
     Loader {
-        id: loader2
+        id: idContentLoader
         width: 1800 ; height: 640
-        x: 60 ; y: 40
+        x: 0 ; y: 80
         source: ""
     }
 
     Component.onCompleted:  {
         console.log('[qml] main.qml onComplete')
-        transtionScreen("Screen/EHome_Screen_01.qml")
+//        transtionScreen("Screen/EHome_Screen_Home_Menu.qml")
+        idSttBarLoader.source = "Statusbar/EHome_Main_Statusbar.qml"
     }
 }

@@ -55,12 +55,12 @@ bool HomeScreenModel::checkElementVisible(const int &_index)
     switch (_index) {
     case static_cast<int>(ENUM_HOME_MODEL::HOME_MENU_24_HOURS):
     {
-        uResult = false;
+        uResult = true;
     }
         break;
     case static_cast<int>(ENUM_HOME_MODEL::HOME_MENU_MOLE_CULE):
     {
-        uResult = false;
+        uResult = true;
     }
         break;
     default:
