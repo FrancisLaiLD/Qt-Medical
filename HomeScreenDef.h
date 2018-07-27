@@ -26,29 +26,39 @@
 #define IMAGE_E_HOME_ICON_SLEEP                 "sleep_@.png"
 #define IMAGE_E_HOME_ICON_WHEEL_CHAIR           "wheelchair_@.png"
 
-#define SCREEN_E_HOME_01                        "Screen/EHome_Screen_01.qml"
-#define SCREEN_E_HOME_02                        "Screen/EHome_Screen_02.qml"
-#define SCREEN_E_HOME_03                        "Screen/EHome_Screen_03.qml"
-#define SCREEN_E_HOME_04                        "Screen/EHome_Screen_04.qml"
-#define SCREEN_E_HOME_05                        "Screen/EHome_Screen_05.qml"
+#define SCREEN_EHOME_MAIN_DAILY                "Screen/EHome_Screen_Main_Daily.qml"
+#define SCREEN_EHOME_USER_PROFILE              "Screen/EHome_Screen_Main_UserProfile.qml"
+#define SCREEN_EHOME_MAIN_WEATHER              "Screen/EHome_Screen_Main_Weather.qml"
+#define SCREEN_EHOME_MAIN_ADVANCED             "Screen/EHome_Screen_Main_Advanced.qml"
+#define SCREEN_EHOME_MAIN_USER_DATA            "Screen/EHome_Screen_Main_UserData.qml"
 
-enum class ENUM_HOME_MODEL{
-    HOME_MENU_CHIEF_DOCTOR = 0,
-    HOME_MENU_MY_DOCTOR,
-    HOME_MENU_MY_NURSE,
-    HOME_MENU_CURRENT_INFO,
-    HOME_MENU_EXPERIMENT,
-    HOME_MENU_24_HOURS,
-    HOME_MENU_DRUG_INJECTION,
-    HOME_MENU_MOLE_CULE,
-    HOME_MENU_SLEEP,
-    HOME_MENU_WHEEL_CHAIR
-};
 
 typedef struct homeComp{
     QString s_label;
     QString s_imageLink;
 } homeComponent;
+
+enum class ENUM_HOME_MODEL {
+        HOME_MENU_CHIEF_DOCTOR = 0,
+        HOME_MENU_MY_DOCTOR,
+        HOME_MENU_MY_NURSE,
+        HOME_MENU_CURRENT_INFO,
+        HOME_MENU_EXPERIMENT,
+        HOME_MENU_24_HOURS,
+        HOME_MENU_DRUG_INJECTION,
+        HOME_MENU_MOLE_CULE,
+        HOME_MENU_SLEEP,
+        HOME_MENU_WHEEL_CHAIR
+    };
+
+enum class ENUM_HOME_EVENT {
+    EVENT_GO_TO_HOME_SCREEN = 0,
+    EVENT_GO_TO_BACK,
+    EVENT_GO_TO_HOME_WEATHER,
+    EVENT_GO_TO_HOME_ADVANCED,
+    EVENT_GO_TO_USER_PROFILE,
+    EVENT_GO_TO_USER_DATA
+};
 const QMap<int, homeComponent> TABLE_HOME_MODEL
 {
     {static_cast<int>(ENUM_HOME_MODEL::HOME_MENU_CHIEF_DOCTOR),             {TITLE_E_HOME_CHIEF_DOCTOR,                 IMAGE_E_HOME_ICON_CHIEF_DOCTOR}},
@@ -64,15 +74,5 @@ const QMap<int, homeComponent> TABLE_HOME_MODEL
 
 };
 
-class HomeScreenDef : public QObject
-{
-    Q_OBJECT
-public:
-    explicit HomeScreenDef(QObject *parent = nullptr);
-
-signals:
-
-public slots:
-};
-
+Q_DECLARE_METATYPE(ENUM_HOME_MODEL)
 #endif // HOMESCREENDEF_H

@@ -10,25 +10,21 @@ EHome_Main_Frame {
     ParallelAnimation {
         id: idMainAnimation
         running: false
-        NumberAnimation { target: parent; property: "x"; from: -1920; to: 0; duration: 500 }
-        NumberAnimation { target: parent; property: "opacity"; from: 0.0 ;to: 1.0; duration: 500 }
+        NumberAnimation { target: root; property: "x"; from: -720; to: 0; duration: 500 }
+        NumberAnimation { target: root; property: "opacity"; from: 0.0 ;to: 1.0; duration: 500 }
     }
 
     Text {
         id: name
         anchors.centerIn: parent
-        font.pixelSize: 60
-        text: qsTr("Screen number 02")
+        font.pixelSize: 36
+        text: qsTr("Screen Advanced in detail")
     }
-    MouseArea {
-        id: idMainMouse
-        anchors.fill: parent
-        onClicked: {
-            AppManager.handleHomeScreenClick(03)
-        }
-    }
+
 
     Component.onCompleted: {
         idMainAnimation.start()
     }
 }
+
+

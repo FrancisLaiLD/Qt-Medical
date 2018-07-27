@@ -71,3 +71,13 @@ bool HomeScreenModel::checkElementVisible(const int &_index)
     }
     return uResult;
 }
+
+int HomeScreenModel::currentScreen() const
+{
+    return m_currentScreen;
+}
+
+void HomeScreenModel::setCurrentScreen(int currentScreen)
+{
+    m_currentScreen = currentScreen;
+}

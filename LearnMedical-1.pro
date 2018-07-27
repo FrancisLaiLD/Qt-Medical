@@ -17,10 +17,10 @@ SOURCES += \
     HomeComponent.cpp \
     AppManager.cpp \
     HomeScreenModel.cpp \
-    HomeScreenDef.cpp \
     HomeQMLController.cpp \
     HomeStringModel.cpp \
-    HomeScreen_01_Model.cpp
+    HomeScreen_01_Model.cpp \
+    HomeScreen_Enum.cpp
 
 RESOURCES +=
 
@@ -37,18 +37,18 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     qml/main.qml \
-    qml/Screen/EHome_Screen_Home_Menu.qml \
-    qml/Screen/EHome_Screen_Home_Menu.qml \
     qml/main.qml \
     qml/Component/ScreenComponent/EHome_Main_Frame.qml \
     qml/Component/DelegateComponent/EHome_GridviewDelegate.qml \
-    qml/Screen/EHome_Screen_01.qml \
-    qml/Screen/EHome_Screen_02.qml \
-    qml/Screen/EHome_Screen_03.qml \
-    qml/Screen/EHome_Screen_04.qml \
-    qml/Screen/EHome_Screen_05.qml \
     qml/Component/ScreenComponent/EHome_StatusBar_Frame.qml \
-    qml/Statusbar/EHome_Main_Statusbar.qml
+    qml/Statusbar/EHome_Main_Statusbar.qml \
+    qml/Component/ScreenComponent/EHome_Half_Frame.qml \
+    qml/Screen/EHome_Screen_Main_Daily.qml \
+    qml/Screen/EHome_Screen_User_Interface.qml \
+    qml/Screen/EHome_Screen_Main_Weather.qml \
+    qml/Screen/EHome_Screen_Main_Advanced.qml \
+    qml/Screen/EHome_Screen_Main_UserProfile.qml \
+    qml/Screen/EHome_Screen_Main_UserData.qml
 
 HEADERS += \
     HomeComponent.h \
@@ -57,4 +57,5 @@ HEADERS += \
     HomeScreenModel.h \
     HomeQMLController.h \
     HomeStringModel.h \
-    HomeScreen_01_Model.h
+    HomeScreen_01_Model.h \
+    HomeScreen_Enum.h

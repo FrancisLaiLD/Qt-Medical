@@ -7,6 +7,7 @@
 #include <QQmlContext>
 #include <iostream>
 
+#include "HomeScreen_Enum.h"
 #include "HomeQMLController.h"
 #include "HomeScreenModel.h"
 #include "HomeScreen_01_Model.h"
@@ -18,7 +19,7 @@ class AppManager : public QObject
 public:
     explicit AppManager(QObject *parent = nullptr, QQmlApplicationEngine *_pAppEngine = nullptr);
 
-    Q_INVOKABLE bool handleHomeClick(const int& _index);
+    Q_INVOKABLE bool handleHomeClick(const int& );
 /*------------------------------------------------------------------INIT APPLICATION-------------------------------------------------------------------------*/
     void initApplication();
 
@@ -28,7 +29,7 @@ public:
 public slots:
 /*------------------------------------------------------------------HANDLE VIEW EVENTS-----------------------------------------------------------------------*/
 
-    void handleHomeScreenClick(const int& _index);
+    void handleHomeScreenClick(const int& );
 
 signals:
 

@@ -5,6 +5,9 @@ AppManager::AppManager(QObject *parent, QQmlApplicationEngine *_pAppEngine) : QO
     p_qqmlAppEngine = _pAppEngine;
     p_homeScreenModel = new HomeScreenModel();
     p_homeScreen01Model = new HomeScreen_01_Model();
+    qmlRegisterUncreatableType<HomeScreen_Enum>("com.embeddeduse.models", 1, 0, "HomeEnum",
+                                                 "Cannot create WarningLevel in QML");
+
 
     p_qqmlAppEngine->rootContext()->setContextProperty("AppManager", this);
     p_qqmlAppEngine->rootContext()->setContextProperty("HomeModel", p_homeScreenModel);
@@ -22,35 +25,47 @@ bool AppManager::handleHomeClick(const int &_index)
 
 void AppManager::initApplication()
 {
-    p_homeQMLController->SCREEN_TRANSITION(SCREEN_E_HOME_01);
+    p_homeScreenModel->setCurrentScreen(static_cast<int>(ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN));
+    p_homeQMLController->SCREEN_TRANSITION(SCREEN_EHOME_MAIN_DAILY);
 }
 
 void AppManager::handleHomeScreenClick(const int &_index)
 {
     switch (_index) {
-    case 1:
+    case static_cast<int>(ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN):
     {
-        p_homeQMLController->SCREEN_TRANSITION(SCREEN_E_HOME_01);
+        qDebug() << "handleHomeScreenClick" << "Home Screen";
+        p_homeQMLController->SCREEN_TRANSITION(SCREEN_EHOME_MAIN_DAILY);
     }
         break;
-    case 2:
+    case static_cast<int>(ENUM_HOME_EVENT::EVENT_GO_TO_BACK):
     {
-        p_homeQMLController->SCREEN_TRANSITION(SCREEN_E_HOME_02);
+        qDebug() << "handleHomeScreenClick" << "Back";
+        p_homeQMLController->SCREEN_TRANSITION(SCREEN_EHOME_MAIN_DAILY);
     }
         break;
-    case 3:
+    case static_cast<int>(ENUM_HOME_EVENT::EVENT_GO_TO_HOME_WEATHER):
     {
-        p_homeQMLController->SCREEN_TRANSITION(SCREEN_E_HOME_03);
+        qDebug() << "handleHomeScreenClick" << "Home weather";
+        p_homeQMLController->SCREEN_TRANSITION(SCREEN_EHOME_MAIN_WEATHER);
     }
         break;
-    case 4:
+    case static_cast<int>(ENUM_HOME_EVENT::EVENT_GO_TO_HOME_ADVANCED):
     {
-        p_homeQMLController->SCREEN_TRANSITION(SCREEN_E_HOME_04);
+        qDebug() << "handleHomeScreenClick" << "Home Advanced";
+        p_homeQMLController->SCREEN_TRANSITION(SCREEN_EHOME_MAIN_ADVANCED);
     }
         break;
-    case 5:
+    case static_cast<int>(ENUM_HOME_EVENT::EVENT_GO_TO_USER_PROFILE):
     {
-        p_homeQMLController->SCREEN_TRANSITION(SCREEN_E_HOME_05);
+        qDebug() << "handleHomeScreenClick" << "User Profile";
+        p_homeQMLController->SCREEN_TRANSITION(SCREEN_EHOME_USER_PROFILE);
+    }
+        break;
+    case static_cast<int>(ENUM_HOME_EVENT::EVENT_GO_TO_USER_DATA):
+    {
+        qDebug() << "handleHomeScreenClick" << "User Data";
+        p_homeQMLController->SCREEN_TRANSITION(SCREEN_EHOME_MAIN_USER_DATA);
     }
         break;
     default:

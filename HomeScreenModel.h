@@ -15,6 +15,7 @@ public:
     ~HomeScreenModel();
     Q_PROPERTY(QList<QObject*> listHomeModel READ listHomeModel WRITE setListHomeModel NOTIFY listHomeModelChanged)
     Q_PROPERTY(int homeModelSize READ homeModelSize CONSTANT)
+    Q_PROPERTY(int currentScreen READ currentScreen WRITE setCurrentScreen NOTIFY currentScreenChanged)
 
     QList<QObject*> listHomeModel();
     void setListHomeModel(const QList<QObject*> _data);
@@ -24,11 +25,16 @@ public:
     void createListHomeModel();
     bool checkElementVisible(const int &_index);
 
+    int currentScreen() const;
+    void setCurrentScreen(int currentScreen);
+
 private:
     QList<QObject*> m_listHome;
+    int m_currentScreen;
 
 signals:
     void listHomeModelChanged();
+    void currentScreenChanged();
 
 public slots:
 };
