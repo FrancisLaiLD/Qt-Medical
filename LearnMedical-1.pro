@@ -11,17 +11,34 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # In order to do so, uncomment the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+HEADERS += \
+    hdr/WeatherComponent.h \
+    hdr/AppManager.h \
+    hdr/HomeComponent.h \
+    hdr/HomeQMLController.h \
+    hdr/HomeScreen_Enum.h \
+    hdr/HomeScreenDef.h \
+    hdr/HomeScreenModel.h \
+    hdr/HomeStringModel.h \
+    hdr/HomeWeatherModel.h \
+    hdr/StatusbarModel.h \
+    hdr/WeatherComponent.h \
+    hdr/UserProfileComponent.h \
+    hdr/UserProfileModel.h
 
 SOURCES += \
         main.cpp \
-    HomeComponent.cpp \
-    AppManager.cpp \
-    HomeScreenModel.cpp \
-    HomeQMLController.cpp \
-    HomeStringModel.cpp \
-    HomeScreen_01_Model.cpp \
-    HomeScreen_Enum.cpp \
-    StatusbarModel.cpp
+    src/AppManager.cpp \
+    src/HomeComponent.cpp \
+    src/HomeQMLController.cpp \
+    src/HomeScreen_Enum.cpp \
+    src/HomeScreenModel.cpp \
+    src/HomeStringModel.cpp \
+    src/HomeWeatherModel.cpp \
+    src/StatusbarModel.cpp \
+    src/WeatherComponent.cpp \
+    src/UserProfileComponent.cpp \
+    src/UserProfileModel.cpp
 
 RESOURCES +=
 
@@ -49,15 +66,8 @@ DISTFILES += \
     qml/Screen/EHome_Screen_Main_Weather.qml \
     qml/Screen/EHome_Screen_Main_Advanced.qml \
     qml/Screen/EHome_Screen_Main_UserProfile.qml \
-    qml/Screen/EHome_Screen_Main_UserData.qml
+    qml/Screen/EHome_Screen_Main_UserData.qml \
+    qml/Component/OtherComponent/E_HorizentalLine.qml \
+    qml/Component/OtherComponent/E_VerticalLine.qml \
+    qml/Component/OtherComponent/EUserProfile_TextInput.qml
 
-HEADERS += \
-    HomeComponent.h \
-    AppManager.h \
-    HomeScreenDef.h \
-    HomeScreenModel.h \
-    HomeQMLController.h \
-    HomeStringModel.h \
-    HomeScreen_01_Model.h \
-    HomeScreen_Enum.h \
-    StatusbarModel.h

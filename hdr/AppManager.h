@@ -14,7 +14,8 @@
 // Model for QML
 #include "StatusbarModel.h"
 #include "HomeScreenModel.h"
-#include "HomeScreen_01_Model.h"
+#include "UserProfileModel.h"
+
 
 
 class AppManager : public QObject
@@ -27,10 +28,15 @@ public:
 /*------------------------------------------------------------------INIT APPLICATION-------------------------------------------------------------------------*/
     void initApplication();
 
-/*------------------------------------------------------------------UPDATE DATA TO MODEL---------------------------------------------------------------------*/
+/*------------------------------------------------------------------UPDATE DATA TO STATUSBAR---------------------------------------------------------------------*/
 
 
+/*------------------------------------------------------------------UPDATE DATA TO HomeModel---------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------UPDATE DATA TO UserProfile---------------------------------------------------------------------*/
 public slots:
+
 /*------------------------------------------------------------------HANDLE VIEW EVENTS-----------------------------------------------------------------------*/
 
     void handleHomeScreenClick(const int& );
@@ -38,11 +44,12 @@ public slots:
 signals:
 
 private:
-    QQmlApplicationEngine *p_qqmlAppEngine;
-    HomeQMLController *p_homeQMLController;
-    HomeScreenModel *p_homeScreenModel;
-    HomeScreen_01_Model *p_homeScreen01Model;
-    StatusbarModel *p_statusbarModel;
+    QQmlApplicationEngine   *p_qqmlAppEngine;
+    HomeQMLController       *p_homeQMLController;
+
+    HomeScreenModel         *p_homeScreenModel;
+    StatusbarModel          *p_statusbarModel;
+    UserProfileModel        *p_userProfileModel;
 
 };
 

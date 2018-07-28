@@ -9,6 +9,7 @@ class HomeStringModel : public QObject
 public:
     explicit HomeStringModel(QObject *parent = nullptr);
 
+
 signals:
 
 public slots:

@@ -1,10 +1,10 @@
-#include "StatusbarModel.h"
+#include "hdr/StatusbarModel.h"
 
 StatusbarModel::StatusbarModel(QObject *parent) : QObject(parent)
 {
-    m_bluetoothState = false;
-    m_isDayTime = true;
-    m_networkState = 0;
+//    m_bluetoothState = false;
+//    m_isDayTime = true;
+//    m_networkState = 0;
 }
 
 bool StatusbarModel::bluetoothState() const
@@ -46,5 +46,33 @@ void StatusbarModel::setIsDayTime(bool isDayTime)
     {
         m_isDayTime = isDayTime;
         emit isDayTimeChanged();
+    }
+}
+
+QString StatusbarModel::userIcon() const
+{
+    return m_userIcon;
+}
+
+void StatusbarModel::setUserIcon(const QString &userIcon)
+{
+    if(m_userIcon != userIcon)
+    {
+        m_userIcon = userIcon;
+        emit userIconChanged();
+    }
+}
+
+QString StatusbarModel::userName() const
+{
+    return m_userName;
+}
+
+void StatusbarModel::setUserName(const QString &userName)
+{
+    if(m_userName != userName)
+    {
+        m_userName = userName;
+        emit userNameChanged();
     }
 }

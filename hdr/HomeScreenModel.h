@@ -4,8 +4,8 @@
 #include <QObject>
 #include <QtDebug>
 
-#include "HomeComponent.h"
-#include "HomeScreenDef.h"
+#include "hdr/HomeComponent.h"
+#include "hdr/HomeScreenDef.h"
 
 class HomeScreenModel : public QObject
 {

@@ -15,7 +15,8 @@ Rectangle {
     signal releaseCloudBtn()
     Rectangle {
         id: idUserRect
-        width: 55; height: parent.height
+        width: 50; height: 50
+        anchors.bottom: parent.bottom
         //            color: "#83FF8C"
         color: "transparent"
         anchors.left: parent.left
@@ -23,7 +24,8 @@ Rectangle {
         Image {
             id:idUserImg
             anchors.fill: parent
-            source: idRoot.prefixImg + "doctor-2_n.png"
+//            source: idRoot.prefixImg + "doctor-2_d.png"
+            source: StatusbarModel.userIcon
         }
         MouseArea {
             id: idMouUserBtn
@@ -36,7 +38,7 @@ Rectangle {
 
     Text {
         id: idUserName
-        text: qsTr("Current User")
+        text: /*qsTr("Not login")*/ StatusbarModel.userName
         anchors.left: idUserRect.right
         anchors.leftMargin: 3
         anchors.verticalCenter: idUserRect.verticalCenter

@@ -1,4 +1,5 @@
 import QtQuick 2.0
+
 import "../Component/ScreenComponent"
 import "../Component/ListViewComponent"
 import "../Component/DelegateComponent"
@@ -16,10 +17,39 @@ EHome_Main_Frame {
 
     Text {
         id: name
-        anchors.centerIn: parent
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.top
+        anchors.verticalCenterOffset: 60
         font.pixelSize: 36
-        text: qsTr("Screen User profile in detail")
+        text: qsTr("User profile management")
     }
+
+    E_HorizentalLine {
+        id: idMainLine
+        anchors.centerIn: parent
+        lineRange: parent.width - 60
+        lineColor: "red"
+    }
+
+    Item {
+        id: idAddMoreUser
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: 540
+        width: parent.width - 60
+        height: 300
+        Text {
+            id: new_name_label
+            text: qsTr("Your name : ")
+        }
+
+        EUserProfile_TextInput {
+            id: new_name_val
+            anchors.left: new_name_label.right
+            anchors.leftMargin: 5
+        }
+
+    }
+
 
 
     Component.onCompleted: {

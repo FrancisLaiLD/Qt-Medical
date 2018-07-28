@@ -1,19 +1,20 @@
-#include "AppManager.h"
+#include "hdr/AppManager.h"
 
 AppManager::AppManager(QObject *parent, QQmlApplicationEngine *_pAppEngine) : QObject(parent)
 {
     p_qqmlAppEngine         = _pAppEngine;
     p_homeScreenModel       = new HomeScreenModel();
-    p_homeScreen01Model     = new HomeScreen_01_Model();
     p_statusbarModel        = new StatusbarModel();
+    p_userProfileModel      = new UserProfileModel();
     qmlRegisterUncreatableType<HomeScreen_Enum>("com.embeddeduse.models", 1, 0, "HomeEnum",
                                                  "Cannot create WarningLevel in QML");
 
 
-    p_qqmlAppEngine->rootContext()->setContextProperty("AppManager", this);
-    p_qqmlAppEngine->rootContext()->setContextProperty("HomeModel", p_homeScreenModel);
-    p_qqmlAppEngine->rootContext()->setContextProperty("HomeModel01", p_homeScreen01Model);
-    p_qqmlAppEngine->rootContext()->setContextProperty("StatusbarModel", p_statusbarModel);
+    p_qqmlAppEngine->rootContext()->setContextProperty("AppManager",        this);
+    p_qqmlAppEngine->rootContext()->setContextProperty("HomeModel",         p_homeScreenModel);
+    p_qqmlAppEngine->rootContext()->setContextProperty("StatusbarModel",    p_statusbarModel);
+    p_qqmlAppEngine->rootContext()->setContextProperty("UserProfileModel",  p_userProfileModel);
+
     p_qqmlAppEngine->load("/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/qml/main.qml");
 
     p_homeQMLController = new HomeQMLController(this, p_qqmlAppEngine);
@@ -27,6 +28,12 @@ bool AppManager::handleHomeClick(const int &_index)
 
 void AppManager::initApplication()
 {
+    p_statusbarModel->setUserIcon("/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/icons/family/ico_boy_1.png");
+    p_statusbarModel->setUserName("Đăng Hưng");
+    p_statusbarModel->setIsDayTime(false);
+    p_statusbarModel->setBluetoothState(false);
+    p_statusbarModel->setNetworkState(5);
+
     p_homeScreenModel->setCurrentScreen(static_cast<int>(ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN));
     p_homeQMLController->SCREEN_TRANSITION(SCREEN_EHOME_MAIN_DAILY);
 }
