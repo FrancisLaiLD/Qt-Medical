@@ -2,9 +2,10 @@
 
 AppManager::AppManager(QObject *parent, QQmlApplicationEngine *_pAppEngine) : QObject(parent)
 {
-    p_qqmlAppEngine = _pAppEngine;
-    p_homeScreenModel = new HomeScreenModel();
-    p_homeScreen01Model = new HomeScreen_01_Model();
+    p_qqmlAppEngine         = _pAppEngine;
+    p_homeScreenModel       = new HomeScreenModel();
+    p_homeScreen01Model     = new HomeScreen_01_Model();
+    p_statusbarModel        = new StatusbarModel();
     qmlRegisterUncreatableType<HomeScreen_Enum>("com.embeddeduse.models", 1, 0, "HomeEnum",
                                                  "Cannot create WarningLevel in QML");
 
@@ -12,6 +13,7 @@ AppManager::AppManager(QObject *parent, QQmlApplicationEngine *_pAppEngine) : QO
     p_qqmlAppEngine->rootContext()->setContextProperty("AppManager", this);
     p_qqmlAppEngine->rootContext()->setContextProperty("HomeModel", p_homeScreenModel);
     p_qqmlAppEngine->rootContext()->setContextProperty("HomeModel01", p_homeScreen01Model);
+    p_qqmlAppEngine->rootContext()->setContextProperty("StatusbarModel", p_statusbarModel);
     p_qqmlAppEngine->load("/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/qml/main.qml");
 
     p_homeQMLController = new HomeQMLController(this, p_qqmlAppEngine);

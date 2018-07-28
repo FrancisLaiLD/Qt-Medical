@@ -7,8 +7,12 @@
 #include <QQmlContext>
 #include <iostream>
 
+// E-num
 #include "HomeScreen_Enum.h"
+// QML Controller
 #include "HomeQMLController.h"
+// Model for QML
+#include "StatusbarModel.h"
 #include "HomeScreenModel.h"
 #include "HomeScreen_01_Model.h"
 
@@ -38,6 +42,7 @@ private:
     HomeQMLController *p_homeQMLController;
     HomeScreenModel *p_homeScreenModel;
     HomeScreen_01_Model *p_homeScreen01Model;
+    StatusbarModel *p_statusbarModel;
 
 };
 

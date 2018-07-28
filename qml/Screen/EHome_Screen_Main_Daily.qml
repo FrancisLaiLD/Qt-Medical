@@ -6,13 +6,13 @@ import "../Component/OtherComponent"
 import com.embeddeduse.models 1.0
 
 EHome_Main_Frame {
-    id:root
+    id:idRoot
 
     ParallelAnimation {
         id: idMainAnimation
         running: false
-        NumberAnimation { target: root; property: "x"; from: -720; to: 0; duration: 500 }
-        NumberAnimation { target: root; property: "opacity"; from: 0.0 ;to: 1.0; duration: 500 }
+        NumberAnimation { target: idRoot; property: "x"; from: -720; to: 0; duration: 500 }
+        NumberAnimation { target: idRoot; property: "opacity"; from: 0.0 ;to: 1.0; duration: 500 }
     }
 
     EHome_Half_Frame {
@@ -28,6 +28,16 @@ EHome_Main_Frame {
         onRelease: {
             AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_HOME_WEATHER)
         }
+    }
+    Rectangle {
+        id: idLine
+        color: "#192BC0"
+        width: parent.width - 60
+        height: 1
+        anchors.top: idAboveFrame.bottom
+        anchors.topMargin: 0
+        anchors.horizontalCenter: idRoot.horizontalCenter
+        opacity: 0.5
     }
     EHome_Half_Frame {
         id: idUnderFrame

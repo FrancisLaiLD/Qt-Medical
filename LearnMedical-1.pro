@@ -20,7 +20,8 @@ SOURCES += \
     HomeQMLController.cpp \
     HomeStringModel.cpp \
     HomeScreen_01_Model.cpp \
-    HomeScreen_Enum.cpp
+    HomeScreen_Enum.cpp \
+    StatusbarModel.cpp
 
 RESOURCES +=
 
@@ -58,4 +59,5 @@ HEADERS += \
     HomeQMLController.h \
     HomeStringModel.h \
     HomeScreen_01_Model.h \
-    HomeScreen_Enum.h
+    HomeScreen_Enum.h \
+    StatusbarModel.h

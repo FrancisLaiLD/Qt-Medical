@@ -8,7 +8,7 @@ Window {
     visible: true
     width: 720
     height: 1080
-    title: qsTr("MEDICAL")
+    title: qsTr("All in your hand")
 
     function transtionScreen(newScreenLink) {
         idContentLoader.source = newScreenLink
