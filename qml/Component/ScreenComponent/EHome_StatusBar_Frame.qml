@@ -3,7 +3,6 @@ import com.embeddeduse.models 1.0
 
 Rectangle {
     id:idRoot
-    property string prefixImg: "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/icons/Statusbar/"
     width: 720
     height: 55
     color: "transparent"
@@ -24,7 +23,6 @@ Rectangle {
         Image {
             id:idUserImg
             anchors.fill: parent
-//            source: idRoot.prefixImg + "doctor-2_d.png"
             source: StatusbarModel.userIcon
         }
         MouseArea {
@@ -48,19 +46,17 @@ Rectangle {
 
     Image {
         id: idBackBtn
-
         anchors.verticalCenter: parent.top
         anchors.verticalCenterOffset: 30
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: -85
         width: 60 ;height: parent.height
-        source: idRoot.prefixImg + (idMouBackBtn.pressed ? "ico_back_p.png" : "ico_back_n.png")
+        source: idMouBackBtn.pressed ? ResStatusBar.ico_back_p : ResStatusBar.ico_back_n
         MouseArea {
             id: idMouBackBtn
             anchors.fill: parent
             onClicked: {
                 idRoot.releaseBackBtn()
-                AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_BACK)
             }
         }
     }
@@ -70,13 +66,12 @@ Rectangle {
         anchors.verticalCenter: idBackBtn.verticalCenter
         width: 60 ;height: parent.height
         anchors.horizontalCenter: parent.horizontalCenter
-        source: idRoot.prefixImg + (idMouHomeBtn.pressed ? "ico_home_p.png" : "ico_home_n.png")
+        source: idMouHomeBtn.pressed ? ResStatusBar.ico_home_p : ResStatusBar.ico_home_n
         MouseArea {
             id: idMouHomeBtn
             anchors.fill: parent
             onClicked: {
                 idRoot.releaseHomeBtn()
-//                AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_HOME_SCREEN)
             }
         }
     }
@@ -87,20 +82,19 @@ Rectangle {
         anchors.horizontalCenterOffset: 85
         width: 60 ;height: parent.height
         anchors.verticalCenter: idBackBtn.verticalCenter
-        source: idRoot.prefixImg + (idMouCloudBtn.pressed ? "ico_cloud_p.png" : "ico_cloud_n.png")
+        source: idMouCloudBtn.pressed ? ResStatusBar.ico_cloud_p : ResStatusBar.ico_cloud_n
         MouseArea {
             id: idMouCloudBtn
             anchors.fill: parent
             onClicked: {
                 idRoot.releaseCloudBtn()
-//                AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_USER_DATA)
             }
         }
     }
 
     Image {
         id: idBluetoothIcon
-        source: idRoot.prefixImg + "bluetooth_" + (StatusbarModel.bluetoothState ? "on" : "off") + ".png"
+        source: StatusbarModel.bluetoothState ? ResStatusBar.ico_bluetooth_on : ResStatusBar.ico_bluetooth_off
         anchors.right: parent.right
         anchors.rightMargin: 20
         anchors.bottom: parent.bottom
@@ -109,20 +103,39 @@ Rectangle {
 
     Image {
         id: idNetworkIcon
-        source: idRoot.prefixImg + "ico_network_" +StatusbarModel.networkState + ".png"
         anchors.right: idBluetoothIcon.left
         anchors.rightMargin: 5
         anchors.bottom: parent.bottom
         height: 35 ; width: 70
+        source: getNetworkIcon()
     }
 
     Image {
         id: idDayTimeIcon
-        source: idRoot.prefixImg + (StatusbarModel.isDayTime ? "ico_day" : "ico_night") + ".png"
+        source: StatusbarModel.isDayTime ? ResStatusBar.ico_day : ResStatusBar.ico_night
         anchors.right: idNetworkIcon.left
         anchors.rightMargin: 10
         anchors.bottom: parent.bottom
         height: 35 ; width: 35
     }
 
+    function getNetworkIcon() {
+        switch(StatusbarModel.networkState) {
+        case 0 :
+            return ResStatusBar.ico_wifi_strength_0
+        case 1 :
+            return ResStatusBar.ico_wifi_strength_1
+        case 2 :
+            return ResStatusBar.ico_wifi_strength_2
+        case 3 :
+            return ResStatusBar.ico_wifi_strength_3
+        case 4 :
+            return ResStatusBar.ico_wifi_strength_4
+        case 5 :
+            return ResStatusBar.ico_wifi_strength_5
+        default :
+            console.log('out of range')
+            break
+        }
+    }
 }

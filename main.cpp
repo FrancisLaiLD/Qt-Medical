@@ -3,7 +3,6 @@
 #include <QQmlContext>
 
 #include "hdr/AppManager.h"
-#include "hdr/HomeScreenModel.h"
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);

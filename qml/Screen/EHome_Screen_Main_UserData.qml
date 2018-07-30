@@ -17,7 +17,9 @@ EHome_Main_Frame {
 
     Text {
         id: name
-        anchors.centerIn: parent
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: 20
         font.pixelSize: 36
         text: qsTr("Screen User Data in detail")
     }

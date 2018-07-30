@@ -15,6 +15,16 @@ Window {
         return true
     }
 
+    function showPopup(popupLink) {
+        idLoadPopup.source = popupLink
+        return true
+    }
+
+    function hidePopup(popupLink) {
+        idLoadPopup.source = ""
+        return true
+    }
+
     Rectangle {
         id: idRoot
         anchors.fill: parent
@@ -27,6 +37,24 @@ Window {
             source: "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/Background_720x1280.jpg"
         }
     }
+
+    Rectangle {
+        id: idBackground
+        signal outsideClick()
+        visible: AppManager.isShowingPopup
+        width: 720 ; height: 1080
+        color: "black"
+        opacity: 0.7
+        MouseArea {
+            id: idMou
+            anchors.fill: parent
+            onClicked: {
+                console.log('Popup outside click')
+                AppManager.handlePopupClick(HomeEnum.EVENT_HIDE_POPUP)
+            }
+        }
+    }
+
     Loader {
         id: idSttBarLoader
         x: 0; y: 0
@@ -51,6 +79,13 @@ Window {
 //        anchors.fill: parent
         x: 0 ; y: 60
         source: ""
+    }
+    Loader {
+        id: idLoadPopup
+//        anchors.fill: parent
+        anchors.horizontalCenter: idBackground.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: 200
     }
 
     Component.onCompleted:  {

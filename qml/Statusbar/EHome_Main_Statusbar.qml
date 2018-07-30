@@ -6,7 +6,7 @@ EHome_StatusBar_Frame {
     id: idRoot
     onReleaseUserProfile: {
         console.log('user click -> go to User Profile')
-        AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_USER_PROFILE)
+        AppManager.handlePopupClick(HomeEnum.EVENT_SHOW_POPUP_USER_PROFILE)
     }
 
     onReleaseBackBtn: {

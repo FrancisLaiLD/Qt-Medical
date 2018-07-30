@@ -18,13 +18,16 @@ HEADERS += \
     hdr/HomeQMLController.h \
     hdr/HomeScreen_Enum.h \
     hdr/HomeScreenDef.h \
-    hdr/HomeScreenModel.h \
     hdr/HomeStringModel.h \
     hdr/HomeWeatherModel.h \
     hdr/StatusbarModel.h \
     hdr/WeatherComponent.h \
     hdr/UserProfileComponent.h \
-    hdr/UserProfileModel.h
+    hdr/UserProfileModel.h \
+    hdr/ResourceManager.h \
+    hdr/Resource_Statusbar.h \
+    hdr/Resource_General.h \
+    hdr/HomeScreenMainDailyModel.h
 
 SOURCES += \
         main.cpp \
@@ -32,13 +35,13 @@ SOURCES += \
     src/HomeComponent.cpp \
     src/HomeQMLController.cpp \
     src/HomeScreen_Enum.cpp \
-    src/HomeScreenModel.cpp \
     src/HomeStringModel.cpp \
     src/HomeWeatherModel.cpp \
     src/StatusbarModel.cpp \
     src/WeatherComponent.cpp \
     src/UserProfileComponent.cpp \
-    src/UserProfileModel.cpp
+    src/UserProfileModel.cpp \
+    src/HomeScreenMainDailyModel.cpp
 
 RESOURCES +=
 
@@ -55,19 +58,21 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     qml/main.qml \
-    qml/main.qml \
     qml/Component/ScreenComponent/EHome_Main_Frame.qml \
     qml/Component/DelegateComponent/EHome_GridviewDelegate.qml \
     qml/Component/ScreenComponent/EHome_StatusBar_Frame.qml \
     qml/Statusbar/EHome_Main_Statusbar.qml \
     qml/Component/ScreenComponent/EHome_Half_Frame.qml \
     qml/Screen/EHome_Screen_Main_Daily.qml \
-    qml/Screen/EHome_Screen_User_Interface.qml \
     qml/Screen/EHome_Screen_Main_Weather.qml \
     qml/Screen/EHome_Screen_Main_Advanced.qml \
     qml/Screen/EHome_Screen_Main_UserProfile.qml \
     qml/Screen/EHome_Screen_Main_UserData.qml \
     qml/Component/OtherComponent/E_HorizentalLine.qml \
     qml/Component/OtherComponent/E_VerticalLine.qml \
-    qml/Component/OtherComponent/EUserProfile_TextInput.qml
+    qml/Component/OtherComponent/EUserProfile_TextInput.qml \
+    qml/Popup/Small_Popup.qml \
+    qml/Popup/Medium_Popup.qml \
+    qml/Popup/Huge_Popup.qml \
+    qml/Component/OtherComponent/EHome_Popup_Frame.qml
 

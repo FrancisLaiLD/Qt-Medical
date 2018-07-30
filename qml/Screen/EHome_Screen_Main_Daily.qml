@@ -19,9 +19,43 @@ EHome_Main_Frame {
     EHome_Half_Frame {
         id: idAboveFrame
         x: 0; y: 0
-//        mainColor: "#6A8CDA"
+        //        mainColor: "#6A8CDA"
+        Item {
+            id: leftSide
+            width: parent.width/2
+            height: parent.height
+
+            Column {
+                id: idLeftColumn
+                anchors.centerIn: parent
+                Text {
+                    id: idLocation
+                    text: qsTr("Location : " + HomeDailyModel.listWeather )
+                    font.pixelSize: 22
+                }
+
+                Text {
+                    id: idTemp
+                    text: qsTr("Temperature : ")
+                    font.pixelSize: 22
+                }
+
+                Text {
+                    id: idWindVel
+                    text: qsTr("Wind Velocity : ")
+                    font.pixelSize: 22
+                }
+
+                Text {
+                    id: id
+                    text: qsTr("Dry : ")
+                    font.pixelSize: 22
+                }
+            }
+        }
+
         Text {
-            id: idTitleWeather
+            id: idShowDetail
             anchors.horizontalCenter: idAboveFrame.horizontalCenter
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 10
@@ -60,7 +94,7 @@ EHome_Main_Frame {
     EHome_Half_Frame {
         id: idUnderFrame
         x: 0; y:510
-//        mainColor: "#EDDC8F"
+        //        mainColor: "#EDDC8F"
         Text {
             id: idTitleAdvanced
             anchors.horizontalCenter: idUnderFrame.horizontalCenter

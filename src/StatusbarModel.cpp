@@ -2,9 +2,9 @@
 
 StatusbarModel::StatusbarModel(QObject *parent) : QObject(parent)
 {
-//    m_bluetoothState = false;
-//    m_isDayTime = true;
-//    m_networkState = 0;
+    m_bluetoothState = false;
+    m_isDayTime = false;
+    m_networkState = 0;
 }
 
 bool StatusbarModel::bluetoothState() const

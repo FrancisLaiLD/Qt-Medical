@@ -13,6 +13,8 @@ public:
     explicit HomeQMLController(QObject *parent = nullptr, QQmlApplicationEngine* _pAppEngine = nullptr);
 
     void SCREEN_TRANSITION(const QString &_destScreen);
+    void SCREEN_SHOWPOPUP(const QString & _popupName);
+    void SCREEN_HIDEPOPUP(const QString & _popupName);
 
 signals:
 
