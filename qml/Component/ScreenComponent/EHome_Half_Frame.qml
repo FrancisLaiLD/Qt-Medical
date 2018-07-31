@@ -12,7 +12,7 @@ Rectangle {
     width: 720
     height: 510
     color: mainColor
-    opacity: 0.5
+//    opacity: 1.0
     MouseArea {
         id: idMou
         anchors.fill: parent

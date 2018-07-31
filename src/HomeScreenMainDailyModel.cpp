@@ -2,11 +2,15 @@
 
 HomeScreen_Main_Daily_Model::HomeScreen_Main_Daily_Model(QObject *parent) : QObject(parent)
 {
-
+    this->createListWeather();
 }
 
-QList<QObject *> HomeScreen_Main_Daily_Model::listWeather() const
+QList<QObject *> HomeScreen_Main_Daily_Model::listWeather()
 {
+    if (m_listWeather.isEmpty())
+    {
+        this->createListWeather();
+    }
     return m_listWeather;
 }
 

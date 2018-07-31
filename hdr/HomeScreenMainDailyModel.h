@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "WeatherComponent.h"
+
 class HomeScreen_Main_Daily_Model : public QObject
 {
     Q_OBJECT
@@ -10,7 +11,7 @@ public:
     explicit HomeScreen_Main_Daily_Model(QObject *parent = nullptr);
     Q_PROPERTY(QList<QObject*> listWeather READ listWeather WRITE setListWeather NOTIFY listWeatherChanged)
 
-    QList<QObject *> listWeather() const;
+    QList<QObject *> listWeather();
     void setListWeather(const QList<QObject *> &listWeather);
 
     void createListWeather();
@@ -23,5 +24,4 @@ signals:
 
 public slots:
 };
-
 #endif // HOMESCREEN_MAIN_DAILY_MODEL_H

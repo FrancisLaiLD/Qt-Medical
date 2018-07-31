@@ -31,10 +31,10 @@ Rectangle {
 
     NumberAnimation {
         id: idShowAni
-        target: idRectPopup; property: "opacity"; from: 0.0; to: 1.0; duration: 300 }
+        target: idRectPopup; property: "opacity"; from: 0.0; to: 1.0; duration: HomeScreenConst.time_screen_show_popup }
     NumberAnimation {
         id: idHideAni
-        target: idRectPopup; property: "opacity"; from: 1.0; to: 0.0; duration: 300 }
+        target: idRectPopup; property: "opacity"; from: 1.0; to: 0.0; duration: HomeScreenConst.time_screen_show_popup }
 
     Component.onCompleted: {
         idShowAni.start()

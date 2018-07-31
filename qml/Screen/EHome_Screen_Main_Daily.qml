@@ -8,12 +8,11 @@ import com.embeddeduse.models 1.0
 
 EHome_Main_Frame {
     id:idRoot
-
     ParallelAnimation {
         id: idMainAnimation
         running: false
-        NumberAnimation { target: idRoot; property: "x"; from: -720; to: 0; duration: 500 }
-        NumberAnimation { target: idRoot; property: "opacity"; from: 0.0 ;to: 1.0; duration: 500 }
+        NumberAnimation { target: idRoot; property: "x"; from: -720; to: 0; duration: HomeScreenConst.time_screen_trans }
+        NumberAnimation { target: idRoot; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
     }
 
     EHome_Half_Frame {
@@ -27,12 +26,20 @@ EHome_Main_Frame {
             height: parent.height
             Text {
                 id: idLocation
-                text: qsTr("Location :" + HomeDailyModel.listWeather )
+                text: "Location :"
                 font.pixelSize: 22
                 anchors.top: parent.top
                 anchors.topMargin: 250
                 anchors.right: parent.right
                 anchors.rightMargin: 200
+            }
+            Text {
+                id: idLocation_val
+                text: HomeDailyModel.listWeather[0].proLocName
+                font.pixelSize: 22
+                anchors.left: idLocation.right
+                anchors.leftMargin: 5
+                anchors.verticalCenter: idLocation.verticalCenter
             }
 
             Text {
@@ -42,6 +49,14 @@ EHome_Main_Frame {
                 anchors.verticalCenterOffset: 40
                 text: qsTr("Temperature :")
                 font.pixelSize: 22
+            }
+            Text {
+                id: idTemp_val
+                text: HomeDailyModel.listWeather[0].proTemp
+                font.pixelSize: 22
+                anchors.left: idTemp.right
+                anchors.leftMargin: 5
+                anchors.verticalCenter: idTemp.verticalCenter
             }
 
             Text {
@@ -118,6 +133,7 @@ EHome_Main_Frame {
             font.italic: true
             font.pixelSize: 20
             color: idMouDetailWea.pressed ? "#B3B712" : "green"
+            opacity: 0.5
             MouseArea {
                 id: idMouDetailWea
                 anchors.fill: parent
@@ -133,10 +149,6 @@ EHome_Main_Frame {
             lineColor: "gray"
             lineRange: parent.height - 80
         }
-
-        onRelease: {
-
-        }
     }
 
     E_HorizentalLine {
@@ -151,6 +163,19 @@ EHome_Main_Frame {
         x: 0; y:510
         //        mainColor: "#EDDC8F"
         Text {
+            id: idTitleTips
+            anchors.top: parent.top
+            anchors.topMargin: 20
+            anchors.left: parent.left
+            anchors.leftMargin: 30
+            text: "Tips of today :"
+            font.italic: true
+            font.pixelSize: 20
+            color: "black"
+            font.underline: true
+        }
+
+        Text {
             id: idTitleAdvanced
             anchors.horizontalCenter: idUnderFrame.horizontalCenter
             anchors.bottom: parent.bottom
@@ -159,6 +184,7 @@ EHome_Main_Frame {
             font.italic: true
             font.pixelSize: 20
             color: idMouDetailAdv.pressed ? "#B3B712" : "green"
+            opacity: 0.5
             MouseArea {
                 id: idMouDetailAdv
                 anchors.fill: parent
@@ -172,7 +198,6 @@ EHome_Main_Frame {
 
         }
     }
-
 
     Component.onCompleted: {
         idMainAnimation.start()

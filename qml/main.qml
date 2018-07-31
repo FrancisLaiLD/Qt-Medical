@@ -42,7 +42,7 @@ Window {
         id: idSttBarLoader
         x: 0; y: 0
         width: parent.width
-        height: 59
+        height: 55
         source: ""
     }
     Rectangle {
@@ -51,7 +51,7 @@ Window {
         width: parent.width - 60
         height: 1
         anchors.top: idSttBarLoader.bottom
-        anchors.topMargin: 5
+        anchors.topMargin: 4
         anchors.horizontalCenter: idRoot.horizontalCenter
         opacity: 0.5
     }

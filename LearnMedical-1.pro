@@ -77,5 +77,6 @@ DISTFILES += \
     qml/Popup/Medium_Popup.qml \
     qml/Popup/Huge_Popup.qml \
     qml/Component/OtherComponent/EHome_Popup_Frame.qml \
-    qml/Component/OtherComponent/EButton_StandAlone.qml
+    qml/Component/OtherComponent/EButton_StandAlone.qml \
+    qml/Component/OtherComponent/ERadio_Button.qml
 

@@ -5,7 +5,7 @@ Rectangle {
     property string backgroundImage: ""
     property string screenTitle: ""
     width: 720
-    height: 1280
+    height: 1080 - 60
     color: "transparent"
 
     Image {
@@ -18,7 +18,7 @@ Rectangle {
         id: idTitleScreen
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
-        anchors.topMargin: 20
+        anchors.topMargin: 5
         font.pixelSize: HomeScreenConst.title_screen_size
         text: idRoot.screenTitle
     }

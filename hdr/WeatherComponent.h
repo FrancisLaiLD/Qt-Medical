@@ -9,11 +9,11 @@ class WeatherComponent : public QObject
 public:
     explicit WeatherComponent(QObject *parent = nullptr);
 
-    Q_PROPERTY(int proLocId READ proLocId WRITE setProLocId NOTIFY proLocIdChanged)
-    Q_PROPERTY(QString proLocName READ proLocName WRITE setProLocName NOTIFY proLocNameChanged)
-    Q_PROPERTY(int proTemp READ proTemp WRITE setProTemp NOTIFY proTempChanged)
-    Q_PROPERTY(int proWindVel READ proWindVel WRITE setProWindVel NOTIFY proWindVelChanged)
-    Q_PROPERTY(int proDry READ proDry WRITE setProDry NOTIFY proDryChanged)
+    Q_PROPERTY(int proLocId         READ proLocId       WRITE setProLocId NOTIFY proLocIdChanged)
+    Q_PROPERTY(QString proLocName   READ proLocName     WRITE setProLocName NOTIFY proLocNameChanged)
+    Q_PROPERTY(int proTemp          READ proTemp        WRITE setProTemp NOTIFY proTempChanged)
+    Q_PROPERTY(int proWindVel       READ proWindVel     WRITE setProWindVel NOTIFY proWindVelChanged)
+    Q_PROPERTY(int proDry           READ proDry         WRITE setProDry NOTIFY proDryChanged)
 
     int proLocId() const;
     void setProLocId(int proLocId);
@@ -32,7 +32,7 @@ public:
 
 private:
     int m_proLocId;
-    QString m_proLocName = "Ha Noi - Viet Nam";
+    QString m_proLocName;
     int m_proTemp;
     int m_proWindVel;
     int m_proDry;
@@ -45,5 +45,6 @@ signals:
 
 public slots:
 };
+Q_DECLARE_METATYPE(WeatherComponent*)
 
 #endif // WEATHERCOMPONENT_H

@@ -2,6 +2,11 @@
 
 WeatherComponent::WeatherComponent(QObject *parent) : QObject(parent)
 {
+    m_proLocId = -1;
+    m_proLocName = "hehe";
+    m_proTemp = -1;
+    m_proWindVel = -1;
+    m_proDry = -1;
 
 }
 

@@ -9,7 +9,7 @@ EHome_Popup_Frame {
         id: txt_cur_user
         text: "Current user :"
         font.pixelSize: 20
-        x: 60 ; y: 120
+        x: 60 ; y: 80
     }
 
     Text {
@@ -132,8 +132,7 @@ EHome_Popup_Frame {
         btnLabel: "Go to user management"
         onBtnClicked: {
             AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_USER_PROFILE)
-            AppManager.handleHomeScreenClick(HomeEnum.EVENT_HIDE_POPUP)
-            AppManager.isShowingPopup = false;
+            AppManager.handleHidePopupClick(HomeEnum.EVENT_HIDE_POPUP)
         }
     }
 }

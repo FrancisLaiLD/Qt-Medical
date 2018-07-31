@@ -4,7 +4,8 @@ HomeQMLController::HomeQMLController(QObject *parent, QQmlApplicationEngine* _pA
 {
     this->p_AppEngine = _pAppEngine;
     m_listObject = this->p_AppEngine->rootObjects();
-
+    //set context
+    p_AppEngine->rootContext()->setContextProperty("QmlController", this);
     this->m_currentScreen = static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN);
     this->m_preScrStack.clear();
 

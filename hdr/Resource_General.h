@@ -26,6 +26,8 @@ public:
     Q_PROPERTY(QString ico_kidgirl_1                READ ico_kidgirl_1                  CONSTANT)
     Q_PROPERTY(QString ico_mother_1                 READ ico_mother_1                   CONSTANT)
     Q_PROPERTY(QString ico_mother_2                 READ ico_mother_2                   CONSTANT)
+    Q_PROPERTY(QString rad_btn_check                READ rad_btn_check                  CONSTANT)
+    Q_PROPERTY(QString rad_btn_uncheck              READ rad_btn_uncheck                CONSTANT)
 
     //define QString return function
     QString ico_boy_1()                 {return m_prefix + "ico_boy_1.png";}
@@ -39,6 +41,8 @@ public:
     QString ico_kidgirl_1()             {return m_prefix + "ico_kidgirl_1.png";}
     QString ico_mother_1()              {return m_prefix + "ico_mother_1.png";}
     QString ico_mother_2()              {return m_prefix + "ico_mother_2.png";}
+    QString rad_btn_check()             {return m_prefix + "rad-btn-check.png";}
+    QString rad_btn_uncheck()           {return m_prefix + "rad-btn-uncheck.png";}
 
 
 private:
