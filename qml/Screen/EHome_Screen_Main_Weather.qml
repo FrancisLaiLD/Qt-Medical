@@ -7,7 +7,6 @@ import "../Component/OtherComponent"
 
 EHome_Main_Frame {
     id:root
-
     ParallelAnimation {
         id: idMainAnimation
         running: false
@@ -15,12 +14,9 @@ EHome_Main_Frame {
         NumberAnimation { target: root; property: "opacity"; from: 0.0 ;to: 1.0; duration: 500 }
     }
 
-    Text {
-        id: name
-        anchors.centerIn: parent
-        font.pixelSize: 36
-        text: qsTr("Screen Weather in detail")
-    }
+    screenTitle: "Screen Main Weather"
+
+
 
     Component.onCompleted: {
         idMainAnimation.start()

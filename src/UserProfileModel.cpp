@@ -2,7 +2,17 @@
 
 UserProfileModel::UserProfileModel(QObject *parent) : QObject(parent)
 {
-
+    UserProfileComponent *m_user = new UserProfileComponent();
+    m_user->setAge(28);
+    m_user->setDateEstablish("01/08/2018");
+    m_user->setDateExpert("20/2/2100");
+    m_user->setDob("01/04/1990");
+    m_user->setId(100110111);
+    m_user->setLoginState(true);
+    m_user->setName("Lai Dang Hung");
+    m_user->setPassword("kakalot");
+    m_user->setTimeLogin(QDateTime::currentDateTime());
+    this->setCurUser(m_user);
 }
 
 void UserProfileModel::addUserProfile(UserProfileModel* _newUser)

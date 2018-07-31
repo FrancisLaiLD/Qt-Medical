@@ -7,19 +7,12 @@ import "../Component/OtherComponent"
 
 EHome_Main_Frame {
     id:root
-
+    screenTitle: "Screen Main Advanced"
     ParallelAnimation {
         id: idMainAnimation
         running: false
         NumberAnimation { target: root; property: "x"; from: -720; to: 0; duration: 500 }
         NumberAnimation { target: root; property: "opacity"; from: 0.0 ;to: 1.0; duration: 500 }
-    }
-
-    Text {
-        id: name
-        anchors.centerIn: parent
-        font.pixelSize: 36
-        text: qsTr("Screen Advanced in detail")
     }
 
 

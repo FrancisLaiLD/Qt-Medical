@@ -36,7 +36,7 @@ Rectangle {
 
     Text {
         id: idUserName
-        text: /*qsTr("Not login")*/ StatusbarModel.userName
+        text: UserProfileModel.curUser.name
         anchors.left: idUserRect.right
         anchors.leftMargin: 3
         anchors.verticalCenter: idUserRect.verticalCenter

@@ -27,7 +27,9 @@ HEADERS += \
     hdr/ResourceManager.h \
     hdr/Resource_Statusbar.h \
     hdr/Resource_General.h \
-    hdr/HomeScreenMainDailyModel.h
+    hdr/HomeScreenMainDailyModel.h \
+    hdr/Home_Screen_Table.h \
+    hdr/HomeScreenConst.h
 
 SOURCES += \
         main.cpp \
@@ -74,5 +76,6 @@ DISTFILES += \
     qml/Popup/Small_Popup.qml \
     qml/Popup/Medium_Popup.qml \
     qml/Popup/Huge_Popup.qml \
-    qml/Component/OtherComponent/EHome_Popup_Frame.qml
+    qml/Component/OtherComponent/EHome_Popup_Frame.qml \
+    qml/Component/OtherComponent/EButton_StandAlone.qml
 

@@ -7,7 +7,6 @@ import "../Component/OtherComponent"
 
 EHome_Main_Frame {
     id:root
-
     ParallelAnimation {
         id: idMainAnimation
         running: false
@@ -15,14 +14,8 @@ EHome_Main_Frame {
         NumberAnimation { target: root; property: "opacity"; from: 0.0 ;to: 1.0; duration: 500 }
     }
 
-    Text {
-        id: name
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.top
-        anchors.verticalCenterOffset: 60
-        font.pixelSize: 36
-        text: qsTr("User profile management")
-    }
+    screenTitle: "Screen Main User Profile"
+//    backgroundImage: "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/background-userprofile.jpg"
 
     E_HorizentalLine {
         id: idMainLine

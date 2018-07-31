@@ -130,3 +130,17 @@ void UserProfileComponent::setLoginState(bool loginState)
         emit loginStateChanged();
     }
 }
+
+QDateTime UserProfileComponent::timeLogin() const
+{
+    return m_timeLogin;
+}
+
+void UserProfileComponent::setTimeLogin(const QDateTime &timeLogin)
+{
+    if (m_timeLogin != timeLogin)
+    {
+        m_timeLogin = timeLogin;
+        emit timeLoginChanged();
+    }
+}

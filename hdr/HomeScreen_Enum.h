@@ -2,6 +2,7 @@
 #define HOMESCREEN_ENUM_H
 
 #include <QObject>
+#include "HomeScreenDef.h"
 class HomeScreen_Enum : public QObject
 {
     Q_OBJECT
@@ -11,6 +12,13 @@ public:
     {
         Q_UNUSED(parent);
     }
+
+    enum class QML_EVENT {
+        EVENT_NOTHING,
+        EVENT_SCREEN_TRANS,
+        EVENT_ONSCREEN,
+        EVENT_HIDEONSCREEN
+    };
 
     enum class ENUM_HOME_MODEL {
         HOME_MENU_CHIEF_DOCTOR = 0,
@@ -27,22 +35,23 @@ public:
 
     // define ENUM_EVENTS
     enum class ENUM_HOME_EVENT {
-        EVENT_GO_TO_HOME_SCREEN = 0,
-        EVENT_GO_TO_BACK,
+        EVENT_GO_TO_BACK = 0,
+        EVENT_GO_TO_HOME_SCREEN,
         EVENT_GO_TO_HOME_WEATHER,
         EVENT_GO_TO_HOME_ADVANCED,
         EVENT_GO_TO_USER_PROFILE,
         EVENT_GO_TO_USER_DATA,
 
+        EVENT_SHOW_POPUP,
+        EVENT_SHOW_POPUP_USER_PROFILE,
+        EVENT_HIDE_POPUP,
+
         EVENT_MAX = 65536
     };
 
-    enum class ENUM_POPUP_EVENT {
-        EVENT_SHOW_POPUP = 0,
-        EVENT_SHOW_POPUP_USER_PROFILE,
+//    enum class ENUM_POPUP_EVENT {
 
-        EVENT_HIDE_POPUP = 65536
-    };
+//    };
     enum class ENUM_STATUSBAR_NETWORK_STRENGTH {
         STATUSBAR_NETWORK_NO_NETWORK = 0,
         STATUSBAR_NETWORK_VERY_WEAK,
@@ -51,9 +60,10 @@ public:
         STATUSBAR_NETWORK_GOOD,
         STATUSBAR_NETWORK_EXCELLENT
     };
+
     Q_ENUM(ENUM_HOME_MODEL)
     Q_ENUM(ENUM_HOME_EVENT)
-    Q_ENUM(ENUM_POPUP_EVENT)
+//    Q_ENUM(ENUM_POPUP_EVENT)
     Q_ENUM(ENUM_STATUSBAR_NETWORK_STRENGTH)
 
 
@@ -61,7 +71,9 @@ public:
 signals:
 
 public slots:
+
 };
+
 
 
 #endif // HOMESCREEN_ENUM_H

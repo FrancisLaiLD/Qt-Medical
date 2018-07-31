@@ -2,7 +2,7 @@
 #define USERPROFILECOMPONENT_H
 
 #include <QObject>
-
+#include <QDateTime>
 class UserProfileComponent : public QObject
 {
     Q_OBJECT
@@ -18,7 +18,7 @@ public:
     Q_PROPERTY(QString dateExpert           READ dateExpert             WRITE setDateExpert             NOTIFY dateExpertChanged)
     Q_PROPERTY(QString password             READ password               WRITE setPassword               NOTIFY passwordChanged)
     Q_PROPERTY(bool loginState              READ loginState             WRITE setLoginState             NOTIFY loginStateChanged)
-
+    Q_PROPERTY(QDateTime timeLogin          READ timeLogin              WRITE setTimeLogin NOTIFY timeLoginChanged)
     int id() const;
     void setId(int id);
 
@@ -46,6 +46,9 @@ public:
     bool loginState() const;
     void setLoginState(bool loginState);
 
+    QDateTime timeLogin() const;
+    void setTimeLogin(const QDateTime &timeLogin);
+
 private:
     int m_id;
     int m_age;
@@ -57,6 +60,7 @@ private:
     QString m_dateExpert;
     QString m_password;
     bool m_loginState;
+    QDateTime m_timeLogin;
 
 signals:
     void idChanged();
@@ -68,6 +72,7 @@ signals:
     void dateExpertChanged();
     void passwordChanged();
     void loginStateChanged();
+    void timeLoginChanged();
 
 public slots:
 };

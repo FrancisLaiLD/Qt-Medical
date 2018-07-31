@@ -22,36 +22,91 @@ EHome_Main_Frame {
         //        mainColor: "#6A8CDA"
         Item {
             id: leftSide
+            x: 0
             width: parent.width/2
             height: parent.height
-
-            Column {
-                id: idLeftColumn
-                anchors.centerIn: parent
-                Text {
-                    id: idLocation
-                    text: qsTr("Location : " + HomeDailyModel.listWeather )
-                    font.pixelSize: 22
-                }
-
-                Text {
-                    id: idTemp
-                    text: qsTr("Temperature : ")
-                    font.pixelSize: 22
-                }
-
-                Text {
-                    id: idWindVel
-                    text: qsTr("Wind Velocity : ")
-                    font.pixelSize: 22
-                }
-
-                Text {
-                    id: id
-                    text: qsTr("Dry : ")
-                    font.pixelSize: 22
-                }
+            Text {
+                id: idLocation
+                text: qsTr("Location :" + HomeDailyModel.listWeather )
+                font.pixelSize: 22
+                anchors.top: parent.top
+                anchors.topMargin: 250
+                anchors.right: parent.right
+                anchors.rightMargin: 200
             }
+
+            Text {
+                id: idTemp
+                anchors.right: idLocation.right
+                anchors.verticalCenter: idLocation.verticalCenter
+                anchors.verticalCenterOffset: 40
+                text: qsTr("Temperature :")
+                font.pixelSize: 22
+            }
+
+            Text {
+                id: idWindVel
+                anchors.right: idLocation.right
+                anchors.verticalCenter: idTemp.verticalCenter
+                anchors.verticalCenterOffset: 40
+                text: qsTr("Wind Velocity :")
+                font.pixelSize: 22
+            }
+
+            Text {
+                id: idDry
+                anchors.right: idLocation.right
+                anchors.verticalCenter: idWindVel.verticalCenter
+                anchors.verticalCenterOffset: 40
+                text: qsTr("Dry :")
+                font.pixelSize: 22
+            }
+
+        }
+
+        Item {
+            id: righSide
+            x: 360
+            width: parent.width/2
+            height: parent.height
+            Text {
+                id: idRightLocation
+                text: qsTr("Location :" + HomeDailyModel.listWeather )
+                font.pixelSize: 22
+                anchors.top: parent.top
+                anchors.topMargin: 250
+                anchors.right: parent.right
+                anchors.rightMargin: 200
+            }
+
+            Text {
+                id: idRightTemp
+                anchors.right: idRightLocation.right
+                anchors.verticalCenter: idRightLocation.verticalCenter
+                anchors.verticalCenterOffset: 40
+                text: ("Temperature :")
+                color: "black"
+                font.pixelSize: 22
+            }
+
+            Text {
+                id: idRightWindVel
+                anchors.right: idRightLocation.right
+                anchors.verticalCenter: idRightTemp.verticalCenter
+                anchors.verticalCenterOffset: 40
+                text: qsTr("Wind Velocity :")
+                font.pixelSize: 22
+            }
+
+            Text {
+                id: idRightDry
+                anchors.right: idRightLocation.right
+                anchors.verticalCenter: idRightWindVel.verticalCenter
+                anchors.verticalCenterOffset: 40
+                text: qsTr("Dry :")
+                font.pixelSize: 22
+            }
+
         }
 
         Text {

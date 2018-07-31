@@ -38,28 +38,11 @@ Window {
         }
     }
 
-    Rectangle {
-        id: idBackground
-        signal outsideClick()
-        visible: AppManager.isShowingPopup
-        width: 720 ; height: 1080
-        color: "black"
-        opacity: 0.7
-        MouseArea {
-            id: idMou
-            anchors.fill: parent
-            onClicked: {
-                console.log('Popup outside click')
-                AppManager.handlePopupClick(HomeEnum.EVENT_HIDE_POPUP)
-            }
-        }
-    }
-
     Loader {
         id: idSttBarLoader
         x: 0; y: 0
         width: parent.width
-        height: 55
+        height: 59
         source: ""
     }
     Rectangle {
@@ -80,6 +63,24 @@ Window {
         x: 0 ; y: 60
         source: ""
     }
+
+    Rectangle {
+        id: idBackground
+        signal outsideClick()
+        visible: AppManager.isShowingPopup
+        width: 720 ; height: 1080
+        color: "black"
+        opacity: 0.6
+        MouseArea {
+            id: idMou
+            anchors.fill: parent
+            onClicked: {
+                console.log('Popup outside click')
+                AppManager.handleHidePopupClick(HomeEnum.EVENT_HIDE_POPUP)
+            }
+        }
+    }
+
     Loader {
         id: idLoadPopup
 //        anchors.fill: parent

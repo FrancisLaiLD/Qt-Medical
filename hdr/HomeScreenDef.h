@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QMap>
 
-#include "HomeScreen_Enum.h"
 
 #define TITLE_E_HOME_CHIEF_DOCTOR               "Chief Doctor"
 #define TITLE_E_HOME_MY_DOCTOR                  "My Doctor"
@@ -28,14 +27,17 @@
 #define IMAGE_E_HOME_ICON_SLEEP                 "sleep_@.png"
 #define IMAGE_E_HOME_ICON_WHEEL_CHAIR           "wheelchair_@.png"
 
-#define SCREEN_EHOME_MAIN_DAILY                "Screen/EHome_Screen_Main_Daily.qml"
-#define SCREEN_EHOME_USER_PROFILE              "Screen/EHome_Screen_Main_UserProfile.qml"
-#define SCREEN_EHOME_MAIN_WEATHER              "Screen/EHome_Screen_Main_Weather.qml"
-#define SCREEN_EHOME_MAIN_ADVANCED             "Screen/EHome_Screen_Main_Advanced.qml"
-#define SCREEN_EHOME_MAIN_USER_DATA            "Screen/EHome_Screen_Main_UserData.qml"
+#define QML_NONE                                ""
+#define SCREEN_EHOME_MAIN_DAILY                 "Screen/EHome_Screen_Main_Daily.qml"
+#define SCREEN_EHOME_USER_PROFILE               "Screen/EHome_Screen_Main_UserProfile.qml"
+#define SCREEN_EHOME_MAIN_WEATHER               "Screen/EHome_Screen_Main_Weather.qml"
+#define SCREEN_EHOME_MAIN_ADVANCED              "Screen/EHome_Screen_Main_Advanced.qml"
+#define SCREEN_EHOME_MAIN_USER_DATA             "Screen/EHome_Screen_Main_UserData.qml"
 
 
 #define POPUP_EHOME_MAIN_USER_POPUP             "Popup/Medium_Popup.qml"
+
+
 
 
 
@@ -44,6 +46,11 @@ typedef struct homeComp{
     QString s_label;
     QString s_imageLink;
 } homeComponent;
+
+typedef struct QMLStruct{
+    int         s_INDX_SCREEN;
+    QString     s_QmlLink;
+} QMLSTRUCT;
 
 
 

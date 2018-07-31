@@ -9,11 +9,11 @@ Rectangle {
     width: 560 ; height: 400
     color: "red"
     radius: 10
-    opacity: 0.8
+    opacity: 1.0
     gradient:
         Gradient {
-        GradientStop { position: 1.0; color: "lightsteelblue" }
-        GradientStop { position: 0.0; color: "blue" }
+        GradientStop { position: 1.0; color: "#C2CF83" }
+        GradientStop { position: 0.0; color: "#85A000" }
     }
     MouseArea {
         id: idMouInsideRect
@@ -25,7 +25,7 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: 20
-        font.pixelSize: 32
+        font.pixelSize: 28
         text: idRoot.popupTitle
     }
 

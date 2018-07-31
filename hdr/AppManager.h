@@ -18,6 +18,9 @@
 #include "StatusbarModel.h"
 #include "UserProfileModel.h"
 #include "HomeScreenMainDailyModel.h"
+// Constant
+#include "HomeScreenConst.h"
+#include "HomeStringModel.h"
 
 
 
@@ -30,6 +33,7 @@ public:
     Q_PROPERTY(bool isShowingPopup READ isShowingPopup WRITE setIsShowingPopup NOTIFY isShowingPopupChanged)
 
 /*------------------------------------------------------------------INIT APPLICATION-------------------------------------------------------------------------*/
+    void initQmlProperty();
     void initApplication();
 
 /*------------------------------------------------------------------UPDATE DATA TO STATUSBAR---------------------------------------------------------------------*/
@@ -48,6 +52,7 @@ public slots:
     bool handleHomeClick(const int& );
     void handleHomeScreenClick(const int& );
     void handlePopupClick(const int&);
+    void handleHidePopupClick(const int&);
 
 signals:
     void isShowingPopupChanged();
@@ -57,6 +62,9 @@ private:
     QQmlApplicationEngine   *p_qqmlAppEngine;
     HomeQMLController       *p_homeQMLController;
 
+    // Constant model
+    HomeScreenConst                 *p_homeScreenConst;
+    HomeStringModel                 *p_homeStringModel;
     HomeScreen_Main_Daily_Model     *p_homeDailyModel;
     StatusbarModel                  *p_statusbarModel;
     UserProfileModel                *p_userProfileModel;
