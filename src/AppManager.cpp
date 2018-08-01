@@ -20,7 +20,7 @@ void AppManager::initQmlProperty()
 
     qmlRegisterUncreatableType<HomeScreen_Enum>("com.embeddeduse.models", 1, 0, "HomeEnum",
                                                  "Cannot create WarningLevel in QML");
-
+    qmlRegisterType<BezierCurve>("CustomGeometry", 1, 0, "BezierCurve");
 
     p_qqmlAppEngine->rootContext()->setContextProperty("AppManager",        this);
     p_qqmlAppEngine->rootContext()->setContextProperty("StatusbarModel",    p_statusbarModel);

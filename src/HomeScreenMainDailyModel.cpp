@@ -2,8 +2,9 @@
 
 HomeScreen_Main_Daily_Model::HomeScreen_Main_Daily_Model(QObject *parent) : QObject(parent)
 {
-    m_leftWeather = new WeatherComponent();
-    m_rightWeather = new WeatherComponent();
+    m_leftWeather   = new WeatherComponent();
+    m_rightWeather  = new WeatherComponent();
+    m_timeUpdate    = QDateTime::currentDateTime();
 }
 
 WeatherComponent *HomeScreen_Main_Daily_Model::leftWeather() const
@@ -24,4 +25,14 @@ WeatherComponent *HomeScreen_Main_Daily_Model::rightWeather() const
 void HomeScreen_Main_Daily_Model::setRightWeather(WeatherComponent *rightWeather)
 {
     m_rightWeather = rightWeather;
+}
+
+QDateTime HomeScreen_Main_Daily_Model::timeUpdate() const
+{
+    return m_timeUpdate;
+}
+
+void HomeScreen_Main_Daily_Model::setTimeUpdate(const QDateTime &timeUpdate)
+{
+    m_timeUpdate = timeUpdate;
 }

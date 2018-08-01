@@ -27,16 +27,17 @@
 #define IMAGE_E_HOME_ICON_SLEEP                 "sleep_@.png"
 #define IMAGE_E_HOME_ICON_WHEEL_CHAIR           "wheelchair_@.png"
 
+// Define screen
 #define QML_NONE                                ""
 #define SCREEN_EHOME_MAIN_DAILY                 "Screen/EHome_Screen_Main_Daily.qml"
-#define SCREEN_EHOME_USER_PROFILE               "Screen/EHome_Screen_Main_UserProfile.qml"
-#define SCREEN_EHOME_MAIN_WEATHER               "Screen/EHome_Screen_Main_Weather.qml"
-#define SCREEN_EHOME_MAIN_ADVANCED              "Screen/EHome_Screen_Main_Advanced.qml"
-#define SCREEN_EHOME_MAIN_USER_DATA             "Screen/EHome_Screen_Main_UserData.qml"
+#define SCREEN_EHOME_USER_PROFILE               "Screen/EHome_Screen_UserProfile.qml"
+#define SCREEN_EHOME_MAIN_WEATHER               "Screen/EHome_Screen_Weather.qml"
+#define SCREEN_EHOME_MAIN_ADVANCED              "Screen/EHome_Screen_Advanced.qml"
+#define SCREEN_EHOME_MAIN_USER_DATA             "Screen/EHome_Screen_UserData_Stored.qml"
+#define SCREEN_EHOME_USER_DATA_REALTIME         "Screen/EHome_Screen_UserData_RealTime.qml"
 
 
 #define POPUP_EHOME_MAIN_USER_POPUP             "Popup/Medium_Popup.qml"
-
 
 
 

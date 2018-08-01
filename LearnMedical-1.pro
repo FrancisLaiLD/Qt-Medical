@@ -29,7 +29,8 @@ HEADERS += \
     hdr/Resource_General.h \
     hdr/HomeScreenMainDailyModel.h \
     hdr/Home_Screen_Table.h \
-    hdr/HomeScreenConst.h
+    hdr/HomeScreenConst.h \
+    hdr/BezierCurve.h
 
 SOURCES += \
         main.cpp \
@@ -43,7 +44,8 @@ SOURCES += \
     src/WeatherComponent.cpp \
     src/UserProfileComponent.cpp \
     src/UserProfileModel.cpp \
-    src/HomeScreenMainDailyModel.cpp
+    src/HomeScreenMainDailyModel.cpp \
+    src/BezierCurve.cpp
 
 RESOURCES +=
 
@@ -66,10 +68,6 @@ DISTFILES += \
     qml/Statusbar/EHome_Main_Statusbar.qml \
     qml/Component/ScreenComponent/EHome_Half_Frame.qml \
     qml/Screen/EHome_Screen_Main_Daily.qml \
-    qml/Screen/EHome_Screen_Main_Weather.qml \
-    qml/Screen/EHome_Screen_Main_Advanced.qml \
-    qml/Screen/EHome_Screen_Main_UserProfile.qml \
-    qml/Screen/EHome_Screen_Main_UserData.qml \
     qml/Component/OtherComponent/E_HorizentalLine.qml \
     qml/Component/OtherComponent/E_VerticalLine.qml \
     qml/Component/OtherComponent/EUserProfile_TextInput.qml \
@@ -81,5 +79,10 @@ DISTFILES += \
     qml/Component/OtherComponent/ERadio_Button.qml \
     qml/Component/OtherComponent/EChart_Weather.qml \
     qml/Component/OtherComponent/EXAxisLine.qml \
-    qml/Component/OtherComponent/EYAxisLine.qml
+    qml/Component/OtherComponent/EYAxisLine.qml \
+    qml/Screen/EHome_Screen_UserData_RealTime.qml \
+    qml/Screen/EHome_Screen_UserData_Stored.qml \
+    qml/Screen/EHome_Screen_Advanced.qml \
+    qml/Screen/EHome_Screen_UserProfile.qml \
+    qml/Screen/EHome_Screen_Weather.qml
 

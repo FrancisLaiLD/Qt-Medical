@@ -21,8 +21,8 @@ EHome_Main_Frame {
         anchors.top: parent.top
         anchors.topMargin: 30
         anchors.horizontalCenter: parent.horizontalCenter
-        xAxisNameVal: "time"
-        yAxisNameVal: "oC"
+        xAxisName: "time"
+        yAxisName: HomeStringModel.STR_HOME_WEATHER_CELCIUS_DEGREE
         xAxisMaxValue: 24
         xAxisRes: 8
         yAxisMaxValue: 50
@@ -63,10 +63,10 @@ EHome_Main_Frame {
         anchors.top: idFirstLine.bottom
         anchors.topMargin: 5
         anchors.horizontalCenter: parent.horizontalCenter
-        xAxisNameVal: "time"
+        xAxisName: "time"
         xAxisMaxValue: 24
         xAxisRes: 6
-        yAxisNameVal: "km/h"
+        yAxisName: "km/h"
         yAxisMaxValue: 30
         yAxisRes: 6
     }
@@ -85,10 +85,10 @@ EHome_Main_Frame {
         anchors.top: idSecondLine.bottom
         anchors.topMargin: 5
         anchors.horizontalCenter: parent.horizontalCenter
-        xAxisNameVal: "time"
+        xAxisName: "time"
         xAxisMaxValue: 24
         xAxisRes: 6
-        yAxisNameVal: "%"
+        yAxisName: "%"
         yAxisMaxValue: 100
         yAxisRes: 10
     }

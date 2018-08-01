@@ -10,6 +10,7 @@
 // E-num
 #include "HomeScreen_Enum.h"
 #include "HomeScreenDef.h"
+#include "BezierCurve.h"
 // QML Controller
 #include "HomeQMLController.h"
 // Resource

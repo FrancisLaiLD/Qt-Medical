@@ -5,6 +5,7 @@ import "../Component/ListViewComponent"
 import "../Component/DelegateComponent"
 import "../Component/OtherComponent"
 import com.embeddeduse.models 1.0
+import CustomGeometry 1.0
 
 EHome_Main_Frame {
     id:idRoot
@@ -14,6 +15,7 @@ EHome_Main_Frame {
         NumberAnimation { target: idRoot; property: "x"; from: -720; to: 0; duration: HomeScreenConst.time_screen_trans }
         NumberAnimation { target: idRoot; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
     }
+    property string lastTime: HomeDailyModel.timeUpdate
     EHome_Half_Frame {
         id: idAboveFrame
         x: 0; y: 0
@@ -52,7 +54,7 @@ EHome_Main_Frame {
                 anchors.rightMargin: 20
                 anchors.top: parent.top
                 anchors.topMargin: 50
-                source: Resource_General.weather_shine_big
+                source: Resource_General.weather_rain_storm
             }
             Text {
                 id: idTemp_val
@@ -65,7 +67,7 @@ EHome_Main_Frame {
             }
             Text {
                 id: idTemp_unit
-                text: "°C"
+                text: HomeStringModel.STR_HOME_WEATHER_CELCIUS_DEGREE
                 font.pixelSize: 48
                 anchors.left: idTemp_val.right
                 anchors.leftMargin: 0
@@ -98,7 +100,7 @@ EHome_Main_Frame {
                 anchors.topMargin: 40
                 anchors.right: idImgWindVelocity.left
                 anchors.rightMargin: 100
-                text: "direction"
+                text: HomeStringModel.STR_HOME_WEATHER_DIRECTION
                 font.pixelSize: 16
                 color: "gray"
             }
@@ -107,7 +109,7 @@ EHome_Main_Frame {
                 anchors.verticalCenter: idWind_direction.verticalCenter
                 anchors.left: idWind_direction.right
                 anchors.leftMargin: 5
-                text: "eastnorth"
+                text: HomeStringModel.STR_HOME_WEATHER_EAST + "-" + HomeStringModel.STR_HOME_WEATHER_NORTH
                 font.pixelSize: 16
                 color: "black"
             }
@@ -116,7 +118,7 @@ EHome_Main_Frame {
                 anchors.top: idWind_direction.bottom
                 anchors.topMargin: 5
                 anchors.right: idWind_direction.right
-                text: "speed"
+                text: HomeStringModel.STR_HOME_WEATHER_SPEED
                 font.pixelSize: 16
                 color: "gray"
             }
@@ -125,12 +127,34 @@ EHome_Main_Frame {
                 anchors.verticalCenter: idWind_speed.verticalCenter
                 anchors.left: idWind_speed.right
                 anchors.leftMargin: 5
-                text: "12 km/h"
+                text: 12 + " " + HomeStringModel.STR_HOME_WEATHER_KM_H
                 font.pixelSize: 16
                 color: "black"
             }
+
+            Text {
+                id: timeUpdate
+                anchors.left: parent.left
+                anchors.leftMargin: 50
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 5
+                text: HomeStringModel.STR_HOME_WEATHER_DATA_WAS_UPDATE
+                font.pixelSize: 14
+                color: "gray"
+            }
+            Text {
+                id: timeUpdate_val
+                anchors.left: timeUpdate.right
+                anchors.leftMargin: 10
+                anchors.verticalCenter: timeUpdate.verticalCenter
+                text: idRoot.lastTime.substring(0,10) + ", " + idRoot.lastTime.substring(11,19)
+                font.pixelSize: 14
+                font.italic: true
+                color: "gray"
+            }
         }
 
+        /* -------------------------------------RIGHT SIDE----------------------------------*/
         Item {
             id: righSide
             x: 360
@@ -143,77 +167,7 @@ EHome_Main_Frame {
                     AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_USER_DATA)
                 }
             }
-            Text {
-                id: idRightLocation
-                text: "Location :"
-                font.pixelSize: 22
-                anchors.top: parent.top
-                anchors.topMargin: 250
-                anchors.right: parent.right
-                anchors.rightMargin: 200
-            }
-            Text {
-                id: idRightLocation_val
-                text: HomeDailyModel.rightWeather.proLocName === "" ? "---" : HomeDailyModel.rightWeather.proLocName
-                font.pixelSize: 22
-                anchors.left: idRightLocation.right
-                anchors.leftMargin: 5
-                anchors.verticalCenter: idRightLocation.verticalCenter
-            }
-
-            Text {
-                id: idRightTemp
-                anchors.right: idRightLocation.right
-                anchors.verticalCenter: idRightLocation.verticalCenter
-                anchors.verticalCenterOffset: 40
-                text: ("Temperature :")
-                font.pixelSize: 22
-            }
-            Text {
-                id: idRightTemp_val
-                text: HomeDailyModel.rightWeather.proTemp === -1 ? "---" : HomeDailyModel.rightWeather.proLocName
-                font.pixelSize: 22
-                anchors.left: idRightTemp.right
-                anchors.leftMargin: 5
-                anchors.verticalCenter: idRightTemp.verticalCenter
-            }
-
-            Text {
-                id: idRightWindVel
-                anchors.right: idRightLocation.right
-                anchors.verticalCenter: idRightTemp.verticalCenter
-                anchors.verticalCenterOffset: 40
-                text: "Wind Velocity :"
-                font.pixelSize: 22
-            }
-            Text {
-                id: idRightWindVel_val
-                text: HomeDailyModel.rightWeather.proWindVel === -1 ? "---" : HomeDailyModel.rightWeather.proWindVel
-                font.pixelSize: 22
-                anchors.left: idRightWindVel.right
-                anchors.leftMargin: 5
-                anchors.verticalCenter: idRightWindVel.verticalCenter
-            }
-
-            Text {
-                id: idRightDry
-                anchors.right: idRightLocation.right
-                anchors.verticalCenter: idRightWindVel.verticalCenter
-                anchors.verticalCenterOffset: 40
-                text: "Dry :"
-                font.pixelSize: 22
-            }
-            Text {
-                id: idRightDry_val
-                text: HomeDailyModel.rightWeather.proDry === -1 ? "---" : HomeDailyModel.rightWeather.proDry
-                font.pixelSize: 22
-                anchors.left: idRightDry.right
-                anchors.leftMargin: 5
-                anchors.verticalCenter: idRightDry.verticalCenter
-            }
-
         }
-
         E_VerticalLine {
             id:idVerLine
             anchors.horizontalCenter: parent.horizontalCenter
@@ -239,7 +193,7 @@ EHome_Main_Frame {
             anchors.topMargin: 20
             anchors.left: parent.left
             anchors.leftMargin: 30
-            text: "Tips of today :"
+            text: HomeStringModel.STR_HOME_WEATHER_TIPS_TODAY
             font.italic: true
             font.pixelSize: 20
             color: "black"
@@ -251,7 +205,7 @@ EHome_Main_Frame {
             anchors.horizontalCenter: idUnderFrame.horizontalCenter
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 100
-            text: qsTr("Show more detail...")
+            text: HomeStringModel.STR_HOME_WEATHER_SHOW_MORE_DETAIL
             font.italic: true
             font.pixelSize: 20
             color: idMouDetailAdv.pressed ? "#B3B712" : "green"

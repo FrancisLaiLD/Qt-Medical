@@ -4,9 +4,12 @@ E_VerticalLine {
     id: idRoot
     property int resolution: 5
     property int maxValue: 100
+    property int axisRange: 100
+    property int virtualLineRange: 400
+    property int startValue: 0
     lineColor: "gray"
     lineWidth: 2
-    lineRange: parent.height - 30
+    lineRange: axisRange
     Column {
 //        spacing: parent.width/resolution
         Repeater {
@@ -18,11 +21,10 @@ E_VerticalLine {
                     y: index* idRoot.lineRange/idRoot.resolution
                     lineColor: "black"
                     lineRange: 5
-
                 }
                 Text {
                     id: resText
-                    text: maxValue/resolution* (resolution - index)
+                    text: maxValue/resolution* (resolution - index) + startValue
                     anchors.right: parent.left
                     anchors.rightMargin: 3
                     anchors.verticalCenter: resLine.verticalCenter
@@ -30,11 +32,10 @@ E_VerticalLine {
                 E_HorizentalLine {
                     id: resVirtualLine
                     anchors.left: parent.right
-                    anchors.leftMargin: 50
+                    anchors.leftMargin: 0
                     y: index* idRoot.lineRange/idRoot.resolution
                     lineColor: "gray"
-                    lineRange: 400
-
+                    lineRange: virtualLineRange
                 }
             }
         }

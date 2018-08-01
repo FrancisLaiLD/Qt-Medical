@@ -21,38 +21,25 @@ EHome_Main_Frame {
         anchors.top: parent.top
         anchors.topMargin: 30
         anchors.horizontalCenter: parent.horizontalCenter
+        chartWidth: parent.width - 60
+        chartHeight: parent.height/2 - 60
     }
 
     E_HorizentalLine {
         id: idFirstLine
-        anchors.top: idTempChart.bottom
-        anchors.topMargin: 10
+        y: parent.height/2
         anchors.horizontalCenter: parent.horizontalCenter
-        lineHeight: 1
-        lineRange: parent.width - 60
-    }
-
-    EChart_Weather {
-        id: idWindVelChart
-        anchors.top: idFirstLine.bottom
-        anchors.topMargin: 5
-        anchors.horizontalCenter: parent.horizontalCenter
-    }
-
-    E_HorizentalLine {
-        id: idSecondLine
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: idWindVelChart.bottom
-        anchors.topMargin: 10
         lineHeight: 1
         lineRange: parent.width - 60
     }
 
     EChart_Weather {
         id: idDryChart
-        anchors.top: idSecondLine.bottom
-        anchors.topMargin: 5
+        anchors.top: idFirstLine.bottom
+        anchors.topMargin: 30
         anchors.horizontalCenter: parent.horizontalCenter
+        chartWidth: parent.width - 60
+        chartHeight: parent.height/2 - 60
     }
 
     Component.onCompleted: {
