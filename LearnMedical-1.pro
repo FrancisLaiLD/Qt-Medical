@@ -78,5 +78,8 @@ DISTFILES += \
     qml/Popup/Huge_Popup.qml \
     qml/Component/OtherComponent/EHome_Popup_Frame.qml \
     qml/Component/OtherComponent/EButton_StandAlone.qml \
-    qml/Component/OtherComponent/ERadio_Button.qml
+    qml/Component/OtherComponent/ERadio_Button.qml \
+    qml/Component/OtherComponent/EChart_Weather.qml \
+    qml/Component/OtherComponent/EXAxisLine.qml \
+    qml/Component/OtherComponent/EYAxisLine.qml
 

@@ -2,25 +2,26 @@
 
 HomeScreen_Main_Daily_Model::HomeScreen_Main_Daily_Model(QObject *parent) : QObject(parent)
 {
-    this->createListWeather();
+    m_leftWeather = new WeatherComponent();
+    m_rightWeather = new WeatherComponent();
 }
 
-QList<QObject *> HomeScreen_Main_Daily_Model::listWeather()
+WeatherComponent *HomeScreen_Main_Daily_Model::leftWeather() const
 {
-    if (m_listWeather.isEmpty())
-    {
-        this->createListWeather();
-    }
-    return m_listWeather;
+    return m_leftWeather;
 }
 
-void HomeScreen_Main_Daily_Model::setListWeather(const QList<QObject *> &listWeather)
+void HomeScreen_Main_Daily_Model::setLeftWeather(WeatherComponent *leftWeather)
 {
-    m_listWeather = listWeather;
+    m_leftWeather = leftWeather;
 }
 
-void HomeScreen_Main_Daily_Model::createListWeather()
+WeatherComponent *HomeScreen_Main_Daily_Model::rightWeather() const
 {
-    m_listWeather.append(new WeatherComponent());
-    m_listWeather.append(new WeatherComponent());
+    return m_rightWeather;
+}
+
+void HomeScreen_Main_Daily_Model::setRightWeather(WeatherComponent *rightWeather)
+{
+    m_rightWeather = rightWeather;
 }

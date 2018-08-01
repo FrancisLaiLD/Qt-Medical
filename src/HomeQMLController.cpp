@@ -6,14 +6,18 @@ HomeQMLController::HomeQMLController(QObject *parent, QQmlApplicationEngine* _pA
     m_listObject = this->p_AppEngine->rootObjects();
     //set context
     p_AppEngine->rootContext()->setContextProperty("QmlController", this);
-    this->m_currentScreen = static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN);
+//    this->m_currentScreen = static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN);
+    m_currentScreen = -1;
     this->m_preScrStack.clear();
 
 }
 
 bool HomeQMLController::handleQMLEvent(const int &_index, const QVariant &_value)
 {
-
+    if (_index == m_currentScreen)
+    {
+        return false;
+    }
     int evt = CONST_TABLE_QML.value(_index).s_INDX_SCREEN;
     if (evt == static_cast<int>(HomeScreen_Enum::QML_EVENT::EVENT_SCREEN_TRANS))
     {

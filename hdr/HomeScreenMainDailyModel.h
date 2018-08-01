@@ -9,19 +9,27 @@ class HomeScreen_Main_Daily_Model : public QObject
     Q_OBJECT
 public:
     explicit HomeScreen_Main_Daily_Model(QObject *parent = nullptr);
-    Q_PROPERTY(QList<QObject*> listWeather READ listWeather WRITE setListWeather NOTIFY listWeatherChanged)
 
-    QList<QObject *> listWeather();
-    void setListWeather(const QList<QObject *> &listWeather);
+    Q_PROPERTY(WeatherComponent* leftWeather    READ leftWeather        WRITE setLeftWeather        NOTIFY leftWeatherChanged)
+    Q_PROPERTY(WeatherComponent* rightWeather   READ rightWeather       WRITE setRightWeather       NOTIFY rightWeatherChanged)
 
-    void createListWeather();
+
+    WeatherComponent *leftWeather() const;
+    void setLeftWeather(WeatherComponent *leftWeather);
+
+    WeatherComponent *rightWeather() const;
+    void setRightWeather(WeatherComponent *rightWeather);
 
 private:
-    QList<QObject*> m_listWeather;
+    WeatherComponent *m_leftWeather;
+    WeatherComponent *m_rightWeather;
 
 signals:
     void listWeatherChanged();
+    void leftWeatherChanged();
+    void rightWeatherChanged();
 
 public slots:
+
 };
 #endif // HOMESCREEN_MAIN_DAILY_MODEL_H
