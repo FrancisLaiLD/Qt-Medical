@@ -56,6 +56,8 @@ public:
     Q_PROPERTY(QString weather_storm                READ weather_storm                  CONSTANT)
     Q_PROPERTY(QString weather_shine_big            READ weather_shine_big              CONSTANT)
     Q_PROPERTY(QString weather_shine_windy          READ weather_shine_windy            CONSTANT)
+    Q_PROPERTY(QString btn_state_on                 READ btn_state_on                   CONSTANT)
+    Q_PROPERTY(QString btn_state_off                READ btn_state_off                  CONSTANT)
 
 
     /*
@@ -80,6 +82,8 @@ public:
     QString fahrenheit_degrees_p()      {return m_prefix + "fahrenheit_degrees_p.png";}
     QString fahrenheit_degrees_d()      {return m_prefix + "fahrenheit_degrees_d.png";}
     QString home_location()             {return m_prefix + "home_location.png";}
+    QString btn_state_on()              {return m_prefix + "btn_state_on.png";}
+    QString btn_state_off()             {return m_prefix + "btn_state_off.png";}
 
     QString chart_ver_bottom()          {return m_prefixChart + "chart_ver_bottom.png";}
     QString chart_ver_middle()          {return m_prefixChart + "chart_ver_middle.png";}

@@ -3,7 +3,8 @@
 
 #include <QObject>
 #include <QDateTime>
-#include "WeatherComponent.h"
+#include "Component/WeatherComponent.h"
+#include "Component/DeviceComponent.h"
 #include "HomeScreen_Enum.h"
 
 class HomeScreen_Main_Daily_Model : public QObject
@@ -14,7 +15,8 @@ public:
 
     Q_PROPERTY(WeatherComponent* leftWeather    READ leftWeather        WRITE setLeftWeather        NOTIFY leftWeatherChanged)
     Q_PROPERTY(WeatherComponent* rightWeather   READ rightWeather       WRITE setRightWeather       NOTIFY rightWeatherChanged)
-    Q_PROPERTY(QDateTime timeUpdate             READ timeUpdate         WRITE setTimeUpdate         NOTIFY timeUpdateChanged)
+    Q_PROPERTY(QList<QObject*>   listDevice     READ listDevice         WRITE setListDevice         NOTIFY listDeviceChanged)
+    Q_PROPERTY(QDateTime         timeUpdate     READ timeUpdate         WRITE setTimeUpdate         NOTIFY timeUpdateChanged)
 
     WeatherComponent *leftWeather() const;
     void setLeftWeather(WeatherComponent *leftWeather);
@@ -25,15 +27,20 @@ public:
     QDateTime timeUpdate() const;
     void setTimeUpdate(const QDateTime &timeUpdate);
 
+    QList<QObject*> listDevice() const;
+    void setListDevice(QList<QObject*> listDevice);
+
 private:
     WeatherComponent *m_leftWeather;
     WeatherComponent *m_rightWeather;
+    QList<QObject*>  m_listDevice;
     QDateTime m_timeUpdate;
 
 signals:
     void timeUpdateChanged();
     void leftWeatherChanged();
     void rightWeatherChanged();
+    void listDeviceChanged();
 
 public slots:
 

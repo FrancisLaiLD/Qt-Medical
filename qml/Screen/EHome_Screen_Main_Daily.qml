@@ -229,20 +229,55 @@ EHome_Main_Frame {
             color: "black"
             font.underline: true
         }
+        Text {
+            id: txt_device_name
+            anchors.top: idTitleTips.bottom
+            anchors.topMargin: 20
+            anchors.left: parent.left
+            anchors.leftMargin: 100
+            text: "Device name"
+            color: "gray"
+        }
+        Text {
+            id: txt_device_state
+            anchors.verticalCenter: txt_device_name.verticalCenter
+            anchors.left: parent.left
+            anchors.leftMargin: 350
+            text: "State"
+            color: "gray"
+        }
+        Text {
+            id: txt_device_last_conn
+            anchors.verticalCenter: txt_device_name.verticalCenter
+            anchors.left: parent.left
+            anchors.leftMargin: 500
+            text: "Last connection"
+            color: "gray"
+        }
 
         ListView {
             id: lsv
             anchors.top: idTitleTips.bottom
-            anchors.topMargin: 25
+            anchors.topMargin: 40
             spacing: 5
-            width: parent.width ; height: 50*5
+            interactive: true
+            width: parent.width ; height: 50*6
             model: 6
             delegate: Rectangle {
                 id: idDelegate
                 width: parent.width
                 height: 50
                 color: index%2 === 0 ? "#C8C8C8" : "#A4A4A4"
-                opacity: 0.3
+                opacity: 0.8
+                Image {
+                    id: idImgState
+//                    anchors.right: parent.right
+//                    anchors.rightMargin: 300
+                    x: txt_device_state.x
+                    anchors.verticalCenter: parent.verticalCenter
+                    source: HomeDailyModel.listDevice[index].proState ? Resource_General.btn_state_on : Resource_General.btn_state_off
+                    width: 50 ; height: parent.height
+                }
             }
         }
 
@@ -250,7 +285,7 @@ EHome_Main_Frame {
             id: idTitleAdvanced
             anchors.horizontalCenter: idUnderFrame.horizontalCenter
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 100
+            anchors.bottomMargin: 80
             text: HomeStringModel.STR_HOME_GO_TO_DEVICE_SETTING
             font.italic: true
             font.pixelSize: 16
@@ -268,6 +303,7 @@ EHome_Main_Frame {
 
     Component.onCompleted: {
         idMainAnimation.start()
+        console.log('HomeDailyModel.listDevice[1].proState: ' + HomeDailyModel.listDevice[0].proName)
 //        HomeDailyModel.leftWeather.proWeatherProperty = 0
 //        idMainTimer.start()
     }

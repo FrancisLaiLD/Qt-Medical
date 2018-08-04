@@ -1,4 +1,4 @@
-#include "hdr/UserProfileComponent.h"
+#include "hdr/Component/UserProfileComponent.h"
 
 UserProfileComponent::UserProfileComponent(QObject *parent) : QObject(parent)
 {

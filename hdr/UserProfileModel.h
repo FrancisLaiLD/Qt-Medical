@@ -2,7 +2,7 @@
 #define USERPROFILEMODEL_H
 
 #include <QObject>
-#include "UserProfileComponent.h"
+#include "Component/UserProfileComponent.h"
 #include "Resource_General.h"
 #include "Resource_Statusbar.h"
 

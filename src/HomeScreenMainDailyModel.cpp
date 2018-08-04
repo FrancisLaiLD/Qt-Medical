@@ -6,6 +6,12 @@ HomeScreen_Main_Daily_Model::HomeScreen_Main_Daily_Model(QObject *parent) : QObj
     m_leftWeather->setProWeatherProperty(static_cast<int>(HomeScreen_Enum::ENUM_WEATHER_PROPERTY::WEATHER_DAY_STORM_RAINNY));
     m_rightWeather  = new WeatherComponent();
     m_timeUpdate    = QDateTime::currentDateTime();
+    m_listDevice.append(new DeviceComponent());
+    m_listDevice.append(new DeviceComponent());
+    m_listDevice.append(new DeviceComponent());
+    m_listDevice.append(new DeviceComponent());
+    m_listDevice.append(new DeviceComponent());
+    m_listDevice.append(new DeviceComponent());
 }
 
 WeatherComponent *HomeScreen_Main_Daily_Model::leftWeather() const
@@ -37,3 +43,14 @@ void HomeScreen_Main_Daily_Model::setTimeUpdate(const QDateTime &timeUpdate)
 {
     m_timeUpdate = timeUpdate;
 }
+
+QList<QObject*> HomeScreen_Main_Daily_Model::listDevice() const
+{
+    return m_listDevice;
+}
+
+void HomeScreen_Main_Daily_Model::setListDevice(QList<QObject *> listDevice)
+{
+    m_listDevice = listDevice;
+}
+

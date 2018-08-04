@@ -30,7 +30,11 @@ HEADERS += \
     hdr/HomeScreenMainDailyModel.h \
     hdr/Home_Screen_Table.h \
     hdr/HomeScreenConst.h \
-    hdr/BezierCurve.h
+    hdr/BezierCurve.h \
+    hdr/Component/HomeComponent.h \
+    hdr/Component/UserProfileComponent.h \
+    hdr/Component/WeatherComponent.h \
+    hdr/Component/DeviceComponent.h
 
 SOURCES += \
         main.cpp \
@@ -44,7 +48,8 @@ SOURCES += \
     src/UserProfileComponent.cpp \
     src/UserProfileModel.cpp \
     src/HomeScreenMainDailyModel.cpp \
-    src/BezierCurve.cpp
+    src/BezierCurve.cpp \
+    src/DeviceComponent.cpp
 
 RESOURCES +=
 

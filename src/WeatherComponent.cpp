@@ -1,4 +1,4 @@
-#include "hdr/WeatherComponent.h"
+#include "hdr/Component/WeatherComponent.h"
 
 WeatherComponent::WeatherComponent(QObject *parent) : QObject(parent)
 {
