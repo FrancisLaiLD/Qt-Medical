@@ -31,7 +31,9 @@ class AppManager : public QObject
 public:
 
     explicit AppManager(QObject *parent = nullptr, QQmlApplicationEngine *_pAppEngine = nullptr);
-    Q_PROPERTY(bool isShowingPopup READ isShowingPopup WRITE setIsShowingPopup NOTIFY isShowingPopupChanged)
+    Q_PROPERTY(bool isShowingPopup      READ isShowingPopup         WRITE setIsShowingPopup         NOTIFY isShowingPopupChanged)
+    Q_PROPERTY(int currentScreen        READ currentScreen          WRITE setCurrentScreen          NOTIFY currentScreenChanged)
+    Q_PROPERTY(QDateTime currentTime    READ currentTime            WRITE setCurrentTime            NOTIFY currentTimeChanged)
 
 /*------------------------------------------------------------------INIT APPLICATION-------------------------------------------------------------------------*/
     void initQmlProperty();
@@ -47,6 +49,12 @@ public:
     bool isShowingPopup() const;
     void setIsShowingPopup(bool isShowingPopup);
 
+    int currentScreen() const;
+    void setCurrentScreen(int currentScreen);
+
+    QDateTime currentTime() const;
+    void setCurrentTime(const QDateTime &currentTime);
+
 public slots:
 
     /*------------------------------------------------------------------HANDLE VIEW EVENTS-----------------------------------------------------------------------*/
@@ -57,9 +65,13 @@ public slots:
 
 signals:
     void isShowingPopupChanged();
+    void currentScreenChanged();
+    void currentTimeChanged();
 
 private:
-    bool m_isShowingPopup;
+    bool        m_isShowingPopup;
+    int         m_currentScreen;
+    QDateTime   m_currentTime;
     QQmlApplicationEngine   *p_qqmlAppEngine;
     HomeQMLController       *p_homeQMLController;
 

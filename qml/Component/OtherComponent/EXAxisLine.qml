@@ -6,7 +6,7 @@ E_HorizentalLine {
     property int maxValue: 100
     property int axisRange: 100
 //    property int bottomSize: resText.height
-    lineColor: "gray"
+    lineColor: "black"
     lineHeight: 2
     lineRange: axisRange
     Row {

@@ -3,6 +3,7 @@
 HomeScreen_Main_Daily_Model::HomeScreen_Main_Daily_Model(QObject *parent) : QObject(parent)
 {
     m_leftWeather   = new WeatherComponent();
+    m_leftWeather->setProWeatherProperty(static_cast<int>(HomeScreen_Enum::ENUM_WEATHER_PROPERTY::WEATHER_DAY_STORM_RAINNY));
     m_rightWeather  = new WeatherComponent();
     m_timeUpdate    = QDateTime::currentDateTime();
 }

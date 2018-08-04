@@ -39,7 +39,7 @@ public:
     QString text_screen_color()             {return "#000000";}
     QString value_screen_color()            {return "#000000";}
     QString text_popup_color()              {return "#000000";}
-    QString value_popup_color()             {return "#008FFF";}
+    QString value_popup_color()             {return "#004466";}
 };
 
 #endif // HOMESCREENCONST_H

@@ -16,6 +16,15 @@ EHome_Main_Frame {
     screenTitle: "User Data"
     backgroundImage: ""
 
+    Timer {
+        id: idMainTimer
+        interval: 200
+        repeat: true
+        onTriggered: {
+            idTempChart.xAxisMaxValue += 2
+        }
+    }
+
     EChart_Weather {
         id: idTempChart
         anchors.top: parent.top
@@ -44,6 +53,7 @@ EHome_Main_Frame {
 
     Component.onCompleted: {
         idMainAnimation.start()
+        idMainTimer.start()
     }
 }
 

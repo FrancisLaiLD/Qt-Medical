@@ -14,8 +14,7 @@ EHome_Main_Frame {
         NumberAnimation { target: root; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
     }
 
-    screenTitle: "Screen Main User Profile"
-//    backgroundImage: "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/background-userprofile.jpg"
+    screenTitle: "User Profile"
 
 
 

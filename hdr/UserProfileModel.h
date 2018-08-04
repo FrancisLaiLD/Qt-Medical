@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include "UserProfileComponent.h"
+#include "Resource_General.h"
+#include "Resource_Statusbar.h"
 
 class UserProfileModel : public QObject
 {
@@ -31,6 +33,8 @@ private:
     QList<QObject*>         m_listUserProfile;
     int                     m_curUserIndex;
     UserProfileComponent*   m_curUser;
+    Resource_General*       p_resGeneral;
+    Resource_Statusbar*     p_resStatusbar;
 
 signals:
     void listUserProfileChanged();

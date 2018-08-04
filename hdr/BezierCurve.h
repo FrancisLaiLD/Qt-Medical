@@ -15,8 +15,8 @@ class BezierCurve : public QQuickItem
     Q_PROPERTY(int segmentCount READ segmentCount WRITE setSegmentCount NOTIFY segmentCountChanged)
 
 public:
-    BezierCurve(QQuickItem *parent = 0);
-    ~BezierCurve();
+    BezierCurve(QQuickItem *parent = nullptr);
+    ~BezierCurve() override;
 
     QSGNode *updatePaintNode(QSGNode *, UpdatePaintNodeData *) override;
 

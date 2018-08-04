@@ -38,7 +38,6 @@ SOURCES += \
     src/HomeComponent.cpp \
     src/HomeQMLController.cpp \
     src/HomeScreen_Enum.cpp \
-    src/HomeStringModel.cpp \
     src/HomeWeatherModel.cpp \
     src/StatusbarModel.cpp \
     src/WeatherComponent.cpp \
@@ -84,5 +83,6 @@ DISTFILES += \
     qml/Screen/EHome_Screen_UserData_Stored.qml \
     qml/Screen/EHome_Screen_Advanced.qml \
     qml/Screen/EHome_Screen_UserProfile.qml \
-    qml/Screen/EHome_Screen_Weather.qml
+    qml/Screen/EHome_Screen_Weather.qml \
+    qml/Screen/EHome_Screen_Teachnical_Overview.qml
 

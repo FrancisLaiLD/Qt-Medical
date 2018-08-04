@@ -7,7 +7,7 @@ E_VerticalLine {
     property int axisRange: 100
     property int virtualLineRange: 400
     property int startValue: 0
-    lineColor: "gray"
+    lineColor: "black"
     lineWidth: 2
     lineRange: axisRange
     Column {

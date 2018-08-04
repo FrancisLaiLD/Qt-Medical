@@ -7,7 +7,10 @@ class HomeStringModel : public QObject
 {
     Q_OBJECT
 public:
-    explicit HomeStringModel(QObject *parent = nullptr);
+    explicit HomeStringModel(QObject *parent = nullptr) {}
+
+    Q_PROPERTY(QString STR_GENERAL_TIME                                 READ STR_GENERAL_TIME CONSTANT)
+
     Q_PROPERTY(QString STR_HOME_WEATHER_CELCIUS_DEGREE                  READ STR_HOME_WEATHER_CELCIUS_DEGREE CONSTANT)
     Q_PROPERTY(QString STR_HOME_WEATHER_FAHRENHEIT_DEGREE               READ STR_HOME_WEATHER_FAHRENHEIT_DEGREE CONSTANT)
     Q_PROPERTY(QString STR_HOME_WEATHER_MAXTEMP_DIV_MINTEMP             READ STR_HOME_WEATHER_MAXTEMP_DIV_MINTEMP CONSTANT)
@@ -21,7 +24,13 @@ public:
     Q_PROPERTY(QString STR_HOME_WEATHER_DATA_WAS_UPDATE                 READ STR_HOME_WEATHER_DATA_WAS_UPDATE CONSTANT)
     Q_PROPERTY(QString STR_HOME_WEATHER_TIPS_TODAY                      READ STR_HOME_WEATHER_TIPS_TODAY CONSTANT)
     Q_PROPERTY(QString STR_HOME_WEATHER_SHOW_MORE_DETAIL                READ STR_HOME_WEATHER_SHOW_MORE_DETAIL CONSTANT)
+    Q_PROPERTY(QString STR_HOME_DEVICE_CONNECTION                       READ STR_HOME_DEVICE_CONNECTION CONSTANT)
+    Q_PROPERTY(QString STR_HOME_GO_TO_DEVICE_SETTING                    READ STR_HOME_GO_TO_DEVICE_SETTING CONSTANT)
 
+    Q_PROPERTY(QString STR_USER_DATA                                    READ STR_USER_DATA CONSTANT)
+    Q_PROPERTY(QString STR_USER_DATA_BLOOD_PRESSUER                     READ STR_USER_DATA_BLOOD_PRESSUER CONSTANT)
+
+    QString STR_GENERAL_TIME()                          {return "Time";}
 
     QString STR_HOME_WEATHER_CELCIUS_DEGREE()           {return "°C";}
     QString STR_HOME_WEATHER_FAHRENHEIT_DEGREE()        {return "°F";}
@@ -36,6 +45,11 @@ public:
     QString STR_HOME_WEATHER_DATA_WAS_UPDATE()          {return "Data was updated at :";}
     QString STR_HOME_WEATHER_TIPS_TODAY()               {return "Tips of today :";}
     QString STR_HOME_WEATHER_SHOW_MORE_DETAIL()         {return "Show more detail...";}
+    QString STR_HOME_DEVICE_CONNECTION()                {return "Devices connection";}
+    QString STR_HOME_GO_TO_DEVICE_SETTING()             {return "Press to go to device setting >>";}
+
+    QString STR_USER_DATA()                             {return "User Data";}
+    QString STR_USER_DATA_BLOOD_PRESSUER()              {return "Blood pressure";}
 
 };
 

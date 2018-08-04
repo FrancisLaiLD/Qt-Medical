@@ -16,7 +16,6 @@ class HomeQMLController : public QObject
 
 public:
     explicit HomeQMLController(QObject *parent = nullptr, QQmlApplicationEngine* _pAppEngine = nullptr);
-    Q_PROPERTY(int currentScreen READ currentScreen WRITE setCurrentScreen NOTIFY currentScreenChanged)
 
     bool handleQMLEvent(const int &_index, const QVariant &_value = 0);
 

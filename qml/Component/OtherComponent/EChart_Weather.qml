@@ -63,19 +63,5 @@ Rectangle {
         text: yAxisName
         font.italic: true
     }
-    BezierCurve {
-        id: line
-        anchors.fill: parent
-        anchors.margins: 20
-        p1: Qt.point(3, 5)
-        p2: Qt.point(4, 8)
-        p3: Qt.point(5, 12)
-//                p4: Qt.point(3,3)
-//                SequentialAnimation on t {
-//                    NumberAnimation { to: 1; duration: 2000; easing.type: Easing.InOutQuad }
-//                    NumberAnimation { to: 0; duration: 2000; easing.type: Easing.InOutQuad }
-//                    loops: Animation.Infinite
-//                }
-    }
 
 }

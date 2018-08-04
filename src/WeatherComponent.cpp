@@ -7,7 +7,7 @@ WeatherComponent::WeatherComponent(QObject *parent) : QObject(parent)
     m_proTemp = 32;
     m_proWindVel = -1;
     m_proDry = -1;
-
+    m_proWeatherProperty = -1;
 }
 
 int WeatherComponent::proLocId() const
@@ -77,5 +77,19 @@ void WeatherComponent::setProDry(int proDry)
     {
         m_proDry = proDry;
         emit proDryChanged();
+    }
+}
+
+int WeatherComponent::proWeatherProperty() const
+{
+    return m_proWeatherProperty;
+}
+
+void WeatherComponent::setProWeatherProperty(int weatherpro)
+{
+    if (m_proWeatherProperty != weatherpro)
+    {
+        m_proWeatherProperty = weatherpro;
+        emit proWeatherPropertyChanged();
     }
 }

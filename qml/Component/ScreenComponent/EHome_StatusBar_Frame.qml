@@ -4,14 +4,20 @@ import com.embeddeduse.models 1.0
 Rectangle {
     id:idRoot
     width: 720
-    height: 55
-    color: "transparent"
+    height: 60
+//    color: "transparent"
     opacity: 1.0
     // define signals
     signal releaseUserProfile()
     signal releaseBackBtn()
     signal releaseHomeBtn()
     signal releaseCloudBtn()
+
+    gradient:
+        Gradient {
+        GradientStop { position: 1.0; color: "white" }
+        GradientStop { position: 0.0; color: "#808080" }
+    }
     Rectangle {
         id: idUserRect
         width: 50; height: 50
@@ -23,7 +29,7 @@ Rectangle {
         Image {
             id:idUserImg
             anchors.fill: parent
-            source: StatusbarModel.userIcon
+            source: UserProfileModel.curUser.userIcon
         }
         MouseArea {
             id: idMouUserBtn
@@ -41,7 +47,7 @@ Rectangle {
         anchors.leftMargin: 3
         anchors.verticalCenter: idUserRect.verticalCenter
         anchors.verticalCenterOffset: 12
-        font.pixelSize: 22
+        font.pixelSize: 20
     }
 
     Image {

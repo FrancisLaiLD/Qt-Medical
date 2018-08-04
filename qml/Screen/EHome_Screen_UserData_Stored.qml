@@ -1,5 +1,6 @@
 import QtQuick 2.0
 
+import com.embeddeduse.models 1.0
 import "../Component/ScreenComponent"
 import "../Component/ListViewComponent"
 import "../Component/DelegateComponent"
@@ -13,18 +14,18 @@ EHome_Main_Frame {
         NumberAnimation { target: root; property: "x"; from: -720; to: 0; duration: HomeScreenConst.time_screen_trans }
         NumberAnimation { target: root; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
     }
-    screenTitle: "User Data"
-    backgroundImage: ""
+    screenTitle: HomeStringModel.STR_USER_DATA
+//    backgroundImage:
 
     EChart_Weather {
         id: idTempChart
         anchors.top: parent.top
-        anchors.topMargin: 30
+        anchors.topMargin: 48
         anchors.horizontalCenter: parent.horizontalCenter
         chartWidth: parent.width - 60
         chartHeight: parent.height/2 - 60
-        xAxisName: "time"
-        yAxisName: "HeartBeat"
+        xAxisName: HomeStringModel.STR_GENERAL_TIME
+        yAxisName: HomeStringModel.STR_USER_DATA_BLOOD_PRESSUER
     }
 
     E_HorizentalLine {
@@ -35,13 +36,21 @@ EHome_Main_Frame {
         lineRange: parent.width - 60
     }
 
-    EChart_Weather {
-        id: idDryChart
-        anchors.top: idFirstLine.bottom
-        anchors.topMargin: 30
-        anchors.horizontalCenter: parent.horizontalCenter
-        chartWidth: parent.width - 60
-        chartHeight: parent.height/2 - 60
+//    EChart_Weather {
+//        id: idDryChart
+//        anchors.top: idFirstLine.bottom
+//        anchors.topMargin: 30
+//        anchors.horizontalCenter: parent.horizontalCenter
+//        chartWidth: parent.width - 60
+//        chartHeight: parent.height/2 - 60
+//    }
+
+    EButton_StandAlone {
+        id: idBtnGoToRealTime
+        onBtnClicked: {
+            console.log('qml> Go to Real time data')
+            AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_USER_DATA_REAL_TIME)
+        }
     }
 
     Component.onCompleted: {

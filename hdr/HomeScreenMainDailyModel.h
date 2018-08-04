@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QDateTime>
 #include "WeatherComponent.h"
+#include "HomeScreen_Enum.h"
 
 class HomeScreen_Main_Daily_Model : public QObject
 {

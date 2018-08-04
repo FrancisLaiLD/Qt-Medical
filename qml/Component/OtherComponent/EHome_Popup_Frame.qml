@@ -1,19 +1,21 @@
 import QtQuick 2.0
+import "../OtherComponent"
 
 
 Rectangle {
     id: idRectPopup
 
     property string popupTitle: "unknow Title"
+    property int popupWidth: 560
+    property int popupHeight: 400
 
-    width: 560 ; height: 400
-    color: "red"
-    radius: 10
+    width: popupWidth ; height: popupHeight
+    radius: 15
     opacity: 1.0
     gradient:
         Gradient {
-        GradientStop { position: 1.0; color: "#C2CF83" }
-        GradientStop { position: 0.0; color: "#85A000" }
+        GradientStop { position: 0.0; color: "#808080" }
+        GradientStop { position: 1.0; color: "white" }
     }
     MouseArea {
         id: idMouInsideRect
@@ -25,8 +27,19 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: 20
-        font.pixelSize: 28
+        font.pixelSize: 24
+        color: HomeScreenConst.value_popup_color
         text: idRoot.popupTitle
+    }
+
+    E_HorizentalLine {
+        id: ifFirstLine
+        anchors.top: popupTitle.bottom
+        anchors.topMargin: 5
+        anchors.horizontalCenter: parent.horizontalCenter
+        lineColor: "black"
+        lineHeight: 5
+        lineRange: parent - 30
     }
 
     NumberAnimation {

@@ -35,9 +35,11 @@
 #define SCREEN_EHOME_MAIN_ADVANCED              "Screen/EHome_Screen_Advanced.qml"
 #define SCREEN_EHOME_MAIN_USER_DATA             "Screen/EHome_Screen_UserData_Stored.qml"
 #define SCREEN_EHOME_USER_DATA_REALTIME         "Screen/EHome_Screen_UserData_RealTime.qml"
+#define SCREEN_EHOME_TECHNICAL_OVERVIEW         "Screen/EHome_Screen_Teachnical_Overview.qml"
 
 
 #define POPUP_EHOME_MAIN_USER_POPUP             "Popup/Medium_Popup.qml"
+#define POPUP_EHOME_NO_CONNECTION               "Popup/Small_Popup.qml"
 
 
 

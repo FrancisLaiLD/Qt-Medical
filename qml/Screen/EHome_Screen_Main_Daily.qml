@@ -15,10 +15,30 @@ EHome_Main_Frame {
         NumberAnimation { target: idRoot; property: "x"; from: -720; to: 0; duration: HomeScreenConst.time_screen_trans }
         NumberAnimation { target: idRoot; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
     }
+//    Timer {
+//        id: idMainTimer
+//        interval: 500
+//        onTriggered: {
+//            HomeDailyModel.leftWeather.proTemp += 1
+//            HomeDailyModel.leftWeather.proWeatherProperty += 1
+//        }
+//        repeat: true
+//    }
+
     property string lastTime: HomeDailyModel.timeUpdate
     EHome_Half_Frame {
         id: idAboveFrame
         x: 0; y: 0
+        function getImgSrc() {
+            switch(HomeDailyModel.leftWeather.proWeatherProperty) {
+            case HomeEnum.WEATHER_DAY_SHINE_BIG:
+                return Resource_General.weather_shine_big
+            case HomeEnum.WEATHER_DAY_SHINE_CLOUDY:
+                return Resource_General.weather_shine_cloudy
+            default:
+                return Resource_General.weather_rain_storm
+            }
+        }
 
         Item {
             id: leftSide
@@ -54,7 +74,7 @@ EHome_Main_Frame {
                 anchors.rightMargin: 20
                 anchors.top: parent.top
                 anchors.topMargin: 50
-                source: Resource_General.weather_rain_storm
+                source: idAboveFrame.getImgSrc()
             }
             Text {
                 id: idTemp_val
@@ -85,19 +105,29 @@ EHome_Main_Frame {
                 color: "gray"
             }
 
+            Text {
+                id: idWeatherRepresent
+                text: "Cloudy"
+                font.pixelSize: 20
+                anchors.top: idImgWeather.bottom
+                anchors.topMargin: 3
+                anchors.horizontalCenter: parent.horizontalCenter
+                color: "gray"
+            }
+
             Image {
                 id: idImgWindVelocity
-                width: 100; height: 100
+                width: 80; height: 80
                 anchors.top: idImgWeather.bottom
-                anchors.topMargin: 15
+                anchors.topMargin: 25
                 anchors.horizontalCenter: idImgWeather.horizontalCenter
-                anchors.horizontalCenterOffset: 30
+                anchors.horizontalCenterOffset: 50
                 source: Resource_General.weather_wind_velocity
             }
             Text {
                 id: idWind_direction
                 anchors.top: idImgWindVelocity.top
-                anchors.topMargin: 40
+                anchors.topMargin: 30
                 anchors.right: idImgWindVelocity.left
                 anchors.rightMargin: 100
                 text: HomeStringModel.STR_HOME_WEATHER_DIRECTION
@@ -190,14 +220,30 @@ EHome_Main_Frame {
         Text {
             id: idTitleTips
             anchors.top: parent.top
-            anchors.topMargin: 20
+            anchors.topMargin: 10
             anchors.left: parent.left
-            anchors.leftMargin: 30
-            text: HomeStringModel.STR_HOME_WEATHER_TIPS_TODAY
-            font.italic: true
+            anchors.leftMargin: 50
+            text: HomeStringModel.STR_HOME_DEVICE_CONNECTION
+            font.italic: false
             font.pixelSize: 20
             color: "black"
             font.underline: true
+        }
+
+        ListView {
+            id: lsv
+            anchors.top: idTitleTips.bottom
+            anchors.topMargin: 25
+            spacing: 5
+            width: parent.width ; height: 50*5
+            model: 6
+            delegate: Rectangle {
+                id: idDelegate
+                width: parent.width
+                height: 50
+                color: index%2 === 0 ? "#C8C8C8" : "#A4A4A4"
+                opacity: 0.3
+            }
         }
 
         Text {
@@ -205,16 +251,16 @@ EHome_Main_Frame {
             anchors.horizontalCenter: idUnderFrame.horizontalCenter
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 100
-            text: HomeStringModel.STR_HOME_WEATHER_SHOW_MORE_DETAIL
+            text: HomeStringModel.STR_HOME_GO_TO_DEVICE_SETTING
             font.italic: true
-            font.pixelSize: 20
-            color: idMouDetailAdv.pressed ? "#B3B712" : "green"
+            font.pixelSize: 16
+            color: idMouDetailAdv.pressed ? "#B3B712" : "gray"
             opacity: 0.5
             MouseArea {
                 id: idMouDetailAdv
                 anchors.fill: parent
                 onClicked: {
-                    AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_HOME_ADVANCED)
+                    AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_TECHNICAL_OVERVIEW)
                 }
             }
         }
@@ -222,5 +268,7 @@ EHome_Main_Frame {
 
     Component.onCompleted: {
         idMainAnimation.start()
+//        HomeDailyModel.leftWeather.proWeatherProperty = 0
+//        idMainTimer.start()
     }
 }

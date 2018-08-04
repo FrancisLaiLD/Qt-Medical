@@ -25,33 +25,44 @@ Window {
         return true
     }
 
+//    function getBgSource() {
+//        switch (AppManager.currentScreen) {
+//        case HomeEnum.EVENT_GO_TO_HOME_SCREEN:
+//            return "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/main_bg_weather.jpg"
+//        case HomeEnum.EVENT_GO_TO_HOME_WEATHER:
+//            return "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/main_bg_weather.jpg"
+//        default:
+//            return "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/main_bg_5.jpg"
+//        }
+//    }
+
+//    Connections {
+//        target: AppManager
+//        onCurrentScreenChanged:
+//            idBackgroundImg.source = getBgSource()
+//    }
+
     Rectangle {
         id: idRoot
         anchors.fill: parent
         color: "transparent"
-        opacity: 0.3
-        Image {
-            id: idBackgroundImg
-            anchors.fill: parent
-            visible: true
-            source: "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/Background_720x1280.jpg"
-        }
+        opacity: 0.1
     }
 
     Loader {
         id: idSttBarLoader
         x: 0; y: 0
         width: parent.width
-        height: 55
+        height: 60
         source: ""
     }
     Rectangle {
         id: idLine
-        color: "green"
+        color: "gray"
         width: parent.width - 60
         height: 1
         anchors.top: idSttBarLoader.bottom
-        anchors.topMargin: 4
+        anchors.topMargin: 0
         anchors.horizontalCenter: idRoot.horizontalCenter
         opacity: 0.5
     }
@@ -62,6 +73,14 @@ Window {
 //        anchors.fill: parent
         x: 0 ; y: 60
         source: ""
+        Image {
+            id: idBackgroundImg
+            anchors.fill: parent
+            opacity: 0.5
+            visible: true
+            fillMode: Image.PreserveAspectCrop
+            source: "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/main_bg_25.jpg"
+        }
     }
 
     Rectangle {

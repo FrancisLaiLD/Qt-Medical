@@ -51,15 +51,17 @@ void AppManager::initApplication()
     m_isShowingPopup = false;
     emit isShowingPopupChanged();
     // init model
-    p_statusbarModel->setUserIcon(p_resGeneral->ico_boy_2());
-    p_statusbarModel->setUserName("Đăng Hưng");
 
     // init Screen
-    p_homeQMLController->handleQMLEvent(static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN));
+//    setCurrentScreen(static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN));
+//    p_homeQMLController->handleQMLEvent(static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN));
+    handleHomeScreenClick(static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN));
 }
 
 void AppManager::handleHomeScreenClick(const int &_index)
 {
+    setCurrentScreen(_index);
+    qDebug() << "current screen: " << _index;
     p_homeQMLController->handleQMLEvent(_index);
 }
 
@@ -73,6 +75,32 @@ void AppManager::handleHidePopupClick(const int &_index)
 {
     p_homeQMLController->handleQMLEvent(_index);
     setIsShowingPopup(false);
+}
+
+QDateTime AppManager::currentTime() const
+{
+    // get Current Time
+//    m_currentTime = QDateTime::currentDateTime();
+//    return m_currentTime;
+    return QDateTime::currentDateTime();
+}
+
+void AppManager::setCurrentTime(const QDateTime &currentTime)
+{
+    m_currentTime = currentTime;
+}
+
+int AppManager::currentScreen() const
+{
+    return m_currentScreen;
+}
+
+void AppManager::setCurrentScreen(int currentScreen)
+{
+    if(m_currentScreen == currentScreen)
+        return;
+    m_currentScreen = currentScreen;
+    emit currentScreenChanged();
 }
 
 bool AppManager::isShowingPopup() const

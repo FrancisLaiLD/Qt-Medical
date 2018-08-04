@@ -9,11 +9,12 @@ class WeatherComponent : public QObject
 public:
     explicit WeatherComponent(QObject *parent = nullptr);
 
-    Q_PROPERTY(int proLocId         READ proLocId       WRITE setProLocId NOTIFY proLocIdChanged)
-    Q_PROPERTY(QString proLocName   READ proLocName     WRITE setProLocName NOTIFY proLocNameChanged)
-    Q_PROPERTY(int proTemp          READ proTemp        WRITE setProTemp NOTIFY proTempChanged)
-    Q_PROPERTY(int proWindVel       READ proWindVel     WRITE setProWindVel NOTIFY proWindVelChanged)
-    Q_PROPERTY(int proDry           READ proDry         WRITE setProDry NOTIFY proDryChanged)
+    Q_PROPERTY(int proLocId             READ proLocId           WRITE setProLocId NOTIFY proLocIdChanged)
+    Q_PROPERTY(QString proLocName       READ proLocName         WRITE setProLocName NOTIFY proLocNameChanged)
+    Q_PROPERTY(int proWeatherProperty   READ proWeatherProperty WRITE setProWeatherProperty NOTIFY proWeatherPropertyChanged)
+    Q_PROPERTY(int proTemp              READ proTemp            WRITE setProTemp NOTIFY proTempChanged)
+    Q_PROPERTY(int proWindVel           READ proWindVel         WRITE setProWindVel NOTIFY proWindVelChanged)
+    Q_PROPERTY(int proDry               READ proDry             WRITE setProDry NOTIFY proDryChanged)
 
     int proLocId() const;
     void setProLocId(int proLocId);
@@ -30,18 +31,23 @@ public:
     int proDry() const;
     void setProDry(int proDry);
 
+    int proWeatherProperty() const;
+    void setProWeatherProperty(int weatherpro);
+
 private:
     int m_proLocId;
     QString m_proLocName;
     int m_proTemp;
     int m_proWindVel;
     int m_proDry;
+    int m_proWeatherProperty;
 signals:
     void proLocIdChanged();
     void proLocNameChanged();
     void proTempChanged();
     void proWindVelChanged();
     void proDryChanged();
+    void proWeatherPropertyChanged();
 
 public slots:
 };

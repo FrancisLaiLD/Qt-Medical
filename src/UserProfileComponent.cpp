@@ -47,12 +47,12 @@ void UserProfileComponent::setName(const QString &name)
     }
 }
 
-QString UserProfileComponent::dob() const
+QDate UserProfileComponent::dob() const
 {
     return m_dob;
 }
 
-void UserProfileComponent::setDob(const QString &dob)
+void UserProfileComponent::setDob(const QDate &dob)
 {
     if (m_dob != dob)
     {
@@ -61,12 +61,12 @@ void UserProfileComponent::setDob(const QString &dob)
     }
 }
 
-QString UserProfileComponent::dateEstablish() const
+QDate UserProfileComponent::dateEstablish() const
 {
     return m_dateEstablish;
 }
 
-void UserProfileComponent::setDateEstablish(const QString &dateEstablish)
+void UserProfileComponent::setDateEstablish(const QDate &dateEstablish)
 {
     if (m_dateEstablish != dateEstablish)
     {
@@ -75,12 +75,12 @@ void UserProfileComponent::setDateEstablish(const QString &dateEstablish)
     }
 }
 
-QString UserProfileComponent::dateExpert() const
+QDate UserProfileComponent::dateExpert() const
 {
     return m_dateExpert;
 }
 
-void UserProfileComponent::setDateExpert(const QString &dateExpert)
+void UserProfileComponent::setDateExpert(const QDate &dateExpert)
 {
     if (m_dateExpert != dateExpert)
     {

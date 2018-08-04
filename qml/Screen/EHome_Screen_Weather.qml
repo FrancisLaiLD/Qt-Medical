@@ -43,9 +43,9 @@ EHome_Main_Frame {
             anchors.topMargin: 10
             anchors.horizontalCenter: parent.horizontalCenter
         }
-        border.color: "#05DAB3"
+        border.color: "gray"
         border.width: 1
-        radius: 12
+        radius: 6
         color: "transparent"
     }
 

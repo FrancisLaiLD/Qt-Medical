@@ -11,7 +11,8 @@ public:
     Resource_General(QObject *parent = nullptr, QString cPrefix = "")
     {
         Q_UNUSED(parent);
-        m_prefix = cPrefix;
+        Q_UNUSED(cPrefix);
+        m_prefix = "file:///home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/icons/general/";
         m_prefixChart = "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/icons/chart/";
         m_prefixWeather = "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/weather/weather-1/";
 
