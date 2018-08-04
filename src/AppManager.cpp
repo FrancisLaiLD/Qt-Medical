@@ -12,7 +12,7 @@ void AppManager::initQmlProperty()
     p_userProfileModel      = new UserProfileModel();
     p_resStatusbar          = new Resource_Statusbar(nullptr, QString(STATUSBAR_PATH));
     p_resGeneral            = new Resource_General(nullptr, QString(GENERAL_PATH));
-    p_homeDailyModel        = new HomeScreen_Main_Daily_Model();
+    p_homeDailyModel        = new HomeScreen_Main_Daily_Model(nullptr, p_qqmlAppEngine);
     // constant model
     p_homeScreenConst       = new HomeScreenConst();
     p_homeStringModel       = new HomeStringModel();
@@ -25,7 +25,7 @@ void AppManager::initQmlProperty()
     p_qqmlAppEngine->rootContext()->setContextProperty("AppManager",        this);
     p_qqmlAppEngine->rootContext()->setContextProperty("StatusbarModel",    p_statusbarModel);
     p_qqmlAppEngine->rootContext()->setContextProperty("UserProfileModel",  p_userProfileModel);
-    p_qqmlAppEngine->rootContext()->setContextProperty("HomeDailyModel",    p_homeDailyModel);
+//    p_qqmlAppEngine->rootContext()->setContextProperty("HomeDailyModel",    p_homeDailyModel);
     p_qqmlAppEngine->rootContext()->setContextProperty("ResStatusBar",      p_resStatusbar);
     p_qqmlAppEngine->rootContext()->setContextProperty("Resource_General",  p_resGeneral);
     p_qqmlAppEngine->rootContext()->setContextProperty("HomeScreenConst",   p_homeScreenConst);
@@ -63,6 +63,7 @@ void AppManager::handleHomeScreenClick(const int &_index)
     setCurrentScreen(_index);
     qDebug() << "current screen: " << _index;
     p_homeQMLController->handleQMLEvent(_index);
+
 }
 
 void AppManager::handlePopupClick(const int &_index)

@@ -14,6 +14,7 @@ HomeQMLController::HomeQMLController(QObject *parent, QQmlApplicationEngine* _pA
 
 bool HomeQMLController::handleQMLEvent(const int &_index, const QVariant &_value)
 {
+    qDebug() << _value;
     if (_index == m_currentScreen)
     {
         return false;

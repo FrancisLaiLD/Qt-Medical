@@ -2,7 +2,7 @@ import QtQuick 2.0
 
 Rectangle {
     id: idRoot
-    property int btnWidth: 100
+    property int btnWidth: -1
     property int btnHeight: 40
     property string btnLabel: "Unknow button"
     property string btnLabelColor: "#310552"
@@ -14,7 +14,7 @@ Rectangle {
     // signals
     signal btnClicked()
 
-    width: idBtnLabel.width + 30
+    width: btnWidth === -1 ? idBtnLabel.width + 30 : btnWidth
     height: idBtnLabel.height + 16
     radius: 8
     border.width: 2

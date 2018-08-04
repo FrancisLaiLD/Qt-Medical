@@ -5,17 +5,21 @@
 #include <QDateTime>
 
 
-class DeviceComponent : public QObject
+class DeviceComponent /*: public QObject*/
 {
-    Q_OBJECT
+//    Q_OBJECT
 
 public:
     DeviceComponent() {}
-    virtual ~DeviceComponent() {}
+    DeviceComponent(QString cName, bool cState, QDateTime cLastConn) : m_proName(cName), m_proState(cState), m_proLastConnect(cLastConn)
+    {
 
-    Q_PROPERTY(QString proName                  READ proName            WRITE setProName            NOTIFY proNameChanged)
-    Q_PROPERTY(bool proState                    READ proState           WRITE setProState           NOTIFY proStateChanged)
-    Q_PROPERTY(QDateTime proLastConnect         READ proLastConnect     WRITE setProLastConnect     NOTIFY proLastConnectChanged)
+    }
+    ~DeviceComponent() {}
+
+//    Q_PROPERTY(QString proName                  READ proName            WRITE setProName            NOTIFY proNameChanged)
+//    Q_PROPERTY(bool proState                    READ proState           WRITE setProState           NOTIFY proStateChanged)
+//    Q_PROPERTY(QDateTime proLastConnect         READ proLastConnect     WRITE setProLastConnect     NOTIFY proLastConnectChanged)
 
     QString proName() const;
     void setProName(const QString &proName);
@@ -32,11 +36,11 @@ private:
     QDateTime   m_proLastConnect;
 
 signals:
-    void proNameChanged()       ;
-    void proStateChanged()      ;
-    void proLastConnectChanged();
+//    void proNameChanged()       ;
+//    void proStateChanged()      ;
+//    void proLastConnectChanged();
 };
 
-Q_DECLARE_METATYPE(DeviceComponent*)
+//Q_DECLARE_METATYPE(DeviceComponent*)
 
 #endif // DEVICECOMPONENT_H

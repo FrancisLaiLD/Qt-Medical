@@ -34,7 +34,8 @@ HEADERS += \
     hdr/Component/HomeComponent.h \
     hdr/Component/UserProfileComponent.h \
     hdr/Component/WeatherComponent.h \
-    hdr/Component/DeviceComponent.h
+    hdr/Component/DeviceComponent.h \
+    hdr/HomeListDeviceModel.h
 
 SOURCES += \
         main.cpp \
@@ -49,7 +50,8 @@ SOURCES += \
     src/UserProfileModel.cpp \
     src/HomeScreenMainDailyModel.cpp \
     src/BezierCurve.cpp \
-    src/DeviceComponent.cpp
+    src/DeviceComponent.cpp \
+    hdr/HomeListDeviceModel.cpp
 
 RESOURCES +=
 

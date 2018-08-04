@@ -47,6 +47,10 @@ EHome_Main_Frame {
 
     EButton_StandAlone {
         id: idBtnGoToRealTime
+        anchors.right: parent.right
+        anchors.rightMargin: 10
+        anchors.bottom: idTempChart.top
+        btnLabel: "Switch to real time"
         onBtnClicked: {
             console.log('qml> Go to Real time data')
             AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_USER_DATA_REAL_TIME)

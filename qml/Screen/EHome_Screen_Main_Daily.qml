@@ -15,15 +15,15 @@ EHome_Main_Frame {
         NumberAnimation { target: idRoot; property: "x"; from: -720; to: 0; duration: HomeScreenConst.time_screen_trans }
         NumberAnimation { target: idRoot; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
     }
-//    Timer {
-//        id: idMainTimer
-//        interval: 500
-//        onTriggered: {
-//            HomeDailyModel.leftWeather.proTemp += 1
-//            HomeDailyModel.leftWeather.proWeatherProperty += 1
-//        }
-//        repeat: true
-//    }
+    //    Timer {
+    //        id: idMainTimer
+    //        interval: 500
+    //        onTriggered: {
+    //            HomeDailyModel.leftWeather.proTemp += 1
+    //            HomeDailyModel.leftWeather.proWeatherProperty += 1
+    //        }
+    //        repeat: true
+    //    }
 
     property string lastTime: HomeDailyModel.timeUpdate
     EHome_Half_Frame {
@@ -177,7 +177,8 @@ EHome_Main_Frame {
                 anchors.left: timeUpdate.right
                 anchors.leftMargin: 10
                 anchors.verticalCenter: timeUpdate.verticalCenter
-                text: idRoot.lastTime.substring(0,10) + ", " + idRoot.lastTime.substring(11,19)
+                text: Qt.formatDateTime(idRoot.lastTime, "yyyy.MM.dd") +
+                      " , "+ Qt.formatDateTime(idRoot.lastTime, "hh:mm AP")
                 font.pixelSize: 14
                 font.italic: true
                 color: "gray"
@@ -261,22 +262,32 @@ EHome_Main_Frame {
             anchors.topMargin: 40
             spacing: 5
             interactive: true
-            width: parent.width ; height: 50*6
-            model: 6
+            width: parent.width ; height: contentHeight
+            model: listDevice
             delegate: Rectangle {
                 id: idDelegate
                 width: parent.width
                 height: 50
                 color: index%2 === 0 ? "#C8C8C8" : "#A4A4A4"
                 opacity: 0.8
+                Text {
+                    id: idTxt_device_name
+                    text: proName
+                    x: txt_device_name.x
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Image {
                     id: idImgState
-//                    anchors.right: parent.right
-//                    anchors.rightMargin: 300
                     x: txt_device_state.x
                     anchors.verticalCenter: parent.verticalCenter
-                    source: HomeDailyModel.listDevice[index].proState ? Resource_General.btn_state_on : Resource_General.btn_state_off
+                    source: proState ? Resource_General.btn_state_on : Resource_General.btn_state_off
                     width: 50 ; height: parent.height
+                }
+                Text {
+                    id: idTxt_device_lastConn
+                    text: proState ? "online" : Qt.formatDateTime(proLastConn, "yyyy.MM.dd") + " - "+ Qt.formatDateTime(proLastConn, "hh:mm AP")
+                    x: txt_device_last_conn.x
+                    anchors.verticalCenter: parent.verticalCenter
                 }
             }
         }
@@ -289,7 +300,7 @@ EHome_Main_Frame {
             text: HomeStringModel.STR_HOME_GO_TO_DEVICE_SETTING
             font.italic: true
             font.pixelSize: 16
-            color: idMouDetailAdv.pressed ? "#B3B712" : "gray"
+            color: idMouDetailAdv.pressed ? "#green" : "gray"
             opacity: 0.5
             MouseArea {
                 id: idMouDetailAdv
@@ -303,8 +314,7 @@ EHome_Main_Frame {
 
     Component.onCompleted: {
         idMainAnimation.start()
-        console.log('HomeDailyModel.listDevice[1].proState: ' + HomeDailyModel.listDevice[0].proName)
-//        HomeDailyModel.leftWeather.proWeatherProperty = 0
-//        idMainTimer.start()
+        //        HomeDailyModel.leftWeather.proWeatherProperty = 0
+        //        idMainTimer.start()
     }
 }
