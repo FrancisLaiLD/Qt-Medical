@@ -3,8 +3,26 @@ import "../Component/OtherComponent"
 import com.embeddeduse.models 1.0
 EHome_Popup_Frame {
     id: idRoot
-    popupTitle: "Current user profile"
+    popupTitle: currentMode === 1 ? "Current user profile" : "Choose other user"
     property int currentMode: -1
+    ParallelAnimation {
+        id: animationCurUsr
+        running: false
+//        NumberAnimation { target: idCurrentUser; property: "x"; from: -560; to: 0; duration: HomeScreenConst.time_screen_trans }
+        NumberAnimation { target: idCurrentUser; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
+    }
+    ParallelAnimation {
+        id: animationOtherUsr
+        running: false
+//        NumberAnimation { target: idCurrentUser; property: "x"; from: -560; to: 0; duration: HomeScreenConst.time_screen_trans }
+        NumberAnimation { target: idOtherUser; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
+    }
+    onCurrentModeChanged: {
+        if (currentMode === 1)
+            animationCurUsr.start()
+        else
+            animationOtherUsr.start()
+    }
 
     Item {
         id: idCurrentUser
@@ -145,7 +163,25 @@ EHome_Popup_Frame {
         id: idOtherUser
         width: parent.width ; height: parent.height - 68
         visible: currentMode === 2
+        Text {
+            id: idUsrName
+            anchors.top: parent.top
+            anchors.topMargin: 100
+            anchors.right: parent.right
+            anchors.rightMargin: 250
+            text: "Choose your Acc :"
+            font.pixelSize: 16
+        }
+        // get List Usr here
 
+        Text {
+            id: idUsrPass
+            anchors.right: idUsrName.right
+            anchors.verticalCenter: idUsrName.verticalCenter
+            anchors.verticalCenterOffset: 30
+            text: "Password :"
+            font.pixelSize: 16
+        }
     }
 
     EButton_StandAlone {
