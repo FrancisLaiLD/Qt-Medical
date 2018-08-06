@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import com.embeddeduse.models 1.0
+import Ehome 1.0
 
 Rectangle {
     id:idRoot
@@ -29,7 +29,7 @@ Rectangle {
         Image {
             id:idUserImg
             anchors.fill: parent
-            source: UserProfileModel.curUser.userIcon
+            source: StatusbarModel.userIcon
         }
         MouseArea {
             id: idMouUserBtn
@@ -42,7 +42,7 @@ Rectangle {
 
     Text {
         id: idUserName
-        text: UserProfileModel.curUser.name
+        text: StatusbarModel.userName
         anchors.left: idUserRect.right
         anchors.leftMargin: 3
         anchors.verticalCenter: idUserRect.verticalCenter

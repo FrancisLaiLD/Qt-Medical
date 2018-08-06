@@ -19,6 +19,7 @@
 #include "StatusbarModel.h"
 #include "UserProfileModel.h"
 #include "HomeScreenMainDailyModel.h"
+#include "SettingModel.h"
 // Constant
 #include "HomeScreenConst.h"
 #include "HomeStringModel.h"
@@ -81,6 +82,7 @@ private:
     HomeScreen_Main_Daily_Model     *p_homeDailyModel;
     StatusbarModel                  *p_statusbarModel;
     UserProfileModel                *p_userProfileModel;
+    SettingModel                    *p_settingModel;
 //    ResourceManager         *p_resManager;
     Resource_Statusbar              *p_resStatusbar;
     Resource_General                *p_resGeneral;

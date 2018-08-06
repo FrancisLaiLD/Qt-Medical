@@ -1,13 +1,11 @@
 import QtQuick 2.0
 import "../OtherComponent"
 
-
 Rectangle {
     id: idRectPopup
-
-    property string popupTitle: "unknow Title"
     property int popupWidth: 560
     property int popupHeight: 400
+    property string popupTitle: "unknow Title"
 
     width: popupWidth ; height: popupHeight
     radius: 15

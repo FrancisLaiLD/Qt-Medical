@@ -35,7 +35,8 @@ HEADERS += \
     hdr/Component/UserProfileComponent.h \
     hdr/Component/WeatherComponent.h \
     hdr/Component/DeviceComponent.h \
-    hdr/HomeListDeviceModel.h
+    hdr/HomeListDeviceModel.h \
+    hdr/SettingModel.h
 
 SOURCES += \
         main.cpp \
@@ -51,7 +52,8 @@ SOURCES += \
     src/HomeScreenMainDailyModel.cpp \
     src/BezierCurve.cpp \
     src/DeviceComponent.cpp \
-    hdr/HomeListDeviceModel.cpp
+    src/SettingModel.cpp \
+    src/HomeListDeviceModel.cpp
 
 RESOURCES +=
 
@@ -91,5 +93,11 @@ DISTFILES += \
     qml/Screen/EHome_Screen_Advanced.qml \
     qml/Screen/EHome_Screen_UserProfile.qml \
     qml/Screen/EHome_Screen_Weather.qml \
-    qml/Screen/EHome_Screen_Teachnical_Overview.qml
+    qml/Screen/EHome_Screen_Teachnical_Overview.qml \
+    qml/Component/OtherComponent/Huge_Popup.qml \
+    qml/Component/OtherComponent/Small_Popup.qml \
+    qml/Component/OtherComponent/Medium_Popup.qml \
+    qml/Popup/EHome_Popup_UserProfile.qml \
+    qml/Component/OtherComponent/EButton_Combobox.qml \
+    qml/Screen/EHome_Screen_Setting.qml
 

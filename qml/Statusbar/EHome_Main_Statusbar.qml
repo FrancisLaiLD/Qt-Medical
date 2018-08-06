@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import "../Component/ScreenComponent"
-import com.embeddeduse.models 1.0
+import Ehome 1.0
 
 EHome_StatusBar_Frame {
     id: idRoot

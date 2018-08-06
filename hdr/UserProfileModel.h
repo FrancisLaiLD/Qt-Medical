@@ -1,48 +1,59 @@
-#ifndef USERPROFILEMODEL_H
+﻿#ifndef USERPROFILEMODEL_H
 #define USERPROFILEMODEL_H
 
 #include <QObject>
-#include "Component/UserProfileComponent.h"
+#include <QAbstractListModel>
+#include <QDebug>
 #include "Resource_General.h"
 #include "Resource_Statusbar.h"
+#include "Component/UserProfileComponent.h"
 
-class UserProfileModel : public QObject
+class UserProfileModel : public QAbstractListModel
 {
     Q_OBJECT
+    enum ProfileRoles {
+        PROFILE_ID = Qt::UserRole + 1,
+        PROFILE_AGE,
+        PROFILE_NAME,
+        PROFILE_DOB,
+        PROFILE_USERICON,
+        PROFILE_ESTABLISH,
+        PROFILE_EXPERT,
+        PROFILE_PASSWORD,
+        PROFILE_LOGINSTATE,
+        PROFILE_TIMELOGIN
+    };
+    Q_PROPERTY(UserProfileComponent curUser READ curUser WRITE setCurUser NOTIFY curUserChanged)
+
 public:
-    explicit UserProfileModel(QObject *parent = nullptr);
+    UserProfileModel();
+    virtual ~UserProfileModel() override;
 
-    Q_PROPERTY(QList<QObject*> listUserProfile READ listUserProfile WRITE setListUserProfile NOTIFY listUserProfileChanged)
-    Q_PROPERTY(int curUserIndex READ curUserIndex WRITE setCurUserIndex NOTIFY curUserIndexChanged)
-    Q_PROPERTY(UserProfileComponent* curUser READ curUser WRITE setCurUser NOTIFY curUserChanged)
+    // pure virtual implementations
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+    QHash<int, QByteArray> roleNames() const override;
 
-    void addUserProfile(UserProfileModel* _newUser);
-    void removeUserProfile(int &_index);
-    void clearListUserProfile();
+    void addUser(const UserProfileComponent& m_device);
+    void remUser(const int& _index);
 
-    QList<QObject *> listUserProfile() const;
-    void setListUserProfile(const QList<QObject *> &listUserProfile);
 
-    int curUserIndex() const;
-    void setCurUserIndex(int curUserIndex);
+    QVector<UserProfileComponent> listUser() const;
+    void setListUser(const QVector<UserProfileComponent> &listUser);
 
-    UserProfileComponent *curUser() const;
-    void setCurUser(UserProfileComponent *curUser);
+    UserProfileComponent curUser() const;
+    void setCurUser(const UserProfileComponent &curUser);
+
+    void initUserList();
 
 private:
-    QList<QObject*>         m_listUserProfile;
-    int                     m_curUserIndex;
-    UserProfileComponent*   m_curUser;
-    Resource_General*       p_resGeneral;
-    Resource_Statusbar*     p_resStatusbar;
-
+    Resource_General *p_resGeneral;
+    Resource_Statusbar *p_resStatusbar;
+    QVector<UserProfileComponent> m_listUser;
+    UserProfileComponent m_curUser;
 signals:
-    void listUserProfileChanged();
-    void curUserIndexChanged();
     void curUserChanged();
-
-public slots:
-
 };
+
 
 #endif // USERPROFILEMODEL_H

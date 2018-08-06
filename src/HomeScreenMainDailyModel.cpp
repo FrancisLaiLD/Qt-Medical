@@ -4,11 +4,11 @@ HomeScreen_Main_Daily_Model::HomeScreen_Main_Daily_Model(QObject *parent, QQmlAp
 {
     p_qqmlEngine = cAppEngine;
     p_homeListDevice = new HomeListDeviceModel();
-    p_homeListDevice->addDevice(DeviceComponent("Device number 1", true, QDateTime::currentDateTime()));
-    p_homeListDevice->addDevice(DeviceComponent("Device number 2", false, QDateTime::currentDateTime()));
-    p_homeListDevice->addDevice(DeviceComponent("Device number 3", true, QDateTime::currentDateTime()));
-    p_homeListDevice->addDevice(DeviceComponent("Device number 4", false, QDateTime::currentDateTime()));
-    p_homeListDevice->addDevice(DeviceComponent("Device number 5", true, QDateTime::currentDateTime()));
+    p_homeListDevice->addDevice(DeviceComponent("Device number 1", true,    QDateTime::currentDateTime()));
+    p_homeListDevice->addDevice(DeviceComponent("Device number 2", false,   QDateTime::currentDateTime()));
+    p_homeListDevice->addDevice(DeviceComponent("Device number 3", true,    QDateTime::currentDateTime()));
+    p_homeListDevice->addDevice(DeviceComponent("Device number 4", false,   QDateTime::currentDateTime()));
+    p_homeListDevice->addDevice(DeviceComponent("Device number 5", true,    QDateTime::currentDateTime()));
 
     m_leftWeather   = new WeatherComponent();
     m_leftWeather->setProWeatherProperty(static_cast<int>(HomeScreen_Enum::ENUM_WEATHER_PROPERTY::WEATHER_DAY_STORM_RAINNY));

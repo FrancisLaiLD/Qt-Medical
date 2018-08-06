@@ -1,6 +1,20 @@
 #include "hdr/Component/UserProfileComponent.h"
 
-UserProfileComponent::UserProfileComponent(QObject *parent) : QObject(parent)
+UserProfileComponent::UserProfileComponent()
+{
+    m_id = 111;
+    m_age = 25;
+    m_name = "Unknow";
+    m_dob = QDateTime::currentDateTime().date();
+//    m_userIcon = m_resGeneral.ico_boy_1();
+    m_dateEstablish = QDateTime::currentDateTime().date();
+    m_dateExpert = QDateTime::currentDateTime().date();;
+    m_password = "12345678";
+    m_loginState = false;
+    m_timeLogin = QDateTime::currentDateTime();
+}
+
+UserProfileComponent::~UserProfileComponent()
 {
 
 }
@@ -15,7 +29,6 @@ void UserProfileComponent::setId(int id)
     if(m_id != id)
     {
         m_id = id;
-        emit idChanged();
     }
 }
 
@@ -29,7 +42,6 @@ void UserProfileComponent::setAge(int age)
     if (m_age != age)
     {
         m_age = age;
-        emit ageChanged();
     }
 }
 
@@ -43,7 +55,6 @@ void UserProfileComponent::setName(const QString &name)
     if (m_name != name)
     {
         m_name = name;
-        emit nameChanged();
     }
 }
 
@@ -57,7 +68,6 @@ void UserProfileComponent::setDob(const QDate &dob)
     if (m_dob != dob)
     {
         m_dob = dob;
-        emit dobChanged();
     }
 }
 
@@ -71,7 +81,6 @@ void UserProfileComponent::setDateEstablish(const QDate &dateEstablish)
     if (m_dateEstablish != dateEstablish)
     {
         m_dateEstablish = dateEstablish;
-        emit dateEstablishChanged();
     }
 }
 
@@ -85,7 +94,6 @@ void UserProfileComponent::setDateExpert(const QDate &dateExpert)
     if (m_dateExpert != dateExpert)
     {
         m_dateExpert = dateExpert;
-        emit dateExpertChanged();
     }
 }
 
@@ -99,7 +107,6 @@ void UserProfileComponent::setPassword(const QString &password)
     if (m_password != password)
     {
         m_password = password;
-        emit passwordChanged();
     }
 }
 
@@ -113,7 +120,6 @@ void UserProfileComponent::setUserIcon(const QString &userIcon)
     if (m_userIcon != userIcon)
     {
         m_userIcon = userIcon;
-        emit userIconChanged();
     }
 }
 
@@ -127,7 +133,6 @@ void UserProfileComponent::setLoginState(bool loginState)
     if (m_loginState != loginState)
     {
         m_loginState = loginState;
-        emit loginStateChanged();
     }
 }
 
@@ -141,6 +146,5 @@ void UserProfileComponent::setTimeLogin(const QDateTime &timeLogin)
     if (m_timeLogin != timeLogin)
     {
         m_timeLogin = timeLogin;
-        emit timeLoginChanged();
     }
 }

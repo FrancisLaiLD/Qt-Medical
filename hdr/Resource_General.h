@@ -15,6 +15,7 @@ public:
         m_prefix = "file:///home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/icons/general/";
         m_prefixChart = "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/icons/chart/";
         m_prefixWeather = "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/weather/weather-1/";
+        m_prefixHumanImgs = "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/human-images/";
 
     }
     virtual ~Resource_General() {}
@@ -58,6 +59,8 @@ public:
     Q_PROPERTY(QString weather_shine_windy          READ weather_shine_windy            CONSTANT)
     Q_PROPERTY(QString btn_state_on                 READ btn_state_on                   CONSTANT)
     Q_PROPERTY(QString btn_state_off                READ btn_state_off                  CONSTANT)
+
+    Q_PROPERTY(QString human_overview               READ human_overview                 CONSTANT)
 
 
     /*
@@ -105,11 +108,14 @@ public:
     QString weather_shine_big()         {return m_prefixWeather + "weather_shine_big.png";}
     QString weather_shine_windy()       {return m_prefixWeather + "weather_shine_windy.png";}
 
+    QString human_overview()            {return m_prefixHumanImgs + "human_overview.jpg";}
+
 
 private:
     QString m_prefix;
     QString m_prefixChart;
     QString m_prefixWeather;
+    QString m_prefixHumanImgs;
 };
 
 #endif // RESOURCE_GENERAL_H

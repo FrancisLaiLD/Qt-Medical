@@ -2,7 +2,7 @@ import QtQuick 2.9
 import QtQuick.Window 2.2
 import "Screen"
 import "Component/ScreenComponent"
-import com.embeddeduse.models 1.0
+import Ehome 1.0
 
 Window {
     visible: true

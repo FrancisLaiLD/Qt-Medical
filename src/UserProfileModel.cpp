@@ -1,68 +1,141 @@
 #include "hdr/UserProfileModel.h"
 
-UserProfileModel::UserProfileModel(QObject *parent) : QObject(parent)
+UserProfileModel::UserProfileModel()
 {
     p_resGeneral = new Resource_General();
     p_resStatusbar = new Resource_Statusbar();
-    UserProfileComponent *m_user = new UserProfileComponent();
-    m_user->setAge(28);
-    m_user->setDateEstablish(QDate(2018, 03, 26));
-    m_user->setDateExpert(QDate(2100, 05, 27));
-    m_user->setDob(QDate(01, 04, 1990));
-    m_user->setId(100110111);
-    m_user->setLoginState(true);
-    m_user->setUserIcon(p_resGeneral->ico_boy_2());
-    m_user->setName("Lai Dang Hung");
-    m_user->setPassword("kakalot");
-    m_user->setTimeLogin(QDateTime::currentDateTime());
-    this->setCurUser(m_user);
+//    UserProfileComponent *m_user = new UserProfileComponent();
+//    m_user->setAge(28);
+//    m_user->setDateEstablish(QDate(2018, 03, 26));
+//    m_user->setDateExpert(QDate(2100, 05, 27));
+//    m_user->setDob(QDate(01, 04, 1990));
+//    m_user->setId(100110111);
+//    m_user->setLoginState(true);
+//    m_user->setUserIcon(p_resGeneral->ico_boy_2());
+//    m_user->setName("Lai Dang Hung");
+//    m_user->setPassword("kakalot");
+//    m_user->setTimeLogin(QDateTime::currentDateTime());
+    initUserList();
+    setCurUser(m_listUser.at(0));
 }
 
-void UserProfileModel::addUserProfile(UserProfileModel* _newUser)
+UserProfileModel::~UserProfileModel()
 {
-    m_listUserProfile.append(_newUser);
-    emit listUserProfileChanged();
+
 }
 
-void UserProfileModel::removeUserProfile(int &_index)
+QVariant UserProfileModel::data(const QModelIndex &index, int role) const
 {
-    m_listUserProfile.removeAt(_index);
-    emit listUserProfileChanged();
+    if (index.row() < 0 || index.row() >= m_listUser.size())
+    {
+        qDebug() << "HungLD";
+        return QVariant();
+    }
+    const UserProfileComponent& m_user = m_listUser[index.row()];
+    if (role == ProfileRoles::PROFILE_ID)
+    {
+        return m_user.id();
+    }
+    else if (role == ProfileRoles::PROFILE_AGE)
+    {
+        return  m_user.age();
+    }
+    else if (role == ProfileRoles::PROFILE_NAME)
+    {
+        return  m_user.name();
+    }
+    else if (role == ProfileRoles::PROFILE_DOB)
+    {
+        return m_user.dob();
+    }
+    else if (role == ProfileRoles::PROFILE_USERICON)
+    {
+        return m_user.userIcon();
+    }
+    else if (role == ProfileRoles::PROFILE_ESTABLISH)
+    {
+        return m_user.dateEstablish();
+    }
+    else if (role == ProfileRoles::PROFILE_EXPERT)
+    {
+        return m_user.dateExpert();
+    }
+    else if (role == ProfileRoles::PROFILE_PASSWORD)
+    {
+        return m_user.password();
+    }
+    else if (role == ProfileRoles::PROFILE_LOGINSTATE)
+    {
+        return m_user.loginState();
+    }
+    else if (role == ProfileRoles::PROFILE_TIMELOGIN)
+    {
+        return m_user.timeLogin();
+    }
+    return QVariant();
 }
 
-void UserProfileModel::clearListUserProfile()
+int UserProfileModel::rowCount(const QModelIndex &parent) const
 {
-    m_listUserProfile.clear();
-    emit listUserProfileChanged();
+    Q_UNUSED(parent);
+    return m_listUser.size();
 }
 
-QList<QObject *> UserProfileModel::listUserProfile() const
+QHash<int, QByteArray> UserProfileModel::roleNames() const
 {
-    return m_listUserProfile;
+    QHash<int, QByteArray> m_role;
+    m_role[ProfileRoles::PROFILE_ID]        =   "id";
+    m_role[ProfileRoles::PROFILE_AGE]       =   "age";
+    m_role[ProfileRoles::PROFILE_NAME]       =   "name";
+    m_role[ProfileRoles::PROFILE_DOB]       =   "dob";
+    m_role[ProfileRoles::PROFILE_USERICON]  =   "userIcon";
+    m_role[ProfileRoles::PROFILE_ESTABLISH] =   "dateEstablish";
+    m_role[ProfileRoles::PROFILE_EXPERT]    =   "dateExpert";
+    m_role[ProfileRoles::PROFILE_PASSWORD]  =   "password";
+    m_role[ProfileRoles::PROFILE_LOGINSTATE]=   "loginState";
+    m_role[ProfileRoles::PROFILE_TIMELOGIN] =   "timeLogin";
+    return m_role;
 }
 
-void UserProfileModel::setListUserProfile(const QList<QObject *> &listUserProfile)
+void UserProfileModel::addUser(const UserProfileComponent &m_device)
 {
-    m_listUserProfile = listUserProfile;
+    beginInsertRows(QModelIndex(), rowCount(), rowCount());
+    m_listUser.push_back(m_device);
+    endInsertRows();
 }
 
-int UserProfileModel::curUserIndex() const
+void UserProfileModel::remUser(const int &_index)
 {
-    return m_curUserIndex;
+    beginRemoveRows(QModelIndex(), rowCount(), rowCount());
+    m_listUser.removeAt(_index);
+    endRemoveRows();
 }
 
-void UserProfileModel::setCurUserIndex(int curUserIndex)
+QVector<UserProfileComponent> UserProfileModel::listUser() const
 {
-    m_curUserIndex = curUserIndex;
+    return m_listUser;
 }
 
-UserProfileComponent *UserProfileModel::curUser() const
+void UserProfileModel::setListUser(const QVector<UserProfileComponent> &listUser)
+{
+    m_listUser = listUser;
+}
+
+UserProfileComponent UserProfileModel::curUser() const
 {
     return m_curUser;
 }
 
-void UserProfileModel::setCurUser(UserProfileComponent *curUser)
+void UserProfileModel::setCurUser(const UserProfileComponent &curUser)
 {
     m_curUser = curUser;
 }
 
+void UserProfileModel::initUserList()
+{
+    for (int i= 0; i< 5; i++)
+    {
+        UserProfileComponent nUserProfile;
+        this->addUser(nUserProfile);
+    }
+}

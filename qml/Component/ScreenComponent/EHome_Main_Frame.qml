@@ -2,7 +2,7 @@ import QtQuick 2.0
 
 Rectangle {
     id:idRoot
-    property string backgroundImage: ""
+    property string scrrenBgImg: ""
     property string screenTitle: ""
     width: 720
     height: 1080 - 60
@@ -10,7 +10,7 @@ Rectangle {
 
     Image {
         id: idMainImg
-        source: idRoot.backgroundImage
+        source: idRoot.scrrenBgImg
         anchors.fill: parent
     }
 
@@ -22,7 +22,5 @@ Rectangle {
         font.pixelSize: HomeScreenConst.title_screen_size
         text: idRoot.screenTitle
     }
-
-
 
 }

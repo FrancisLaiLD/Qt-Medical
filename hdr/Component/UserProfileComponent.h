@@ -3,22 +3,19 @@
 
 #include <QObject>
 #include <QDateTime>
-class UserProfileComponent : public QObject
+#include "../Resource_General.h"
+#include "../Resource_Statusbar.h"
+class UserProfileComponent /*: public QObject*/
 {
-    Q_OBJECT
-public:
-    explicit UserProfileComponent(QObject *parent = nullptr);
-    Q_PROPERTY(int id       READ id         WRITE setId         NOTIFY idChanged)
-    Q_PROPERTY(int age      READ age        WRITE setAge        NOTIFY ageChanged)
-    Q_PROPERTY(QString name READ name       WRITE setName       NOTIFY nameChanged)
-    Q_PROPERTY(QDate dob    READ dob        WRITE setDob        NOTIFY dobChanged)
+//    Q_OBJECT
 
-    Q_PROPERTY(QString userIcon             READ userIcon               WRITE setUserIcon               NOTIFY userIconChanged)
-    Q_PROPERTY(QDate dateEstablish          READ dateEstablish          WRITE setDateEstablish          NOTIFY dateEstablishChanged)
-    Q_PROPERTY(QDate dateExpert             READ dateExpert             WRITE setDateExpert             NOTIFY dateExpertChanged)
-    Q_PROPERTY(QString password             READ password               WRITE setPassword               NOTIFY passwordChanged)
-    Q_PROPERTY(bool loginState              READ loginState             WRITE setLoginState             NOTIFY loginStateChanged)
-    Q_PROPERTY(QDateTime timeLogin          READ timeLogin              WRITE setTimeLogin NOTIFY timeLoginChanged)
+public:
+    explicit UserProfileComponent();
+    ~UserProfileComponent();
+
+//    Q_PROPERTY(QString name         READ name       WRITE setName       NOTIFY nameChanged)
+//    Q_PROPERTY(QString userIcon     READ userIcon   WRITE setUserIcon   NOTIFY userIconChanged)
+
     int id() const;
     void setId(int id);
 
@@ -61,20 +58,10 @@ private:
     QString m_password;
     bool m_loginState;
     QDateTime m_timeLogin;
-
-signals:
-    void idChanged();
-    void ageChanged();
-    void nameChanged();
-    void dobChanged();
-    void userIconChanged();
-    void dateEstablishChanged();
-    void dateExpertChanged();
-    void passwordChanged();
-    void loginStateChanged();
-    void timeLoginChanged();
+//    Resource_General m_resGeneral;
 
 public slots:
+
 };
 
 #endif // USERPROFILECOMPONENT_H

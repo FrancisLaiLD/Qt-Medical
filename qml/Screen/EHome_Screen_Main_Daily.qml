@@ -4,7 +4,7 @@ import "../Component/ScreenComponent"
 import "../Component/ListViewComponent"
 import "../Component/DelegateComponent"
 import "../Component/OtherComponent"
-import com.embeddeduse.models 1.0
+import Ehome 1.0
 import CustomGeometry 1.0
 
 EHome_Main_Frame {
@@ -26,6 +26,7 @@ EHome_Main_Frame {
     //    }
 
     property string lastTime: HomeDailyModel.timeUpdate
+
     EHome_Half_Frame {
         id: idAboveFrame
         x: 0; y: 0
@@ -39,19 +40,23 @@ EHome_Main_Frame {
                 return Resource_General.weather_rain_storm
             }
         }
-
-        Item {
+        //        Flickable {
+        //            id: idWeatherFl
+        //            height: leftSide.height
+        //            width: leftSide.width
+        //            interactive: true
+        Flickable {
             id: leftSide
             x: 0
-            width: parent.width/2
-            height: parent.height
-            MouseArea {
-                id: idMouDetailWea
-                anchors.fill: parent
-                onClicked: {
-                    AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_HOME_WEATHER)
-                }
-            }
+            width: idAboveFrame.width/2
+            height: idAboveFrame.height
+            //                MouseArea {
+            //                    id: idMouDetailWea
+            //                    anchors.fill: parent
+            //                    onClicked: {
+            //                        AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_HOME_WEATHER)
+            //                    }
+            //                }
             Text {
                 id: idLocation_val
                 text: HomeDailyModel.leftWeather.proLocName === "" ? "---" : HomeDailyModel.leftWeather.proLocName
@@ -161,30 +166,30 @@ EHome_Main_Frame {
                 font.pixelSize: 16
                 color: "black"
             }
-
-            Text {
-                id: timeUpdate
-                anchors.left: parent.left
-                anchors.leftMargin: 50
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 5
-                text: HomeStringModel.STR_HOME_WEATHER_DATA_WAS_UPDATE
-                font.pixelSize: 14
-                color: "gray"
-            }
-            Text {
-                id: timeUpdate_val
-                anchors.left: timeUpdate.right
-                anchors.leftMargin: 10
-                anchors.verticalCenter: timeUpdate.verticalCenter
-                text: Qt.formatDateTime(idRoot.lastTime, "yyyy.MM.dd") +
-                      " , "+ Qt.formatDateTime(idRoot.lastTime, "hh:mm AP")
-                font.pixelSize: 14
-                font.italic: true
-                color: "gray"
-            }
         }
+        //        }
 
+        Text {
+            id: timeUpdate
+            anchors.left: leftSide.left
+            anchors.leftMargin: 50
+            anchors.bottom: leftSide.bottom
+            anchors.bottomMargin: 5
+            text: HomeStringModel.STR_HOME_WEATHER_DATA_WAS_UPDATE
+            font.pixelSize: 14
+            color: "gray"
+        }
+        Text {
+            id: timeUpdate_val
+            anchors.left: timeUpdate.right
+            anchors.leftMargin: 10
+            anchors.verticalCenter: timeUpdate.verticalCenter
+            text: Qt.formatDateTime(idRoot.lastTime, "yyyy.MM.dd") +
+                  " , "+ Qt.formatDateTime(idRoot.lastTime, "hh:mm AP")
+            font.pixelSize: 14
+            font.italic: true
+            color: "gray"
+        }
         /* -------------------------------------RIGHT SIDE----------------------------------*/
         Item {
             id: righSide
@@ -211,6 +216,7 @@ EHome_Main_Frame {
     E_HorizentalLine {
         id: idLineCenter
         lineRange: parent.width - 60
+        lineColor: "gray"
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
     }
@@ -286,6 +292,7 @@ EHome_Main_Frame {
                 Text {
                     id: idTxt_device_lastConn
                     text: proState ? "online" : Qt.formatDateTime(proLastConn, "yyyy.MM.dd") + " - "+ Qt.formatDateTime(proLastConn, "hh:mm AP")
+                    color: proState ? "green" : "#808080"
                     x: txt_device_last_conn.x
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -306,7 +313,7 @@ EHome_Main_Frame {
                 id: idMouDetailAdv
                 anchors.fill: parent
                 onClicked: {
-                    AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_TECHNICAL_OVERVIEW)
+                    AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_SETTING)
                 }
             }
         }

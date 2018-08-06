@@ -13,12 +13,13 @@ void AppManager::initQmlProperty()
     p_resStatusbar          = new Resource_Statusbar(nullptr, QString(STATUSBAR_PATH));
     p_resGeneral            = new Resource_General(nullptr, QString(GENERAL_PATH));
     p_homeDailyModel        = new HomeScreen_Main_Daily_Model(nullptr, p_qqmlAppEngine);
+    p_settingModel          = new SettingModel();
     // constant model
     p_homeScreenConst       = new HomeScreenConst();
     p_homeStringModel       = new HomeStringModel();
 
 
-    qmlRegisterUncreatableType<HomeScreen_Enum>("com.embeddeduse.models", 1, 0, "HomeEnum",
+    qmlRegisterUncreatableType<HomeScreen_Enum>("Ehome", 1, 0, "HomeEnum",
                                                  "Cannot create WarningLevel in QML");
     qmlRegisterType<BezierCurve>("CustomGeometry", 1, 0, "BezierCurve");
 
@@ -30,6 +31,7 @@ void AppManager::initQmlProperty()
     p_qqmlAppEngine->rootContext()->setContextProperty("Resource_General",  p_resGeneral);
     p_qqmlAppEngine->rootContext()->setContextProperty("HomeScreenConst",   p_homeScreenConst);
     p_qqmlAppEngine->rootContext()->setContextProperty("HomeStringModel",   p_homeStringModel);
+    p_qqmlAppEngine->rootContext()->setContextProperty("SettingModel",      p_settingModel);
 
 //    p_qqmlAppEngine->rootContext()->setContextProperty("QmlController",     p_homeStringModel);
 
@@ -51,10 +53,9 @@ void AppManager::initApplication()
     m_isShowingPopup = false;
     emit isShowingPopupChanged();
     // init model
-
+    //
+    p_userProfileModel->initUserList();
     // init Screen
-//    setCurrentScreen(static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN));
-//    p_homeQMLController->handleQMLEvent(static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN));
     handleHomeScreenClick(static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN));
 }
 

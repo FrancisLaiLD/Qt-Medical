@@ -12,6 +12,7 @@ const QMap<int, QMLStruct> CONST_TABLE_QML {
     {static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_USER_PROFILE) ,      {static_cast<int>(HomeScreen_Enum::QML_EVENT::EVENT_SCREEN_TRANS),     SCREEN_EHOME_USER_PROFILE}},
     {static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_USER_DATA) ,         {static_cast<int>(HomeScreen_Enum::QML_EVENT::EVENT_SCREEN_TRANS),     SCREEN_EHOME_MAIN_USER_DATA}},
     {static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_TECHNICAL_OVERVIEW), {static_cast<int>(HomeScreen_Enum::QML_EVENT::EVENT_SCREEN_TRANS),     SCREEN_EHOME_TECHNICAL_OVERVIEW}},
+    {static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_SETTING),            {static_cast<int>(HomeScreen_Enum::QML_EVENT::EVENT_SCREEN_TRANS),     SCREEN_EHOME_SETTING}},
 
     {static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_SHOW_POPUP_USER_PROFILE),  {static_cast<int>(HomeScreen_Enum::QML_EVENT::EVENT_ONSCREEN),         POPUP_EHOME_MAIN_USER_POPUP}},
     {static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_SHOW_POPUP_NO_CONNECTION),  {static_cast<int>(HomeScreen_Enum::QML_EVENT::EVENT_ONSCREEN),         POPUP_EHOME_NO_CONNECTION}},

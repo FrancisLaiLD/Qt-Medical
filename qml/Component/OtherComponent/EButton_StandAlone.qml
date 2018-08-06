@@ -9,7 +9,7 @@ Rectangle {
     property string btnColorTop: "#808080"
     property string btnColorBottom: "white"
     property string btnColorPress: "#B79612"
-    property string btnBorderColor: "#053E42"
+    property string btnBorderColor: "#404040"
 
     // signals
     signal btnClicked()
@@ -17,7 +17,7 @@ Rectangle {
     width: btnWidth === -1 ? idBtnLabel.width + 30 : btnWidth
     height: idBtnLabel.height + 16
     radius: 8
-    border.width: 2
+    border.width: 1
     border.color: btnBorderColor
     gradient:
         Gradient {
@@ -28,7 +28,7 @@ Rectangle {
     Text {
         id: idBtnLabel
         text: btnLabel
-        font.pixelSize: 16
+        font.pixelSize: 14
         color: btnLabelColor
         anchors.centerIn: parent
     }
