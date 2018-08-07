@@ -23,7 +23,15 @@ class UserProfileModel : public QAbstractListModel
         PROFILE_LOGINSTATE,
         PROFILE_TIMELOGIN
     };
-    Q_PROPERTY(UserProfileComponent curUser READ curUser WRITE setCurUser NOTIFY curUserChanged)
+
+    Q_PROPERTY(QString curUserName                  READ curUserName            CONSTANT)
+    Q_PROPERTY(QString curUserIcon                  READ curUserIcon            CONSTANT)
+    Q_PROPERTY(UserProfileComponent* currentUser    READ currentUser            CONSTANT)
+    Q_PROPERTY(int curUserId                        READ curUserId              CONSTANT)
+    Q_PROPERTY(int curUserAge                       READ curUserAge             CONSTANT)
+    Q_PROPERTY(QDate curUserDob                     READ curUserDob             CONSTANT)
+    Q_PROPERTY(QDate curUserDateEsta                READ curUserDateEsta        CONSTANT)
+    Q_PROPERTY(QDate curUserDateExpe                READ curUserDateExpe        CONSTANT)
 
 public:
     UserProfileModel();
@@ -41,18 +49,27 @@ public:
     QVector<UserProfileComponent> listUser() const;
     void setListUser(const QVector<UserProfileComponent> &listUser);
 
-    UserProfileComponent curUser() const;
-    void setCurUser(const UserProfileComponent &curUser);
-
     void initUserList();
+    QString curUserName();
+    QString curUserIcon();
+    UserProfileComponent* currentUser();
+    int curUserId();
+    int curUserAge();
+    QDate curUserDob();
+    QDate curUserDateEsta();
+    QDate curUserDateExpe();
 
 private:
     Resource_General *p_resGeneral;
     Resource_Statusbar *p_resStatusbar;
     QVector<UserProfileComponent> m_listUser;
     UserProfileComponent m_curUser;
+    UserProfileComponent *p_currentUser;
+
 signals:
-    void curUserChanged();
+    void curUserNameChanged();
+    void curUserIconChanged();
+    void currentUserChanged();
 };
 
 

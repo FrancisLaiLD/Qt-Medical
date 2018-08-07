@@ -60,7 +60,7 @@ public slots:
 
     /*------------------------------------------------------------------HANDLE VIEW EVENTS-----------------------------------------------------------------------*/
     bool handleHomeClick(const int& );
-    void handleHomeScreenClick(const int& );
+    void handleHomeScreenClick(const int&, const QVariant& _data = QVariant());
     void handlePopupClick(const int&);
     void handleHidePopupClick(const int&);
 

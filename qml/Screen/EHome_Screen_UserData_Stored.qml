@@ -29,7 +29,7 @@ EHome_Main_Frame {
     }
 
     E_HorizentalLine {
-        id: idFirstLine
+        id: _firstLine
         y: parent.height/2
         anchors.horizontalCenter: parent.horizontalCenter
         lineHeight: 1
@@ -54,6 +54,31 @@ EHome_Main_Frame {
         onBtnClicked: {
             console.log('qml> Go to Real time data')
             AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_USER_DATA_REAL_TIME)
+        }
+    }
+
+    Rectangle {
+        id: _lastRec
+        width: parent.width - 60 ; height: 400
+        anchors.top: _firstLine.bottom ; anchors.topMargin: 10
+        anchors.horizontalCenter: parent.horizontalCenter
+        color: "red"
+        opacity: 0.3
+        }
+    Text {
+        id: _title
+        text: "Your last record"
+        font.pixelSize: 20 ; font.underline: true
+        anchors.left: _lastRec.left ; anchors.leftMargin: 0
+        anchors.top: _lastRec.top ; anchors.topMargin: 10
+    }
+    EButton_StandAlone {
+        id: _btnSendData
+        anchors.bottom: _lastRec.bottom ; anchors.bottomMargin: 0
+        anchors.horizontalCenter: _lastRec.horizontalCenter
+        btnLabel: "Send data to Doctor"
+        onBtnClicked: {
+            AppManager.handlePopupClick(HomeEnum.EVENT_SHOW_POPUP_NO_CONNECTION)
         }
     }
 

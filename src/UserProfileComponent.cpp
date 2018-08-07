@@ -2,11 +2,12 @@
 
 UserProfileComponent::UserProfileComponent()
 {
+    m_resGeneral = new Resource_General();
     m_id = 111;
     m_age = 25;
     m_name = "Unknow";
     m_dob = QDateTime::currentDateTime().date();
-//    m_userIcon = m_resGeneral.ico_boy_1();
+    m_userIcon = m_resGeneral->ico_boy_1();
     m_dateEstablish = QDateTime::currentDateTime().date();
     m_dateExpert = QDateTime::currentDateTime().date();;
     m_password = "12345678";

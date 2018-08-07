@@ -42,7 +42,7 @@ Medium_Popup {
             anchors.left: txt_cur_user.right
             anchors.leftMargin: 20
             anchors.verticalCenter: txt_cur_user.verticalCenter
-            text: UserProfileModel.curUser.name
+            text: UserProfileModel.curUserName
             font.pixelSize: 16
             color: HomeScreenConst.value_popup_color
             font.italic: true
@@ -60,7 +60,7 @@ Medium_Popup {
 
         Text {
             id: txt_cur_userID_val
-            text: UserProfileModel.curUser.id
+            text: UserProfileModel.curUserId
             font.pixelSize: 16
             color: HomeScreenConst.value_popup_color
             x: txt_cur_user_val.x
@@ -80,8 +80,8 @@ Medium_Popup {
 
         Text {
             id: txt_cur_userDateEstablist_val
-            text: Qt.formatDateTime(UserProfileModel.curUser.dateEstablish, "yyyy.MM.dd")
-                  + " - "+ Qt.formatDateTime(UserProfileModel.curUser.dateEstablish, "hh:mm AP")
+            text: Qt.formatDateTime(UserProfileModel.curUserDateEsta, "yyyy.MM.dd")
+                  + " - "+ Qt.formatDateTime(UserProfileModel.curUserDateEsta, "hh:mm AP")
             font.pixelSize: 16
             color: HomeScreenConst.value_popup_color
             x: txt_cur_user_val.x
@@ -101,8 +101,8 @@ Medium_Popup {
 
         Text {
             id: txt_cur_userDateExprt_val
-            text: Qt.formatDateTime(UserProfileModel.curUser.dateExpert, "yyyy.MM.dd")
-                  + " - "+ Qt.formatDateTime(UserProfileModel.curUser.dateExpert, "hh:mm AP")
+            text: Qt.formatDateTime(UserProfileModel.curUserDateExpe, "yyyy.MM.dd")
+                  + " - "+ Qt.formatDateTime(UserProfileModel.curUserDateExpe, "hh:mm AP")
             font.pixelSize: 16
             color: HomeScreenConst.value_popup_color
             x: txt_cur_user_val.x
@@ -122,8 +122,8 @@ Medium_Popup {
 
         Text {
             id: txt_cur_userTimeLogin_val
-            text: Qt.formatDateTime(UserProfileModel.curUser.timeLogin, "yyyy.MM.dd")
-                  + " - "+ Qt.formatDateTime(UserProfileModel.curUser.timeLogin, "hh:mm AP")
+            text: Qt.formatDateTime(UserProfileModel.curUserDob, "yyyy.MM.dd")
+                  + " - "+ Qt.formatDateTime(UserProfileModel.curUserDob, "hh:mm AP")
             font.pixelSize: 16
             color: HomeScreenConst.value_popup_color
             x: txt_cur_user_val.x
@@ -162,7 +162,7 @@ Medium_Popup {
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 80
             width: 150 ; height: 150
-            source: UserProfileModel.curUser.userIcon
+            source: UserProfileModel.curUserIcon
         }
     }
 
@@ -275,6 +275,7 @@ Medium_Popup {
         //        btnColorBottom: "blue"
         btnLabel: "Go to user management"
         onBtnClicked: {
+            SettingModel.curInx = 3
             AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_SETTING)
             AppManager.handleHidePopupClick(HomeEnum.EVENT_HIDE_POPUP)
         }

@@ -16,7 +16,6 @@ UserProfileModel::UserProfileModel()
 //    m_user->setPassword("kakalot");
 //    m_user->setTimeLogin(QDateTime::currentDateTime());
     initUserList();
-    setCurUser(m_listUser.at(0));
 }
 
 UserProfileModel::~UserProfileModel()
@@ -121,16 +120,6 @@ void UserProfileModel::setListUser(const QVector<UserProfileComponent> &listUser
     m_listUser = listUser;
 }
 
-UserProfileComponent UserProfileModel::curUser() const
-{
-    return m_curUser;
-}
-
-void UserProfileModel::setCurUser(const UserProfileComponent &curUser)
-{
-    m_curUser = curUser;
-}
-
 void UserProfileModel::initUserList()
 {
     for (int i= 0; i< 5; i++)
@@ -138,4 +127,47 @@ void UserProfileModel::initUserList()
         UserProfileComponent nUserProfile;
         this->addUser(nUserProfile);
     }
+    m_curUser = m_listUser.at(0);
+    p_currentUser = &m_curUser;
 }
+
+QString UserProfileModel::curUserName()
+{
+    return m_curUser.name();
+}
+
+QString UserProfileModel::curUserIcon()
+{
+    return m_curUser.userIcon();
+}
+
+UserProfileComponent *UserProfileModel::currentUser()
+{
+    return p_currentUser;
+}
+
+int UserProfileModel::curUserId()
+{
+    return m_curUser.id();
+}
+
+int UserProfileModel::curUserAge()
+{
+    return m_curUser.age();
+}
+
+QDate UserProfileModel::curUserDob()
+{
+    return m_curUser.dob();
+}
+
+QDate UserProfileModel::curUserDateEsta()
+{
+    return m_curUser.dateEstablish();
+}
+
+QDate UserProfileModel::curUserDateExpe()
+{
+    return m_curUser.dateExpert();
+}
+

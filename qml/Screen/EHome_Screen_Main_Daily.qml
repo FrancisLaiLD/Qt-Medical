@@ -57,6 +57,13 @@ EHome_Main_Frame {
             //                        AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_HOME_WEATHER)
             //                    }
             //                }
+//            Rectangle {
+//                id: _background
+//                anchors.fill: parent
+//                color: "green"
+//                opacity: 0.3
+//            }
+
             Text {
                 id: idLocation_val
                 text: HomeDailyModel.leftWeather.proLocName === "" ? "---" : HomeDailyModel.leftWeather.proLocName
@@ -107,7 +114,7 @@ EHome_Main_Frame {
                 anchors.leftMargin: 18
                 anchors.top: idTemp_val.bottom
                 anchors.topMargin: 3
-                color: "gray"
+                color: HomeScreenConst.line_normal_color
             }
 
             Text {
@@ -117,7 +124,7 @@ EHome_Main_Frame {
                 anchors.top: idImgWeather.bottom
                 anchors.topMargin: 3
                 anchors.horizontalCenter: parent.horizontalCenter
-                color: "gray"
+                color: HomeScreenConst.line_normal_color
             }
 
             Image {
@@ -137,7 +144,7 @@ EHome_Main_Frame {
                 anchors.rightMargin: 100
                 text: HomeStringModel.STR_HOME_WEATHER_DIRECTION
                 font.pixelSize: 16
-                color: "gray"
+                color: HomeScreenConst.line_normal_color
             }
             Text {
                 id: idWind_direction_val
@@ -155,7 +162,7 @@ EHome_Main_Frame {
                 anchors.right: idWind_direction.right
                 text: HomeStringModel.STR_HOME_WEATHER_SPEED
                 font.pixelSize: 16
-                color: "gray"
+                color: HomeScreenConst.line_normal_color
             }
             Text {
                 id: idWind_speed_val
@@ -177,7 +184,7 @@ EHome_Main_Frame {
             anchors.bottomMargin: 5
             text: HomeStringModel.STR_HOME_WEATHER_DATA_WAS_UPDATE
             font.pixelSize: 14
-            color: "gray"
+            color: HomeScreenConst.line_normal_color
         }
         Text {
             id: timeUpdate_val
@@ -188,7 +195,7 @@ EHome_Main_Frame {
                   " , "+ Qt.formatDateTime(idRoot.lastTime, "hh:mm AP")
             font.pixelSize: 14
             font.italic: true
-            color: "gray"
+            color: HomeScreenConst.line_normal_color
         }
         /* -------------------------------------RIGHT SIDE----------------------------------*/
         Item {
@@ -196,19 +203,57 @@ EHome_Main_Frame {
             x: 360
             width: parent.width/2
             height: parent.height
-            MouseArea {
-                id: idMouUnderFrm
-                anchors.fill: parent
-                onClicked: {
-                    AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_USER_DATA)
+            Item {
+                id: idQuickAccess
+                width: parent.width ; height: parent.height/2
+                MouseArea {
+                    id: idMouQA
+                    anchors.fill: parent
+                    onClicked: {
+                        listDevice[0].proState = false
+                    }
+                }
+                Text {
+                    id: titQuiAcc
+                    text: "Quick Access"
+                    font.pixelSize: 16
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.top: parent.top
+                    anchors.topMargin: 10
+                }
+            }
+            E_HorizentalLine {
+                id: lineQaAndLr
+                anchors.centerIn: parent
+                lineColor: HomeScreenConst.line_normal_color ; lineRange: parent.width - 30
+            }
+            Item {
+                id: idLastRecord
+                width: parent.width ; height: parent.height/2
+                y: parent.height/2
+                MouseArea {
+                    id: idMouLR
+                    anchors.fill: parent
+                    onClicked: {
+                        AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_USER_DATA)
+                    }
+                }
+                Text {
+                    id: titLasRec
+                    text: "Last Record"
+                    font.pixelSize: 16
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.top: parent.top
+                    anchors.topMargin: 10
                 }
             }
         }
+
         E_VerticalLine {
             id:idVerLine
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
-            lineColor: "gray"
+            lineColor: HomeScreenConst.line_normal_color
             lineRange: parent.height - 30
         }
     }
@@ -216,7 +261,7 @@ EHome_Main_Frame {
     E_HorizentalLine {
         id: idLineCenter
         lineRange: parent.width - 60
-        lineColor: "gray"
+        lineColor: HomeScreenConst.line_normal_color
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
     }
@@ -243,7 +288,8 @@ EHome_Main_Frame {
             anchors.left: parent.left
             anchors.leftMargin: 100
             text: "Device name"
-            color: "gray"
+            font.pixelSize: 14
+            color: HomeScreenConst.line_normal_color
         }
         Text {
             id: txt_device_state
@@ -251,7 +297,8 @@ EHome_Main_Frame {
             anchors.left: parent.left
             anchors.leftMargin: 350
             text: "State"
-            color: "gray"
+            font.pixelSize: 14
+            color: HomeScreenConst.line_normal_color
         }
         Text {
             id: txt_device_last_conn
@@ -259,7 +306,8 @@ EHome_Main_Frame {
             anchors.left: parent.left
             anchors.leftMargin: 500
             text: "Last connection"
-            color: "gray"
+            font.pixelSize: 14
+            color: HomeScreenConst.line_normal_color
         }
 
         ListView {
@@ -279,6 +327,7 @@ EHome_Main_Frame {
                 Text {
                     id: idTxt_device_name
                     text: proName
+                    font.pixelSize: 16 ; font.italic: true
                     x: txt_device_name.x
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -292,6 +341,7 @@ EHome_Main_Frame {
                 Text {
                     id: idTxt_device_lastConn
                     text: proState ? "online" : Qt.formatDateTime(proLastConn, "yyyy.MM.dd") + " - "+ Qt.formatDateTime(proLastConn, "hh:mm AP")
+                    font.pixelSize: 16
                     color: proState ? "green" : "#808080"
                     x: txt_device_last_conn.x
                     anchors.verticalCenter: parent.verticalCenter
@@ -307,12 +357,13 @@ EHome_Main_Frame {
             text: HomeStringModel.STR_HOME_GO_TO_DEVICE_SETTING
             font.italic: true
             font.pixelSize: 16
-            color: idMouDetailAdv.pressed ? "#green" : "gray"
+            color: idMouDetailAdv.pressed ? "#green" : HomeScreenConst.line_normal_color
             opacity: 0.5
             MouseArea {
                 id: idMouDetailAdv
                 anchors.fill: parent
                 onClicked: {
+                    SettingModel.curInx = 2
                     AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_SETTING)
                 }
             }

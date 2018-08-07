@@ -58,7 +58,7 @@ private:
     QString m_password;
     bool m_loginState;
     QDateTime m_timeLogin;
-//    Resource_General m_resGeneral;
+    Resource_General *m_resGeneral;
 
 public slots:
 

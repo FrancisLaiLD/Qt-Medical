@@ -59,11 +59,11 @@ void AppManager::initApplication()
     handleHomeScreenClick(static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN));
 }
 
-void AppManager::handleHomeScreenClick(const int &_index)
+void AppManager::handleHomeScreenClick(const int &_index, const QVariant& _data)
 {
     setCurrentScreen(_index);
     qDebug() << "current screen: " << _index;
-    p_homeQMLController->handleQMLEvent(_index);
+    p_homeQMLController->handleQMLEvent(_index, _data);
 
 }
 

@@ -34,7 +34,7 @@ E_VerticalLine {
                     anchors.left: parent.right
                     anchors.leftMargin: 0
                     y: index* idRoot.lineRange/idRoot.resolution
-                    lineColor: "gray"
+                    lineColor: HomeScreenConst.line_normal_color
                     lineRange: virtualLineRange
                 }
             }

@@ -36,7 +36,8 @@ HEADERS += \
     hdr/Component/WeatherComponent.h \
     hdr/Component/DeviceComponent.h \
     hdr/HomeListDeviceModel.h \
-    hdr/SettingModel.h
+    hdr/SettingModel.h \
+    hdr/SettingScreenDef.h
 
 SOURCES += \
         main.cpp \
@@ -52,8 +53,8 @@ SOURCES += \
     src/HomeScreenMainDailyModel.cpp \
     src/BezierCurve.cpp \
     src/DeviceComponent.cpp \
-    src/SettingModel.cpp \
-    src/HomeListDeviceModel.cpp
+    src/HomeListDeviceModel.cpp \
+    src/SettingModel.cpp
 
 RESOURCES +=
 
@@ -99,5 +100,10 @@ DISTFILES += \
     qml/Component/OtherComponent/Medium_Popup.qml \
     qml/Popup/EHome_Popup_UserProfile.qml \
     qml/Component/OtherComponent/EButton_Combobox.qml \
-    qml/Screen/EHome_Screen_Setting.qml
+    qml/Screen/EHome_Screen_Setting.qml \
+    qml/Component/SettingComponent/ESetting_General.qml \
+    qml/Component/SettingComponent/ESetting_UserProfile.qml \
+    qml/Component/SettingComponent/ESetting_Device_Management.qml \
+    qml/Component/SettingComponent/ESetting_Network.qml \
+    qml/Popup/EHome_Popup_NoConnection.qml
 

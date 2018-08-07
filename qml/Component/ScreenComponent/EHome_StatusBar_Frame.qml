@@ -19,7 +19,7 @@ Rectangle {
         GradientStop { position: 0.0; color: "#808080" }
     }
     Rectangle {
-        id: idUserRect
+        id: _userRect
         width: 50; height: 50
         anchors.bottom: parent.bottom
         //            color: "#83FF8C"
@@ -27,9 +27,10 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 0
         Image {
-            id:idUserImg
-            anchors.fill: parent
-            source: StatusbarModel.userIcon
+            id:_userIcon
+            width: 40 ; height: 40
+            anchors.centerIn: parent
+            source: UserProfileModel.curUserIcon
         }
         MouseArea {
             id: idMouUserBtn
@@ -42,12 +43,11 @@ Rectangle {
 
     Text {
         id: idUserName
-        text: StatusbarModel.userName
-        anchors.left: idUserRect.right
-        anchors.leftMargin: 3
-        anchors.verticalCenter: idUserRect.verticalCenter
+        text: UserProfileModel.curUserName
+        anchors.left: _userRect.right ; anchors.leftMargin: 0
+        anchors.verticalCenter: _userRect.verticalCenter
         anchors.verticalCenterOffset: 12
-        font.pixelSize: 20
+        font.pixelSize: 16
     }
 
     Image {
@@ -55,9 +55,10 @@ Rectangle {
         anchors.verticalCenter: parent.top
         anchors.verticalCenterOffset: 30
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.horizontalCenterOffset: -85
+        anchors.horizontalCenterOffset: -70
         width: 60 ;height: parent.height
-        source: idMouBackBtn.pressed ? ResStatusBar.ico_back_p : ResStatusBar.ico_back_n
+        source: ResStatusBar.ico_back_n
+        opacity: idMouBackBtn.pressed ? 0.5 : 1.0
         MouseArea {
             id: idMouBackBtn
             anchors.fill: parent
@@ -72,7 +73,8 @@ Rectangle {
         anchors.verticalCenter: idBackBtn.verticalCenter
         width: 60 ;height: parent.height
         anchors.horizontalCenter: parent.horizontalCenter
-        source: idMouHomeBtn.pressed ? ResStatusBar.ico_home_p : ResStatusBar.ico_home_n
+        source: ResStatusBar.ico_home_n
+        opacity: idMouHomeBtn.pressed ? 0.5 : 1.0
         MouseArea {
             id: idMouHomeBtn
             anchors.fill: parent
@@ -85,10 +87,11 @@ Rectangle {
     Image {
         id: idCloudBtn
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.horizontalCenterOffset: 85
+        anchors.horizontalCenterOffset: 70
         width: 60 ;height: parent.height
         anchors.verticalCenter: idBackBtn.verticalCenter
-        source: idMouCloudBtn.pressed ? ResStatusBar.ico_cloud_p : ResStatusBar.ico_cloud_n
+        source: ResStatusBar.ico_cloud_n
+        opacity: idMouCloudBtn.pressed ? 0.5 : 1.0
         MouseArea {
             id: idMouCloudBtn
             anchors.fill: parent
@@ -104,6 +107,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.rightMargin: 20
         anchors.bottom: parent.bottom
+
         height: 35; width: 25
     }
 
@@ -112,7 +116,8 @@ Rectangle {
         anchors.right: idBluetoothIcon.left
         anchors.rightMargin: 5
         anchors.bottom: parent.bottom
-        height: 35 ; width: 70
+        anchors.bottomMargin: -8
+        height: 55 ; width: 55
         source: getNetworkIcon()
     }
 
@@ -122,7 +127,7 @@ Rectangle {
         anchors.right: idNetworkIcon.left
         anchors.rightMargin: 10
         anchors.bottom: parent.bottom
-        height: 35 ; width: 35
+        height: 40 ; width: 40
     }
 
     function getNetworkIcon() {

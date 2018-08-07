@@ -58,7 +58,7 @@ Window {
     }
     Rectangle {
         id: idLine
-        color: "gray"
+        color: HomeScreenConst.line_normal_color
         width: parent.width - 60
         height: 1
         anchors.top: idSttBarLoader.bottom

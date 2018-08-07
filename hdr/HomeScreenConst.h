@@ -25,6 +25,8 @@ public:
     Q_PROPERTY(QString value_screen_color       READ value_screen_color     CONSTANT)
     Q_PROPERTY(QString text_popup_color         READ text_popup_color       CONSTANT)
     Q_PROPERTY(QString value_popup_color        READ value_popup_color      CONSTANT)
+    Q_PROPERTY(QString text_label_color         READ text_label_color       CONSTANT)
+    Q_PROPERTY(QString line_normal_color        READ line_normal_color      CONSTANT)
 
     //define function return time
     int time_screen_trans()         {return 500;}
@@ -40,6 +42,8 @@ public:
     QString value_screen_color()            {return "#000000";}
     QString text_popup_color()              {return "#000000";}
     QString value_popup_color()             {return "#004466";}
+    QString text_label_color()              {return "#404040";}
+    QString line_normal_color()             {return "gray";}
 };
 
 #endif // HOMESCREENCONST_H
