@@ -1,4 +1,4 @@
-#include "hdr/HomeQMLController.h"
+#include "HomeQMLController.h"
 
 HomeQMLController::HomeQMLController(QObject *parent, QQmlApplicationEngine* _pAppEngine) : QObject(parent)
 {

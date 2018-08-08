@@ -1,4 +1,4 @@
-#include "hdr/HomeWeatherModel.h"
+#include "HomeWeatherModel.h"
 
 HomeWeatherModel::HomeWeatherModel(QObject *parent) : QObject(parent)
 {

@@ -1,4 +1,4 @@
-#include "hdr/HomeListDeviceModel.h"
+#include "HomeListDeviceModel.h"
 
 
 QVariant HomeListDeviceModel::data(const QModelIndex &index, int role) const

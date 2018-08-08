@@ -5,9 +5,9 @@
 #include <QDateTime>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "Component/WeatherComponent.h"
-#include "Component/DeviceComponent.h"
-#include "HomeScreen_Enum.h"
+#include "../Component/WeatherComponent.h"
+#include "../Component/DeviceComponent.h"
+#include "../HomeScreen_Enum.h"
 
 #include "HomeListDeviceModel.h"
 class HomeScreen_Main_Daily_Model : public QObject

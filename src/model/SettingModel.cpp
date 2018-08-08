@@ -1,4 +1,4 @@
-#include "hdr/SettingModel.h"
+#include "SettingModel.h"
 
 SettingComponent::SettingComponent(QString c_proMenuName, QString c_proMenuQml)
                            : m_proMenuName(c_proMenuName), m_proMenuQml(c_proMenuQml)

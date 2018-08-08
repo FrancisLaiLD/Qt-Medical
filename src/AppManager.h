@@ -16,10 +16,10 @@
 // Resource
 #include "ResourceManager.h"
 // Model for QML
-#include "StatusbarModel.h"
-#include "UserProfileModel.h"
-#include "HomeScreenMainDailyModel.h"
-#include "SettingModel.h"
+#include "model/StatusbarModel.h"
+#include "model/UserProfileModel.h"
+#include "model/HomeScreenMainDailyModel.h"
+#include "model/SettingModel.h"
 // Constant
 #include "HomeScreenConst.h"
 #include "HomeStringModel.h"

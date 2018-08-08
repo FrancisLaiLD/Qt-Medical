@@ -276,8 +276,8 @@ Medium_Popup {
         btnLabel: "Go to user management"
         onBtnClicked: {
             SettingModel.curInx = 3
-            AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_SETTING)
-            AppManager.handleHidePopupClick(HomeEnum.EVENT_HIDE_POPUP)
+            AppManager.handleHidePopupClick(HomeEnum.EVENT_GO_TO_SETTING)
+//            AppManager.handleHidePopupClick(HomeEnum.EVENT_HIDE_POPUP)
         }
     }
     Component.onCompleted: {

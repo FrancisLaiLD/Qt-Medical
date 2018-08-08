@@ -15,17 +15,12 @@ public:
     // define Q_PROPERTY to access in QML
     Q_PROPERTY(QString ico_bluetooth_on                 READ ico_bluetooth_on                   CONSTANT)
     Q_PROPERTY(QString ico_bluetooth_off                READ ico_bluetooth_off                  CONSTANT)
-    Q_PROPERTY(QString ico_back_d                       READ ico_back_d                         CONSTANT)
-    Q_PROPERTY(QString ico_back_n                       READ ico_back_n                         CONSTANT)
-    Q_PROPERTY(QString ico_back_p                       READ ico_back_p                         CONSTANT)
-    Q_PROPERTY(QString ico_cloud_d                      READ ico_cloud_d                        CONSTANT)
-    Q_PROPERTY(QString ico_cloud_n                      READ ico_cloud_n                        CONSTANT)
-    Q_PROPERTY(QString ico_cloud_p                      READ ico_cloud_p                        CONSTANT)
+    Q_PROPERTY(QString ico_back                         READ ico_back                           CONSTANT)
+    Q_PROPERTY(QString ico_home                         READ ico_home                           CONSTANT)
+    Q_PROPERTY(QString ico_data                         READ ico_data                           CONSTANT)
     Q_PROPERTY(QString ico_day                          READ ico_day                            CONSTANT)
     Q_PROPERTY(QString ico_night                        READ ico_night                          CONSTANT)
-    Q_PROPERTY(QString ico_home_d                       READ ico_home_d                         CONSTANT)
-    Q_PROPERTY(QString ico_home_n                       READ ico_home_n                         CONSTANT)
-    Q_PROPERTY(QString ico_home_p                       READ ico_home_p                         CONSTANT)
+
     Q_PROPERTY(QString ico_network_0                    READ ico_network_0                      CONSTANT)
     Q_PROPERTY(QString ico_network_1                    READ ico_network_1                      CONSTANT)
     Q_PROPERTY(QString ico_network_2                    READ ico_network_2                      CONSTANT)
@@ -43,17 +38,11 @@ public:
     // defint function return QString
     QString ico_bluetooth_on()                      {return m_prefix + "ico_bluetooth_on.png";}
     QString ico_bluetooth_off()                     {return m_prefix + "ico_bluetooth_off.png";}
-    QString ico_back_d()                            {return m_prefix + "ico_back_d.png";}
-    QString ico_back_n()                            {return m_prefix + "ico_back_n.png";}
-    QString ico_back_p()                            {return m_prefix + "ico_back_p.png";}
-    QString ico_cloud_d()                           {return m_prefix + "ico_cloud_d.png";}
-    QString ico_cloud_n()                           {return m_prefix + "ico_cloud_n.png";}
-    QString ico_cloud_p()                           {return m_prefix + "ico_cloud_p.png";}
+    QString ico_back()                              {return m_prefix + "ico_back";}
+    QString ico_home()                              {return m_prefix + "ico_home";}
+    QString ico_data()                              {return m_prefix + "ico_data";}
     QString ico_day()                               {return m_prefix + "ico_day.png";}
     QString ico_night()                             {return m_prefix + "ico_night.png";}
-    QString ico_home_d()                            {return m_prefix + "ico_home_d.png";}
-    QString ico_home_n()                            {return m_prefix + "ico_home_n.png";}
-    QString ico_home_p()                            {return m_prefix + "ico_home_p.png";}
     QString ico_network_0()                         {return m_prefix + "ico_network_0.png";}
     QString ico_network_1()                         {return m_prefix + "ico_network_1.png";}
     QString ico_network_2()                         {return m_prefix + "ico_network_2.png";}

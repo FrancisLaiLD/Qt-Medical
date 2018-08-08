@@ -4,9 +4,9 @@
 #include <QObject>
 #include <QAbstractListModel>
 #include <QDebug>
-#include "Resource_General.h"
-#include "Resource_Statusbar.h"
-#include "Component/UserProfileComponent.h"
+#include "../Resource_General.h"
+#include "../Resource_Statusbar.h"
+#include "../Component/UserProfileComponent.h"
 
 class UserProfileModel : public QAbstractListModel
 {

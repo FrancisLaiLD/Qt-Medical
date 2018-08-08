@@ -1,4 +1,4 @@
-#include "hdr/UserProfileModel.h"
+#include "UserProfileModel.h"
 
 UserProfileModel::UserProfileModel()
 {

@@ -1,4 +1,4 @@
-#include "hdr/StatusbarModel.h"
+#include "StatusbarModel.h"
 
 StatusbarModel::StatusbarModel(QObject *parent) : QObject(parent)
 {

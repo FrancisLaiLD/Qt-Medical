@@ -12,49 +12,47 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 HEADERS += \
-    hdr/WeatherComponent.h \
-    hdr/AppManager.h \
-    hdr/HomeComponent.h \
-    hdr/HomeQMLController.h \
-    hdr/HomeScreen_Enum.h \
-    hdr/HomeScreenDef.h \
-    hdr/HomeStringModel.h \
-    hdr/HomeWeatherModel.h \
-    hdr/StatusbarModel.h \
-    hdr/WeatherComponent.h \
-    hdr/UserProfileComponent.h \
-    hdr/UserProfileModel.h \
-    hdr/ResourceManager.h \
-    hdr/Resource_Statusbar.h \
-    hdr/Resource_General.h \
-    hdr/HomeScreenMainDailyModel.h \
-    hdr/Home_Screen_Table.h \
-    hdr/HomeScreenConst.h \
-    hdr/BezierCurve.h \
-    hdr/Component/HomeComponent.h \
-    hdr/Component/UserProfileComponent.h \
-    hdr/Component/WeatherComponent.h \
-    hdr/Component/DeviceComponent.h \
-    hdr/HomeListDeviceModel.h \
-    hdr/SettingModel.h \
-    hdr/SettingScreenDef.h
+    src/AppManager.h \
+    src/BezierCurve.h \
+    src/Home_Screen_Table.h \
+    src/HomeQMLController.h \
+    src/HomeScreen_Enum.h \
+    src/HomeScreenConst.h \
+    src/HomeScreenDef.h \
+    src/HomeStringModel.h \
+    src/Resource_General.h \
+    src/Resource_Statusbar.h \
+    src/ResourceManager.h \
+    src/SettingScreenDef.h \
+    src/Component/DeviceComponent.h \
+    src/Component/HomeComponent.h \
+    src/Component/UserProfileComponent.h \
+    src/Component/WeatherComponent.h \
+    src/model/HomeListDeviceModel.h \
+    src/model/HomeScreenMainDailyModel.h \
+    src/model/HomeWeatherModel.h \
+    src/model/SettingModel.h \
+    src/model/StatusbarModel.h \
+    src/model/UserProfileModel.h
+
 
 SOURCES += \
-        main.cpp \
     src/AppManager.cpp \
-    src/HomeComponent.cpp \
+    src/BezierCurve.cpp \
+    src/Ehome_Main.cpp \
     src/HomeQMLController.cpp \
     src/HomeScreen_Enum.cpp \
-    src/HomeWeatherModel.cpp \
-    src/StatusbarModel.cpp \
-    src/WeatherComponent.cpp \
-    src/UserProfileComponent.cpp \
-    src/UserProfileModel.cpp \
-    src/HomeScreenMainDailyModel.cpp \
-    src/BezierCurve.cpp \
-    src/DeviceComponent.cpp \
-    src/HomeListDeviceModel.cpp \
-    src/SettingModel.cpp
+    src/Component/DeviceComponent.cpp \
+    src/Component/HomeComponent.cpp \
+    src/Component/UserProfileComponent.cpp \
+    src/Component/WeatherComponent.cpp \
+    src/model/HomeListDeviceModel.cpp \
+    src/model/HomeScreenMainDailyModel.cpp \
+    src/model/HomeWeatherModel.cpp \
+    src/model/SettingModel.cpp \
+    src/model/StatusbarModel.cpp \
+    src/model/UserProfileModel.cpp
+
 
 RESOURCES +=
 

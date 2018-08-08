@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <QAbstractListModel>
-#include "Component/DeviceComponent.h"
+#include "../Component/DeviceComponent.h"
 #include <QDebug>
 
 class HomeListDeviceModel : public QAbstractListModel

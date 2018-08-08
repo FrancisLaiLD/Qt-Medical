@@ -26,6 +26,7 @@ public:
     Q_PROPERTY(QString STR_HOME_WEATHER_SHOW_MORE_DETAIL                READ STR_HOME_WEATHER_SHOW_MORE_DETAIL CONSTANT)
     Q_PROPERTY(QString STR_HOME_DEVICE_CONNECTION                       READ STR_HOME_DEVICE_CONNECTION CONSTANT)
     Q_PROPERTY(QString STR_HOME_GO_TO_DEVICE_SETTING                    READ STR_HOME_GO_TO_DEVICE_SETTING CONSTANT)
+    Q_PROPERTY(QString STR_HOME_GO_TO_USER_DATA                         READ STR_HOME_GO_TO_USER_DATA CONSTANT)
 
     Q_PROPERTY(QString STR_USER_DATA                                    READ STR_USER_DATA CONSTANT)
     Q_PROPERTY(QString STR_USER_DATA_BLOOD_PRESSUER                     READ STR_USER_DATA_BLOOD_PRESSUER CONSTANT)
@@ -46,7 +47,8 @@ public:
     QString STR_HOME_WEATHER_TIPS_TODAY()               {return "Tips of today :";}
     QString STR_HOME_WEATHER_SHOW_MORE_DETAIL()         {return "Show more detail...";}
     QString STR_HOME_DEVICE_CONNECTION()                {return "Devices connection";}
-    QString STR_HOME_GO_TO_DEVICE_SETTING()             {return "Press to go to device setting >>";}
+    QString STR_HOME_GO_TO_DEVICE_SETTING()             {return "Click to go to device setting >>";}
+    QString STR_HOME_GO_TO_USER_DATA()                  {return "Click to go to user data >>";}
 
     QString STR_USER_DATA()                             {return "User Data";}
     QString STR_USER_DATA_BLOOD_PRESSUER()              {return "Blood pressure";}

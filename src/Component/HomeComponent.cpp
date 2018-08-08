@@ -1,4 +1,4 @@
-#include "hdr/Component/HomeComponent.h"
+#include "HomeComponent.h"
 
 
 

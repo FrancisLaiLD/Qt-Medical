@@ -1,4 +1,4 @@
-#include "hdr/BezierCurve.h"
+#include "BezierCurve.h"
 
 #include <QtQuick/qsgnode.h>
 #include <QtQuick/qsgflatcolormaterial.h>

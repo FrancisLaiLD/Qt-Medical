@@ -1,4 +1,4 @@
-#include "hdr/Component/DeviceComponent.h"
+#include "DeviceComponent.h"
 
 /* Define all functions of Component */
 

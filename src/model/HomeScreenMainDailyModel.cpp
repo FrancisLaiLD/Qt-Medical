@@ -1,4 +1,4 @@
-#include "hdr/HomeScreenMainDailyModel.h"
+#include "HomeScreenMainDailyModel.h"
 
 HomeScreen_Main_Daily_Model::HomeScreen_Main_Daily_Model(QObject *parent, QQmlApplicationEngine* cAppEngine) : QObject(parent)
 {

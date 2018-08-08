@@ -206,13 +206,7 @@ EHome_Main_Frame {
             Item {
                 id: idQuickAccess
                 width: parent.width ; height: parent.height/2
-                MouseArea {
-                    id: idMouQA
-                    anchors.fill: parent
-                    onClicked: {
-                        listDevice[0].proState = false
-                    }
-                }
+
                 Text {
                     id: titQuiAcc
                     text: "Quick Access"
@@ -231,13 +225,7 @@ EHome_Main_Frame {
                 id: idLastRecord
                 width: parent.width ; height: parent.height/2
                 y: parent.height/2
-                MouseArea {
-                    id: idMouLR
-                    anchors.fill: parent
-                    onClicked: {
-                        AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_USER_DATA)
-                    }
-                }
+
                 Text {
                     id: titLasRec
                     text: "Last Record"
@@ -245,6 +233,25 @@ EHome_Main_Frame {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: parent.top
                     anchors.topMargin: 10
+                }
+            }
+            Text {
+                id: _txtGotoUsrData
+                anchors.horizontalCenter: idLastRecord.horizontalCenter
+                anchors.bottom: idLastRecord.bottom
+                anchors.bottomMargin: 5
+                text: HomeStringModel.STR_HOME_GO_TO_USER_DATA
+                font.italic: true
+                font.pixelSize: 15
+                color: _mouGotoUserData.pressed ? HomeScreenConst.text_click_color : HomeScreenConst.line_normal_color
+                opacity: 0.5
+                MouseArea {
+                    id: _mouGotoUserData
+                    anchors.fill: parent
+                    onClicked: {
+                        SettingModel.curInx = 2
+                        AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_USER_DATA)
+                    }
                 }
             }
         }
@@ -350,14 +357,14 @@ EHome_Main_Frame {
         }
 
         Text {
-            id: idTitleAdvanced
+            id: _gotoDeviceSet
             anchors.horizontalCenter: idUnderFrame.horizontalCenter
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 80
             text: HomeStringModel.STR_HOME_GO_TO_DEVICE_SETTING
             font.italic: true
-            font.pixelSize: 16
-            color: idMouDetailAdv.pressed ? "#green" : HomeScreenConst.line_normal_color
+            font.pixelSize: 15
+            color: idMouDetailAdv.pressed ? HomeScreenConst.text_click_color : HomeScreenConst.line_normal_color
             opacity: 0.5
             MouseArea {
                 id: idMouDetailAdv

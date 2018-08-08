@@ -1,4 +1,4 @@
-#include "hdr/AppManager.h"
+#include "AppManager.h"
 
 AppManager::AppManager(QObject *parent, QQmlApplicationEngine *_pAppEngine) : QObject(parent)
 {
@@ -77,6 +77,7 @@ void AppManager::handleHidePopupClick(const int &_index)
 {
     p_homeQMLController->handleQMLEvent(_index);
     setIsShowingPopup(false);
+    p_homeQMLController->handleQMLEvent(static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_HIDE_POPUP));
 }
 
 QDateTime AppManager::currentTime() const

@@ -1,4 +1,4 @@
-#include "hdr/Component/UserProfileComponent.h"
+#include "UserProfileComponent.h"
 
 UserProfileComponent::UserProfileComponent()
 {

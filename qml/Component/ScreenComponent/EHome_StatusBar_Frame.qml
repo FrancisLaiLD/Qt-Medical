@@ -57,7 +57,7 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: -70
         width: 60 ;height: parent.height
-        source: ResStatusBar.ico_back_n
+        source: ResStatusBar.ico_back
         opacity: idMouBackBtn.pressed ? 0.5 : 1.0
         MouseArea {
             id: idMouBackBtn
@@ -73,7 +73,7 @@ Rectangle {
         anchors.verticalCenter: idBackBtn.verticalCenter
         width: 60 ;height: parent.height
         anchors.horizontalCenter: parent.horizontalCenter
-        source: ResStatusBar.ico_home_n
+        source: ResStatusBar.ico_home
         opacity: idMouHomeBtn.pressed ? 0.5 : 1.0
         MouseArea {
             id: idMouHomeBtn
@@ -90,7 +90,7 @@ Rectangle {
         anchors.horizontalCenterOffset: 70
         width: 60 ;height: parent.height
         anchors.verticalCenter: idBackBtn.verticalCenter
-        source: ResStatusBar.ico_cloud_n
+        source: ResStatusBar.ico_data
         opacity: idMouCloudBtn.pressed ? 0.5 : 1.0
         MouseArea {
             id: idMouCloudBtn
