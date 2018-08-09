@@ -6,8 +6,8 @@
 #include <QQmlApplicationEngine>
 #include <QStack>
 //#include <>
-#include "HomeScreen_Enum.h"
-#include "Home_Screen_Table.h"
+#include "Common/HomeScreen_Enum.h"
+#include "Common/Home_Screen_Table.h"
 #include <QQmlContext>
 
 class HomeQMLController : public QObject

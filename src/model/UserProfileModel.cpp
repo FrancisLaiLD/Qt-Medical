@@ -122,12 +122,23 @@ void UserProfileModel::setListUser(const QVector<UserProfileComponent> &listUser
 
 void UserProfileModel::initUserList()
 {
+    UserProfileComponent m_UserHungLD;
+    m_UserHungLD.setAge(28);
+    m_UserHungLD.setDateEstablish(QDate(2018, 2, 01));
+    m_UserHungLD.setDateExpert(QDate(2100, 04, 20));
+    m_UserHungLD.setDob(QDate(1990, 4, 1));
+    m_UserHungLD.setId(11110001);
+    m_UserHungLD.setName("Lai Dang Hung");
+    m_UserHungLD.setUserIcon(p_resGeneral->ico_boy_2());
+    m_UserHungLD.setPassword("dangngoc90");
+    addUser(m_UserHungLD);
     for (int i= 0; i< 5; i++)
     {
         UserProfileComponent nUserProfile;
         this->addUser(nUserProfile);
     }
     m_curUser = m_listUser.at(0);
+    setDtUserLogin(QDateTime::currentDateTime());
     p_currentUser = &m_curUser;
 }
 
@@ -169,5 +180,18 @@ QDate UserProfileModel::curUserDateEsta()
 QDate UserProfileModel::curUserDateExpe()
 {
     return m_curUser.dateExpert();
+}
+
+QDateTime UserProfileModel::dtUserLogin() const
+{
+    return m_dtUserLogin;
+}
+
+void UserProfileModel::setDtUserLogin(const QDateTime &dtUserLogin)
+{
+    if (m_dtUserLogin != dtUserLogin)
+    {
+        m_dtUserLogin = dtUserLogin;
+    }
 }
 

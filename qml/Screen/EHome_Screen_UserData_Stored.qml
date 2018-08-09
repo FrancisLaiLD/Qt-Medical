@@ -18,7 +18,7 @@ EHome_Main_Frame {
     //    backgroundImage:
 
     EChart_Weather {
-        id: idTempChart
+        id: _dataChart
         anchors.top: parent.top
         anchors.topMargin: 48
         anchors.horizontalCenter: parent.horizontalCenter
@@ -27,10 +27,20 @@ EHome_Main_Frame {
         xAxisName: HomeStringModel.STR_GENERAL_TIME
         yAxisName: HomeStringModel.STR_USER_DATA_BLOOD_PRESSUER
     }
-
+    EButton_StandAlone {
+        id: idBtnGoToRealTime
+        anchors.right: parent.right ; anchors.rightMargin: 10
+        anchors.top: parent.top ; anchors.topMargin: 10
+        btnLabel: "Switch to real time"
+        onBtnClicked: {
+            console.log('qml> Go to Real time data')
+            AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_USER_DATA_REAL_TIME)
+        }
+    }
     E_HorizentalLine {
         id: _firstLine
-        y: parent.height/2
+        anchors.top:_dataChart.bottom
+        anchors.topMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter
         lineHeight: 1
         lineRange: parent.width - 60
@@ -45,29 +55,18 @@ EHome_Main_Frame {
     //        chartHeight: parent.height/2 - 60
     //    }
 
-    EButton_StandAlone {
-        id: idBtnGoToRealTime
-        anchors.right: parent.right
-        anchors.rightMargin: 10
-        anchors.bottom: idTempChart.top
-        btnLabel: "Switch to real time"
-        onBtnClicked: {
-            console.log('qml> Go to Real time data')
-            AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_USER_DATA_REAL_TIME)
-        }
-    }
-
     Rectangle {
-        id: _lastRec
+        id: _userData
         width: parent.width - 60 ; height: 400
+        color: "transparent"
         anchors.top: _firstLine.bottom ; anchors.topMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter
         Text {
             id: _title
-            text: "Your last record"
+            text: "Your data"
             font.pixelSize: 20 ; font.underline: true
-            anchors.left: _lastRec.left ; anchors.leftMargin: 0
-            anchors.top: _lastRec.top ; anchors.topMargin: 10
+            anchors.left: _userData.left ; anchors.leftMargin: 0
+            anchors.top: _userData.top ; anchors.topMargin: 10
         }
         EButton_StandAlone {
             id: _btnSendData

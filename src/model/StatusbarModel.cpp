@@ -4,7 +4,7 @@ StatusbarModel::StatusbarModel(QObject *parent) : QObject(parent)
 {
     m_bluetoothState = false;
     m_isDayTime = false;
-    m_networkState = 4;
+    m_networkState = 1;
 }
 
 bool StatusbarModel::bluetoothState() const
@@ -37,7 +37,7 @@ void StatusbarModel::setNetworkState(int networkState)
 
 bool StatusbarModel::isDayTime() const
 {
-    return m_isDayTime;
+    return m_currentDateTime.isDaylightTime();
 }
 
 void StatusbarModel::setIsDayTime(bool isDayTime)
@@ -74,5 +74,19 @@ void StatusbarModel::setUserName(const QString &userName)
     {
         m_userName = userName;
         emit userNameChanged();
+    }
+}
+
+QDateTime StatusbarModel::currentDT() const
+{
+    return m_currentDateTime;
+}
+
+void StatusbarModel::setCurrentDT(const QDateTime &currentDateTime)
+{
+    if (m_currentDateTime != currentDateTime)
+    {
+        m_currentDateTime = currentDateTime;
+        emit currentDTChanged();
     }
 }

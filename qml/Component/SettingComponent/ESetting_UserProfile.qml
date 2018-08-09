@@ -19,7 +19,7 @@ Rectangle {
             text: "Current user :"
             color: "#404040"
             font.pixelSize: 16
-            x: 60 ; y: 120
+            x: 40 ; y: 60
         }
 
         Text {
@@ -54,8 +54,8 @@ Rectangle {
         }
 
         Text {
-            id: txt_cur_userDateEstablist
-            text: "Date Establish :"
+            id: _txt_cur_user_dob
+            text: "Date of birth :"
             color: "#404040"
             font.pixelSize: 16
             anchors.right: txt_cur_user.right
@@ -64,9 +64,28 @@ Rectangle {
         }
 
         Text {
+            id: _txt_cur_user_dob_val
+            text: Qt.formatDateTime(UserProfileModel.curUserDob, "yyyy.MM.dd")
+            font.pixelSize: 16
+            color: HomeScreenConst.value_popup_color
+            x: txt_cur_user_val.x
+            anchors.verticalCenter: _txt_cur_user_dob.verticalCenter
+            font.italic: true
+        }
+
+        Text {
+            id: txt_cur_userDateEstablist
+            text: "Date Establish :"
+            color: "#404040"
+            font.pixelSize: 16
+            anchors.right: txt_cur_user.right
+            anchors.verticalCenter: _txt_cur_user_dob.verticalCenter
+            anchors.verticalCenterOffset: 30
+        }
+
+        Text {
             id: txt_cur_userDateEstablist_val
             text: Qt.formatDateTime(UserProfileModel.curUserDateEsta, "yyyy.MM.dd")
-                  + " - "+ Qt.formatDateTime(UserProfileModel.curUserDateEsta, "hh:mm AP")
             font.pixelSize: 16
             color: HomeScreenConst.value_popup_color
             x: txt_cur_user_val.x
@@ -87,7 +106,6 @@ Rectangle {
         Text {
             id: txt_cur_userDateExprt_val
             text: Qt.formatDateTime(UserProfileModel.curUserDateExpe, "yyyy.MM.dd")
-                  + " - "+ Qt.formatDateTime(UserProfileModel.curUserDateExpe, "hh:mm AP")
             font.pixelSize: 16
             color: HomeScreenConst.value_popup_color
             x: txt_cur_user_val.x
@@ -96,48 +114,42 @@ Rectangle {
         }
 
         Text {
-            id: txt_cur_userTimeLogin
+            id: _txt_time_login
             text: "Time login :"
             color: "#404040"
             font.pixelSize: 16
-            anchors.right: txt_cur_user.right
+            anchors.right: txt_cur_userDateExprt.right
             anchors.verticalCenter: txt_cur_userDateExprt.verticalCenter
             anchors.verticalCenterOffset: 30
         }
 
         Text {
-            id: txt_cur_userTimeLogin_val
-            text: Qt.formatDateTime(UserProfileModel.curUserDob, "yyyy.MM.dd")
-                  + " - "+ Qt.formatDateTime(UserProfileModel.curUserDob, "hh:mm AP")
+            id: _txt_time_login_val
+            text: Qt.formatDateTime(UserProfileModel.curUserDateExpe, "yyyy.MM.dd")
             font.pixelSize: 16
             color: HomeScreenConst.value_popup_color
             x: txt_cur_user_val.x
-            anchors.verticalCenter: txt_cur_userTimeLogin.verticalCenter
+            anchors.verticalCenter: _txt_time_login.verticalCenter
             font.italic: true
         }
 
-        Item {
-            id: idTimeUse
-            anchors.horizontalCenter: parent.horizontalCenter
-            width: time_use.width + 10 + time_use_val.width
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 30
-            Text {
-                id: time_use
-                text: "Thời gian đã đăng nhập :"
-                color: "#404040"
-                font.pixelSize: 16
-            }
-            Text {
-                id: time_use_val
-                anchors.verticalCenter: time_use.verticalCenter
-                anchors.left: time_use.right
-                anchors.leftMargin: 10
-                text: "10 gio 30 phut"
-                font.pixelSize: 16
-                color: HomeScreenConst.value_popup_color
-                font.italic: true
-            }
+        Text {
+            id: _timeUse
+            text: "Thời gian đã đăng nhập :"
+            color: "#404040"
+            font.pixelSize: 16
+            anchors.right: parent.right ; anchors.rightMargin: 300
+            anchors.verticalCenter: _txt_time_login.verticalCenter ; anchors.verticalCenterOffset: 40
+        }
+        Text {
+            id: _timeUse_val
+            anchors.verticalCenter: _timeUse.verticalCenter
+            anchors.left: _timeUse.right
+            anchors.leftMargin: 10
+            text: Math.floor((StatusbarModel.currentDT - UserProfileModel.dtUserLogin)/1000)
+            font.pixelSize: 16
+            color: HomeScreenConst.value_popup_color
+            font.italic: true
         }
     }
 }

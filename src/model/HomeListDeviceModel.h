@@ -16,7 +16,7 @@ class HomeListDeviceModel : public QAbstractListModel
     };
 
 public:
-    HomeListDeviceModel() {}
+    HomeListDeviceModel();
     virtual ~HomeListDeviceModel() override {}
 
     // pure virtuals implementations
@@ -29,6 +29,8 @@ public:
 
     QVector<DeviceComponent> listDevice() const;
     void setListDevice(const QVector<DeviceComponent> &listDevice);
+
+    void initListDevice();
 
 private:
     QVector<DeviceComponent> m_listDevice;

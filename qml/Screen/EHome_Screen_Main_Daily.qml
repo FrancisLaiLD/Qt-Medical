@@ -8,24 +8,14 @@ import Ehome 1.0
 import CustomGeometry 1.0
 
 EHome_Main_Frame {
-    id:idRoot
+    id:_root
+    property string lastTime: HomeDailyModel.timeUpdate
     ParallelAnimation {
         id: idMainAnimation
         running: false
-        NumberAnimation { target: idRoot; property: "x"; from: -720; to: 0; duration: HomeScreenConst.time_screen_trans }
-        NumberAnimation { target: idRoot; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
+        NumberAnimation { target: _root; property: "x"; from: -720; to: 0; duration: HomeScreenConst.time_screen_trans }
+        NumberAnimation { target: _root; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
     }
-    //    Timer {
-    //        id: idMainTimer
-    //        interval: 500
-    //        onTriggered: {
-    //            HomeDailyModel.leftWeather.proTemp += 1
-    //            HomeDailyModel.leftWeather.proWeatherProperty += 1
-    //        }
-    //        repeat: true
-    //    }
-
-    property string lastTime: HomeDailyModel.timeUpdate
 
     EHome_Half_Frame {
         id: idAboveFrame
@@ -40,29 +30,25 @@ EHome_Main_Frame {
                 return Resource_General.weather_rain_storm
             }
         }
-        //        Flickable {
-        //            id: idWeatherFl
-        //            height: leftSide.height
-        //            width: leftSide.width
-        //            interactive: true
+
         Flickable {
             id: leftSide
             x: 0
             width: idAboveFrame.width/2
             height: idAboveFrame.height
-            //                MouseArea {
-            //                    id: idMouDetailWea
-            //                    anchors.fill: parent
-            //                    onClicked: {
-            //                        AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_HOME_WEATHER)
-            //                    }
-            //                }
-//            Rectangle {
-//                id: _background
-//                anchors.fill: parent
-//                color: "green"
-//                opacity: 0.3
-//            }
+            MouseArea {
+                id: idMouDetailWea
+                anchors.fill: parent
+                onClicked: {
+                    AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_HOME_WEATHER)
+                }
+            }
+            Rectangle {
+                id: _background
+                anchors.fill: parent
+                color: StatusbarModel.isDayTime ? "#CFDD00" : "#2F00C0"
+                opacity: 0.3
+            }
 
             Text {
                 id: idLocation_val
@@ -179,7 +165,7 @@ EHome_Main_Frame {
         Text {
             id: timeUpdate
             anchors.left: leftSide.left
-            anchors.leftMargin: 50
+            anchors.leftMargin: 30
             anchors.bottom: leftSide.bottom
             anchors.bottomMargin: 5
             text: HomeStringModel.STR_HOME_WEATHER_DATA_WAS_UPDATE
@@ -191,8 +177,8 @@ EHome_Main_Frame {
             anchors.left: timeUpdate.right
             anchors.leftMargin: 10
             anchors.verticalCenter: timeUpdate.verticalCenter
-            text: Qt.formatDateTime(idRoot.lastTime, "yyyy.MM.dd") +
-                  " , "+ Qt.formatDateTime(idRoot.lastTime, "hh:mm AP")
+            text: Qt.formatDateTime(_root.lastTime, "yyyy.MM.dd") +
+                  " , "+ Qt.formatDateTime(_root.lastTime, "hh:mm:ss AP")
             font.pixelSize: 14
             font.italic: true
             color: HomeScreenConst.line_normal_color
@@ -235,7 +221,7 @@ EHome_Main_Frame {
                     anchors.topMargin: 10
                 }
             }
-            Text {
+            EButton_Text {
                 id: _txtGotoUsrData
                 anchors.horizontalCenter: idLastRecord.horizontalCenter
                 anchors.bottom: idLastRecord.bottom
@@ -243,15 +229,9 @@ EHome_Main_Frame {
                 text: HomeStringModel.STR_HOME_GO_TO_USER_DATA
                 font.italic: true
                 font.pixelSize: 15
-                color: _mouGotoUserData.pressed ? HomeScreenConst.text_click_color : HomeScreenConst.line_normal_color
-                opacity: 0.5
-                MouseArea {
-                    id: _mouGotoUserData
-                    anchors.fill: parent
-                    onClicked: {
-                        SettingModel.curInx = 2
-                        AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_USER_DATA)
-                    }
+                onTextRelease: {
+                    SettingModel.curInx = 2
+                    AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_USER_DATA)
                 }
             }
         }
@@ -356,7 +336,7 @@ EHome_Main_Frame {
             }
         }
 
-        Text {
+        EButton_Text {
             id: _gotoDeviceSet
             anchors.horizontalCenter: idUnderFrame.horizontalCenter
             anchors.bottom: parent.bottom
@@ -364,15 +344,9 @@ EHome_Main_Frame {
             text: HomeStringModel.STR_HOME_GO_TO_DEVICE_SETTING
             font.italic: true
             font.pixelSize: 15
-            color: idMouDetailAdv.pressed ? HomeScreenConst.text_click_color : HomeScreenConst.line_normal_color
-            opacity: 0.5
-            MouseArea {
-                id: idMouDetailAdv
-                anchors.fill: parent
-                onClicked: {
-                    SettingModel.curInx = 2
-                    AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_SETTING)
-                }
+            onTextRelease: {
+                SettingModel.curInx = 2
+                AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_SETTING)
             }
         }
     }

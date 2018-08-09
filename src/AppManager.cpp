@@ -4,6 +4,7 @@ AppManager::AppManager(QObject *parent, QQmlApplicationEngine *_pAppEngine) : QO
 {
     p_qqmlAppEngine         = _pAppEngine;
     this->initQmlProperty();
+    this->initInternalThread();
 }
 
 void AppManager::initQmlProperty()
@@ -59,6 +60,16 @@ void AppManager::initApplication()
     handleHomeScreenClick(static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN));
 }
 
+void AppManager::initInternalThread()
+{
+    p_timeWorker = new Worker_Time_Management();
+    p_timeThread = new QThread();
+    p_timeWorker->moveToThread(p_timeThread);
+    connect(p_timeWorker, &Worker_Time_Management::sigCurrentTime, this, &AppManager::handleTimeUpdate);
+    connect(p_timeThread, &QThread::started, p_timeWorker, &Worker_Time_Management::process);
+    p_timeThread->start();
+}
+
 void AppManager::handleHomeScreenClick(const int &_index, const QVariant& _data)
 {
     setCurrentScreen(_index);
@@ -78,6 +89,13 @@ void AppManager::handleHidePopupClick(const int &_index)
     p_homeQMLController->handleQMLEvent(_index);
     setIsShowingPopup(false);
     p_homeQMLController->handleQMLEvent(static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_HIDE_POPUP));
+}
+
+void AppManager::handleTimeUpdate(QDateTime result)
+{
+    qDebug() << "Time receive : " << result;
+    p_homeDailyModel->setTimeUpdate(result);
+    p_statusbarModel->setCurrentDT(result);
 }
 
 QDateTime AppManager::currentTime() const

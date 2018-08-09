@@ -1,11 +1,11 @@
 import QtQuick 2.0
 import Ehome 1.0
-
+import "../OtherComponent"
 Rectangle {
     id:idRoot
     width: 720
     height: 60
-//    color: "transparent"
+    //    color: "transparent"
     opacity: 1.0
     // define signals
     signal releaseUserProfile()
@@ -18,6 +18,12 @@ Rectangle {
         GradientStop { position: 1.0; color: "white" }
         GradientStop { position: 0.0; color: "#808080" }
     }
+    E_HorizentalLine {
+        id: _line
+        lineRange: parent.width ; lineHeight: 1
+        anchors.bottom: parent.bottom
+    }
+
     Rectangle {
         id: _userRect
         width: 50; height: 50
@@ -26,11 +32,12 @@ Rectangle {
         color: "transparent"
         anchors.left: parent.left
         anchors.leftMargin: 0
-        Image {
+        EButton_Image {
             id:_userIcon
             width: 40 ; height: 40
             anchors.centerIn: parent
-            source: UserProfileModel.curUserIcon
+            __imgSource: UserProfileModel.curUserIcon
+            opacity: 1.0
         }
         MouseArea {
             id: idMouUserBtn
@@ -50,103 +57,80 @@ Rectangle {
         font.pixelSize: 16
     }
 
-    Image {
+    EButton_Image {
         id: idBackBtn
-        anchors.verticalCenter: parent.top
-        anchors.verticalCenterOffset: 30
+//        anchors.verticalCenter: parent.verticalCenter
+        anchors.bottom: parent.bottom ; anchors.bottomMargin: 2
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: -70
-        width: 60 ;height: parent.height
-        source: ResStatusBar.ico_back
-        opacity: idMouBackBtn.pressed ? 0.5 : 1.0
-        MouseArea {
-            id: idMouBackBtn
-            anchors.fill: parent
-            onClicked: {
-                idRoot.releaseBackBtn()
-            }
+        width: 45 ; height: 45
+        __imgSource: ResStatusBar.ico_back
+        onBtnRelease: {
+            idRoot.releaseBackBtn();
         }
     }
 
-    Image {
+    EButton_Image {
         id: idHomeBtn
         anchors.verticalCenter: idBackBtn.verticalCenter
-        width: 60 ;height: parent.height
         anchors.horizontalCenter: parent.horizontalCenter
-        source: ResStatusBar.ico_home
-        opacity: idMouHomeBtn.pressed ? 0.5 : 1.0
-        MouseArea {
-            id: idMouHomeBtn
-            anchors.fill: parent
-            onClicked: {
-                idRoot.releaseHomeBtn()
-            }
+        width: 45 ; height: 45
+        __imgSource: ResStatusBar.ico_home
+        onBtnRelease: {
+            idRoot.releaseHomeBtn();
         }
     }
 
-    Image {
+    EButton_Image {
         id: idCloudBtn
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: 70
-        width: 60 ;height: parent.height
         anchors.verticalCenter: idBackBtn.verticalCenter
-        source: ResStatusBar.ico_data
-        opacity: idMouCloudBtn.pressed ? 0.5 : 1.0
-        MouseArea {
-            id: idMouCloudBtn
-            anchors.fill: parent
-            onClicked: {
-                idRoot.releaseCloudBtn()
-            }
+        width: 45 ; height: 45
+        __imgSource: ResStatusBar.ico_data
+        onBtnRelease: {
+            idRoot.releaseCloudBtn()
         }
     }
 
-    Image {
-        id: idBluetoothIcon
-        source: StatusbarModel.bluetoothState ? ResStatusBar.ico_bluetooth_on : ResStatusBar.ico_bluetooth_off
-        anchors.right: parent.right
-        anchors.rightMargin: 20
-        anchors.bottom: parent.bottom
-
-        height: 35; width: 25
+    Text {
+        id: _curTime
+        text: Qt.formatDateTime(StatusbarModel.currentDT, "hh:mm AP")
+        font.pixelSize: 24
+        anchors.bottom: idBackBtn.bottom ; anchors.bottomMargin: 0
+        anchors.right: parent.right ; anchors.rightMargin: 10
     }
 
     Image {
         id: idNetworkIcon
-        anchors.right: idBluetoothIcon.left
-        anchors.rightMargin: 5
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: -8
-        height: 55 ; width: 55
-        source: getNetworkIcon()
-    }
-
-    Image {
-        id: idDayTimeIcon
-        source: StatusbarModel.isDayTime ? ResStatusBar.ico_day : ResStatusBar.ico_night
-        anchors.right: idNetworkIcon.left
-        anchors.rightMargin: 10
-        anchors.bottom: parent.bottom
+        anchors.right: parent.right ; anchors.rightMargin: 120
+        anchors.bottom: parent.bottom ;anchors.bottomMargin: 0
         height: 40 ; width: 40
+        fillMode: Image.PreserveAspectFit
+        smooth: true
+        source: getNetworkIcon()
     }
 
     function getNetworkIcon() {
         switch(StatusbarModel.networkState) {
         case 0 :
-            return ResStatusBar.ico_wifi_strength_0
+            return ResStatusBar.ico_wifi_0
         case 1 :
-            return ResStatusBar.ico_wifi_strength_1
+            return ResStatusBar.ico_wifi_1
         case 2 :
-            return ResStatusBar.ico_wifi_strength_2
+            return ResStatusBar.ico_wifi_2
         case 3 :
-            return ResStatusBar.ico_wifi_strength_3
+            return ResStatusBar.ico_wifi_3
         case 4 :
-            return ResStatusBar.ico_wifi_strength_4
+            return ResStatusBar.ico_wifi_4
         case 5 :
             return ResStatusBar.ico_wifi_strength_5
         default :
             console.log('out of range')
             break
         }
+    }
+    Component.onCompleted: {
+        console.log('Statusbar completed')
     }
 }

@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <QAbstractListModel>
-#include "../SettingScreenDef.h"
+#include "../Common/SettingScreenDef.h"
 
 class SettingComponent
 {

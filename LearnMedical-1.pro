@@ -14,16 +14,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 HEADERS += \
     src/AppManager.h \
     src/BezierCurve.h \
-    src/Home_Screen_Table.h \
     src/HomeQMLController.h \
-    src/HomeScreen_Enum.h \
-    src/HomeScreenConst.h \
-    src/HomeScreenDef.h \
-    src/HomeStringModel.h \
-    src/Resource_General.h \
-    src/Resource_Statusbar.h \
-    src/ResourceManager.h \
-    src/SettingScreenDef.h \
     src/Component/DeviceComponent.h \
     src/Component/HomeComponent.h \
     src/Component/UserProfileComponent.h \
@@ -33,7 +24,18 @@ HEADERS += \
     src/model/HomeWeatherModel.h \
     src/model/SettingModel.h \
     src/model/StatusbarModel.h \
-    src/model/UserProfileModel.h
+    src/model/UserProfileModel.h \
+    src/Common/Home_Screen_Table.h \
+    src/Common/HomeScreenConst.h \
+    src/Common/HomeScreenDef.h \
+    src/Common/HomeStringModel.h \
+    src/Common/Resource_General.h \
+    src/Common/Resource_Statusbar.h \
+    src/Common/ResourceManager.h \
+    src/Common/SettingScreenDef.h \
+    src/Common/HomeScreen_Enum.h \
+    src/Worker/Worker_Time_Management.h
+    src/Worker/Worker_Time_Management.h \
 
 
 SOURCES += \
@@ -41,7 +43,6 @@ SOURCES += \
     src/BezierCurve.cpp \
     src/Ehome_Main.cpp \
     src/HomeQMLController.cpp \
-    src/HomeScreen_Enum.cpp \
     src/Component/DeviceComponent.cpp \
     src/Component/HomeComponent.cpp \
     src/Component/UserProfileComponent.cpp \
@@ -51,7 +52,8 @@ SOURCES += \
     src/model/HomeWeatherModel.cpp \
     src/model/SettingModel.cpp \
     src/model/StatusbarModel.cpp \
-    src/model/UserProfileModel.cpp
+    src/model/UserProfileModel.cpp \
+    src/Worker/Worker_Time_Management.cpp
 
 
 RESOURCES +=
@@ -103,5 +105,7 @@ DISTFILES += \
     qml/Component/SettingComponent/ESetting_UserProfile.qml \
     qml/Component/SettingComponent/ESetting_Device_Management.qml \
     qml/Component/SettingComponent/ESetting_Network.qml \
-    qml/Popup/EHome_Popup_NoConnection.qml
+    qml/Popup/EHome_Popup_NoConnection.qml \
+    qml/Component/OtherComponent/EButton_Text.qml \
+    qml/Component/OtherComponent/EButton_Image.qml
 

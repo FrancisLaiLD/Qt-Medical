@@ -8,22 +8,24 @@
 #include <iostream>
 
 // E-num
-#include "HomeScreen_Enum.h"
-#include "HomeScreenDef.h"
+#include "Common/HomeScreen_Enum.h"
+#include "Common/HomeScreenDef.h"
 #include "BezierCurve.h"
 // QML Controller
 #include "HomeQMLController.h"
 // Resource
-#include "ResourceManager.h"
+#include "Common/ResourceManager.h"
 // Model for QML
 #include "model/StatusbarModel.h"
 #include "model/UserProfileModel.h"
 #include "model/HomeScreenMainDailyModel.h"
 #include "model/SettingModel.h"
 // Constant
-#include "HomeScreenConst.h"
-#include "HomeStringModel.h"
-
+#include "Common/HomeScreenConst.h"
+#include "Common/HomeStringModel.h"
+// Worker
+#include <QThread>
+#include "Worker/Worker_Time_Management.h"
 
 
 class AppManager : public QObject
@@ -39,6 +41,7 @@ public:
 /*------------------------------------------------------------------INIT APPLICATION-------------------------------------------------------------------------*/
     void initQmlProperty();
     void initApplication();
+    void initInternalThread();
 
 /*------------------------------------------------------------------UPDATE DATA TO STATUSBAR---------------------------------------------------------------------*/
 
@@ -64,6 +67,9 @@ public slots:
     void handlePopupClick(const int&);
     void handleHidePopupClick(const int&);
 
+    // thread internal
+    void handleTimeUpdate(QDateTime result);
+
 signals:
     void isShowingPopupChanged();
     void currentScreenChanged();
@@ -86,6 +92,9 @@ private:
 //    ResourceManager         *p_resManager;
     Resource_Statusbar              *p_resStatusbar;
     Resource_General                *p_resGeneral;
+// Worker
+    QThread *p_timeThread;
+    Worker_Time_Management *p_timeWorker;
 
 
 };

@@ -148,7 +148,7 @@ Medium_Popup {
                 anchors.verticalCenter: time_use.verticalCenter
                 anchors.left: time_use.right
                 anchors.leftMargin: 10
-                text: "10 gio 30 phut"
+                text: Math.floor((StatusbarModel.currentDT - UserProfileModel.dtUserLogin)/1000)
                 font.pixelSize: 16
                 color: HomeScreenConst.value_popup_color
                 font.italic: true

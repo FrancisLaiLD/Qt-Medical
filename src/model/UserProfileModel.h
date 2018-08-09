@@ -4,8 +4,9 @@
 #include <QObject>
 #include <QAbstractListModel>
 #include <QDebug>
-#include "../Resource_General.h"
-#include "../Resource_Statusbar.h"
+#include <QMetaType>
+#include "../Common/Resource_General.h"
+#include "../Common/Resource_Statusbar.h"
 #include "../Component/UserProfileComponent.h"
 
 class UserProfileModel : public QAbstractListModel
@@ -32,6 +33,7 @@ class UserProfileModel : public QAbstractListModel
     Q_PROPERTY(QDate curUserDob                     READ curUserDob             CONSTANT)
     Q_PROPERTY(QDate curUserDateEsta                READ curUserDateEsta        CONSTANT)
     Q_PROPERTY(QDate curUserDateExpe                READ curUserDateExpe        CONSTANT)
+    Q_PROPERTY(QDateTime dtUserLogin                READ dtUserLogin            CONSTANT)
 
 public:
     UserProfileModel();
@@ -59,18 +61,21 @@ public:
     QDate curUserDateEsta();
     QDate curUserDateExpe();
 
+    QDateTime dtUserLogin() const;
+    void setDtUserLogin(const QDateTime &dtUserLogin);
+
 private:
     Resource_General *p_resGeneral;
     Resource_Statusbar *p_resStatusbar;
     QVector<UserProfileComponent> m_listUser;
     UserProfileComponent m_curUser;
     UserProfileComponent *p_currentUser;
+    QDateTime m_dtUserLogin;
 
 signals:
     void curUserNameChanged();
     void curUserIconChanged();
     void currentUserChanged();
 };
-
 
 #endif // USERPROFILEMODEL_H

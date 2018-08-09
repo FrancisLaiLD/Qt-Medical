@@ -15,7 +15,7 @@ public:
     }
     // Constant time
     Q_PROPERTY(int time_screen_trans            READ time_screen_trans      CONSTANT)
-    Q_PROPERTY(int time_screen_show_popup       READ time_screen_show_popup      CONSTANT)
+    Q_PROPERTY(int time_screen_show_popup       READ time_screen_show_popup CONSTANT)
     // Constant Color
     Q_PROPERTY(int title_screen_size            READ title_screen_size      CONSTANT)
     Q_PROPERTY(QString title_screen_color       READ title_screen_color     CONSTANT)
@@ -27,7 +27,8 @@ public:
     Q_PROPERTY(QString value_popup_color        READ value_popup_color      CONSTANT)
     Q_PROPERTY(QString text_label_color         READ text_label_color       CONSTANT)
     Q_PROPERTY(QString line_normal_color        READ line_normal_color      CONSTANT)
-    Q_PROPERTY(QString text_click_color         READ text_click_color      CONSTANT)
+    Q_PROPERTY(QString text_click_color         READ text_click_color       CONSTANT)
+    Q_PROPERTY(QString text_enter_color         READ text_enter_color       CONSTANT)
 
     //define function return time
     int time_screen_trans()         {return 500;}
@@ -46,6 +47,8 @@ public:
     QString text_label_color()              {return "#404040";}
     QString line_normal_color()             {return "gray";}
     QString text_click_color()              {return "#AA00FF";}
+    QString text_enter_color()              {return "#E1A6FF";}
+
 };
 
 #endif // HOMESCREENCONST_H

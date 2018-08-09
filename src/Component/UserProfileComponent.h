@@ -3,8 +3,8 @@
 
 #include <QObject>
 #include <QDateTime>
-#include "../Resource_General.h"
-#include "../Resource_Statusbar.h"
+#include "../Common/Resource_General.h"
+#include "../Common/Resource_Statusbar.h"
 class UserProfileComponent /*: public QObject*/
 {
 //    Q_OBJECT

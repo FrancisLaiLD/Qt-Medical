@@ -1,7 +1,8 @@
 import QtQuick 2.0
 
 Rectangle {
-    id: idRoot
+    id: _root
+    // external properties
     property int btnWidth: -1
     property int btnHeight: 40
     property string btnLabel: "Unknow button"
@@ -11,6 +12,8 @@ Rectangle {
     property string btnColorPress: "#B79612"
     property string btnBorderColor: "#404040"
 
+    // Internal Properties
+    property bool isPressed: false
     // signals
     signal btnClicked()
 
@@ -21,8 +24,8 @@ Rectangle {
     border.color: btnBorderColor
     gradient:
         Gradient {
-        GradientStop { position: 0.0; color: (idMainMou.pressed ? btnColorPress : btnColorTop)}
-        GradientStop { position: 1.0; color: (idMainMou.pressed ? btnColorPress : btnColorBottom )}
+        GradientStop { position: 0.0; color: (_root.isPressed ? btnColorPress : btnColorTop)}
+        GradientStop { position: 1.0; color: (_root.isPressed ? btnColorPress : btnColorBottom )}
     }
 
     Text {
@@ -35,11 +38,15 @@ Rectangle {
     MouseArea {
         id: idMainMou
         anchors.fill: parent
-        onClicked: {
-            idRoot.btnClicked()
+        onPressed: {
+            _root.isPressed = true
+        }
+        onReleased: {
+            if (_root.isPressed)
+                _root.btnClicked()
         }
         onExited: {
-//            idMainMou.pressed = false
+            _root.isPressed = false
         }
     }
 }

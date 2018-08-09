@@ -1,6 +1,11 @@
 #include "HomeListDeviceModel.h"
 
 
+HomeListDeviceModel::HomeListDeviceModel()
+{
+    initListDevice();
+}
+
 QVariant HomeListDeviceModel::data(const QModelIndex &index, int role) const
 {
     if (index.row() < 0 || index.row() >= m_listDevice.size())
@@ -62,5 +67,14 @@ QVector<DeviceComponent> HomeListDeviceModel::listDevice() const
 void HomeListDeviceModel::setListDevice(const QVector<DeviceComponent> &listDevice)
 {
     m_listDevice = listDevice;
+}
+
+void HomeListDeviceModel::initListDevice()
+{
+    addDevice(DeviceComponent("Blood pressure device", true,      QDateTime::currentDateTime()));
+    addDevice(DeviceComponent("Blood analyser device", false,     QDateTime::currentDateTime()));
+    addDevice(DeviceComponent("Height diametter device", true,    QDateTime::currentDateTime()));
+    addDevice(DeviceComponent("Weight diametter device", false,   QDateTime::currentDateTime()));
+    addDevice(DeviceComponent("Image analyser device",    true,   QDateTime::currentDateTime()));
 }
 

@@ -56,16 +56,16 @@ Window {
         height: 60
         source: ""
     }
-    Rectangle {
-        id: idLine
-        color: HomeScreenConst.line_normal_color
-        width: parent.width - 60
-        height: 1
-        anchors.top: idSttBarLoader.bottom
-        anchors.topMargin: 0
-        anchors.horizontalCenter: idRoot.horizontalCenter
-        opacity: 0.5
-    }
+//    Rectangle {
+//        id: idLine
+//        color: HomeScreenConst.line_normal_color
+//        width: parent.width - 60
+//        height: 1
+//        anchors.top: idSttBarLoader.bottom
+//        anchors.topMargin: 0
+//        anchors.horizontalCenter: idRoot.horizontalCenter
+//        opacity: 0.5
+//    }
 
     Loader {
         id: idContentLoader

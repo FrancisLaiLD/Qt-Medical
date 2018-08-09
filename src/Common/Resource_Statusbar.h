@@ -33,7 +33,11 @@ public:
     Q_PROPERTY(QString ico_wifi_strength_3              READ ico_wifi_strength_3                CONSTANT)
     Q_PROPERTY(QString ico_wifi_strength_4              READ ico_wifi_strength_4                CONSTANT)
     Q_PROPERTY(QString ico_wifi_strength_5              READ ico_wifi_strength_5                CONSTANT)
-
+    Q_PROPERTY(QString ico_wifi_0                       READ ico_wifi_0                         CONSTANT)
+    Q_PROPERTY(QString ico_wifi_1                       READ ico_wifi_1                         CONSTANT)
+    Q_PROPERTY(QString ico_wifi_2                       READ ico_wifi_2                         CONSTANT)
+    Q_PROPERTY(QString ico_wifi_3                       READ ico_wifi_3                         CONSTANT)
+    Q_PROPERTY(QString ico_wifi_4                       READ ico_wifi_4                         CONSTANT)
 
     // defint function return QString
     QString ico_bluetooth_on()                      {return m_prefix + "ico_bluetooth_on.png";}
@@ -55,7 +59,11 @@ public:
     QString ico_wifi_strength_3()                   {return m_prefix + "ico_wifi_strength_3.png";}
     QString ico_wifi_strength_4()                   {return m_prefix + "ico_wifi_strength_4.png";}
     QString ico_wifi_strength_5()                   {return m_prefix + "ico_wifi_strength_5.png";}
-
+    QString ico_wifi_0()                            {return m_prefix + "ico_wifi_0.png";}
+    QString ico_wifi_1()                            {return m_prefix + "ico_wifi_1.png";}
+    QString ico_wifi_2()                            {return m_prefix + "ico_wifi_2.png";}
+    QString ico_wifi_3()                            {return m_prefix + "ico_wifi_3.png";}
+    QString ico_wifi_4()                            {return m_prefix + "ico_wifi_4.png";}
 
 private:
     QString m_prefix;
