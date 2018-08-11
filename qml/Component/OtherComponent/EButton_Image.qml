@@ -7,7 +7,7 @@ Image {
     source: __imgSource
     // signal
     signal btnRelease()
-    opacity: _root.isPressed ? 1.0 : 0.5
+    opacity: _root.isPressed ? 0.5 : 1.0
     MouseArea {
         id: idMouBackBtn
         anchors.fill: parent

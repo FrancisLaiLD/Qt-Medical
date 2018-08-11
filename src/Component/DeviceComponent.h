@@ -11,10 +11,18 @@ class DeviceComponent /*: public QObject*/
 
 public:
     DeviceComponent() {}
-    DeviceComponent(QString cName, bool cState, QDateTime cLastConn) : m_proName(cName), m_proState(cState), m_proLastConnect(cLastConn)
-    {
-
-    }
+    DeviceComponent(
+        QString cName,
+        QString cManufact,
+        bool cState,
+        bool cIsShowInMain,
+        QDateTime cLastConn
+        ):
+        m_proName(cName),
+        m_manufacturer(cManufact),
+        m_proState(cState),
+        m_isShowInMain(cIsShowInMain),
+        m_proLastConnect(cLastConn) {}
     ~DeviceComponent() {}
 
 //    Q_PROPERTY(QString proName                  READ proName            WRITE setProName            NOTIFY proNameChanged)
@@ -30,9 +38,17 @@ public:
     QDateTime proLastConnect() const;
     void setProLastConnect(const QDateTime &proLastConnect);
 
+    QString manufacturer() const;
+    void setManufacturer(const QString &manufacturer);
+
+    bool isShowInMain() const;
+    void setIsShowInMain(bool isShowInMain);
+
 private:
     QString     m_proName;
+    QString     m_manufacturer;
     bool        m_proState;
+    bool        m_isShowInMain;
     QDateTime   m_proLastConnect;
 
 signals:

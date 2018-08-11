@@ -13,7 +13,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 HEADERS += \
     src/AppManager.h \
-    src/BezierCurve.h \
     src/HomeQMLController.h \
     src/Component/DeviceComponent.h \
     src/Component/HomeComponent.h \
@@ -28,19 +27,19 @@ HEADERS += \
     src/Common/Home_Screen_Table.h \
     src/Common/HomeScreenConst.h \
     src/Common/HomeScreenDef.h \
-    src/Common/HomeStringModel.h \
     src/Common/Resource_General.h \
     src/Common/Resource_Statusbar.h \
     src/Common/ResourceManager.h \
     src/Common/SettingScreenDef.h \
     src/Common/HomeScreen_Enum.h \
-    src/Worker/Worker_Time_Management.h
+    src/Worker/Worker_Time_Management.h \
+    src/Common/DeviceDef.h \
+    src/Common/AppStringConst.h
     src/Worker/Worker_Time_Management.h \
 
 
 SOURCES += \
     src/AppManager.cpp \
-    src/BezierCurve.cpp \
     src/Ehome_Main.cpp \
     src/HomeQMLController.cpp \
     src/Component/DeviceComponent.cpp \
@@ -57,6 +56,9 @@ SOURCES += \
 
 
 RESOURCES +=
+
+unix:MOC_DIR = ../build-Medical-1/moc_files
+unix:OBJECTS_DIR = ../build-Medical-1/obj_files
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -107,5 +109,7 @@ DISTFILES += \
     qml/Component/SettingComponent/ESetting_Network.qml \
     qml/Popup/EHome_Popup_NoConnection.qml \
     qml/Component/OtherComponent/EButton_Text.qml \
-    qml/Component/OtherComponent/EButton_Image.qml
+    qml/Component/OtherComponent/EButton_Image.qml \
+    qml/Component/SettingComponent/ESetting_Display.qml \
+    qml/Component/SettingComponent/ESetting_Sound.qml
 

@@ -5,11 +5,11 @@ import "../Component/ListViewComponent"
 import "../Component/DelegateComponent"
 import "../Component/OtherComponent"
 import Ehome 1.0
-import CustomGeometry 1.0
 
 EHome_Main_Frame {
     id:_root
     property string lastTime: HomeDailyModel.timeUpdate
+//    scrrenBgImg: "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/main_bg_25.jpg"
     ParallelAnimation {
         id: idMainAnimation
         running: false
@@ -42,12 +42,6 @@ EHome_Main_Frame {
                 onClicked: {
                     AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_HOME_WEATHER)
                 }
-            }
-            Rectangle {
-                id: _background
-                anchors.fill: parent
-                color: StatusbarModel.isDayTime ? "#CFDD00" : "#2F00C0"
-                opacity: 0.3
             }
 
             Text {
@@ -85,7 +79,7 @@ EHome_Main_Frame {
             }
             Text {
                 id: idTemp_unit
-                text: HomeStringModel.STR_HOME_WEATHER_CELCIUS_DEGREE
+                text: AppStringConst.STR_HOME_WEATHER_CELCIUS_DEGREE
                 font.pixelSize: 48
                 anchors.left: idTemp_val.right
                 anchors.leftMargin: 0
@@ -128,7 +122,7 @@ EHome_Main_Frame {
                 anchors.topMargin: 30
                 anchors.right: idImgWindVelocity.left
                 anchors.rightMargin: 100
-                text: HomeStringModel.STR_HOME_WEATHER_DIRECTION
+                text: AppStringConst.STR_HOME_WEATHER_DIRECTION
                 font.pixelSize: 16
                 color: HomeScreenConst.line_normal_color
             }
@@ -137,7 +131,7 @@ EHome_Main_Frame {
                 anchors.verticalCenter: idWind_direction.verticalCenter
                 anchors.left: idWind_direction.right
                 anchors.leftMargin: 5
-                text: HomeStringModel.STR_HOME_WEATHER_EAST + "-" + HomeStringModel.STR_HOME_WEATHER_NORTH
+                text: AppStringConst.STR_HOME_WEATHER_EAST + "-" + AppStringConst.STR_HOME_WEATHER_NORTH
                 font.pixelSize: 16
                 color: "black"
             }
@@ -146,7 +140,7 @@ EHome_Main_Frame {
                 anchors.top: idWind_direction.bottom
                 anchors.topMargin: 5
                 anchors.right: idWind_direction.right
-                text: HomeStringModel.STR_HOME_WEATHER_SPEED
+                text: AppStringConst.STR_HOME_WEATHER_SPEED
                 font.pixelSize: 16
                 color: HomeScreenConst.line_normal_color
             }
@@ -155,7 +149,7 @@ EHome_Main_Frame {
                 anchors.verticalCenter: idWind_speed.verticalCenter
                 anchors.left: idWind_speed.right
                 anchors.leftMargin: 5
-                text: 12 + " " + HomeStringModel.STR_HOME_WEATHER_KM_H
+                text: 12 + " " + AppStringConst.STR_HOME_WEATHER_KM_H
                 font.pixelSize: 16
                 color: "black"
             }
@@ -168,7 +162,7 @@ EHome_Main_Frame {
             anchors.leftMargin: 30
             anchors.bottom: leftSide.bottom
             anchors.bottomMargin: 5
-            text: HomeStringModel.STR_HOME_WEATHER_DATA_WAS_UPDATE
+            text: AppStringConst.STR_HOME_WEATHER_DATA_WAS_UPDATE
             font.pixelSize: 14
             color: HomeScreenConst.line_normal_color
         }
@@ -226,11 +220,10 @@ EHome_Main_Frame {
                 anchors.horizontalCenter: idLastRecord.horizontalCenter
                 anchors.bottom: idLastRecord.bottom
                 anchors.bottomMargin: 5
-                text: HomeStringModel.STR_HOME_GO_TO_USER_DATA
+                text: AppStringConst.STR_HOME_GO_TO_USER_DATA
                 font.italic: true
                 font.pixelSize: 15
                 onTextRelease: {
-                    SettingModel.curInx = 2
                     AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_USER_DATA)
                 }
             }
@@ -262,7 +255,7 @@ EHome_Main_Frame {
             anchors.topMargin: 10
             anchors.left: parent.left
             anchors.leftMargin: 50
-            text: HomeStringModel.STR_HOME_DEVICE_CONNECTION
+            text: AppStringConst.STR_HOME_DEVICE_CONNECTION
             font.italic: false
             font.pixelSize: 20
             color: "black"
@@ -298,7 +291,7 @@ EHome_Main_Frame {
         }
 
         ListView {
-            id: lsv
+            id: _lsvDevice
             anchors.top: idTitleTips.bottom
             anchors.topMargin: 40
             spacing: 5
@@ -307,14 +300,15 @@ EHome_Main_Frame {
             model: listDevice
             delegate: Rectangle {
                 id: idDelegate
-                width: parent.width
-                height: 50
-                color: index%2 === 0 ? "#C8C8C8" : "#A4A4A4"
+                width: parent.width ;
+                height: visible ? 50 : 0
+                visible: proShowInMain
+                color: proState ? "#CDCDCD" : "#E0E0E0"
                 opacity: 0.8
                 Text {
                     id: idTxt_device_name
                     text: proName
-                    font.pixelSize: 16 ; font.italic: true
+                    font.pixelSize: 16 ; font.italic: false
                     x: txt_device_name.x
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -328,7 +322,7 @@ EHome_Main_Frame {
                 Text {
                     id: idTxt_device_lastConn
                     text: proState ? "online" : Qt.formatDateTime(proLastConn, "yyyy.MM.dd") + " - "+ Qt.formatDateTime(proLastConn, "hh:mm AP")
-                    font.pixelSize: 16
+                    font.pixelSize: 15
                     color: proState ? "green" : "#808080"
                     x: txt_device_last_conn.x
                     anchors.verticalCenter: parent.verticalCenter
@@ -339,13 +333,14 @@ EHome_Main_Frame {
         EButton_Text {
             id: _gotoDeviceSet
             anchors.horizontalCenter: idUnderFrame.horizontalCenter
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 80
-            text: HomeStringModel.STR_HOME_GO_TO_DEVICE_SETTING
+//            anchors.bottom: parent.bottom
+//            anchors.bottomMargin: 80
+            anchors.top: _lsvDevice.bottom ; anchors.topMargin: 30
+            text: AppStringConst.STR_HOME_GO_TO_DEVICE_SETTING
             font.italic: true
             font.pixelSize: 15
             onTextRelease: {
-                SettingModel.curInx = 2
+                SettingModel.curInx = HomeEnum.SETTING_DEVICE
                 AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_SETTING)
             }
         }

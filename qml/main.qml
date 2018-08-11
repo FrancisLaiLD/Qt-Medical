@@ -73,14 +73,14 @@ Window {
 //        anchors.fill: parent
         x: 0 ; y: 60
         source: ""
-        Image {
-            id: idBackgroundImg
-            anchors.fill: parent
-            opacity: 0.5
-            visible: true
-            fillMode: Image.PreserveAspectCrop
-            source: "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/main_bg_25.jpg"
-        }
+//        Image {
+//            id: idBackgroundImg
+//            anchors.fill: parent
+//            opacity: 0.5
+//            visible: true
+//            fillMode: Image.PreserveAspectCrop
+//            source: "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/main_bg_25.jpg"
+//        }
     }
 
     Rectangle {

@@ -9,7 +9,8 @@ QString DeviceComponent::proName() const
 
 void DeviceComponent::setProName(const QString &proName)
 {
-    m_proName = proName;
+    if (m_proName != proName)
+        m_proName = proName;
 }
 
 bool DeviceComponent::proState() const
@@ -19,7 +20,8 @@ bool DeviceComponent::proState() const
 
 void DeviceComponent::setProState(bool proState)
 {
-    m_proState = proState;
+    if (m_proState != proState)
+        m_proState = proState;
 }
 
 QDateTime DeviceComponent::proLastConnect() const
@@ -29,5 +31,28 @@ QDateTime DeviceComponent::proLastConnect() const
 
 void DeviceComponent::setProLastConnect(const QDateTime &proLastConnect)
 {
-    m_proLastConnect = proLastConnect;
+    if (m_proLastConnect != proLastConnect)
+        m_proLastConnect = proLastConnect;
+}
+
+QString DeviceComponent::manufacturer() const
+{
+    return m_manufacturer;
+}
+
+void DeviceComponent::setManufacturer(const QString &manufacturer)
+{
+    if (m_manufacturer != manufacturer)
+        m_manufacturer = manufacturer;
+}
+
+bool DeviceComponent::isShowInMain() const
+{
+    return m_isShowInMain;
+}
+
+void DeviceComponent::setIsShowInMain(bool isShowInMain)
+{
+    if (m_isShowInMain != isShowInMain)
+        m_isShowInMain = isShowInMain;
 }

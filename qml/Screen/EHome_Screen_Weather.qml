@@ -22,7 +22,7 @@ EHome_Main_Frame {
         anchors.topMargin: 30
         anchors.horizontalCenter: parent.horizontalCenter
         xAxisName: "time"
-        yAxisName: HomeStringModel.STR_HOME_WEATHER_CELCIUS_DEGREE
+        yAxisName: AppStringConst.STR_HOME_WEATHER_CELCIUS_DEGREE
         xAxisMaxValue: 24
         xAxisRes: 8
         yAxisMaxValue: 50

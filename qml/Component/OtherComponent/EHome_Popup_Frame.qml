@@ -3,6 +3,11 @@ import "../OtherComponent"
 
 Rectangle {
     id: idRectPopup
+    gradient:
+        Gradient {
+        GradientStop { position: 0.0; color: "#808080" }
+        GradientStop { position: 1.0; color: "white" }
+    }
     property int popupWidth: 560
     property int popupHeight: 400
     property string popupTitle: "unknow Title"
@@ -10,11 +15,7 @@ Rectangle {
     width: popupWidth ; height: popupHeight
     radius: 15
     opacity: 1.0
-    gradient:
-        Gradient {
-        GradientStop { position: 0.0; color: "#808080" }
-        GradientStop { position: 1.0; color: "white" }
-    }
+
     MouseArea {
         id: idMouInsideRect
         anchors.fill: parent

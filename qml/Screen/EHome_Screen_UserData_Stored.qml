@@ -14,7 +14,7 @@ EHome_Main_Frame {
         NumberAnimation { target: root; property: "x"; from: -720; to: 0; duration: HomeScreenConst.time_screen_trans }
         NumberAnimation { target: root; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
     }
-    screenTitle: HomeStringModel.STR_USER_DATA
+    screenTitle: AppStringConst.STR_USER_DATA
     //    backgroundImage:
 
     EChart_Weather {
@@ -24,11 +24,11 @@ EHome_Main_Frame {
         anchors.horizontalCenter: parent.horizontalCenter
         chartWidth: parent.width - 60
         chartHeight: parent.height/2 - 60
-        xAxisName: HomeStringModel.STR_GENERAL_TIME
-        yAxisName: HomeStringModel.STR_USER_DATA_BLOOD_PRESSUER
+        xAxisName: AppStringConst.STR_GENERAL_TIME
+        yAxisName: AppStringConst.STR_USER_DATA_BLOOD_PRESSUER
     }
     EButton_StandAlone {
-        id: idBtnGoToRealTime
+        id: _btnSwitchRealTime
         anchors.right: parent.right ; anchors.rightMargin: 10
         anchors.top: parent.top ; anchors.topMargin: 10
         btnLabel: "Switch to real time"
@@ -57,7 +57,7 @@ EHome_Main_Frame {
 
     Rectangle {
         id: _userData
-        width: parent.width - 60 ; height: 400
+        width: parent.width ; height: 400
         color: "transparent"
         anchors.top: _firstLine.bottom ; anchors.topMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter

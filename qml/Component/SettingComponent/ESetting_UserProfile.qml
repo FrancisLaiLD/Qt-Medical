@@ -2,24 +2,26 @@ import QtQuick 2.0
 import "../OtherComponent"
 Rectangle {
     id: _root
-    width: 660 ; height: 800
+    width: parent.width ; height: 800
 
-    E_HorizentalLine {
-        id: _mainLine
-        lineColor: HomeScreenConst.line_normal_color
-        lineRange: parent.width - 60
-        anchors.centerIn: parent
-    }
+//    gradient:
+//        Gradient {
+//        GradientStop { position: 0.0; color: "white" }
+//        GradientStop { position: 1.0; color: "#AAAAAA"}
+//    }
+    color: "transparent"
+
     Item {
         id: _currentUser
         width: parent.width
-        height: parent.height/2
+        height: parent.height/3
         Text {
             id: txt_cur_user
             text: "Current user :"
             color: "#404040"
             font.pixelSize: 16
-            x: 40 ; y: 60
+            anchors.top: parent.top ; anchors.topMargin: 40
+            anchors.left: parent.left ; anchors.leftMargin: 100
         }
 
         Text {
@@ -133,13 +135,42 @@ Rectangle {
             font.italic: true
         }
 
+        Rectangle {
+            id: _rectUsrAva
+            anchors.rightMargin: 150
+            anchors.top: parent.top ; anchors.topMargin: 40
+            anchors.right: parent.right
+            width: 130 ; height: 130
+            border.width: 1 ; border.color: "gray"
+            Image {
+                id: _usrAva
+                width: 120 ; height: 120
+                source: UserProfileModel.curUserIcon
+                anchors.centerIn: parent
+            }
+        }
+        EButton_Text{
+            id: _btnChangeAva
+            text: "Change your avatar >>"
+            font.pixelSize: 14 ; font.italic: true
+            anchors.top: _rectUsrAva.bottom ; anchors.topMargin: 10
+            anchors.horizontalCenter: _rectUsrAva.horizontalCenter
+        }
+        EButton_Text {
+            id: _btnChangePass
+            text: "Change your password >>"
+            font.pixelSize: 14 ; font.italic: true
+            anchors.verticalCenter: _txt_time_login_val.verticalCenter ; anchors.verticalCenterOffset: 30
+            anchors.right: _txt_time_login_val.right
+        }
+
         Text {
             id: _timeUse
             text: "Thời gian đã đăng nhập :"
             color: "#404040"
             font.pixelSize: 16
             anchors.right: parent.right ; anchors.rightMargin: 300
-            anchors.verticalCenter: _txt_time_login.verticalCenter ; anchors.verticalCenterOffset: 40
+            anchors.verticalCenter: _txt_time_login.verticalCenter ; anchors.verticalCenterOffset: 35
         }
         Text {
             id: _timeUse_val
@@ -151,5 +182,13 @@ Rectangle {
             color: HomeScreenConst.value_popup_color
             font.italic: true
         }
+        E_HorizentalLine {
+            id: _mainLine
+            lineColor: HomeScreenConst.line_normal_color
+            lineRange: parent.width - 160
+            anchors.bottom: parent.bottom ; anchors.bottomMargin: -10
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
     }
+
 }

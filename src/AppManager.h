@@ -10,7 +10,6 @@
 // E-num
 #include "Common/HomeScreen_Enum.h"
 #include "Common/HomeScreenDef.h"
-#include "BezierCurve.h"
 // QML Controller
 #include "HomeQMLController.h"
 // Resource
@@ -22,7 +21,7 @@
 #include "model/SettingModel.h"
 // Constant
 #include "Common/HomeScreenConst.h"
-#include "Common/HomeStringModel.h"
+#include "Common/AppStringConst.h"
 // Worker
 #include <QThread>
 #include "Worker/Worker_Time_Management.h"
@@ -84,7 +83,7 @@ private:
 
     // Constant model
     HomeScreenConst                 *p_homeScreenConst;
-    HomeStringModel                 *p_homeStringModel;
+    AppStringConst                 *p_AppStringConst;
     HomeScreen_Main_Daily_Model     *p_homeDailyModel;
     StatusbarModel                  *p_statusbarModel;
     UserProfileModel                *p_userProfileModel;

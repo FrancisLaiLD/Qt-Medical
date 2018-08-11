@@ -17,12 +17,11 @@ void AppManager::initQmlProperty()
     p_settingModel          = new SettingModel();
     // constant model
     p_homeScreenConst       = new HomeScreenConst();
-    p_homeStringModel       = new HomeStringModel();
+    p_AppStringConst       = new AppStringConst();
 
 
     qmlRegisterUncreatableType<HomeScreen_Enum>("Ehome", 1, 0, "HomeEnum",
                                                  "Cannot create WarningLevel in QML");
-    qmlRegisterType<BezierCurve>("CustomGeometry", 1, 0, "BezierCurve");
 
     p_qqmlAppEngine->rootContext()->setContextProperty("AppManager",        this);
     p_qqmlAppEngine->rootContext()->setContextProperty("StatusbarModel",    p_statusbarModel);
@@ -31,10 +30,10 @@ void AppManager::initQmlProperty()
     p_qqmlAppEngine->rootContext()->setContextProperty("ResStatusBar",      p_resStatusbar);
     p_qqmlAppEngine->rootContext()->setContextProperty("Resource_General",  p_resGeneral);
     p_qqmlAppEngine->rootContext()->setContextProperty("HomeScreenConst",   p_homeScreenConst);
-    p_qqmlAppEngine->rootContext()->setContextProperty("HomeStringModel",   p_homeStringModel);
+    p_qqmlAppEngine->rootContext()->setContextProperty("AppStringConst",   p_AppStringConst);
     p_qqmlAppEngine->rootContext()->setContextProperty("SettingModel",      p_settingModel);
 
-//    p_qqmlAppEngine->rootContext()->setContextProperty("QmlController",     p_homeStringModel);
+//    p_qqmlAppEngine->rootContext()->setContextProperty("QmlController",     p_AppStringConst);
 
 
     p_qqmlAppEngine->load("/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/qml/main.qml");

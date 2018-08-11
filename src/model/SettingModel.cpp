@@ -1,28 +1,9 @@
 #include "SettingModel.h"
 
-SettingComponent::SettingComponent(QString c_proMenuName, QString c_proMenuQml)
-                           : m_proMenuName(c_proMenuName), m_proMenuQml(c_proMenuQml)
-{
-
-}
-
-SettingComponent::~SettingComponent()
-{
-
-}
 
 SettingModel::SettingModel()
 {
-    addDevice(SettingComponent("General", ESETTING_GENERAL));
-    addDevice(SettingComponent("Network", ESETTING_NETWORK));
-    addDevice(SettingComponent("Device management", ESETTING_DEVICE_MANAGEMENT));
-    addDevice(SettingComponent("User profile", ESETTING_USERPROFILE));
-
-    addDevice(SettingComponent("Version info", ""));
-    addDevice(SettingComponent("Updating...", ""));
-    addDevice(SettingComponent("Updating...", ""));
-    addDevice(SettingComponent("Updating...", ""));
-    addDevice(SettingComponent("Updating...", ""));
+    this->initSettingModel();
 }
 
 SettingModel::~SettingModel()
@@ -85,6 +66,17 @@ int SettingModel::curInx() const
 void SettingModel::setCurInx(int curInx)
 {
     m_curInx = curInx;
+}
+
+void SettingModel::initSettingModel()
+{
+    int m_size = CONST_TABLE_SETTING.size();
+    qDebug() << "Size of Setting :" << m_size;
+    for (int i= 0; i < m_size; i++)
+    {
+        SettingComponent m_settingComp = SettingComponent(CONST_TABLE_SETTING[i].s_MenuName, CONST_TABLE_SETTING[i].s_QmlLink);
+        addDevice(m_settingComp);
+    }
 }
 
 QString SettingComponent::proMenuName() const

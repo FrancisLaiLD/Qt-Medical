@@ -12,6 +12,8 @@ Rectangle {
         id: idMainImg
         source: idRoot.scrrenBgImg
         anchors.fill: parent
+        opacity: 0.8
+        fillMode: Image.PreserveAspectCrop
     }
 
     Text {

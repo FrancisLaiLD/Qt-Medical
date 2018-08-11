@@ -4,7 +4,7 @@ Rectangle {
     id: idRoot
     property int lineRange: 720
     property int lineHeight:1
-    property string lineColor: "#192BC0"
+    property string lineColor: "gray"
     color: lineColor
     width: lineRange
     height: lineHeight

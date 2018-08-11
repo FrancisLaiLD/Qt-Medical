@@ -18,7 +18,7 @@ Please try again later"
         id: _btnGotoNetSetup
         btnLabel: "Go to network setting"
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: parent.bottom ; anchors.bottomMargin: 5
+        anchors.bottom: parent.bottom ; anchors.bottomMargin: 8
         onBtnClicked: {
             SettingModel.curInx = HomeEnum.SETTING_NETWORK
             AppManager.handleHidePopupClick(HomeEnum.EVENT_GO_TO_SETTING)

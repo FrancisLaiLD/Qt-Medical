@@ -5,7 +5,7 @@ import "../Component/ListViewComponent"
 import "../Component/DelegateComponent"
 import "../Component/OtherComponent"
 import Ehome 1.0
-import CustomGeometry 1.0
+
 
 EHome_Main_Frame {
     id: idRoot

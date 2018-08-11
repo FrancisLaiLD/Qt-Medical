@@ -3,15 +3,20 @@
 
 #include <QObject>
 #include <QAbstractListModel>
+#include <QDebug>
 #include "../Common/SettingScreenDef.h"
 
 class SettingComponent
 {
 
 public:
-    SettingComponent() {};
-    SettingComponent(QString c_proMenuName, QString c_proMenuQml);
-    ~SettingComponent();
+    SettingComponent() {}
+    ~SettingComponent() {}
+
+    SettingComponent(QString c_proMenuName, QString c_proMenuQml) :
+        m_proMenuName(c_proMenuName),
+        m_proMenuQml(c_proMenuQml) {}
+
     QString proMenuName() const;
     void setProMenuName(const QString &proMenuName);
 
@@ -46,6 +51,8 @@ public:
 
     int curInx() const;
     void setCurInx(int curInx);
+
+    void initSettingModel();
 
 private:
     QVector<SettingComponent> m_listMenu;
