@@ -1,14 +1,14 @@
-#ifndef HOMESCREEN_ENUM_H
-#define HOMESCREEN_ENUM_H
+#ifndef App_Enum_H
+#define App_Enum_H
 
 #include <QObject>
 #include "HomeScreenDef.h"
-class HomeScreen_Enum : public QObject
+class App_Enum : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit HomeScreen_Enum(QObject *parent = nullptr)
+    explicit App_Enum(QObject *parent = nullptr)
     {
         Q_UNUSED(parent);
     }
@@ -48,6 +48,7 @@ public:
         EVENT_SHOW_POPUP,
         EVENT_SHOW_POPUP_USER_PROFILE,
         EVENT_SHOW_POPUP_NO_CONNECTION,
+        EVENT_SHOW_POPUP_CREATINGUSER,
         EVENT_HIDE_POPUP,
 
         EVENT_MAX = 65536
@@ -98,6 +99,11 @@ public:
         DEVICE_IMAGE_ANALYZER
     };
 
+    enum class ENUM_APP_LANGUAGE {
+        LANGUAGE_VI = 0,
+        LANGUAGE_EN
+    };
+
     Q_ENUM(ENUM_HOME_MODEL)
     Q_ENUM(ENUM_HOME_EVENT)
     Q_ENUM(ENUM_WEATHER_PROPERTY)
@@ -112,4 +118,4 @@ public slots:
 
 
 
-#endif // HOMESCREEN_ENUM_H
+#endif // App_Enum_H

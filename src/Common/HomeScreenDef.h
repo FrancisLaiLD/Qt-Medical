@@ -41,6 +41,7 @@
 
 #define POPUP_EHOME_MAIN_USER_POPUP             "Popup/EHome_Popup_UserProfile.qml"
 #define POPUP_EHOME_NO_CONNECTION               "Popup/EHome_Popup_NoConnection.qml"
+#define POPUP_EHOME_CREATINGUSER                "Popup/EHome_Popup_CreatingUser.qml"
 
 
 

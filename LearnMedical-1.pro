@@ -31,7 +31,7 @@ HEADERS += \
     src/Common/Resource_Statusbar.h \
     src/Common/ResourceManager.h \
     src/Common/SettingScreenDef.h \
-    src/Common/HomeScreen_Enum.h \
+    src/Common/App_Enum.h \
     src/Worker/Worker_Time_Management.h \
     src/Common/DeviceDef.h \
     src/Common/AppStringConst.h
@@ -111,5 +111,9 @@ DISTFILES += \
     qml/Component/OtherComponent/EButton_Text.qml \
     qml/Component/OtherComponent/EButton_Image.qml \
     qml/Component/SettingComponent/ESetting_Display.qml \
-    qml/Component/SettingComponent/ESetting_Sound.qml
+    qml/Component/SettingComponent/ESetting_Sound.qml \
+    qml/Component/OtherComponent/EText_Input.qml \
+    qml/Component/OtherComponent/EButton_Combobox_Time.qml \
+    qml/Component/OtherComponent/EButton_GridBox.qml \
+    qml/Popup/EHome_Popup_CreatingUser.qml
 

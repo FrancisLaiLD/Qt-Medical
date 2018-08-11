@@ -27,7 +27,7 @@ EHome_Main_Frame {
             case HomeEnum.WEATHER_DAY_SHINE_CLOUDY:
                 return Resource_General.weather_shine_cloudy
             default:
-                return Resource_General.weather_rain_storm
+                return Resource_General.weather_shine_cloudy
             }
         }
 
@@ -295,6 +295,7 @@ EHome_Main_Frame {
             anchors.top: idTitleTips.bottom
             anchors.topMargin: 40
             spacing: 5
+            clip: true
             interactive: true
             width: parent.width ; height: contentHeight
             model: listDevice
@@ -335,7 +336,7 @@ EHome_Main_Frame {
             anchors.horizontalCenter: idUnderFrame.horizontalCenter
 //            anchors.bottom: parent.bottom
 //            anchors.bottomMargin: 80
-            anchors.top: _lsvDevice.bottom ; anchors.topMargin: 30
+            anchors.top: _lsvDevice.bottom ; anchors.topMargin: 20
             text: AppStringConst.STR_HOME_GO_TO_DEVICE_SETTING
             font.italic: true
             font.pixelSize: 15

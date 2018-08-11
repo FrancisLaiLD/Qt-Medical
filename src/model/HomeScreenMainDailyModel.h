@@ -7,7 +7,7 @@
 #include <QQmlContext>
 #include "../Component/WeatherComponent.h"
 #include "../Component/DeviceComponent.h"
-#include "../Common/HomeScreen_Enum.h"
+#include "../Common/App_Enum.h"
 
 #include "HomeListDeviceModel.h"
 class HomeScreen_Main_Daily_Model : public QObject

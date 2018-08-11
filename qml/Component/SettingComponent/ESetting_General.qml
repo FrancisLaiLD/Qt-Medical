@@ -7,13 +7,13 @@ Rectangle {
     color: "transparent"
     E_HorizentalLine {
         id: _firstLine
-        lineRange: parent.width - 60
+        lineRange: parent.width - 160
         anchors.horizontalCenter: parent.horizontalCenter
         y: parent.height/3
     }
     E_HorizentalLine {
         id: _secLine
-        lineRange: parent.width - 60
+        lineRange: parent.width - 160
         anchors.horizontalCenter: parent.horizontalCenter
         y: 2* parent.height/3
     }

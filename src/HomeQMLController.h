@@ -6,7 +6,7 @@
 #include <QQmlApplicationEngine>
 #include <QStack>
 //#include <>
-#include "Common/HomeScreen_Enum.h"
+#include "Common/App_Enum.h"
 #include "Common/Home_Screen_Table.h"
 #include <QQmlContext>
 

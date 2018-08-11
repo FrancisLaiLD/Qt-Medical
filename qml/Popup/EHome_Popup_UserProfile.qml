@@ -55,7 +55,7 @@ Medium_Popup {
             font.pixelSize: 16
             anchors.right: txt_cur_user.right
             anchors.verticalCenter: txt_cur_user.verticalCenter
-            anchors.verticalCenterOffset: 30
+            anchors.verticalCenterOffset: 25
         }
 
         Text {
@@ -75,7 +75,7 @@ Medium_Popup {
             font.pixelSize: 16
             anchors.right: txt_cur_user.right
             anchors.verticalCenter: txt_cur_userID.verticalCenter
-            anchors.verticalCenterOffset: 30
+            anchors.verticalCenterOffset: 25
         }
 
         Text {
@@ -96,7 +96,7 @@ Medium_Popup {
             font.pixelSize: 16
             anchors.right: txt_cur_user.right
             anchors.verticalCenter: txt_cur_userDateEstablist.verticalCenter
-            anchors.verticalCenterOffset: 30
+            anchors.verticalCenterOffset: 25
         }
 
         Text {
@@ -117,7 +117,7 @@ Medium_Popup {
             font.pixelSize: 16
             anchors.right: txt_cur_user.right
             anchors.verticalCenter: txt_cur_userDateExprt.verticalCenter
-            anchors.verticalCenterOffset: 30
+            anchors.verticalCenterOffset: 25
         }
 
         Text {
@@ -136,9 +136,9 @@ Medium_Popup {
             text: "Thời gian đã đăng nhập :"
             color: "#404040"
             font.pixelSize: 16
-            anchors.right: parent.horizontalCenter
+            anchors.right: parent.horizontalCenter ; anchors.rightMargin: 20
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 30
+            anchors.bottomMargin: 25
         }
         Text {
             id: time_use_val
@@ -146,7 +146,7 @@ Medium_Popup {
             anchors.verticalCenter: time_use.verticalCenter
             anchors.left: time_use.right
             anchors.leftMargin: 10
-            text: Math.floor(timeLog/60) + " mins"
+            text: Math.floor(timeLog/60) + " min"
             font.pixelSize: 16
             color: HomeScreenConst.value_popup_color
             font.italic: true

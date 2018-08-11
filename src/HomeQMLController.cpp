@@ -6,7 +6,7 @@ HomeQMLController::HomeQMLController(QObject *parent, QQmlApplicationEngine* _pA
     m_listObject = this->p_AppEngine->rootObjects();
     //set context
     p_AppEngine->rootContext()->setContextProperty("QmlController", this);
-//    this->m_currentScreen = static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN);
+//    this->m_currentScreen = static_cast<int>(App_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN);
     m_currentScreen = -1;
     this->m_preScrStack.clear();
 
@@ -20,14 +20,14 @@ bool HomeQMLController::handleQMLEvent(const int &_index, const QVariant &_value
         return false;
     }
     int evt = CONST_TABLE_QML.value(_index).s_INDX_SCREEN;
-    if (evt == static_cast<int>(HomeScreen_Enum::QML_EVENT::EVENT_SCREEN_TRANS))
+    if (evt == static_cast<int>(App_Enum::QML_EVENT::EVENT_SCREEN_TRANS))
     {
         SCREEN_TRANSITION(_index);
-    } else if (evt == static_cast<int>(HomeScreen_Enum::QML_EVENT::EVENT_ONSCREEN))
+    } else if (evt == static_cast<int>(App_Enum::QML_EVENT::EVENT_ONSCREEN))
     {
         SCREEN_SHOWPOPUP(_index);
     }
-    else if (evt == static_cast<int>(HomeScreen_Enum::QML_EVENT::EVENT_HIDEONSCREEN))
+    else if (evt == static_cast<int>(App_Enum::QML_EVENT::EVENT_HIDEONSCREEN))
     {
         SCREEN_HIDEPOPUP(_index);
     }
@@ -45,9 +45,9 @@ void HomeQMLController::SCREEN_TRANSITION(const int _index)
     {
         return ;
     }
-    if (_index != static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_BACK))
+    if (_index != static_cast<int>(App_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_BACK))
     {
-        if (_index != static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN))
+        if (_index != static_cast<int>(App_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN))
         {
             m_preScrStack.push(m_currentScreen);
             QVariant returnedValue;
@@ -59,7 +59,7 @@ void HomeQMLController::SCREEN_TRANSITION(const int _index)
         else
         {
             m_preScrStack.clear();
-            m_currentScreen = static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN);
+            m_currentScreen = static_cast<int>(App_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN);
             QVariant returnedValue;
             QVariant msg = CONST_TABLE_QML.value(_index).s_QmlLink;
             QMetaObject::invokeMethod(m_listObject[0], "transtionScreen", Q_RETURN_ARG(QVariant, returnedValue),Q_ARG(QVariant, msg));

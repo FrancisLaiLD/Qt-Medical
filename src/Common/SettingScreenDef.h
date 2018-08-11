@@ -10,7 +10,7 @@
 
 #include <QString>
 #include <QMap>
-#include "HomeScreen_Enum.h"
+#include "App_Enum.h"
 
 typedef struct SETTINGStruct{
     QString s_MenuName;
@@ -19,13 +19,13 @@ typedef struct SETTINGStruct{
 } SETTINGSTRUCT;
 
 const QMap<int, SETTINGSTRUCT> CONST_TABLE_SETTING {
-    {static_cast<int>(HomeScreen_Enum::ENUM_SETTING::SETTING_GENERAL),          {"General",         ESETTING_GENERAL}},
-//    {static_cast<int>(HomeScreen_Enum::ENUM_SETTING::SETTING_DISPLAY),          {"Display",         ESETTING_DISPLAY}},
-//    {static_cast<int>(HomeScreen_Enum::ENUM_SETTING::SETTING_SOUND),            {"Sound",           ESETTING_SOUND}},
-    {static_cast<int>(HomeScreen_Enum::ENUM_SETTING::SETTING_NETWORK),          {"Network",         ESETTING_NETWORK}},
-    {static_cast<int>(HomeScreen_Enum::ENUM_SETTING::SETTING_USERPROFILE),      {"User Profile",    ESETTING_USERPROFILE}},
-    {static_cast<int>(HomeScreen_Enum::ENUM_SETTING::SETTING_DEVICE),           {"Device",          ESETTING_DEVICE_MANAGEMENT}},
-    {static_cast<int>(HomeScreen_Enum::ENUM_SETTING::SETTING_ABOUT),            {"About",           ""}}
+    {static_cast<int>(App_Enum::ENUM_SETTING::SETTING_GENERAL),          {"General",         ESETTING_GENERAL}},
+//    {static_cast<int>(App_Enum::ENUM_SETTING::SETTING_DISPLAY),          {"Display",         ESETTING_DISPLAY}},
+//    {static_cast<int>(App_Enum::ENUM_SETTING::SETTING_SOUND),            {"Sound",           ESETTING_SOUND}},
+    {static_cast<int>(App_Enum::ENUM_SETTING::SETTING_NETWORK),          {"Network",         ESETTING_NETWORK}},
+    {static_cast<int>(App_Enum::ENUM_SETTING::SETTING_USERPROFILE),      {"User Profile",    ESETTING_USERPROFILE}},
+    {static_cast<int>(App_Enum::ENUM_SETTING::SETTING_DEVICE),           {"Device",          ESETTING_DEVICE_MANAGEMENT}},
+    {static_cast<int>(App_Enum::ENUM_SETTING::SETTING_ABOUT),            {"About",           ""}}
 };
 
 #endif // SETTINGSCREENDEF_H

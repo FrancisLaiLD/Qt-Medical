@@ -38,6 +38,8 @@ public:
     Q_PROPERTY(QString ico_wifi_2                       READ ico_wifi_2                         CONSTANT)
     Q_PROPERTY(QString ico_wifi_3                       READ ico_wifi_3                         CONSTANT)
     Q_PROPERTY(QString ico_wifi_4                       READ ico_wifi_4                         CONSTANT)
+    Q_PROPERTY(QString ico_vr_on                        READ ico_vr_on                          CONSTANT)
+    Q_PROPERTY(QString ico_vr_off                       READ ico_vr_off                         CONSTANT)
 
     // defint function return QString
     QString ico_bluetooth_on()                      {return m_prefix + "ico_bluetooth_on.png";}
@@ -64,6 +66,8 @@ public:
     QString ico_wifi_2()                            {return m_prefix + "ico_wifi_2.png";}
     QString ico_wifi_3()                            {return m_prefix + "ico_wifi_3.png";}
     QString ico_wifi_4()                            {return m_prefix + "ico_wifi_4.png";}
+    QString ico_vr_on()                             {return m_prefix + "ico_vr_on.png";}
+    QString ico_vr_off()                            {return m_prefix + "ico_vr_off.png";}
 
 private:
     QString m_prefix;

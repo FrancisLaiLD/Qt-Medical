@@ -47,7 +47,6 @@ public:
     void addUser(const UserProfileComponent& m_device);
     void remUser(const int& _index);
 
-
     QVector<UserProfileComponent> listUser() const;
     void setListUser(const QVector<UserProfileComponent> &listUser);
 

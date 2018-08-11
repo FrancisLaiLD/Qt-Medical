@@ -2,22 +2,22 @@
 
 StatusbarModel::StatusbarModel(QObject *parent) : QObject(parent)
 {
-    m_bluetoothState = false;
+    m_vrState = true;
     m_isDayTime = false;
-    m_networkState = 0;
+    m_networkState = 4;
 }
 
-bool StatusbarModel::bluetoothState() const
+bool StatusbarModel::vrState() const
 {
-    return m_bluetoothState;
+    return m_vrState;
 }
 
-void StatusbarModel::setBluetoothState(bool bluetoothState)
+void StatusbarModel::setvrState(bool vrState)
 {
-    if (m_bluetoothState != bluetoothState)
+    if (m_vrState != vrState)
     {
-        m_bluetoothState = bluetoothState;
-        emit bluetoothStateChanged();
+        m_vrState = vrState;
+        emit vrStateChanged();
     }
 }
 

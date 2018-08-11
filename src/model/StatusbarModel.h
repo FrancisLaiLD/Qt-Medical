@@ -10,7 +10,7 @@ class StatusbarModel : public QObject
 public:
     explicit StatusbarModel(QObject *parent = nullptr);
 
-    Q_PROPERTY(bool bluetoothState READ bluetoothState WRITE setBluetoothState NOTIFY bluetoothStateChanged)
+    Q_PROPERTY(bool vrState READ vrState WRITE setvrState NOTIFY vrStateChanged)
     Q_PROPERTY(int  networkState   READ networkState   WRITE setNetworkState   NOTIFY networkStateChanged)
     Q_PROPERTY(bool isDayTime      READ isDayTime      WRITE setIsDayTime      NOTIFY isDayTimeChanged)
 
@@ -18,8 +18,8 @@ public:
     Q_PROPERTY(QString      userName READ userName      WRITE setUserName       NOTIFY userNameChanged)
     Q_PROPERTY(QDateTime currentDT   READ currentDT     WRITE setCurrentDT      NOTIFY currentDTChanged)
 
-    bool bluetoothState() const;
-    void setBluetoothState(bool bluetoothState);
+    bool vrState() const;
+    void setvrState(bool vrState);
 
     int networkState() const;
     void setNetworkState(int networkState);
@@ -37,7 +37,7 @@ public:
     void setCurrentDT(const QDateTime &currentDateTime);
 
 private:
-    bool m_bluetoothState;
+    bool m_vrState;
     bool m_isDayTime;
     int  m_networkState;
     QString m_userIcon;
@@ -45,7 +45,7 @@ private:
     QDateTime m_currentDateTime;
 
 signals:
-    void bluetoothStateChanged();
+    void vrStateChanged();
     void networkStateChanged();
     void isDayTimeChanged();
     void userIconChanged();

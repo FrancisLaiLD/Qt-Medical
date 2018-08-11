@@ -110,6 +110,7 @@ void UserProfileModel::remUser(const int &_index)
     endRemoveRows();
 }
 
+
 QVector<UserProfileComponent> UserProfileModel::listUser() const
 {
     return m_listUser;

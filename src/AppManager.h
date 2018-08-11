@@ -8,7 +8,7 @@
 #include <iostream>
 
 // E-num
-#include "Common/HomeScreen_Enum.h"
+#include "Common/App_Enum.h"
 #include "Common/HomeScreenDef.h"
 // QML Controller
 #include "HomeQMLController.h"
@@ -65,8 +65,9 @@ public slots:
     void handleHomeScreenClick(const int&, const QVariant& _data = QVariant());
     void handlePopupClick(const int&);
     void handleHidePopupClick(const int&);
+    void handleCreateNewUser();
 
-    // thread internal
+    /*------------------------------------------------------------------HANDLE INTERNAL THREAD--------------------------------------------------------------------*/
     void handleTimeUpdate(QDateTime result);
 
 signals:

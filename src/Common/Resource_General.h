@@ -61,6 +61,9 @@ public:
     Q_PROPERTY(QString btn_state_off                READ btn_state_off                  CONSTANT)
     Q_PROPERTY(QString ico_checkbox_check           READ ico_checkbox_check             CONSTANT)
     Q_PROPERTY(QString ico_checkbox_uncheck         READ ico_checkbox_uncheck           CONSTANT)
+    Q_PROPERTY(QString ico_edit_16_red              READ ico_edit_16_red                CONSTANT)
+    Q_PROPERTY(QString ico_edit_16_gray             READ ico_edit_16_gray               CONSTANT)
+    Q_PROPERTY(QString ico_loading                  READ ico_loading                    CONSTANT)
 
     Q_PROPERTY(QString human_overview               READ human_overview                 CONSTANT)
 
@@ -91,6 +94,9 @@ public:
     QString btn_state_off()             {return m_prefix + "btn_state_off.png";}
     QString ico_checkbox_check()        {return m_prefix + "ico_checkbox_check.png";}
     QString ico_checkbox_uncheck()      {return m_prefix + "ico_checkbox_uncheck.png";}
+    QString ico_edit_16_red()           {return m_prefix + "ico_edit_16_red.png";}
+    QString ico_edit_16_gray()          {return m_prefix + "ico_edit_16_gray.png";}
+    QString ico_loading()               {return m_prefix + "ico_loading.gif";}
 
     QString chart_ver_bottom()          {return m_prefixChart + "chart_ver_bottom.png";}
     QString chart_ver_middle()          {return m_prefixChart + "chart_ver_middle.png";}

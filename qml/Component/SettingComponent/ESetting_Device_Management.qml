@@ -19,8 +19,9 @@ Rectangle {
         anchors.top: parent.top
         Text {
             id: _txt_title_curDev
-            text: "Device connected" ; font.underline: true
+            text: "Device connected" ; font.underline: false
             font.pixelSize: 18
+            color: "gray"
             anchors.top: parent.top ; anchors.topMargin: 10
             anchors.left: parent.left ; anchors.leftMargin: 5
         }
@@ -64,9 +65,10 @@ Rectangle {
             id: lsv
             anchors.top: txt_device_last_conn.bottom
             anchors.topMargin: 5
+            clip: true
             spacing: 3
             interactive: true
-            width: parent.width - 40; height: contentHeight
+            width: parent.width; height: contentHeight
             model: listDevice
             delegate: Rectangle {
                 id: idDelegate
@@ -124,7 +126,8 @@ Rectangle {
         Text {
             id: _txt_title_disDev
             text: "Device not connected"
-            font.pixelSize: 18 ; font.underline: true
+            font.pixelSize: 18 ; font.underline: false
+            color: "gray"
             anchors.top: parent.top ; anchors.topMargin: 10
             anchors.left: parent.left ; anchors.leftMargin: 5
         }
@@ -167,7 +170,7 @@ Rectangle {
             id: _lsvDisDev
             anchors.top: txt_device_last_conn_d.bottom
             anchors.topMargin: 5
-            spacing: 3
+            spacing: 3 ; clip: true
             interactive: true
             width: parent.width ; height: contentHeight
             model: listDevice
@@ -219,7 +222,8 @@ Rectangle {
         Text {
             id: _txt_title_allDev
             text: "Choose devices in main screen"
-            font.pixelSize: 18 ; font.underline: true
+            font.pixelSize: 18 ; font.underline: false
+            color: "gray"
             anchors.top: parent.top ; anchors.topMargin: 10
             anchors.left: parent.left ; anchors.leftMargin: 5
         }
@@ -227,24 +231,23 @@ Rectangle {
             id: _lsvAllDev1
             anchors.top: _txt_title_allDev.bottom
             anchors.topMargin: 15
-            anchors.left: parent.left ; anchors.leftMargin: 30
+            anchors.left: parent.left ; anchors.leftMargin: 15
             spacing: 3
+            clip: true
             interactive: true
-            width: parent.width/2 - 60; height: contentHeight
+            width: parent.width/2 - 30; height: contentHeight
             model: listDevice
             delegate: Rectangle {
                 id: idDelegate_a
                 property bool isPressed: false
                 visible: index%2 === 0
-                width: parent.width
-                height: visible ? 45 : 0
-                color: isPressed ? "#A0A0A0" : "#E0E0E0"
-                opacity: 0.8
+                width: parent.width ; height: visible ? 45 : 0 ; radius: 6
+                color: isPressed ? "#A0A0A0" : "#E0E0E0" ; opacity: 0.8
                 Image {
                     id: _checkBoxA1
                     source: proShowInMain ? Resource_General.ico_checkbox_check : Resource_General.ico_checkbox_uncheck
                     width: parent.height - 15 ; height: parent.height - 15
-                    anchors.left: parent.left ; anchors.leftMargin: 2
+                    anchors.left: parent.left ; anchors.leftMargin: 5
                     anchors.verticalCenter: idTxt_device_name_a.verticalCenter
                 }
                 Text {
@@ -257,7 +260,7 @@ Rectangle {
                 }
                 Image {
                     id: idImgState_a
-                    anchors.right: parent.right ; anchors.rightMargin: 5
+                    anchors.right: parent.right ; anchors.rightMargin: 10
                     anchors.verticalCenter: parent.verticalCenter
                     source: proState ? Resource_General.btn_state_on : Resource_General.btn_state_off
                     width: parent.height ; height: parent.height
@@ -287,22 +290,23 @@ Rectangle {
         ListView {
             id: _lsvAllDev2
             anchors.top: _lsvAllDev1.top
-            anchors.left: _lsvAllDev1.right ; anchors.leftMargin: 30
+            anchors.left: _lsvAllDev1.right ; anchors.leftMargin: 15
             spacing: 3
+            clip: true
             interactive: true
-            width: parent.width/2 - 60; height: contentHeight
+            width: parent.width/2 - 30; height: contentHeight
             model: listDevice
             delegate: Rectangle {
                 id: idDelegate_a2
+                property bool isPressed: false
                 visible: index%2 === 1
-                width: parent.width
-                height: visible ? 45 : 0
-                color: "#E0E0E0"
+                width: parent.width ; height: visible ? 45 : 0 ; radius: 6
+                color: isPressed ? "#A0A0A0" : "#E0E0E0" ; opacity: 0.8
                 Image {
                     id: _checkBoxA2
-                    source: Resource_General.ico_checkbox_check
+                    source: proShowInMain ? Resource_General.ico_checkbox_check : Resource_General.ico_checkbox_uncheck
                     width: parent.height - 15 ; height: parent.height - 15
-                    anchors.left: parent.left ; anchors.leftMargin: 2
+                    anchors.left: parent.left ; anchors.leftMargin: 5
                     anchors.verticalCenter: idTxt_device_name_a2.verticalCenter
                 }
                 Text {
@@ -315,10 +319,30 @@ Rectangle {
                 }
                 Image {
                     id: idImgState_a2
-                    anchors.right: parent.right ; anchors.rightMargin: 5
+                    anchors.right: parent.right ; anchors.rightMargin: 10
                     anchors.verticalCenter: parent.verticalCenter
                     source: proState ? Resource_General.btn_state_on : Resource_General.btn_state_off
                     width: parent.height ; height: parent.height
+                }
+                MouseArea {
+                    id: _mouSetMain2
+                    anchors.fill: parent
+                    onPressed: {
+                        idDelegate_a2.isPressed = true
+                    }
+                    onExited: {
+                        idDelegate_a2.isPressed = false
+                    }
+                    onCanceled: {
+                        idDelegate_a2.isPressed = false
+                    }
+                    onReleased: {
+                        if (idDelegate_a2.isPressed === true) {
+                            idDelegate_a2.isPressed = false
+                            proShowInMain = !proShowInMain
+                            console.log('pro Show in main:' + proShowInMain)
+                        }
+                    }
                 }
             }
         }

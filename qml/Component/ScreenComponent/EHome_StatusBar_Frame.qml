@@ -102,13 +102,23 @@ Rectangle {
     }
 
     Image {
-        id: idNetworkIcon
+        id: _networkState
         anchors.right: parent.right ; anchors.rightMargin: 120
         anchors.bottom: parent.bottom ;anchors.bottomMargin: 0
         height: 40 ; width: 40
         fillMode: Image.PreserveAspectFit
         smooth: true
         source: getNetworkIcon()
+    }
+
+    Image {
+        id: _vrState
+        anchors.right: parent.right ; anchors.rightMargin: 165
+        anchors.bottom: parent.bottom ;anchors.bottomMargin: 5
+        height: 30 ; width: 30
+        fillMode: Image.PreserveAspectFit
+        smooth: true
+        source: StatusbarModel.vrState ? ResStatusBar.ico_vr_on : ResStatusBar.ico_vr_off
     }
 
     function getNetworkIcon() {

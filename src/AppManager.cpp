@@ -20,7 +20,7 @@ void AppManager::initQmlProperty()
     p_AppStringConst       = new AppStringConst();
 
 
-    qmlRegisterUncreatableType<HomeScreen_Enum>("Ehome", 1, 0, "HomeEnum",
+    qmlRegisterUncreatableType<App_Enum>("Ehome", 1, 0, "HomeEnum",
                                                  "Cannot create WarningLevel in QML");
 
     p_qqmlAppEngine->rootContext()->setContextProperty("AppManager",        this);
@@ -56,7 +56,7 @@ void AppManager::initApplication()
     //
     p_userProfileModel->initUserList();
     // init Screen
-    handleHomeScreenClick(static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN));
+    handleHomeScreenClick(static_cast<int>(App_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN));
 }
 
 void AppManager::initInternalThread()
@@ -87,12 +87,17 @@ void AppManager::handleHidePopupClick(const int &_index)
 {
     p_homeQMLController->handleQMLEvent(_index);
     setIsShowingPopup(false);
-    p_homeQMLController->handleQMLEvent(static_cast<int>(HomeScreen_Enum::ENUM_HOME_EVENT::EVENT_HIDE_POPUP));
+    p_homeQMLController->handleQMLEvent(static_cast<int>(App_Enum::ENUM_HOME_EVENT::EVENT_HIDE_POPUP));
+}
+
+void AppManager::handleCreateNewUser()
+{
+
 }
 
 void AppManager::handleTimeUpdate(QDateTime result)
 {
-    qDebug() << "Time receive : " << result;
+//    qDebug() << "Time receive : " << result;
     p_homeDailyModel->setTimeUpdate(result);
     p_statusbarModel->setCurrentDT(result);
 }

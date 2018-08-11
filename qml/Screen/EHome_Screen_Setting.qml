@@ -24,6 +24,7 @@ EHome_Main_Frame {
         anchors.top: parent.top
         anchors.topMargin: 50
         width: parent.width ; height: 50
+        clip: true
         orientation: ListView.Horizontal
         snapMode: ListView.SnapPosition
         model: SettingModel
@@ -72,13 +73,23 @@ EHome_Main_Frame {
     Loader {
         id: _settingContent
         width: parent.width ; height: 800
-        anchors.top: _lsvTop.bottom ; anchors.topMargin: 0
+        anchors.top: _lsvTop.bottom ; anchors.topMargin: 20
         anchors.horizontalCenter: parent.horizontalCenter
         source: _root.currentQmlSetting
         onSourceChanged: {
             _aniLoadContent.start()
         }
     }
+//    Rectangle {
+//        id: _rectPreventMou
+//        color: "transparent"
+//        anchors.fill: _settingContent
+//        MouseArea {
+//            id: _mouSwipeMenu
+//            anchors.fill: parent
+//        }
+//    }
+
     ParallelAnimation {
         id: _aniLoadContent
         running: false

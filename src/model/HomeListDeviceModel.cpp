@@ -113,15 +113,15 @@ void HomeListDeviceModel::initListDevice()
 bool HomeListDeviceModel::askItemConnected(const int &_index)
 {
     switch (_index) {
-    case static_cast<int>(HomeScreen_Enum::ENUM_DEVICE::DEVICE_HEIGHT_DIAMETTER):
+    case static_cast<int>(App_Enum::ENUM_DEVICE::DEVICE_HEIGHT_DIAMETTER):
         return false;
-    case static_cast<int>(HomeScreen_Enum::ENUM_DEVICE::DEVICE_WEIGHT_DIAMETTER):
+    case static_cast<int>(App_Enum::ENUM_DEVICE::DEVICE_WEIGHT_DIAMETTER):
         return true;
-    case static_cast<int>(HomeScreen_Enum::ENUM_DEVICE::DEVICE_BLOOD_PRESSUSER_DIAMETTER):
+    case static_cast<int>(App_Enum::ENUM_DEVICE::DEVICE_BLOOD_PRESSUSER_DIAMETTER):
         return true;
-    case static_cast<int>(HomeScreen_Enum::ENUM_DEVICE::DEVICE_BLOOD_ANALYZER_DIAMETTER):
+    case static_cast<int>(App_Enum::ENUM_DEVICE::DEVICE_BLOOD_ANALYZER_DIAMETTER):
         return false;
-    case static_cast<int>(HomeScreen_Enum::ENUM_DEVICE::DEVICE_IMAGE_ANALYZER):
+    case static_cast<int>(App_Enum::ENUM_DEVICE::DEVICE_IMAGE_ANALYZER):
         return true;
     }
 }
@@ -129,15 +129,15 @@ bool HomeListDeviceModel::askItemConnected(const int &_index)
 bool HomeListDeviceModel::askItemShowInMain(const int &_index)
 {
     switch (_index) {
-    case static_cast<int>(HomeScreen_Enum::ENUM_DEVICE::DEVICE_HEIGHT_DIAMETTER):
+    case static_cast<int>(App_Enum::ENUM_DEVICE::DEVICE_HEIGHT_DIAMETTER):
         return true;
-    case static_cast<int>(HomeScreen_Enum::ENUM_DEVICE::DEVICE_WEIGHT_DIAMETTER):
+    case static_cast<int>(App_Enum::ENUM_DEVICE::DEVICE_WEIGHT_DIAMETTER):
         return true;
-    case static_cast<int>(HomeScreen_Enum::ENUM_DEVICE::DEVICE_BLOOD_PRESSUSER_DIAMETTER):
+    case static_cast<int>(App_Enum::ENUM_DEVICE::DEVICE_BLOOD_PRESSUSER_DIAMETTER):
         return true;
-    case static_cast<int>(HomeScreen_Enum::ENUM_DEVICE::DEVICE_BLOOD_ANALYZER_DIAMETTER):
+    case static_cast<int>(App_Enum::ENUM_DEVICE::DEVICE_BLOOD_ANALYZER_DIAMETTER):
         return true;
-    case static_cast<int>(HomeScreen_Enum::ENUM_DEVICE::DEVICE_IMAGE_ANALYZER):
+    case static_cast<int>(App_Enum::ENUM_DEVICE::DEVICE_IMAGE_ANALYZER):
         return true;
     }
 }
