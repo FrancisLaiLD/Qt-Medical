@@ -1,2 +1,2 @@
-# Qt-Medical
-Learn about Qt
+# Francis Lai
+Learn more and more
