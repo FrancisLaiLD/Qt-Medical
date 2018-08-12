@@ -10,8 +10,8 @@ EHome_Main_Frame {
     ParallelAnimation {
         id: idMainAnimation
         running: false
-        NumberAnimation { target: root; property: "x"; from: -720; to: 0; duration: HomeScreenConst.time_screen_trans }
-        NumberAnimation { target: root; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
+        NumberAnimation { target: root; property: "x"; from: -720; to: 0; duration: AppValueConst.time_screen_trans }
+        NumberAnimation { target: root; property: "opacity"; from: 0.0 ;to: 1.0; duration: AppValueConst.time_screen_trans }
     }
     screenTitle: "User Data"
     backgroundImage: ""

@@ -4,6 +4,8 @@ import Ehome 1.0
 
 Small_Popup {
     id: _root
+    __popupTitle: "Error"
+    __popupType: 0
     Text {
         id: textCurrentConnect
         text: "No connection...
@@ -11,7 +13,7 @@ Please try again later"
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 20
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: parent.top ; anchors.topMargin: 20
+        anchors.top: parent.top ; anchors.topMargin: 80
     }
 
     EButton_StandAlone {

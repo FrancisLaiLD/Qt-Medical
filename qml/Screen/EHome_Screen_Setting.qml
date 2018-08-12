@@ -11,13 +11,13 @@ import Ehome 1.0
 EHome_Main_Frame {
     id: _root
     screenTitle: "Setting"
-    scrrenBgImg: "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/setting_bg_24.jpg"
+//    scrrenBgImg: "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/setting_bg_24.jpg"
     property string currentQmlSetting: ""
     ParallelAnimation {
         id: idMainAnimation
         running: false
-        NumberAnimation { target: _root; property: "x"; from: -720; to: 0; duration: HomeScreenConst.time_screen_trans }
-        NumberAnimation { target: _root; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
+        NumberAnimation { target: _root; property: "x"; from: -720; to: 0; duration: AppValueConst.time_screen_trans }
+        NumberAnimation { target: _root; property: "opacity"; from: 0.0 ;to: 1.0; duration: AppValueConst.time_screen_trans }
     }
     ListView {
         id:_lsvTop
@@ -44,7 +44,7 @@ EHome_Main_Frame {
                     id: line
                     anchors.right: idDel.right
                     lineWidth: 1
-                    lineColor: HomeScreenConst.line_normal_color
+                    lineColor: AppValueConst.line_normal_color
                     lineRange: idDel.height - 10
                 }
             }
@@ -53,7 +53,7 @@ EHome_Main_Frame {
                 anchors.centerIn: parent
                 text: proName
                 font.pixelSize: 14 ; font.italic: true
-                color: index === _lsvTop.currentIndex ? "white" : HomeScreenConst.line_normal_color
+                color: index === _lsvTop.currentIndex ? "white" : AppValueConst.line_normal_color
             }
             MouseArea {
                 id: idMouDel
@@ -93,7 +93,7 @@ EHome_Main_Frame {
     ParallelAnimation {
         id: _aniLoadContent
         running: false
-        NumberAnimation { target: _settingContent; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
+        NumberAnimation { target: _settingContent; property: "opacity"; from: 0.0 ;to: 1.0; duration: AppValueConst.time_screen_trans }
     }
 
     Component.onCompleted: {

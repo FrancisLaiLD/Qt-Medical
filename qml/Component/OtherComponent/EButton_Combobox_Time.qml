@@ -28,18 +28,6 @@ Rectangle {
         font.pixelSize: 15
         anchors.centerIn: parent
     }
-//    Text {
-//        id: _txtCurMonth
-//        text: (__month !== -1 ? __month : "--")
-//        anchors.verticalCenter: _txtCurYear.verticalCenter
-//        anchors.horizontalCenter: lsvCbbMonth.horizontalCenter
-//    }
-//    Text {
-//        id: _txtCurDay
-//        text: (__day !== -1 ? __day : "--")
-//        anchors.verticalCenter: _txtCurYear.verticalCenter
-//        anchors.horizontalCenter: lsvCbbDay.horizontalCenter
-//    }
     MouseArea {
         id: _cbbMou
         anchors.fill: parent
@@ -75,7 +63,7 @@ Rectangle {
             id: idRectDel
             width: parent.width ; height: _root.height
             radius: 6
-            color: index%2 === 0 ? "#CDCDCD" : "#E0E0E0"
+            color:  index === lsvCbbYear.currentIndex ? AppValueConst.item_select_color : (index%2 === 0 ? "#CDCDCD" : "#E0E0E0")
             opacity: 1.0
             Text {
                 id: _txtItemName
@@ -88,6 +76,7 @@ Rectangle {
                 anchors.fill: parent
                 onClicked: {
                     _root.__year = index + 1930
+                    lsvCbbYear.currentIndex = index
                 }
             }
         }
@@ -108,7 +97,7 @@ Rectangle {
             id: idRectDelMonth
             width: parent.width ; height: _root.height
             radius: 6
-            color: index%2 === 0 ? "#CDCDCD" : "#E0E0E0"
+            color: index === lsvCbbMonth.currentIndex ? AppValueConst.item_select_color : (index%2 === 0 ? "#CDCDCD" : "#E0E0E0")
             opacity: 1.0
             Text {
                 id: _txtItemNameMonth
@@ -120,6 +109,7 @@ Rectangle {
                 id: _itemMouMonth
                 anchors.fill: parent
                 onClicked: {
+                    lsvCbbMonth.currentIndex = index
                     _root.__month = index + 1
                 }
             }
@@ -138,7 +128,7 @@ Rectangle {
             id: idRectDelDay
             width: parent.width ; height: _root.height
             radius: 6
-            color: index%2 === 0 ? "#CDCDCD" : "#E0E0E0"
+            color: index === lsvCbbDay.currentIndex ? AppValueConst.item_select_color : (index%2 === 0 ? "#CDCDCD" : "#E0E0E0")
             opacity: 1.0
             Text {
                 id: _txtItemNameDay
@@ -150,6 +140,7 @@ Rectangle {
                 id: _itemMouDay
                 anchors.fill: parent
                 onClicked: {
+                    lsvCbbDay.currentIndex = index
                     _root.__day = index + 1
                 }
             }

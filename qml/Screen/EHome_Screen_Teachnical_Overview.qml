@@ -14,8 +14,8 @@ EHome_Main_Frame {
     ParallelAnimation {
         id: idMainAnimation
         running: false
-        NumberAnimation { target: idRoot; property: "x"; from: -720; to: 0; duration: HomeScreenConst.time_screen_trans }
-        NumberAnimation { target: idRoot; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
+        NumberAnimation { target: idRoot; property: "x"; from: -720; to: 0; duration: AppValueConst.time_screen_trans }
+        NumberAnimation { target: idRoot; property: "opacity"; from: 0.0 ;to: 1.0; duration: AppValueConst.time_screen_trans }
     }
 
     Component.onCompleted: {

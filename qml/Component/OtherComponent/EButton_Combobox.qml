@@ -45,7 +45,7 @@ Rectangle {
             id: idRectDel
             width: parent.width ; height: _root.height
             radius: 6
-            color: index%2 === 0 ? "#CDCDCD" : "#E0E0E0"
+            color: index === lsvCbb.currentIndex ? AppValueConst.item_select_color : (index%2 === 0 ? "#CDCDCD" : "#E0E0E0")
             opacity: 1.0
             Text {
                 id: _txtItemName
@@ -58,6 +58,7 @@ Rectangle {
                 anchors.fill: parent
                 onClicked: {
                     _root.__isShowDropDown = false
+                    lsvCbb.currentIndex = index
                     _root.curIndex = index
                     _root.curVal = name
                 }

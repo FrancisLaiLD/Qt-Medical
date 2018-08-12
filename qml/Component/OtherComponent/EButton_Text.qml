@@ -3,8 +3,8 @@ import QtQuick 2.0
 Text {
     id: _root
     // external properties
-    property string __colorNormal: HomeScreenConst.line_normal_color
-    property string __colorPressed: HomeScreenConst.text_click_color
+    property string __colorNormal: AppValueConst.line_normal_color
+    property string __colorPressed: AppValueConst.text_click_color
     // internal properties
     property bool isPressed: false
 

@@ -25,7 +25,7 @@ HEADERS += \
     src/model/StatusbarModel.h \
     src/model/UserProfileModel.h \
     src/Common/Home_Screen_Table.h \
-    src/Common/HomeScreenConst.h \
+    src/Common/AppValueConst.h \
     src/Common/HomeScreenDef.h \
     src/Common/Resource_General.h \
     src/Common/Resource_Statusbar.h \
@@ -34,8 +34,10 @@ HEADERS += \
     src/Common/App_Enum.h \
     src/Worker/Worker_Time_Management.h \
     src/Common/DeviceDef.h \
-    src/Common/AppStringConst.h
+    src/Common/AppStringConst.h \
+    src/model/AppListCommand.h \
     src/Worker/Worker_Time_Management.h \
+    src/Common/CommandDef.h
 
 
 SOURCES += \
@@ -52,13 +54,16 @@ SOURCES += \
     src/model/SettingModel.cpp \
     src/model/StatusbarModel.cpp \
     src/model/UserProfileModel.cpp \
-    src/Worker/Worker_Time_Management.cpp
+    src/Worker/Worker_Time_Management.cpp \
+    src/model/AppListCommand.cpp
 
 
 RESOURCES +=
 
 unix:MOC_DIR = ../build-Medical-1/moc_files
 unix:OBJECTS_DIR = ../build-Medical-1/obj_files
+
+TARGET = VEHC
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -115,5 +120,6 @@ DISTFILES += \
     qml/Component/OtherComponent/EText_Input.qml \
     qml/Component/OtherComponent/EButton_Combobox_Time.qml \
     qml/Component/OtherComponent/EButton_GridBox.qml \
-    qml/Popup/EHome_Popup_CreatingUser.qml
+    qml/Popup/EHome_Popup_CreatingUser.qml \
+    qml/Component/SettingComponent/ESetting_About.qml
 

@@ -5,7 +5,7 @@ Item {
     // external properties
     property string __textHint          : ""
     property int    __textWidth         : /*_txt_hint.width*/ 100
-    property int    __textHeight        : /*_txt_hint.height*/ 200
+    property int    __textHeight        : /*_txt_hint.height*/ 25
     property string __textValue         : ""
     property int    __textFontSize      : 15
     // internal properties
@@ -48,7 +48,7 @@ Item {
         color: "gray"
         height: _txt_val.height ; width: 1
         visible: _root.isInputting
-        anchors.left: _txt_val.right ; anchors.leftMargin: 2
+        anchors.left: _txt_val.right ; anchors.leftMargin: 1
         anchors.verticalCenter: _txt_val.verticalCenter
     }
     NumberAnimation { id: _ani ; loops: Animation.Infinite ; target: _aniInput; property: "visible"; from: 0.0; to: 1.0; duration: 1000 }

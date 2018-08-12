@@ -1,15 +1,15 @@
-#ifndef HOMESCREENCONST_H
-#define HOMESCREENCONST_H
+#ifndef AppValueConst_H
+#define AppValueConst_H
 
 #include <QObject>
 
-class HomeScreenConst : public QObject
+class AppValueConst : public QObject
 {
     Q_OBJECT
 
 public:
 
-    explicit HomeScreenConst(QObject* parent = nullptr)
+    explicit AppValueConst(QObject* parent = nullptr)
     {
         Q_UNUSED(parent);
     }
@@ -29,6 +29,7 @@ public:
     Q_PROPERTY(QString line_normal_color        READ line_normal_color      CONSTANT)
     Q_PROPERTY(QString text_click_color         READ text_click_color       CONSTANT)
     Q_PROPERTY(QString text_enter_color         READ text_enter_color       CONSTANT)
+    Q_PROPERTY(QString item_select_color        READ item_select_color      CONSTANT)
 
     //define function return time
     int time_screen_trans()         {return 500;}
@@ -48,7 +49,8 @@ public:
     QString line_normal_color()             {return "gray";}
     QString text_click_color()              {return "#AA00FF";}
     QString text_enter_color()              {return "#E1A6FF";}
+    QString item_select_color()             {return "#C4FECD";}
 
 };
 
-#endif // HOMESCREENCONST_H
+#endif // AppValueConst_H

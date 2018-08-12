@@ -19,8 +19,9 @@
 #include "model/UserProfileModel.h"
 #include "model/HomeScreenMainDailyModel.h"
 #include "model/SettingModel.h"
+#include "model/AppListCommand.h"
 // Constant
-#include "Common/HomeScreenConst.h"
+#include "Common/AppValueConst.h"
 #include "Common/AppStringConst.h"
 // Worker
 #include <QThread>
@@ -62,8 +63,8 @@ public slots:
 
     /*------------------------------------------------------------------HANDLE VIEW EVENTS-----------------------------------------------------------------------*/
     bool handleHomeClick(const int& );
-    void handleHomeScreenClick(const int&, const QVariant& _data = QVariant());
-    void handlePopupClick(const int&);
+    void handleTransScreen(const int&, const QVariant& _data = QVariant());
+    void handleShowPopupClick(const int&);
     void handleHidePopupClick(const int&);
     void handleCreateNewUser();
 
@@ -83,12 +84,13 @@ private:
     HomeQMLController       *p_homeQMLController;
 
     // Constant model
-    HomeScreenConst                 *p_homeScreenConst;
-    AppStringConst                 *p_AppStringConst;
+    AppValueConst                   *p_AppValueConst;
+    AppStringConst                  *p_AppStringConst;
     HomeScreen_Main_Daily_Model     *p_homeDailyModel;
     StatusbarModel                  *p_statusbarModel;
     UserProfileModel                *p_userProfileModel;
     SettingModel                    *p_settingModel;
+    AppListCommand                  *p_appListCommand;
 //    ResourceManager         *p_resManager;
     Resource_Statusbar              *p_resStatusbar;
     Resource_General                *p_resGeneral;

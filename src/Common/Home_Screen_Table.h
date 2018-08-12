@@ -20,4 +20,5 @@ const QMap<int, QMLStruct> CONST_TABLE_QML {
     {static_cast<int>(App_Enum::ENUM_HOME_EVENT::EVENT_HIDE_POPUP),               {static_cast<int>(App_Enum::QML_EVENT::EVENT_HIDEONSCREEN),     QML_NONE}}
 };
 
+
 #endif // HOME_SCREEN_TABLE_H

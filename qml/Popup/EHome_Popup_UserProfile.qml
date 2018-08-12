@@ -4,19 +4,19 @@ import Ehome 1.0
 
 Medium_Popup {
     id: idRoot
-    popupTitle: currentMode === 1 ? "Current user profile" : "Choose other user"
+    __popupTitle: currentMode === 1 ? "Current user profile" : "Choose other user"
     property int currentMode: -1
     ParallelAnimation {
         id: animationCurUsr
         running: false
-        //        NumberAnimation { target: idCurrentUser; property: "x"; from: -560; to: 0; duration: HomeScreenConst.time_screen_trans }
-        NumberAnimation { target: idCurrentUser; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
+        //        NumberAnimation { target: idCurrentUser; property: "x"; from: -560; to: 0; duration: AppValueConst.time_screen_trans }
+        NumberAnimation { target: idCurrentUser; property: "opacity"; from: 0.0 ;to: 1.0; duration: AppValueConst.time_screen_trans }
     }
     ParallelAnimation {
         id: animationOtherUsr
         running: false
-        //        NumberAnimation { target: idCurrentUser; property: "x"; from: -560; to: 0; duration: HomeScreenConst.time_screen_trans }
-        NumberAnimation { target: idOtherUser; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
+        //        NumberAnimation { target: idCurrentUser; property: "x"; from: -560; to: 0; duration: AppValueConst.time_screen_trans }
+        NumberAnimation { target: idOtherUser; property: "opacity"; from: 0.0 ;to: 1.0; duration: AppValueConst.time_screen_trans }
     }
     onCurrentModeChanged: {
         if (currentMode === 1)
@@ -44,7 +44,7 @@ Medium_Popup {
             anchors.verticalCenter: txt_cur_user.verticalCenter
             text: UserProfileModel.curUserName
             font.pixelSize: 16
-            color: HomeScreenConst.value_popup_color
+            color: AppValueConst.value_popup_color
             font.italic: true
         }
 
@@ -62,51 +62,9 @@ Medium_Popup {
             id: txt_cur_userID_val
             text: UserProfileModel.curUserId
             font.pixelSize: 16
-            color: HomeScreenConst.value_popup_color
+            color: AppValueConst.value_popup_color
             x: txt_cur_user_val.x
             anchors.verticalCenter: txt_cur_userID.verticalCenter
-            font.italic: true
-        }
-
-        Text {
-            id: txt_cur_userDateEstablist
-            text: "Date Establish :"
-            color: "#404040"
-            font.pixelSize: 16
-            anchors.right: txt_cur_user.right
-            anchors.verticalCenter: txt_cur_userID.verticalCenter
-            anchors.verticalCenterOffset: 25
-        }
-
-        Text {
-            id: txt_cur_userDateEstablist_val
-            text: Qt.formatDateTime(UserProfileModel.curUserDateEsta, "yyyy.MM.dd")
-                  + " - "+ Qt.formatDateTime(UserProfileModel.curUserDateEsta, "hh:mm AP")
-            font.pixelSize: 16
-            color: HomeScreenConst.value_popup_color
-            x: txt_cur_user_val.x
-            anchors.verticalCenter: txt_cur_userDateEstablist.verticalCenter
-            font.italic: true
-        }
-
-        Text {
-            id: txt_cur_userDateExprt
-            text: "Date Expert :"
-            color: "#404040"
-            font.pixelSize: 16
-            anchors.right: txt_cur_user.right
-            anchors.verticalCenter: txt_cur_userDateEstablist.verticalCenter
-            anchors.verticalCenterOffset: 25
-        }
-
-        Text {
-            id: txt_cur_userDateExprt_val
-            text: Qt.formatDateTime(UserProfileModel.curUserDateExpe, "yyyy.MM.dd")
-                  + " - "+ Qt.formatDateTime(UserProfileModel.curUserDateExpe, "hh:mm AP")
-            font.pixelSize: 16
-            color: HomeScreenConst.value_popup_color
-            x: txt_cur_user_val.x
-            anchors.verticalCenter: txt_cur_userDateExprt.verticalCenter
             font.italic: true
         }
 
@@ -116,16 +74,16 @@ Medium_Popup {
             color: "#404040"
             font.pixelSize: 16
             anchors.right: txt_cur_user.right
-            anchors.verticalCenter: txt_cur_userDateExprt.verticalCenter
+            anchors.verticalCenter: txt_cur_userID.verticalCenter
             anchors.verticalCenterOffset: 25
         }
 
         Text {
             id: txt_cur_userTimeLogin_val
-            text: Qt.formatDateTime(UserProfileModel.curUserDob, "yyyy.MM.dd")
-                  + " - "+ Qt.formatDateTime(UserProfileModel.curUserDob, "hh:mm AP")
+            text: Qt.formatDateTime(UserProfileModel.curUserDob, "yyyy-MM-dd")
+                  + " , "+ Qt.formatDateTime(UserProfileModel.curUserDob, "hh:mm AP")
             font.pixelSize: 16
-            color: HomeScreenConst.value_popup_color
+            color: AppValueConst.value_popup_color
             x: txt_cur_user_val.x
             anchors.verticalCenter: txt_cur_userTimeLogin.verticalCenter
             font.italic: true
@@ -148,7 +106,7 @@ Medium_Popup {
             anchors.leftMargin: 10
             text: Math.floor(timeLog/60) + " min"
             font.pixelSize: 16
-            color: HomeScreenConst.value_popup_color
+            color: AppValueConst.value_popup_color
             font.italic: true
         }
 
@@ -174,7 +132,7 @@ Medium_Popup {
             anchors.horizontalCenter: idCameraAva.horizontalCenter
             text: "Auto login"
             font.pixelSize: 14
-            color: HomeScreenConst.value_popup_color
+            color: AppValueConst.value_popup_color
         }
         Rectangle {
             id: idCameraAva
@@ -214,10 +172,10 @@ Medium_Popup {
             anchors.rightMargin: 150
             text: "Manual login"
             font.pixelSize: 14
-            color: HomeScreenConst.value_popup_color
+            color: AppValueConst.value_popup_color
         }
         Text {
-            id: idUsrAccount
+            id: _otherUserName
             anchors.top: parent.top
             anchors.topMargin: 120
             anchors.right: parent.right
@@ -226,23 +184,52 @@ Medium_Popup {
             color: "#404040"
             font.pixelSize: 16
         }
+        EText_Input {
+            id: _txtUserName
+            __textHint: "user name"
+            __textWidth: 150
+            anchors.bottom: _otherUserName.bottom
+            anchors.left: _otherUserName.right ; anchors.leftMargin: 10
+        }
+
         Text {
-            id: idUsrName
-            anchors.verticalCenter: idUsrAccount.verticalCenter
+            id: _txtUsrID
+            anchors.verticalCenter: _otherUserName.verticalCenter
             anchors.verticalCenterOffset: 40
-            anchors.right: idUsrAccount.right
-            text: " Or fill your name :"
+            anchors.right: _otherUserName.right
+            text: " Or fill your ID :"
             color: "#404040"
             font.pixelSize: 16
         }
+        EText_Input {
+            id: _inputUsrID
+            __textHint: "user ID"
+            __textWidth: 150
+            anchors.bottom: _txtUsrID.bottom
+            anchors.left: _txtUsrID.right ; anchors.leftMargin: 10
+        }
         Text {
-            id: idUsrPass
-            anchors.right: idUsrName.right
-            anchors.verticalCenter: idUsrName.verticalCenter
+            id: _usrPass
+            anchors.right: _txtUsrID.right
+            anchors.verticalCenter: _txtUsrID.verticalCenter
             anchors.verticalCenterOffset: 40
             text: "Password :"
             color: "#404040"
             font.pixelSize: 16
+        }
+        EText_Input {
+            id: _inputUsrPass
+            __textHint: "password"
+            __textWidth: 150
+            anchors.bottom: _usrPass.bottom
+            anchors.left: _usrPass.right ; anchors.leftMargin: 10
+        }
+        EButton_StandAlone {
+            id: _btnLogin
+            btnLabel: "Log in"
+            btnWidth: 100
+            anchors.verticalCenter: _usrPass.verticalCenter ; anchors.verticalCenterOffset: 40
+            anchors.horizontalCenter: _usrPass.right
         }
     }
 
@@ -254,7 +241,7 @@ Medium_Popup {
         anchors.bottomMargin: 16
         //        btnColorTop: "blue"
         //        btnColorBottom: "blue"
-        btnLabel: currentMode === 1 ? "Choose Other" : "Back"
+        btnLabel: currentMode === 1 ? AppStringConst.STR_USER_PROFILE_CHANGE_USER : AppStringConst.STR_GENERAL_BACK
         btnWidth: 150
         onBtnClicked: {
             if (currentMode === 1)

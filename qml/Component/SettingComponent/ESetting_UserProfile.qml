@@ -19,8 +19,8 @@ Rectangle {
         Text {
             id: _titleCurUsr
             text: "Current user"
-            font.pixelSize: 18 ; color: "gray"
-            anchors.top: parent.top ; anchors.topMargin: 10
+            font.pixelSize: 18 ; color: AppValueConst.value_popup_color
+            anchors.top: parent.top ; anchors.topMargin: 0
             anchors.left: parent.left ; anchors.leftMargin: 10
         }
         Text {
@@ -39,7 +39,7 @@ Rectangle {
             anchors.verticalCenter: txt_cur_user.verticalCenter
             text: UserProfileModel.curUserName
             font.pixelSize: 16
-            color: HomeScreenConst.value_popup_color
+            color: AppValueConst.value_popup_color
             font.italic: true
         }
 
@@ -57,7 +57,7 @@ Rectangle {
             id: txt_cur_userID_val
             text: UserProfileModel.curUserId
             font.pixelSize: 16
-            color: HomeScreenConst.value_popup_color
+            color: AppValueConst.value_popup_color
             x: txt_cur_user_val.x
             anchors.verticalCenter: txt_cur_userID.verticalCenter
             font.italic: true
@@ -75,9 +75,9 @@ Rectangle {
 
         Text {
             id: _txt_cur_user_dob_val
-            text: Qt.formatDateTime(UserProfileModel.curUserDob, "yyyy.MM.dd")
+            text: Qt.formatDateTime(UserProfileModel.curUserDob, "yyyy") + " April" + " 01"
             font.pixelSize: 16
-            color: HomeScreenConst.value_popup_color
+            color: AppValueConst.value_popup_color
             x: txt_cur_user_val.x
             anchors.verticalCenter: _txt_cur_user_dob.verticalCenter
             font.italic: true
@@ -97,7 +97,7 @@ Rectangle {
             id: txt_cur_userDateEstablist_val
             text: Qt.formatDateTime(UserProfileModel.curUserDateEsta, "yyyy.MM.dd")
             font.pixelSize: 16
-            color: HomeScreenConst.value_popup_color
+            color: AppValueConst.value_popup_color
             x: txt_cur_user_val.x
             anchors.verticalCenter: txt_cur_userDateEstablist.verticalCenter
             font.italic: true
@@ -117,7 +117,7 @@ Rectangle {
             id: txt_cur_userDateExprt_val
             text: Qt.formatDateTime(UserProfileModel.curUserDateExpe, "yyyy.MM.dd")
             font.pixelSize: 16
-            color: HomeScreenConst.value_popup_color
+            color: AppValueConst.value_popup_color
             x: txt_cur_user_val.x
             anchors.verticalCenter: txt_cur_userDateExprt.verticalCenter
             font.italic: true
@@ -137,7 +137,7 @@ Rectangle {
             id: _txt_time_login_val
             text: Qt.formatDateTime(UserProfileModel.curUserDateExpe, "yyyy.MM.dd")
             font.pixelSize: 16
-            color: HomeScreenConst.value_popup_color
+            color: AppValueConst.value_popup_color
             x: txt_cur_user_val.x
             anchors.verticalCenter: _txt_time_login.verticalCenter
             font.italic: true
@@ -149,6 +149,7 @@ Rectangle {
             anchors.top: parent.top ; anchors.topMargin: 40
             anchors.right: parent.right
             width: 130 ; height: 130 ; radius: 6
+            color: "#D6DDD7"
             border.width: 1 ; border.color: "gray"
             Image {
                 id: _usrAva
@@ -157,20 +158,7 @@ Rectangle {
                 anchors.centerIn: parent
             }
         }
-        //        EButton_Text{
-        //            id: _btnChangeAva
-        //            text: "Change your avatar >>"
-        //            font.pixelSize: 14 ; font.italic: true
-        //            anchors.top: _rectUsrAva.bottom ; anchors.topMargin: 10
-        //            anchors.horizontalCenter: _rectUsrAva.horizontalCenter
-        //        }
-        //        EButton_Text {
-        //            id: _btnChangePass
-        //            text: "Change your password >>"
-        //            font.pixelSize: 14 ; font.italic: true
-        //            anchors.verticalCenter: _txt_time_login_val.verticalCenter ; anchors.verticalCenterOffset: 30
-        //            anchors.right: _txt_time_login_val.right
-        //        }
+
         Text {
             id: _timeUse
             text: "Time used :"
@@ -186,12 +174,12 @@ Rectangle {
             anchors.leftMargin: 10
             text: Math.floor((StatusbarModel.currentDT - UserProfileModel.dtUserLogin)/(1000 * 60)) + " min"
             font.pixelSize: 16
-            color: HomeScreenConst.value_popup_color
+            color: AppValueConst.value_popup_color
             font.italic: true
         }
         E_HorizentalLine {
             id: _mainLine
-            lineColor: HomeScreenConst.line_normal_color
+            lineColor: AppValueConst.line_normal_color
             lineRange: parent.width - 160
             anchors.bottom: parent.bottom ; anchors.bottomMargin: 0
             anchors.horizontalCenter: parent.horizontalCenter
@@ -233,7 +221,7 @@ Rectangle {
         Text {
             id: _titleAddUsr
             text: "Add new user"
-            font.pixelSize: 18 ; color: "gray"
+            font.pixelSize: 18 ; color: AppValueConst.value_popup_color
             anchors.top: parent.top ; anchors.topMargin: 10
             anchors.left: parent.left ; anchors.leftMargin: 10
         }
@@ -357,13 +345,13 @@ Rectangle {
         }
         ParallelAnimation {
             id: _aniPregnancyOn
-            NumberAnimation { target: _txtNewUsrPregnancyStatus; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
-            NumberAnimation { target: _cbbPreStatus;             property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
+            NumberAnimation { target: _txtNewUsrPregnancyStatus; property: "opacity"; from: 0.0 ;to: 1.0; duration: AppValueConst.time_screen_trans }
+            NumberAnimation { target: _cbbPreStatus;             property: "opacity"; from: 0.0 ;to: 1.0; duration: AppValueConst.time_screen_trans }
         }
         ParallelAnimation {
             id: _aniPregnancyOff
-            NumberAnimation { target: _txtNewUsrPregnancyStatus; property: "opacity"; from: 1.0 ;to: 0.0; duration: HomeScreenConst.time_screen_trans }
-            NumberAnimation { target: _cbbPreStatus;             property: "opacity"; from: 1.0 ;to: 0.0; duration: HomeScreenConst.time_screen_trans }
+            NumberAnimation { target: _txtNewUsrPregnancyStatus; property: "opacity"; from: 1.0 ;to: 0.0; duration: AppValueConst.time_screen_trans }
+            NumberAnimation { target: _cbbPreStatus;             property: "opacity"; from: 1.0 ;to: 0.0; duration: AppValueConst.time_screen_trans }
         }
         // End of Pregnancy status define
         Text {
@@ -387,14 +375,14 @@ Rectangle {
             btnLabel: "Create new user"
             onBtnClicked: {
                 console.log('Click create new user');
-                AppManager.handlePopupClick(HomeEnum.EVENT_SHOW_POPUP_CREATINGUSER)
+                AppManager.handleShowPopupClick(HomeEnum.EVENT_SHOW_POPUP_CREATINGUSER)
             }
             anchors.bottom: parent.bottom ; anchors.bottomMargin: 10
             anchors.horizontalCenter: parent.horizontalCenter
         }
         E_HorizentalLine {
             id: _secLine
-            lineColor: HomeScreenConst.line_normal_color
+            lineColor: AppValueConst.line_normal_color
             lineRange: parent.width - 160
             anchors.bottom: parent.bottom ; anchors.bottomMargin: 0
             anchors.horizontalCenter: parent.horizontalCenter
@@ -407,7 +395,7 @@ Rectangle {
         Text {
             id: _titleCustom
             text: "Customize your quick access"
-            font.pixelSize: 18 ; color: "gray"
+            font.pixelSize: 18 ; color: AppValueConst.value_popup_color
             anchors.top: parent.top ; anchors.topMargin: 10
             anchors.left: parent.left ; anchors.leftMargin: 10
         }

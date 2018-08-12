@@ -10,8 +10,8 @@ EHome_Main_Frame {
     ParallelAnimation {
         id: idMainAnimation
         running: false
-        NumberAnimation { target: root; property: "x"; from: -720; to: 0; duration: HomeScreenConst.time_screen_trans }
-        NumberAnimation { target: root; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
+        NumberAnimation { target: root; property: "x"; from: -720; to: 0; duration: AppValueConst.time_screen_trans }
+        NumberAnimation { target: root; property: "opacity"; from: 0.0 ;to: 1.0; duration: AppValueConst.time_screen_trans }
     }
 
     screenTitle: "Weather data"
@@ -43,7 +43,7 @@ EHome_Main_Frame {
             anchors.topMargin: 10
             anchors.horizontalCenter: parent.horizontalCenter
         }
-        border.color: HomeScreenConst.line_normal_color
+        border.color: AppValueConst.line_normal_color
         border.width: 1
         radius: 6
         color: "transparent"

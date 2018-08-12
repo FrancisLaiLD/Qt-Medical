@@ -21,8 +21,8 @@ Rectangle {
             id: _txt_title_curDev
             text: "Device connected" ; font.underline: false
             font.pixelSize: 18
-            color: "gray"
-            anchors.top: parent.top ; anchors.topMargin: 10
+            color: AppValueConst.value_popup_color
+            anchors.top: parent.top ; anchors.topMargin: 0
             anchors.left: parent.left ; anchors.leftMargin: 5
         }
         Text {
@@ -31,7 +31,7 @@ Rectangle {
             anchors.left: parent.left ; anchors.leftMargin: 40
             text: "Device name"
             font.pixelSize: 14
-            color: HomeScreenConst.line_normal_color
+            color: AppValueConst.line_normal_color
         }
         Text {
             id: txt_device_state
@@ -40,7 +40,7 @@ Rectangle {
             anchors.leftMargin: 300
             text: "State"
             font.pixelSize: 14
-            color: HomeScreenConst.line_normal_color
+            color: AppValueConst.line_normal_color
         }
         Text {
             id: txt_device_last_conn
@@ -49,7 +49,7 @@ Rectangle {
             anchors.leftMargin: 365
             text: "Last connection"
             font.pixelSize: 14
-            color: HomeScreenConst.line_normal_color
+            color: AppValueConst.line_normal_color
         }
         Text {
             id: txt_device_detail
@@ -58,7 +58,7 @@ Rectangle {
             anchors.leftMargin: 500
             text: "Manufacturer"
             font.pixelSize: 14
-            color: HomeScreenConst.line_normal_color
+            color: AppValueConst.line_normal_color
         }
 
         ListView {
@@ -81,7 +81,7 @@ Rectangle {
                     id: idTxt_device_name
                     text: proName
                     font.pixelSize: 15 ; font.italic: false
-                    color: HomeScreenConst.text_screen_color
+                    color: AppValueConst.text_screen_color
                     x: txt_device_name.x
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -96,7 +96,7 @@ Rectangle {
                     id: idTxt_device_lastConn
                     text: proState ? "online" : Qt.formatDateTime(proLastConn, "yyyy.MM.dd") + " - "+ Qt.formatDateTime(proLastConn, "hh:mm AP")
                     font.pixelSize: 15
-                    color: proState ? "green" : HomeScreenConst.text_screen_color
+                    color: proState ? "green" : AppValueConst.text_screen_color
                     x: txt_device_last_conn.x
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -127,7 +127,7 @@ Rectangle {
             id: _txt_title_disDev
             text: "Device not connected"
             font.pixelSize: 18 ; font.underline: false
-            color: "gray"
+            color: AppValueConst.value_popup_color
             anchors.top: parent.top ; anchors.topMargin: 10
             anchors.left: parent.left ; anchors.leftMargin: 5
         }
@@ -137,7 +137,7 @@ Rectangle {
             anchors.left: parent.left ; anchors.leftMargin: 40
             text: "Device name"
             font.pixelSize: 14
-            color: HomeScreenConst.line_normal_color
+            color: AppValueConst.line_normal_color
         }
         Text {
             id: txt_device_state_d
@@ -146,7 +146,7 @@ Rectangle {
             anchors.leftMargin: 300
             text: "State"
             font.pixelSize: 14
-            color: HomeScreenConst.line_normal_color
+            color: AppValueConst.line_normal_color
         }
         Text {
             id: txt_device_last_conn_d
@@ -155,7 +155,7 @@ Rectangle {
             anchors.leftMargin: 365
             text: "Last connection"
             font.pixelSize: 14
-            color: HomeScreenConst.line_normal_color
+            color: AppValueConst.line_normal_color
         }
         Text {
             id: txt_device_detail_d
@@ -164,7 +164,7 @@ Rectangle {
             anchors.leftMargin: 550
             text: "Manufacturer"
             font.pixelSize: 14
-            color: HomeScreenConst.line_normal_color
+            color: AppValueConst.line_normal_color
         }
         ListView {
             id: _lsvDisDev
@@ -185,7 +185,7 @@ Rectangle {
                     id: idTxt_device_name_d
                     text: proName
                     font.pixelSize: 15 ; font.italic: false
-                    color: HomeScreenConst.text_screen_color
+                    color: AppValueConst.text_screen_color
                     x: txt_device_name_d.x
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -200,7 +200,7 @@ Rectangle {
                     id: idTxt_device_lastConn_d
                     text: proState ? "online" : Qt.formatDateTime(proLastConn, "yyyy.MM.dd") + " - "+ Qt.formatDateTime(proLastConn, "hh:mm AP")
                     font.pixelSize: 15
-                    color: proState ? "green" : HomeScreenConst.text_screen_color
+                    color: proState ? "green" : AppValueConst.text_screen_color
                     x: txt_device_last_conn_d.x
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -223,7 +223,7 @@ Rectangle {
             id: _txt_title_allDev
             text: "Choose devices in main screen"
             font.pixelSize: 18 ; font.underline: false
-            color: "gray"
+            color: AppValueConst.value_popup_color
             anchors.top: parent.top ; anchors.topMargin: 10
             anchors.left: parent.left ; anchors.leftMargin: 5
         }
@@ -254,7 +254,7 @@ Rectangle {
                     id: idTxt_device_name_a
                     text: proName
                     font.pixelSize: 15 ; font.italic: false
-                    color: HomeScreenConst.text_screen_color
+                    color: AppValueConst.text_screen_color
                     anchors.left: parent.left ; anchors.leftMargin: 45
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -313,7 +313,7 @@ Rectangle {
                     id: idTxt_device_name_a2
                     text: proName
                     font.pixelSize: 15 ; font.italic: false
-                    color: HomeScreenConst.text_screen_color
+                    color: AppValueConst.text_screen_color
                     anchors.left: parent.left ; anchors.leftMargin: 45
                     anchors.verticalCenter: parent.verticalCenter
                 }

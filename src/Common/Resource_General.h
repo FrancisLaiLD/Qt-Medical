@@ -64,6 +64,11 @@ public:
     Q_PROPERTY(QString ico_edit_16_red              READ ico_edit_16_red                CONSTANT)
     Q_PROPERTY(QString ico_edit_16_gray             READ ico_edit_16_gray               CONSTANT)
     Q_PROPERTY(QString ico_loading                  READ ico_loading                    CONSTANT)
+    Q_PROPERTY(QString ico_info_64                  READ ico_info_64                    CONSTANT)
+    Q_PROPERTY(QString ico_error_64                 READ ico_error_64                   CONSTANT)
+    Q_PROPERTY(QString ico_right_arrow_n            READ ico_right_arrow_n              CONSTANT)
+    Q_PROPERTY(QString ico_right_arrow_p            READ ico_right_arrow_p              CONSTANT)
+    Q_PROPERTY(QString ico_right_arrow_d            READ ico_right_arrow_d              CONSTANT)
 
     Q_PROPERTY(QString human_overview               READ human_overview                 CONSTANT)
 
@@ -97,6 +102,11 @@ public:
     QString ico_edit_16_red()           {return m_prefix + "ico_edit_16_red.png";}
     QString ico_edit_16_gray()          {return m_prefix + "ico_edit_16_gray.png";}
     QString ico_loading()               {return m_prefix + "ico_loading.gif";}
+    QString ico_error_64()              {return m_prefix + "ico_error_64.png";}
+    QString ico_info_64()               {return m_prefix + "ico_info_64.png";}
+    QString ico_right_arrow_n()         {return m_prefix + "ico_right_arrow_n.png";}
+    QString ico_right_arrow_p()         {return m_prefix + "ico_right_arrow_p.png";}
+    QString ico_right_arrow_d()         {return m_prefix + "ico_right_arrow_d.png";}
 
     QString chart_ver_bottom()          {return m_prefixChart + "chart_ver_bottom.png";}
     QString chart_ver_middle()          {return m_prefixChart + "chart_ver_middle.png";}

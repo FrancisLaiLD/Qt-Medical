@@ -13,8 +13,8 @@ EHome_Main_Frame {
     ParallelAnimation {
         id: idMainAnimation
         running: false
-        NumberAnimation { target: _root; property: "x"; from: -720; to: 0; duration: HomeScreenConst.time_screen_trans }
-        NumberAnimation { target: _root; property: "opacity"; from: 0.0 ;to: 1.0; duration: HomeScreenConst.time_screen_trans }
+        NumberAnimation { target: _root; property: "x"; from: -720; to: 0; duration: AppValueConst.time_screen_trans }
+        NumberAnimation { target: _root; property: "opacity"; from: 0.0 ;to: 1.0; duration: AppValueConst.time_screen_trans }
     }
 
     EHome_Half_Frame {
@@ -40,7 +40,7 @@ EHome_Main_Frame {
                 id: idMouDetailWea
                 anchors.fill: parent
                 onClicked: {
-                    AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_HOME_WEATHER)
+                    AppManager.handleTransScreen(HomeEnum.EVENT_GO_TO_HOME_WEATHER)
                 }
             }
 
@@ -94,7 +94,7 @@ EHome_Main_Frame {
                 anchors.leftMargin: 18
                 anchors.top: idTemp_val.bottom
                 anchors.topMargin: 3
-                color: HomeScreenConst.line_normal_color
+                color: AppValueConst.line_normal_color
             }
 
             Text {
@@ -104,7 +104,7 @@ EHome_Main_Frame {
                 anchors.top: idImgWeather.bottom
                 anchors.topMargin: 3
                 anchors.horizontalCenter: parent.horizontalCenter
-                color: HomeScreenConst.line_normal_color
+                color: AppValueConst.line_normal_color
             }
 
             Image {
@@ -124,7 +124,7 @@ EHome_Main_Frame {
                 anchors.rightMargin: 100
                 text: AppStringConst.STR_HOME_WEATHER_DIRECTION
                 font.pixelSize: 16
-                color: HomeScreenConst.line_normal_color
+                color: AppValueConst.line_normal_color
             }
             Text {
                 id: idWind_direction_val
@@ -142,7 +142,7 @@ EHome_Main_Frame {
                 anchors.right: idWind_direction.right
                 text: AppStringConst.STR_HOME_WEATHER_SPEED
                 font.pixelSize: 16
-                color: HomeScreenConst.line_normal_color
+                color: AppValueConst.line_normal_color
             }
             Text {
                 id: idWind_speed_val
@@ -164,7 +164,7 @@ EHome_Main_Frame {
             anchors.bottomMargin: 5
             text: AppStringConst.STR_HOME_WEATHER_DATA_WAS_UPDATE
             font.pixelSize: 14
-            color: HomeScreenConst.line_normal_color
+            color: AppValueConst.line_normal_color
         }
         Text {
             id: timeUpdate_val
@@ -175,7 +175,7 @@ EHome_Main_Frame {
                   " , "+ Qt.formatDateTime(_root.lastTime, "hh:mm:ss AP")
             font.pixelSize: 14
             font.italic: true
-            color: HomeScreenConst.line_normal_color
+            color: AppValueConst.line_normal_color
         }
         /* -------------------------------------RIGHT SIDE----------------------------------*/
         Item {
@@ -188,29 +188,68 @@ EHome_Main_Frame {
                 width: parent.width ; height: parent.height/2
 
                 Text {
-                    id: titQuiAcc
+                    id: _titQuickAccess
                     text: "Quick Access"
                     font.pixelSize: 16
-                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.left: parent.left ; anchors.leftMargin: 10
                     anchors.top: parent.top
                     anchors.topMargin: 10
+                }
+                ListView {
+                    id: _lsvCommand
+                    anchors.top: _titQuickAccess.bottom
+                    anchors.topMargin: 30
+                    spacing: 8
+                    clip: true
+                    interactive: true
+                    width: parent.width ; height: contentHeight
+                    model: AppListCommand
+                    delegate: Rectangle {
+                        id: _delCommand
+                        width: _commandName.width + _imgArrow.width + 20 ; height: visible ? 35 : 0 ; radius: 6
+                        anchors.left: parent.left ; anchors.leftMargin: 20
+                        visible: commandShowInMain
+                        color: index%2 === 0 ? "#CCFF45" : "#96CF00"
+                        opacity: 0.8
+                        Text {
+                            id: _commandName
+                            text: commandName
+                            font.pixelSize: 16 ; font.italic: false
+                            x: 10
+                            opacity: 1.0
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
+                        Image {
+                            id: _imgArrow
+                            source: _mouGoToFunc.isPressed ? Resource_General.ico_right_arrow_p : Resource_General.ico_right_arrow_d
+                            width: _commandName.height ; height: _commandName.height
+                            anchors.verticalCenter: _commandName.verticalCenter ;
+                            anchors.left: _commandName.right ; anchors.leftMargin: 5
+                        }
+                        MouseArea {
+                            id: _mouGoToFunc
+                            anchors.fill: parent
+                            onClicked: {
+                                AppManager.handleTransScreen(HomeEnum.EVENT_GO_TO_SETTING)
+                            }
+                        }
+                    }
                 }
             }
             E_HorizentalLine {
                 id: lineQaAndLr
                 anchors.centerIn: parent
-                lineColor: HomeScreenConst.line_normal_color ; lineRange: parent.width - 30
+                lineColor: AppValueConst.line_normal_color ; lineRange: parent.width - 30
             }
             Item {
                 id: idLastRecord
                 width: parent.width ; height: parent.height/2
                 y: parent.height/2
-
                 Text {
                     id: titLasRec
-                    text: "Last Record"
+                    text: "Your schedule"
                     font.pixelSize: 16
-                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.left: parent.left ; anchors.leftMargin: 10
                     anchors.top: parent.top
                     anchors.topMargin: 10
                 }
@@ -220,11 +259,11 @@ EHome_Main_Frame {
                 anchors.horizontalCenter: idLastRecord.horizontalCenter
                 anchors.bottom: idLastRecord.bottom
                 anchors.bottomMargin: 5
-                text: AppStringConst.STR_HOME_GO_TO_USER_DATA
+                text: AppStringConst.STR_HOME_GO_TO_USER_SCHEDULE
                 font.italic: true
                 font.pixelSize: 15
                 onTextRelease: {
-                    AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_USER_DATA)
+                    AppManager.handleTransScreen(HomeEnum.EVENT_GO_TO_USER_DATA)
                 }
             }
         }
@@ -233,7 +272,7 @@ EHome_Main_Frame {
             id:idVerLine
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
-            lineColor: HomeScreenConst.line_normal_color
+            lineColor: AppValueConst.line_normal_color
             lineRange: parent.height - 30
         }
     }
@@ -241,7 +280,7 @@ EHome_Main_Frame {
     E_HorizentalLine {
         id: idLineCenter
         lineRange: parent.width - 60
-        lineColor: HomeScreenConst.line_normal_color
+        lineColor: AppValueConst.line_normal_color
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
     }
@@ -269,7 +308,7 @@ EHome_Main_Frame {
             anchors.leftMargin: 100
             text: "Device name"
             font.pixelSize: 14
-            color: HomeScreenConst.line_normal_color
+            color: AppValueConst.line_normal_color
         }
         Text {
             id: txt_device_state
@@ -278,7 +317,7 @@ EHome_Main_Frame {
             anchors.leftMargin: 350
             text: "State"
             font.pixelSize: 14
-            color: HomeScreenConst.line_normal_color
+            color: AppValueConst.line_normal_color
         }
         Text {
             id: txt_device_last_conn
@@ -287,7 +326,7 @@ EHome_Main_Frame {
             anchors.leftMargin: 500
             text: "Last connection"
             font.pixelSize: 14
-            color: HomeScreenConst.line_normal_color
+            color: AppValueConst.line_normal_color
         }
 
         ListView {
@@ -305,7 +344,7 @@ EHome_Main_Frame {
                 height: visible ? 50 : 0
                 visible: proShowInMain
                 color: proState ? "#CDCDCD" : "#E0E0E0"
-                opacity: 0.8
+                opacity: 0.7
                 Text {
                     id: idTxt_device_name
                     text: proName
@@ -342,7 +381,7 @@ EHome_Main_Frame {
             font.pixelSize: 15
             onTextRelease: {
                 SettingModel.curInx = HomeEnum.SETTING_DEVICE
-                AppManager.handleHomeScreenClick(HomeEnum.EVENT_GO_TO_SETTING)
+                AppManager.handleTransScreen(HomeEnum.EVENT_GO_TO_SETTING)
             }
         }
     }

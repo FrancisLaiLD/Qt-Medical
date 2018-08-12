@@ -4,7 +4,7 @@ StatusbarModel::StatusbarModel(QObject *parent) : QObject(parent)
 {
     m_vrState = true;
     m_isDayTime = false;
-    m_networkState = 4;
+    m_networkState = 2;
 }
 
 bool StatusbarModel::vrState() const

@@ -7,6 +7,7 @@
 #define ESETTING_NETWORK                          "../Component/SettingComponent/ESetting_Network.qml"
 #define ESETTING_USERPROFILE                      "../Component/SettingComponent/ESetting_UserProfile.qml"
 #define ESETTING_DEVICE_MANAGEMENT                "../Component/SettingComponent/ESetting_Device_Management.qml"
+#define ESETTING_ABOUT                            "../Component/SettingComponent/ESetting_About.qml"
 
 #include <QString>
 #include <QMap>
@@ -25,7 +26,7 @@ const QMap<int, SETTINGSTRUCT> CONST_TABLE_SETTING {
     {static_cast<int>(App_Enum::ENUM_SETTING::SETTING_NETWORK),          {"Network",         ESETTING_NETWORK}},
     {static_cast<int>(App_Enum::ENUM_SETTING::SETTING_USERPROFILE),      {"User Profile",    ESETTING_USERPROFILE}},
     {static_cast<int>(App_Enum::ENUM_SETTING::SETTING_DEVICE),           {"Device",          ESETTING_DEVICE_MANAGEMENT}},
-    {static_cast<int>(App_Enum::ENUM_SETTING::SETTING_ABOUT),            {"About",           ""}}
+    {static_cast<int>(App_Enum::ENUM_SETTING::SETTING_ABOUT),            {"About",           ESETTING_ABOUT}}
 };
 
 #endif // SETTINGSCREENDEF_H

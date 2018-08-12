@@ -1,5 +1,8 @@
 #include "AppManager.h"
 
+// GLOBAL DEFINE
+AppStringConst m_appString;
+
 AppManager::AppManager(QObject *parent, QQmlApplicationEngine *_pAppEngine) : QObject(parent)
 {
     p_qqmlAppEngine         = _pAppEngine;
@@ -16,8 +19,9 @@ void AppManager::initQmlProperty()
     p_homeDailyModel        = new HomeScreen_Main_Daily_Model(nullptr, p_qqmlAppEngine);
     p_settingModel          = new SettingModel();
     // constant model
-    p_homeScreenConst       = new HomeScreenConst();
-    p_AppStringConst       = new AppStringConst();
+    p_AppValueConst         = new AppValueConst();
+    p_AppStringConst        = new AppStringConst();
+    p_appListCommand        = new AppListCommand();
 
 
     qmlRegisterUncreatableType<App_Enum>("Ehome", 1, 0, "HomeEnum",
@@ -29,9 +33,10 @@ void AppManager::initQmlProperty()
 //    p_qqmlAppEngine->rootContext()->setContextProperty("HomeDailyModel",    p_homeDailyModel);
     p_qqmlAppEngine->rootContext()->setContextProperty("ResStatusBar",      p_resStatusbar);
     p_qqmlAppEngine->rootContext()->setContextProperty("Resource_General",  p_resGeneral);
-    p_qqmlAppEngine->rootContext()->setContextProperty("HomeScreenConst",   p_homeScreenConst);
-    p_qqmlAppEngine->rootContext()->setContextProperty("AppStringConst",   p_AppStringConst);
+    p_qqmlAppEngine->rootContext()->setContextProperty("AppValueConst",     p_AppValueConst);
+    p_qqmlAppEngine->rootContext()->setContextProperty("AppStringConst",    p_AppStringConst);
     p_qqmlAppEngine->rootContext()->setContextProperty("SettingModel",      p_settingModel);
+    p_qqmlAppEngine->rootContext()->setContextProperty("AppListCommand",    p_appListCommand);
 
 //    p_qqmlAppEngine->rootContext()->setContextProperty("QmlController",     p_AppStringConst);
 
@@ -56,7 +61,7 @@ void AppManager::initApplication()
     //
     p_userProfileModel->initUserList();
     // init Screen
-    handleHomeScreenClick(static_cast<int>(App_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN));
+    handleTransScreen(static_cast<int>(App_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN));
 }
 
 void AppManager::initInternalThread()
@@ -69,7 +74,7 @@ void AppManager::initInternalThread()
     p_timeThread->start();
 }
 
-void AppManager::handleHomeScreenClick(const int &_index, const QVariant& _data)
+void AppManager::handleTransScreen(const int &_index, const QVariant& _data)
 {
     setCurrentScreen(_index);
     qDebug() << "current screen: " << _index;
@@ -77,7 +82,7 @@ void AppManager::handleHomeScreenClick(const int &_index, const QVariant& _data)
 
 }
 
-void AppManager::handlePopupClick(const int &_index)
+void AppManager::handleShowPopupClick(const int &_index)
 {
     p_homeQMLController->handleQMLEvent(_index);
     setIsShowingPopup(true);

@@ -38,8 +38,8 @@ Rectangle {
         id: _rectGrid
         anchors.top: parent.bottom ; anchors.topMargin: 0
         anchors.right: parent.right
-        width: _root.__delWidth* 4 ; height: _root.__delWidth*2
-        color: "#E0E0E0" ; opacity: 0.5
+        width: _root.__delWidth* 5 ; height: _root.__delWidth*2
+        color: "#E0E0E0" ; opacity: 0.8
         visible: __isShowDropDown
     }
         GridView {

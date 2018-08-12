@@ -49,7 +49,8 @@ void HomeQMLController::SCREEN_TRANSITION(const int _index)
     {
         if (_index != static_cast<int>(App_Enum::ENUM_HOME_EVENT::EVENT_GO_TO_HOME_SCREEN))
         {
-            m_preScrStack.push(m_currentScreen);
+            if (!m_preScrStack.contains(_index))
+                m_preScrStack.push(m_currentScreen);
             QVariant returnedValue;
             QVariant msg = CONST_TABLE_QML.value(_index).s_QmlLink;
             QMetaObject::invokeMethod(m_listObject[0], "transtionScreen", Q_RETURN_ARG(QVariant, returnedValue),Q_ARG(QVariant, msg));

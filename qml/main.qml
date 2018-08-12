@@ -7,7 +7,7 @@ import Ehome 1.0
 Window {
     visible: true
     width: 720
-    height: 1080
+    height: 1280
     title: qsTr("All in your hand")
 
     function transtionScreen(newScreenLink) {
@@ -24,24 +24,12 @@ Window {
         idLoadPopup.source = ""
         return true
     }
-
-//    function getBgSource() {
-//        switch (AppManager.currentScreen) {
-//        case HomeEnum.EVENT_GO_TO_HOME_SCREEN:
-//            return "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/main_bg_weather.jpg"
-//        case HomeEnum.EVENT_GO_TO_HOME_WEATHER:
-//            return "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/main_bg_weather.jpg"
-//        default:
-//            return "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/main_bg_5.jpg"
-//        }
-//    }
-
-//    Connections {
-//        target: AppManager
-//        onCurrentScreenChanged:
-//            idBackgroundImg.source = getBgSource()
-//    }
-
+    Image {
+        id: _imgBackground
+        source: "../resource/images/main_bg_19 (1).png"
+        fillMode: Image.PreserveAspectCrop
+        anchors.fill: parent
+    }
     Rectangle {
         id: idRoot
         anchors.fill: parent
@@ -56,16 +44,6 @@ Window {
         height: 60
         source: ""
     }
-//    Rectangle {
-//        id: idLine
-//        color: HomeScreenConst.line_normal_color
-//        width: parent.width - 60
-//        height: 1
-//        anchors.top: idSttBarLoader.bottom
-//        anchors.topMargin: 0
-//        anchors.horizontalCenter: idRoot.horizontalCenter
-//        opacity: 0.5
-//    }
 
     Loader {
         id: idContentLoader
@@ -110,7 +88,6 @@ Window {
 
     Component.onCompleted:  {
         console.log('[qml] main.qml onComplete')
-//        transtionScreen("Screen/EHome_Screen_Home_Menu.qml")
         idSttBarLoader.source = "Statusbar/EHome_Main_Statusbar.qml"
     }
 }

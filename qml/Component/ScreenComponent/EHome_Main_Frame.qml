@@ -8,20 +8,20 @@ Rectangle {
     height: 1080 - 60
     color: "transparent"
 
-    Image {
-        id: idMainImg
-        source: idRoot.scrrenBgImg
-        anchors.fill: parent
-        opacity: 0.8
-        fillMode: Image.PreserveAspectCrop
-    }
+//    Image {
+//        id: idMainImg
+//        source: idRoot.scrrenBgImg
+//        anchors.fill: parent
+//        opacity: 0.8
+//        fillMode: Image.PreserveAspectCrop
+//    }
 
     Text {
         id: idTitleScreen
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: 5
-        font.pixelSize: HomeScreenConst.title_screen_size
+        font.pixelSize: AppValueConst.title_screen_size
         text: idRoot.screenTitle
     }
 

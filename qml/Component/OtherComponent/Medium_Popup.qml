@@ -3,7 +3,8 @@ import "../OtherComponent"
 
 EHome_Popup_Frame {
     id: idRoot
-    popupWidth: 560
-    popupHeight: 400
+    __popupWidth: 560
+    __popupHeight: 400
+    __lineTitleWidth: 360
 }
 

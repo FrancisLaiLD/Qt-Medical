@@ -6,7 +6,7 @@ Rectangle {
     property int btnWidth: -1
     property int btnHeight: 40
     property string btnLabel: "Unknow button"
-    property string btnLabelColor: HomeScreenConst.text_screen_color
+    property string btnLabelColor: AppValueConst.text_screen_color
     property string btnColorTop: "#808080"
     property string btnColorBottom: "white"
     property string btnColorPress: "#B79612"
