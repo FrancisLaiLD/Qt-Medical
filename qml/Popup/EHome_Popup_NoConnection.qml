@@ -23,7 +23,7 @@ Please try again later"
         anchors.bottom: parent.bottom ; anchors.bottomMargin: 8
         onBtnClicked: {
             SettingModel.curInx = HomeEnum.SETTING_NETWORK
-            AppManager.handleHidePopupClick(HomeEnum.EVENT_GO_TO_SETTING)
+            AppManager.handleTransScreen(HomeEnum.EVENT_GO_TO_SETTING)
         }
     }
 }

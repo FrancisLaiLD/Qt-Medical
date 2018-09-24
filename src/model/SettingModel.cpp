@@ -77,6 +77,37 @@ void SettingModel::initSettingModel()
         SettingComponent m_settingComp = SettingComponent(CONST_TABLE_SETTING[i].s_MenuName, CONST_TABLE_SETTING[i].s_QmlLink);
         addDevice(m_settingComp);
     }
+
+    // Version info
+    setAppVersion(GLOBAL_StringConst.STR_GENERAL_UNDEFINE());
+}
+
+int SettingModel::curLang() const
+{
+    return m_curLang;
+}
+
+void SettingModel::setCurLang(int curLang)
+{
+    if (m_curLang != curLang)
+    {
+        m_curLang = curLang;
+        emit curLangChanged();
+    }
+}
+
+QString SettingModel::appVersion() const
+{
+    return m_appVersion;
+}
+
+void SettingModel::setAppVersion(const QString &appVersion)
+{
+    if (m_appVersion != appVersion)
+    {
+        m_appVersion = appVersion;
+        emit appVersionChanged();
+    }
 }
 
 QString SettingComponent::proMenuName() const

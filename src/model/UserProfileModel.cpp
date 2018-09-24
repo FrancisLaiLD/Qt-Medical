@@ -2,7 +2,6 @@
 
 UserProfileModel::UserProfileModel()
 {
-    p_resGeneral = new Resource_General();
     p_resStatusbar = new Resource_Statusbar();
 //    UserProfileComponent *m_user = new UserProfileComponent();
 //    m_user->setAge(28);
@@ -11,7 +10,7 @@ UserProfileModel::UserProfileModel()
 //    m_user->setDob(QDate(01, 04, 1990));
 //    m_user->setId(100110111);
 //    m_user->setLoginState(true);
-//    m_user->setUserIcon(p_resGeneral->ico_boy_2());
+//    m_user->setUserIcon(GLOBAL_ResGeneral->ico_boy_2());
 //    m_user->setName("Lai Dang Hung");
 //    m_user->setPassword("kakalot");
 //    m_user->setTimeLogin(QDateTime::currentDateTime());
@@ -130,7 +129,7 @@ void UserProfileModel::initUserList()
     m_UserHungLD.setDob(QDate(1990, 4, 1));
     m_UserHungLD.setId(11110001);
     m_UserHungLD.setName("Lai Dang Hung");
-    m_UserHungLD.setUserIcon(p_resGeneral->ico_boy_2());
+    m_UserHungLD.setUserIcon(GLOBAL_ResGeneral.ico_boy_2());
     m_UserHungLD.setPassword("dangngoc90");
     addUser(m_UserHungLD);
     for (int i= 0; i< 5; i++)

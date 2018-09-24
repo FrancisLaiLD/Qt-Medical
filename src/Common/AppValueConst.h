@@ -49,7 +49,7 @@ public:
     QString line_normal_color()             {return "gray";}
     QString text_click_color()              {return "#AA00FF";}
     QString text_enter_color()              {return "#E1A6FF";}
-    QString item_select_color()             {return "#C4FECD";}
+    QString item_select_color()             {return "#9CE8FF";}
 
 };
 

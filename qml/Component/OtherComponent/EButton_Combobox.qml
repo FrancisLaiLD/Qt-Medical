@@ -20,12 +20,18 @@ Rectangle {
     property var __listModel
     width: cbbWidth ; height: cbbHeight
     radius: 6
-    color: "#D6DDD7"
+    color: AppValueConst.item_select_color
     Text {
         id: _txtCurItem
         text: curVal
         font.pixelSize: 15
         anchors.centerIn: parent
+    }
+    Image {
+        id: _imgDropDown
+        source: Resource_General.ico_drop_down_16
+        anchors.right: parent.right ; anchors.rightMargin: 4
+        anchors.verticalCenter: parent.verticalCenter
     }
     MouseArea {
         id: _cbbMou
@@ -45,7 +51,7 @@ Rectangle {
             id: idRectDel
             width: parent.width ; height: _root.height
             radius: 6
-            color: index === lsvCbb.currentIndex ? AppValueConst.item_select_color : (index%2 === 0 ? "#CDCDCD" : "#E0E0E0")
+            color: _itemMou.pressed ? "#00C5FF" : (index === _root.curIndex ? AppValueConst.item_select_color : (index%2 === 0 ? "#CDCDCD" : "#E0E0E0"))
             opacity: 1.0
             Text {
                 id: _txtItemName
@@ -67,6 +73,8 @@ Rectangle {
     }
     Component.onCompleted: {
         _root.curIndex = 0
-//        _root.curVal = __listModel[0].name
+        lsvCbb.currentIndex = _root.curIndex
+        _root.curVal = __listModel.get(0).name
+
     }
 }

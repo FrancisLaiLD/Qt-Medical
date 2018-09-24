@@ -9,7 +9,7 @@ import Ehome 1.0
 EHome_Main_Frame {
     id:_root
     property string lastTime: HomeDailyModel.timeUpdate
-//    scrrenBgImg: "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/main_bg_25.jpg"
+    //    scrrenBgImg: "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/main_bg_25.jpg"
     ParallelAnimation {
         id: idMainAnimation
         running: false
@@ -30,12 +30,25 @@ EHome_Main_Frame {
                 return Resource_General.weather_shine_cloudy
             }
         }
+        function getTimeLogin() {
+            var timeLogin =  ""
+            switch(SettingModel.curLang) {
+            case HomeEnum.LANGUAGE_EN:
+                timeLogin = Qt.formatDateTime(_root.lastTime, "ddd, MMMM dd - hh:mm AP")
+                break
+            case HomeEnum.LANGUAGE_VI:
+                timeLogin = Qt.formatDateTime(_root.lastTime, "MMMM dd - hh:mm AP")
+                break
+            default:
+                timeLogin = Qt.formatDateTime(_root.lastTime, "ddd, MMMM dd - hh:mm AP")
+            }
+            return timeLogin
+        }
 
         Flickable {
             id: leftSide
             x: 0
-            width: idAboveFrame.width/2
-            height: idAboveFrame.height
+            width: idAboveFrame.width/2 ; height: idAboveFrame.height
             MouseArea {
                 id: idMouDetailWea
                 anchors.fill: parent
@@ -171,8 +184,7 @@ EHome_Main_Frame {
             anchors.left: timeUpdate.right
             anchors.leftMargin: 10
             anchors.verticalCenter: timeUpdate.verticalCenter
-            text: Qt.formatDateTime(_root.lastTime, "yyyy.MM.dd") +
-                  " , "+ Qt.formatDateTime(_root.lastTime, "hh:mm:ss AP")
+            text: idAboveFrame.getTimeLogin()
             font.pixelSize: 14
             font.italic: true
             color: AppValueConst.line_normal_color
@@ -186,7 +198,6 @@ EHome_Main_Frame {
             Item {
                 id: idQuickAccess
                 width: parent.width ; height: parent.height/2
-
                 Text {
                     id: _titQuickAccess
                     text: "Quick Access"
@@ -200,46 +211,71 @@ EHome_Main_Frame {
                     anchors.top: _titQuickAccess.bottom
                     anchors.topMargin: 30
                     spacing: 8
-                    clip: true
-                    interactive: true
-                    width: parent.width ; height: contentHeight
+                    clip: true ;
+                    interactive: false
+                    width: parent.width ; height: parent.height - 60
                     model: AppListCommand
                     delegate: Rectangle {
                         id: _delCommand
-                        width: _commandName.width + _imgArrow.width + 20 ; height: visible ? 35 : 0 ; radius: 6
+                        property bool isPressed: false
+                        width: _commandName.width + _imgArrow.width + 50 ; height: visible ? 40 : 0 ; radius: 6
                         anchors.left: parent.left ; anchors.leftMargin: 20
                         visible: commandShowInMain
-                        color: index%2 === 0 ? "#CCFF45" : "#96CF00"
-                        opacity: 0.8
+                        color: _delCommand.isPressed ? "#0B6BCB" : index%2 === 0 ? "#ff99ce" : "#ffcce6"
+                        opacity: 1.0
                         Text {
                             id: _commandName
                             text: commandName
                             font.pixelSize: 16 ; font.italic: false
                             x: 10
-                            opacity: 1.0
                             anchors.verticalCenter: parent.verticalCenter
                         }
                         Image {
                             id: _imgArrow
-                            source: _mouGoToFunc.isPressed ? Resource_General.ico_right_arrow_p : Resource_General.ico_right_arrow_d
-                            width: _commandName.height ; height: _commandName.height
-                            anchors.verticalCenter: _commandName.verticalCenter ;
-                            anchors.left: _commandName.right ; anchors.leftMargin: 5
+                            source: Resource_General.ico_right_arrow_n
+                            width: 24 ; height: 24
+                            opacity: 0.5
+                            anchors.verticalCenter: _commandName.verticalCenter
+                            anchors.right: parent.right ; anchors.rightMargin: 10
                         }
                         MouseArea {
                             id: _mouGoToFunc
                             anchors.fill: parent
-                            onClicked: {
-                                AppManager.handleTransScreen(HomeEnum.EVENT_GO_TO_SETTING)
+                            onPressed: {
+                                _delCommand.isPressed = true
+                            }
+                            onExited: {
+                                _delCommand.isPressed = false
+                            }
+                            onReleased: {
+                                if (_delCommand.isPressed) {
+                                    switch(index) {
+                                    case HomeEnum.COMMAND_MEASURE_TEMPERATURE:
+                                        AppManager.handleTransScreen(HomeEnum.EVENT_GOTO_COMMAND_TEMPMEASURE)
+                                        break
+                                    case HomeEnum.COMMAND_DIAMETTER_HEIGHT:
+                                        AppManager.handleTransScreen(HomeEnum.EVENT_GOTO_COMMAND_HEIGHTDIAMETTER)
+                                        break
+                                    case HomeEnum.COMMAND_DIAMETTER_WEIGHT:
+                                        AppManager.handleTransScreen(HomeEnum.EVENT_GOTO_COMMAND_WEIGHTDIAMETTER)
+                                        break
+                                    case HomeEnum.COMMAND_MEASURE_BLOOD_PRESSURE:
+                                        AppManager.handleTransScreen(HomeEnum.EVENT_GOTO_COMMAND_BLOODPRESSMEASURE)
+                                        break
+                                    default:
+                                        console.log('[qml] None of function choose')
+                                        break
+                                    }
+                                }
                             }
                         }
                     }
                 }
-            }
-            E_HorizentalLine {
-                id: lineQaAndLr
-                anchors.centerIn: parent
-                lineColor: AppValueConst.line_normal_color ; lineRange: parent.width - 30
+                E_HorizentalLine {
+                    id: lineQaAndLr
+                    anchors.bottom: parent.bottom ; anchors.horizontalCenter: parent.horizontalCenter
+                    lineColor: AppValueConst.line_normal_color ; lineRange: parent.width - 30
+                }
             }
             Item {
                 id: idLastRecord
@@ -270,10 +306,9 @@ EHome_Main_Frame {
 
         E_VerticalLine {
             id:idVerLine
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.centerIn: parent
             lineColor: AppValueConst.line_normal_color
-            lineRange: parent.height - 30
+            lineRange: parent.height - 60
         }
     }
 
@@ -287,7 +322,7 @@ EHome_Main_Frame {
 
     EHome_Half_Frame {
         id: idUnderFrame
-        x: 0; y:510
+        x: 0; y:610
         Text {
             id: idTitleTips
             anchors.top: parent.top
@@ -373,8 +408,8 @@ EHome_Main_Frame {
         EButton_Text {
             id: _gotoDeviceSet
             anchors.horizontalCenter: idUnderFrame.horizontalCenter
-//            anchors.bottom: parent.bottom
-//            anchors.bottomMargin: 80
+            //            anchors.bottom: parent.bottom
+            //            anchors.bottomMargin: 80
             anchors.top: _lsvDevice.bottom ; anchors.topMargin: 20
             text: AppStringConst.STR_HOME_GO_TO_DEVICE_SETTING
             font.italic: true

@@ -13,7 +13,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 HEADERS += \
     src/AppManager.h \
-    src/HomeQMLController.h \
     src/Component/DeviceComponent.h \
     src/Component/HomeComponent.h \
     src/Component/UserProfileComponent.h \
@@ -37,13 +36,16 @@ HEADERS += \
     src/Common/AppStringConst.h \
     src/model/AppListCommand.h \
     src/Worker/Worker_Time_Management.h \
-    src/Common/CommandDef.h
+    src/Common/CommandDef.h \
+    src/Component/UserDataComp.h \
+    src/model/ListModelUserData.h \
+    src/QMLController.h \
+    src/MeasureController.h \
 
 
 SOURCES += \
     src/AppManager.cpp \
     src/Ehome_Main.cpp \
-    src/HomeQMLController.cpp \
     src/Component/DeviceComponent.cpp \
     src/Component/HomeComponent.cpp \
     src/Component/UserProfileComponent.cpp \
@@ -55,7 +57,11 @@ SOURCES += \
     src/model/StatusbarModel.cpp \
     src/model/UserProfileModel.cpp \
     src/Worker/Worker_Time_Management.cpp \
-    src/model/AppListCommand.cpp
+    src/model/AppListCommand.cpp \
+    src/Component/UserDataComp.cpp \
+    src/model/ListModelUserData.cpp \
+    src/QMLController.cpp \
+    src/MeasureController.cpp
 
 
 RESOURCES +=
@@ -121,5 +127,15 @@ DISTFILES += \
     qml/Component/OtherComponent/EButton_Combobox_Time.qml \
     qml/Component/OtherComponent/EButton_GridBox.qml \
     qml/Popup/EHome_Popup_CreatingUser.qml \
-    qml/Component/SettingComponent/ESetting_About.qml
+    qml/Component/SettingComponent/ESetting_About.qml \
+    qml/Screen/EFunction_Screen_TempMeasure.qml \
+    qml/Screen/EFunction_Screen_HeightDiametter.qml \
+    qml/Screen/EFunction_Screen_WeightDiametter.qml \
+    qml/Screen/EFunction_Screen_BloodPressMeasure.qml \
+    qml/Popup/EHome_Popup_ConfirmExit.qml \
+    qml/EHome_Screen_GlobalSetting.qml \
+    qml/Popup/EHome_Popup_NotChangeUser.qml \
+    qml/Popup/EHome_Popup_SaveData.qml \
+    qml/Component/OtherComponent/EChart_UserData.qml \
+    qml/Popup/EHome_Popup_NoSaveDataYet.qml
 

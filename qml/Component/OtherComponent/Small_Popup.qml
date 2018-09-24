@@ -4,7 +4,7 @@ import Ehome 1.0
 EHome_Popup_Frame {
     id: idRoot
     __popupTitle: ""
-    __popupHeight: 220
+    __popupHeight: 200
     __popupWidth: 400
     __lineTitleWidth: 250
     anchors.top: parent.top

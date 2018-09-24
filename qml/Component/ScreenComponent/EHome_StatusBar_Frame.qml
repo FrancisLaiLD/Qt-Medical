@@ -12,12 +12,15 @@ Rectangle {
     signal releaseBackBtn()
     signal releaseHomeBtn()
     signal releaseCloudBtn()
-
-    gradient:
-        Gradient {
-        GradientStop { position: 1.0; color: "white" }
-        GradientStop { position: 0.0; color: "#808080" }
+    Image {
+        id: _sttbar_bg
+        source: "../../../resource/images/statusbar_bg_1.png"
     }
+//    gradient:
+//        Gradient {
+//        GradientStop { position: 1.0; color: "white" }
+//        GradientStop { position: 0.0; color: "#808080" }
+//    }
     E_HorizentalLine {
         id: _line
         lineRange: parent.width ; lineHeight: 1

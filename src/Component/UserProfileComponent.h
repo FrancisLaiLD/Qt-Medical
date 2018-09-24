@@ -5,6 +5,10 @@
 #include <QDateTime>
 #include "../Common/Resource_General.h"
 #include "../Common/Resource_Statusbar.h"
+#include "../Component/UserDataComp.h"
+#include <QVector>
+
+
 class UserProfileComponent /*: public QObject*/
 {
 //    Q_OBJECT
@@ -46,6 +50,8 @@ public:
     QDateTime timeLogin() const;
     void setTimeLogin(const QDateTime &timeLogin);
 
+    void initUserData();
+
 private:
     int m_id;
     int m_age;
@@ -58,7 +64,6 @@ private:
     QString m_password;
     bool m_loginState;
     QDateTime m_timeLogin;
-    Resource_General *m_resGeneral;
 
 public slots:
 

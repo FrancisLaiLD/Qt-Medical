@@ -21,12 +21,18 @@ Rectangle {
     property int __day      : 01
     width: cbbWidth ; height: cbbHeight
     radius: 6
-    color: "#D6DDD7"
+    color: "#6296CB"
     Text {
         id: _txtCurYear
         text: (__year !== -1 ? __year : "----") + "  /  " + (__month > 9 ? __month : '0' + __month) + "  /  " + (__day > 9 ? __day : '0' + __day)
         font.pixelSize: 15
         anchors.centerIn: parent
+    }
+    Image {
+        id: _imgDropDown
+        source: Resource_General.ico_drop_down_16
+        anchors.right: parent.right ; anchors.rightMargin: 4
+        anchors.verticalCenter: parent.verticalCenter
     }
     MouseArea {
         id: _cbbMou

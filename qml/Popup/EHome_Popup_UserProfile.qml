@@ -25,6 +25,22 @@ Medium_Popup {
             animationOtherUsr.start()
     }
 
+    // define function
+    function getTimeLogin() {
+        var timeLogin =  ""
+        switch(SettingModel.curLang) {
+        case HomeEnum.LANGUAGE_EN:
+            timeLogin = Qt.formatDateTime(UserProfileModel.curUserDob, "ddd, MMMM dd - hh:mm AP")
+            break
+        case HomeEnum.LANGUAGE_VI:
+            timeLogin = Qt.formatDateTime(UserProfileModel.curUserDob, "MMMM dd - hh:mm AP")
+            break
+        default:
+            timeLogin = Qt.formatDateTime(UserProfileModel.curUserDob, "ddd, MMMM dd - hh:mm AP")
+        }
+        return timeLogin
+    }
+
     Item {
         id: idCurrentUser
         width: parent.width ; height: parent.height - 68
@@ -34,7 +50,7 @@ Medium_Popup {
             text: "Current user :"
             color: "#404040"
             font.pixelSize: 16
-            x: 60 ; y: 120
+            x: 60 ; y: __startContent + 40
         }
 
         Text {
@@ -80,8 +96,7 @@ Medium_Popup {
 
         Text {
             id: txt_cur_userTimeLogin_val
-            text: Qt.formatDateTime(UserProfileModel.curUserDob, "yyyy-MM-dd")
-                  + " , "+ Qt.formatDateTime(UserProfileModel.curUserDob, "hh:mm AP")
+            text: getTimeLogin()
             font.pixelSize: 16
             color: AppValueConst.value_popup_color
             x: txt_cur_user_val.x
@@ -113,9 +128,8 @@ Medium_Popup {
         Image {
             id: idUserAvatar
             anchors.right: parent.right
-            anchors.rightMargin: 20
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 80
+            anchors.rightMargin: 30
+            anchors.verticalCenter: idCurrentUser.verticalCenter ; anchors.verticalCenterOffset: 20
             width: 150 ; height: 150
             source: UserProfileModel.curUserIcon
         }
@@ -184,54 +198,55 @@ Medium_Popup {
             color: "#404040"
             font.pixelSize: 16
         }
-        EText_Input {
-            id: _txtUserName
-            __textHint: "user name"
-            __textWidth: 150
-            anchors.bottom: _otherUserName.bottom
-            anchors.left: _otherUserName.right ; anchors.leftMargin: 10
-        }
+            EText_Input {
+                id: _txtUserName
+                __textHint: "user name"
+                __textWidth: 150
+                anchors.bottom: _otherUserName.bottom
+                anchors.left: _otherUserName.right ; anchors.leftMargin: 10
+            }
 
-        Text {
-            id: _txtUsrID
-            anchors.verticalCenter: _otherUserName.verticalCenter
-            anchors.verticalCenterOffset: 40
-            anchors.right: _otherUserName.right
-            text: " Or fill your ID :"
-            color: "#404040"
-            font.pixelSize: 16
+            Text {
+                id: _txtUsrID
+                anchors.verticalCenter: _otherUserName.verticalCenter
+                anchors.verticalCenterOffset: 40
+                anchors.right: _otherUserName.right
+                text: " Or fill your ID :"
+                color: "#404040"
+                font.pixelSize: 16
+            }
+            EText_Input {
+                id: _inputUsrID
+                __textHint: "user ID"
+                __textWidth: 150
+                anchors.bottom: _txtUsrID.bottom
+                anchors.left: _txtUsrID.right ; anchors.leftMargin: 10
+            }
+            Text {
+                id: _usrPass
+                anchors.right: _txtUsrID.right
+                anchors.verticalCenter: _txtUsrID.verticalCenter
+                anchors.verticalCenterOffset: 40
+                text: "Password :"
+                color: "#404040"
+                font.pixelSize: 16
+            }
+            EText_Input {
+                id: _inputUsrPass
+                __textHint: "password"
+                __textWidth: 150
+                anchors.bottom: _usrPass.bottom
+                anchors.left: _usrPass.right ; anchors.leftMargin: 10
+            }
+
+            EButton_StandAlone {
+                id: _btnLogin
+                btnLabel: "Log in"
+                btnWidth: 100
+                anchors.verticalCenter: _usrPass.verticalCenter ; anchors.verticalCenterOffset: 40
+                anchors.horizontalCenter: _usrPass.right
+            }
         }
-        EText_Input {
-            id: _inputUsrID
-            __textHint: "user ID"
-            __textWidth: 150
-            anchors.bottom: _txtUsrID.bottom
-            anchors.left: _txtUsrID.right ; anchors.leftMargin: 10
-        }
-        Text {
-            id: _usrPass
-            anchors.right: _txtUsrID.right
-            anchors.verticalCenter: _txtUsrID.verticalCenter
-            anchors.verticalCenterOffset: 40
-            text: "Password :"
-            color: "#404040"
-            font.pixelSize: 16
-        }
-        EText_Input {
-            id: _inputUsrPass
-            __textHint: "password"
-            __textWidth: 150
-            anchors.bottom: _usrPass.bottom
-            anchors.left: _usrPass.right ; anchors.leftMargin: 10
-        }
-        EButton_StandAlone {
-            id: _btnLogin
-            btnLabel: "Log in"
-            btnWidth: 100
-            anchors.verticalCenter: _usrPass.verticalCenter ; anchors.verticalCenterOffset: 40
-            anchors.horizontalCenter: _usrPass.right
-        }
-    }
 
     EButton_StandAlone {
         id: idBtnChooseOther
@@ -239,8 +254,6 @@ Medium_Popup {
         anchors.leftMargin: 100
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 16
-        //        btnColorTop: "blue"
-        //        btnColorBottom: "blue"
         btnLabel: currentMode === 1 ? AppStringConst.STR_USER_PROFILE_CHANGE_USER : AppStringConst.STR_GENERAL_BACK
         btnWidth: 150
         onBtnClicked: {
@@ -255,13 +268,18 @@ Medium_Popup {
         anchors.left: idBtnChooseOther.right
         anchors.leftMargin: 30
         anchors.verticalCenter: idBtnChooseOther.verticalCenter
-        //        btnColorTop: "blue"
-        //        btnColorBottom: "blue"
         btnLabel: "Go to user management"
         onBtnClicked: {
             SettingModel.curInx = HomeEnum.SETTING_USERPROFILE
-            AppManager.handleHidePopupClick(HomeEnum.EVENT_GO_TO_SETTING)
-            //            AppManager.handleHidePopupClick(HomeEnum.EVENT_HIDE_POPUP)
+            if (MEASURE_CONTROL.isHasMeasureResult)
+            {
+                AppManager.nextScreen = HomeEnum.EVENT_GO_TO_SETTING
+                AppManager.handleShowPopup(HomeEnum.EVENT_SHOW_POPUP_CONFIRMEXIT)
+            }
+            else
+            {
+                AppManager.handleTransScreen(HomeEnum.EVENT_GO_TO_SETTING)
+            }
         }
     }
     Component.onCompleted: {

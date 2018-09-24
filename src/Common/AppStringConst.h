@@ -7,10 +7,13 @@ class AppStringConst : public QObject
 {
     Q_OBJECT
 public:
-    explicit AppStringConst(QObject *parent = nullptr) {}
+    explicit AppStringConst(QObject *parent = nullptr) { Q_UNUSED(parent)}
     // GENERAL USING DECLARE
     Q_PROPERTY(QString STR_GENERAL_TIME                                 READ STR_GENERAL_TIME CONSTANT)
+    Q_PROPERTY(QString STR_GENERAL_TIME_ENG_FORMAT                      READ STR_GENERAL_TIME_ENG_FORMAT CONSTANT)
+    Q_PROPERTY(QString STR_GENERAL_TIME_VIE_FORMAT                      READ STR_GENERAL_TIME_VIE_FORMAT CONSTANT)
     Q_PROPERTY(QString STR_GENERAL_BACK                                 READ STR_GENERAL_BACK CONSTANT)
+    Q_PROPERTY(QString STR_GENERAL_UNDEFINE                             READ STR_GENERAL_UNDEFINE CONSTANT)
     // HOME DECLARE
     Q_PROPERTY(QString STR_HOME_WEATHER_CELCIUS_DEGREE                  READ STR_HOME_WEATHER_CELCIUS_DEGREE CONSTANT)
     Q_PROPERTY(QString STR_HOME_WEATHER_FAHRENHEIT_DEGREE               READ STR_HOME_WEATHER_FAHRENHEIT_DEGREE CONSTANT)
@@ -49,11 +52,15 @@ public:
     Q_PROPERTY(QString STR_COMMAND_DIAMETTER_HEIGHT                     READ STR_COMMAND_DIAMETTER_HEIGHT CONSTANT)
     Q_PROPERTY(QString STR_COMMAND_DIAMETTER_WEIGHT                     READ STR_COMMAND_DIAMETTER_WEIGHT CONSTANT)
     Q_PROPERTY(QString STR_COMMAND_MEASURE_BOOD_PRESSURE                READ STR_COMMAND_MEASURE_BOOD_PRESSURE CONSTANT)
+    Q_PROPERTY(QString STR_COMMAND_MEASURE_ARECORD                      READ STR_COMMAND_MEASURE_ARECORD CONSTANT)
 
 
 
     QString STR_GENERAL_TIME()                                  {return "Time";}
+    QString STR_GENERAL_TIME_ENG_FORMAT()                       {return "%MM %DD %YYYY";}
+    QString STR_GENERAL_TIME_VIE_FORMAT()                       {return "%DD %MM %YYYY";}
     QString STR_GENERAL_BACK()                                  {return "Back";}
+    QString STR_GENERAL_UNDEFINE()                              {return "Undefine";}
 
     QString STR_HOME_WEATHER_CELCIUS_DEGREE()                   {return "°C";}
     QString STR_HOME_WEATHER_FAHRENHEIT_DEGREE()                {return "°F";}
@@ -84,6 +91,8 @@ public:
     QString STR_COMMAND_DIAMETTER_HEIGHT()                      {return "Diametter your height";}
     QString STR_COMMAND_DIAMETTER_WEIGHT()                      {return "Diametter your weight";}
     QString STR_COMMAND_MEASURE_BOOD_PRESSURE()                 {return "Measure your blood pressure";}
+    QString STR_COMMAND_MEASURE_ARECORD()                       {return "Make a full record";}
+
     QString STR_DEVICE_TEMPERATURE_MEASUREMENT()                {return "Temperature measurement";}
     QString STR_DEVICE_HEIGHT_DIAMETTER()                       {return "Height diametter";}
     QString STR_DEVICE_WEIGHT_DIAMETTER()                       {return "Weight diametter";}
@@ -92,5 +101,5 @@ public:
     QString STR_DEVICE_IMAGE_ANALYZER()                         {return "Image analyser";}
 
 };
-extern AppStringConst m_appString;
+extern AppStringConst GLOBAL_StringConst;
 #endif // AppStringConst_H

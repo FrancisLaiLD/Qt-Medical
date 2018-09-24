@@ -12,10 +12,11 @@ public:
     {
         Q_UNUSED(parent);
         Q_UNUSED(cPrefix);
-        m_prefix = "file:///home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/icons/general/";
-        m_prefixChart = "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/icons/chart/";
-        m_prefixWeather = "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/weather/weather-1/";
-        m_prefixHumanImgs = "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/human-images/";
+        m_prefix            = "file:///home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/icons/general/";
+        m_prefixChart       = "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/icons/chart/";
+        m_prefixWeather     = "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/weather/";
+        m_prefixHumanImgs   = "/home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/human-images/";
+        m_prefixDevImg      = "//home/moonlight/Qt-Project/LearnMedical-1/Qt-Medical/resource/images/function/TempMeasure/";
 
     }
     virtual ~Resource_General() {}
@@ -65,12 +66,19 @@ public:
     Q_PROPERTY(QString ico_edit_16_gray             READ ico_edit_16_gray               CONSTANT)
     Q_PROPERTY(QString ico_loading                  READ ico_loading                    CONSTANT)
     Q_PROPERTY(QString ico_info_64                  READ ico_info_64                    CONSTANT)
+    Q_PROPERTY(QString ico_caution_64               READ ico_caution_64                    CONSTANT)
     Q_PROPERTY(QString ico_error_64                 READ ico_error_64                   CONSTANT)
     Q_PROPERTY(QString ico_right_arrow_n            READ ico_right_arrow_n              CONSTANT)
     Q_PROPERTY(QString ico_right_arrow_p            READ ico_right_arrow_p              CONSTANT)
     Q_PROPERTY(QString ico_right_arrow_d            READ ico_right_arrow_d              CONSTANT)
 
-    Q_PROPERTY(QString human_overview               READ human_overview                 CONSTANT)
+    // Medical device
+    Q_PROPERTY(QString thermometer_512              READ thermometer_512                CONSTANT)
+    Q_PROPERTY(QString left_arrow_16                READ left_arrow_16                  CONSTANT)
+    Q_PROPERTY(QString left_arrow_24                READ left_arrow_24                  CONSTANT)
+    Q_PROPERTY(QString left_arrow_64                READ left_arrow_64                  CONSTANT)
+    Q_PROPERTY(QString arr_current_val_24           READ arr_current_val_24             CONSTANT)
+    Q_PROPERTY(QString ico_drop_down_16             READ ico_drop_down_16             CONSTANT)
 
 
     /*
@@ -104,17 +112,25 @@ public:
     QString ico_loading()               {return m_prefix + "ico_loading.gif";}
     QString ico_error_64()              {return m_prefix + "ico_error_64.png";}
     QString ico_info_64()               {return m_prefix + "ico_info_64.png";}
+    QString ico_caution_64()            {return m_prefix + "ico_caution_64.png";}
     QString ico_right_arrow_n()         {return m_prefix + "ico_right_arrow_n.png";}
     QString ico_right_arrow_p()         {return m_prefix + "ico_right_arrow_p.png";}
     QString ico_right_arrow_d()         {return m_prefix + "ico_right_arrow_d.png";}
+    QString ico_drop_down_16()          {return m_prefix + "ico_drop_down_16.png";}
+
+    // Medical device
+    QString thermometer_512()           {return m_prefixDevImg + "thermometer_512.png";}
+    QString left_arrow_16()             {return m_prefixDevImg + "left_arrow_16.png";}
+    QString left_arrow_24()             {return m_prefixDevImg + "left_arrow_24.png";}
+    QString left_arrow_64()             {return m_prefixDevImg + "left_arrow_64.png";}
+    QString arr_current_val_24()        {return m_prefixDevImg + "arr_current_val_24.png";}
 
     QString chart_ver_bottom()          {return m_prefixChart + "chart_ver_bottom.png";}
     QString chart_ver_middle()          {return m_prefixChart + "chart_ver_middle.png";}
     QString chart_ver_top()             {return m_prefixChart + "chart_ver_top.png";}
+
     QString weather_shine_rainny()      {return m_prefixWeather + "shine-rainny.png";}
     QString weather_wind_velocity()     {return m_prefixWeather + "wind-velocity.png";}
-
-
     QString weather_cloud()             {return m_prefixWeather + "weather_cloud.png";}
     QString weather_cloudy_wind ()      {return m_prefixWeather + "weather_cloudy_wind.png";}
     QString weather_night_cloudy()      {return m_prefixWeather + "weather_night_cloudy.png";}
@@ -136,6 +152,7 @@ private:
     QString m_prefixChart;
     QString m_prefixWeather;
     QString m_prefixHumanImgs;
+    QString m_prefixDevImg;
 };
-
+extern Resource_General GLOBAL_ResGeneral;
 #endif // RESOURCE_GENERAL_H

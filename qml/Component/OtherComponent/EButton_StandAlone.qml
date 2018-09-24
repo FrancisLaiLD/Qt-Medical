@@ -11,6 +11,8 @@ Rectangle {
     property string btnColorBottom: "white"
     property string btnColorPress: "#B79612"
     property string btnBorderColor: "#404040"
+    property bool __btnEnable: true
+    property int btnLabelFont: 14
 
     // Internal Properties
     property bool isPressed: false
@@ -18,26 +20,27 @@ Rectangle {
     signal btnClicked()
 
     width: btnWidth === -1 ? idBtnLabel.width + 30 : btnWidth
-    height: idBtnLabel.height + 16
+    height: btnHeight === 40 ? idBtnLabel.height + 16 : btnHeight
     radius: 8
     border.width: 1
     border.color: btnBorderColor
     gradient:
         Gradient {
-        GradientStop { position: 0.0; color: (_root.isPressed ? btnColorPress : btnColorTop)}
-        GradientStop { position: 1.0; color: (_root.isPressed ? btnColorPress : btnColorBottom )}
+        GradientStop { position: 0.0; color: (_root.__btnEnable ? (_root.isPressed ? btnColorPress : btnColorTop) : "#AAA8A3")}
+        GradientStop { position: 1.0; color: (_root.__btnEnable ? (_root.isPressed ? btnColorPress : btnColorBottom) : "#AAA8A3")}
     }
 
     Text {
         id: idBtnLabel
         text: btnLabel
-        font.pixelSize: 14
+        font.pixelSize: btnLabelFont
         color: btnLabelColor
         anchors.centerIn: parent
     }
     MouseArea {
         id: idMainMou
         anchors.fill: parent
+        visible: __btnEnable
         onPressed: {
             _root.isPressed = true
         }

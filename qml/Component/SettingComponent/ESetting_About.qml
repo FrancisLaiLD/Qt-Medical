@@ -9,7 +9,7 @@ Rectangle {
     Item {
         id: _version
         width: parent.width
-        height: _versionTit.height + _verContent.height + 30 + 30
+        height: _versionTit.height + _verContent.height + 30 + 60
         Text {
             id: _versionTit
             text: "Version info"
@@ -21,7 +21,7 @@ Rectangle {
         Text {
             id: _verContent
             text: "Thank you for using our production" +  "\n" +
-                  "EHome Care version " + /*SettingModel.version*/ "v1.0" + "
+                  "EHome Care version " + SettingModel.appVersion + "
 An production of Lida Company, Ltd.Co"
             lineHeight: 2
             font.pixelSize: 15 ; color: "#404040"
@@ -41,7 +41,7 @@ An production of Lida Company, Ltd.Co"
     Item {
         id: _trademark
         width: parent.width
-        height: 300
+        height: 500
         anchors.top: _version.bottom ; anchors.topMargin: 10
         Text {
             id: _trademarkTit

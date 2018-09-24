@@ -13,6 +13,7 @@ QVariant HomeListDeviceModel::data(const QModelIndex &index, int role) const
         qDebug() << "HungLD";
         return QVariant();
     }
+
     DeviceComponent m_device = m_listDevice[index.row()];
     if (role == DeviceNameRoles::DEVICE_NAME)
     {

@@ -75,7 +75,7 @@ Rectangle {
 
         Text {
             id: _txt_cur_user_dob_val
-            text: Qt.formatDateTime(UserProfileModel.curUserDob, "yyyy") + " April" + " 01"
+            text: Qt.formatDateTime(UserProfileModel.curUserDob, " MMMM dd yyyy")
             font.pixelSize: 16
             color: AppValueConst.value_popup_color
             x: txt_cur_user_val.x
@@ -95,7 +95,7 @@ Rectangle {
 
         Text {
             id: txt_cur_userDateEstablist_val
-            text: Qt.formatDateTime(UserProfileModel.curUserDateEsta, "yyyy.MM.dd")
+            text: Qt.formatDateTime(UserProfileModel.curUserDateEsta, " MMMM dd yyyy")
             font.pixelSize: 16
             color: AppValueConst.value_popup_color
             x: txt_cur_user_val.x
@@ -115,7 +115,7 @@ Rectangle {
 
         Text {
             id: txt_cur_userDateExprt_val
-            text: Qt.formatDateTime(UserProfileModel.curUserDateExpe, "yyyy.MM.dd")
+            text: Qt.formatDateTime(UserProfileModel.curUserDateExpe, " MMMM dd yyyy")
             font.pixelSize: 16
             color: AppValueConst.value_popup_color
             x: txt_cur_user_val.x
@@ -135,7 +135,7 @@ Rectangle {
 
         Text {
             id: _txt_time_login_val
-            text: Qt.formatDateTime(UserProfileModel.curUserDateExpe, "yyyy.MM.dd")
+            text: Qt.formatDateTime(UserProfileModel.curUserDob, "ddd, MMMM dd - hh:mm AP")
             font.pixelSize: 16
             color: AppValueConst.value_popup_color
             x: txt_cur_user_val.x
@@ -164,7 +164,7 @@ Rectangle {
             text: "Time used :"
             color: "#404040"
             font.pixelSize: 16
-            anchors.right: parent.right ; anchors.rightMargin: 300
+            anchors.right: parent.right ; anchors.rightMargin: 420
             anchors.verticalCenter: _txt_time_login.verticalCenter ; anchors.verticalCenterOffset: 35
         }
         Text {
@@ -375,7 +375,7 @@ Rectangle {
             btnLabel: "Create new user"
             onBtnClicked: {
                 console.log('Click create new user');
-                AppManager.handleShowPopupClick(HomeEnum.EVENT_SHOW_POPUP_CREATINGUSER)
+                AppManager.handleShowPopup(HomeEnum.EVENT_SHOW_POPUP_CREATINGUSER)
             }
             anchors.bottom: parent.bottom ; anchors.bottomMargin: 10
             anchors.horizontalCenter: parent.horizontalCenter

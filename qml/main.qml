@@ -2,6 +2,7 @@ import QtQuick 2.9
 import QtQuick.Window 2.2
 import "Screen"
 import "Component/ScreenComponent"
+import "Component/OtherComponent"
 import Ehome 1.0
 
 Window {
@@ -9,7 +10,8 @@ Window {
     width: 720
     height: 1280
     title: qsTr("All in your hand")
-
+    x: 1920-720
+    flags: Qt.FramelessWindowHint
     function transtionScreen(newScreenLink) {
         idContentLoader.source = newScreenLink
         return true
@@ -29,12 +31,6 @@ Window {
         source: "../resource/images/main_bg_19 (1).png"
         fillMode: Image.PreserveAspectCrop
         anchors.fill: parent
-    }
-    Rectangle {
-        id: idRoot
-        anchors.fill: parent
-        color: "transparent"
-        opacity: 0.1
     }
 
     Loader {
@@ -64,26 +60,38 @@ Window {
     Rectangle {
         id: idBackground
         signal outsideClick()
-        visible: AppManager.isShowingPopup
-        width: 720 ; height: 1080
+        visible: QML_CONTROL.isShowingPopup
+        anchors.fill: parent
         color: "black"
-        opacity: 0.6
+        opacity: 0.72
         MouseArea {
             id: idMou
             anchors.fill: parent
             onClicked: {
                 console.log('Popup outside click')
-                AppManager.handleHidePopupClick(HomeEnum.EVENT_HIDE_POPUP)
+                AppManager.handleHidePopup(HomeEnum.EVENT_HIDE_POPUP)
             }
         }
     }
 
+    NumberAnimation {
+        id: idShowAni
+        target: idLoadPopup; property: "opacity"; from: 0.0; to: 1.0; duration: AppValueConst.time_screen_show_popup }
+    NumberAnimation {
+        id: idHideAni
+        target: idLoadPopup; property: "opacity"; from: 1.0; to: 0.0; duration: AppValueConst.time_screen_show_popup }
     Loader {
         id: idLoadPopup
 //        anchors.fill: parent
         anchors.horizontalCenter: idBackground.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: 200
+        onSourceChanged: {
+            if (source === "")
+                idHideAni.start()
+            else
+                idShowAni.start()
+        }
     }
 
     Component.onCompleted:  {

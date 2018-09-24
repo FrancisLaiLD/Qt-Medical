@@ -38,11 +38,20 @@
 #define SCREEN_EHOME_TECHNICAL_OVERVIEW         "Screen/EHome_Screen_Teachnical_Overview.qml"
 #define SCREEN_EHOME_SETTING                    "Screen/EHome_Screen_Setting.qml"
 
+// Function screen
+#define SCREEN_FUNCTION_TEMPMEASURE             "Screen/EFunction_Screen_TempMeasure.qml"
+#define SCREEN_FUNCTION_HEIGHTDIAMETTER         "Screen/EFunction_Screen_HeightDiametter.qml"
+#define SCREEN_FUNCTION_WEIGHTDIAMETTER         "Screen/EFunction_Screen_WeightDiametter.qml"
+#define SCREEN_FUNCTION_BLOODPRESSMEASURE       "Screen/EFunction_Screen_BloodPressMeasure.qml"
 
+// Popup link define
 #define POPUP_EHOME_MAIN_USER_POPUP             "Popup/EHome_Popup_UserProfile.qml"
 #define POPUP_EHOME_NO_CONNECTION               "Popup/EHome_Popup_NoConnection.qml"
 #define POPUP_EHOME_CREATINGUSER                "Popup/EHome_Popup_CreatingUser.qml"
-
+#define POPUP_EHOME_CONFIRMEXIT                 "Popup/EHome_Popup_ConfirmExit.qml"
+#define POPUP_EHOME_NOTCHANGEUSER               "Popup/EHome_Popup_NotChangeUser.qml"
+#define POPUP_EHOME_SAVEDATA                    "Popup/EHome_Popup_SaveData.qml"
+#define POPUP_EHOME_NOSAVEDATAYET               "Popup/EHome_Popup_NoSaveDataYet.qml"
 
 
 

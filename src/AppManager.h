@@ -6,36 +6,45 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <iostream>
+#include <QDateTime>
 
 // E-num
 #include "Common/App_Enum.h"
 #include "Common/HomeScreenDef.h"
-// QML Controller
-#include "HomeQMLController.h"
+
+// Controller
+#include "QMLController.h"
+#include "MeasureController.h"
+
 // Resource
 #include "Common/ResourceManager.h"
+
 // Model for QML
 #include "model/StatusbarModel.h"
 #include "model/UserProfileModel.h"
 #include "model/HomeScreenMainDailyModel.h"
 #include "model/SettingModel.h"
 #include "model/AppListCommand.h"
+
 // Constant
 #include "Common/AppValueConst.h"
 #include "Common/AppStringConst.h"
+
 // Worker
 #include <QThread>
 #include "Worker/Worker_Time_Management.h"
 
+// User Data
+#include "model/ListModelUserData.h"
+
+#define CAST_INT(a) static_cast<int>(a)
 
 class AppManager : public QObject
 {
     Q_OBJECT
 public:
-
     explicit AppManager(QObject *parent = nullptr, QQmlApplicationEngine *_pAppEngine = nullptr);
-    Q_PROPERTY(bool isShowingPopup      READ isShowingPopup         WRITE setIsShowingPopup         NOTIFY isShowingPopupChanged)
-    Q_PROPERTY(int currentScreen        READ currentScreen          WRITE setCurrentScreen          NOTIFY currentScreenChanged)
+
     Q_PROPERTY(QDateTime currentTime    READ currentTime            WRITE setCurrentTime            NOTIFY currentTimeChanged)
 
 /*------------------------------------------------------------------INIT APPLICATION-------------------------------------------------------------------------*/
@@ -46,42 +55,49 @@ public:
 /*------------------------------------------------------------------UPDATE DATA TO STATUSBAR---------------------------------------------------------------------*/
 
 
-/*------------------------------------------------------------------UPDATE DATA TO HomeModel---------------------------------------------------------------------*/
+/*------------------------------------------------------------------UPDATE DATA TO MODELS---------------------------------------------------------------------*/
 
 
 /*------------------------------------------------------------------UPDATE DATA TO UserProfile---------------------------------------------------------------------*/
-    bool isShowingPopup() const;
-    void setIsShowingPopup(bool isShowingPopup);
 
-    int currentScreen() const;
-    void setCurrentScreen(int currentScreen);
 
     QDateTime currentTime() const;
     void setCurrentTime(const QDateTime &currentTime);
 
+
+
 public slots:
 
     /*------------------------------------------------------------------HANDLE VIEW EVENTS-----------------------------------------------------------------------*/
-    bool handleHomeClick(const int& );
+    bool handlePopupOkCancel(const bool& _result);
+    void handleBackScreen();
+    void handleHomeScreen();
+    void handleDataScreen();
     void handleTransScreen(const int&, const QVariant& _data = QVariant());
-    void handleShowPopupClick(const int&);
-    void handleHidePopupClick(const int&);
+    void handleShowPopup(const int&);
+    void handleHidePopup(const int&);
+
+    /*------------------------------------------------------------------HANDLE USER PROFILE--------------------------------------------------------------------*/
     void handleCreateNewUser();
 
     /*------------------------------------------------------------------HANDLE INTERNAL THREAD--------------------------------------------------------------------*/
     void handleTimeUpdate(QDateTime result);
 
+    /*------------------------------------------------------------------SAVING USER DATA--------------------------------------------------------------------*/
+    bool saveUserData(QVariant _data);
+    void handleCreateNewRec(const float& _temp = -1, int _heightVal = -1, int _weiVal = -1, QDateTime _dateTime = QDateTime::currentDateTime());
+    void handleWriteToRec(const int& _recID);
+
 signals:
-    void isShowingPopupChanged();
-    void currentScreenChanged();
     void currentTimeChanged();
 
 private:
-    bool        m_isShowingPopup;
-    int         m_currentScreen;
+
     QDateTime   m_currentTime;
+
     QQmlApplicationEngine   *p_qqmlAppEngine;
-    HomeQMLController       *p_homeQMLController;
+    QMLController           *p_QMLController;
+    MeasureController       *p_MeasureController;
 
     // Constant model
     AppValueConst                   *p_AppValueConst;
@@ -97,7 +113,7 @@ private:
 // Worker
     QThread *p_timeThread;
     Worker_Time_Management *p_timeWorker;
-
+    ListModelUserData *p_listUserData;
 
 };
 

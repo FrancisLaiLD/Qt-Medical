@@ -6,22 +6,24 @@ EHome_StatusBar_Frame {
     id: idRoot
     onReleaseUserProfile: {
         console.log('user click -> go to User Profile')
-        AppManager.handleShowPopupClick(HomeEnum.EVENT_SHOW_POPUP_USER_PROFILE)
+        if (MEASURE_CONTROL.isMeasuring)
+            AppManager.handleShowPopup(HomeEnum.EVENT_SHOW_POPUP_NOTCHANGEUSER)
+        else
+            AppManager.handleShowPopup(HomeEnum.EVENT_SHOW_POPUP_USER_PROFILE)
     }
 
     onReleaseBackBtn: {
-        console.log('user click -> go to Back')
-        AppManager.handleTransScreen(HomeEnum.EVENT_GO_TO_BACK)
+        AppManager.handleBackScreen()
     }
 
     onReleaseHomeBtn: {
         console.log('user click -> go to Home screen')
-        AppManager.handleTransScreen(HomeEnum.EVENT_GO_TO_HOME_SCREEN)
+        AppManager.handleHomeScreen()
     }
 
     onReleaseCloudBtn: {
         console.log('user click -> go to User data cloud')
-        AppManager.handleTransScreen(HomeEnum.EVENT_GO_TO_USER_DATA)
+        AppManager.handleDataScreen()
     }
 
 }

@@ -9,6 +9,7 @@
 #include "../Common/Resource_Statusbar.h"
 #include "../Component/UserProfileComponent.h"
 
+
 class UserProfileModel : public QAbstractListModel
 {
     Q_OBJECT
@@ -64,7 +65,6 @@ public:
     void setDtUserLogin(const QDateTime &dtUserLogin);
 
 private:
-    Resource_General *p_resGeneral;
     Resource_Statusbar *p_resStatusbar;
     QVector<UserProfileComponent> m_listUser;
     UserProfileComponent m_curUser;

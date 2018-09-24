@@ -10,7 +10,7 @@ Rectangle {
     signal pressAndHold()
 
     width: 720
-    height: 510
+    height: 610
     color: mainColor
 //    opacity: 1.0
     MouseArea {

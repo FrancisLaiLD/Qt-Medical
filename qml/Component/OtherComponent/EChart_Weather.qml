@@ -9,8 +9,14 @@ Rectangle {
     property int xAxisRes: 8
     property int yAxisMaxValue: 100
     property int yAxisRes: 10
+    property alias yAxisStartValue: yAxis.startValue
     property int chartWidth: 500
     property int chartHeight: (1080-60)/3
+    property int __chartType: -1
+
+    // internal
+    property alias xAxisTop: xAxis.x
+//    property int : value
     width: chartWidth ; height: chartHeight
 //    Rectangle {
 //        id: iddd
@@ -61,6 +67,27 @@ Rectangle {
         anchors.bottomMargin: 3
         text: yAxisName
         font.italic: true
+    }
+    ListView {
+        id: _lsvData
+        anchors.fill: parent
+        spacing: 2
+        orientation: ListView.Horizontal
+        Rectangle {
+            anchors.fill: parent
+            color: "red"; opacity: 0.3
+        }
+        delegate: Item {
+            id: _delData
+            width: 20 ;
+            anchors.bottom: parent.bottom
+            Rectangle {
+                id: _bar
+                color: "green"
+                width: parent.width ; height: 80
+                anchors.bottom: parent.bottom
+            }
+        }
     }
 
 }

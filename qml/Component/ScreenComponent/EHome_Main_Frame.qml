@@ -4,8 +4,9 @@ Rectangle {
     id:idRoot
     property string scrrenBgImg: ""
     property string screenTitle: ""
+    property int __titleMarginTop: 5
     width: 720
-    height: 1080 - 60
+    height: 1280 - 60
     color: "transparent"
 
 //    Image {
@@ -20,7 +21,7 @@ Rectangle {
         id: idTitleScreen
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
-        anchors.topMargin: 5
+        anchors.topMargin: __titleMarginTop
         font.pixelSize: AppValueConst.title_screen_size
         text: idRoot.screenTitle
     }

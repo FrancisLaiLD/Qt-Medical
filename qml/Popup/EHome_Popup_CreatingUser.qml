@@ -5,7 +5,7 @@ import Ehome 1.0
 Small_Popup {
     id: _root
     __popupTitle: "Info"
-    __popupType: 1 // info
+    __popupType: 2 // info
     Text {
         id: textCurrentConnect
         text: "Setting up your user
@@ -13,7 +13,7 @@ Please wat..."
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: 20
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: __startContent ; anchors.topMargin: 30
+        y: __startContent + 30
     }
 
     EButton_StandAlone {
@@ -23,7 +23,7 @@ Please wat..."
         anchors.bottom: parent.bottom ; anchors.bottomMargin: 10
         onBtnClicked: {
             SettingModel.curInx = HomeEnum.SETTING_NETWORK
-            AppManager.handleHidePopupClick(HomeEnum.EVENT_GO_TO_SETTING)
+            AppManager.handleHidePopup(HomeEnum.EVENT_GO_TO_SETTING)
         }
     }
 }
